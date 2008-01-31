@@ -4,7 +4,7 @@ Donate link: http://www.joostdevalk.nl/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.3.2
-stable tag: 2.5
+stable tag: 2.5.1
 
 Automatically add links on your posts to popular social bookmarking sites.
 
@@ -16,6 +16,10 @@ More info:
 * [Sociable](http://www.joostdevalk.nl/wordpress/sociable/).
 * Read more about [WordPress SEO](http://www.joostdevalk.nl/wordpress-seo/) so you can get the most out of this plugin.
 * Check out the other [Wordpress plugins](http://www.joostdevalk.nl/wordpress/) by the same author.
+
+== Changelog ==
+
+2.5.1. Swapped Netscape for Propeller
 
 == Installation ==
 

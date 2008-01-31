@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.5
+Version: 2.5.1
 Author: Joost de Valk
 Author URI: http://www.joostdevalk.nl/
 */
@@ -238,11 +238,6 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.newsvine.com/_tools/seed&amp;save?u=PERMALINK&amp;h=TITLE',
 	),
 
-	'Netscape' => Array(
-		'favicon' => 'netscape.gif',
-		'url' => 'http://www.netscape.com/submit/?U=PERMALINK&amp;T=TITLE',
-	),
-
 	'Netvouz' => Array(
 		'favicon' => 'netvouz.png',
 		'url' => 'http://www.netvouz.com/action/submitBookmark?url=PERMALINK&amp;title=TITLE&amp;popup=no',
@@ -263,6 +258,12 @@ $sociable_known_sites = Array(
 		'favicon' => 'ppnow.png',
 		'url' => 'http://www.ppnow.net/submit.php?url=PERMALINK',
 	),
+	
+	'Propeller' => Array(
+		'favicon' => 'propeller.gif',
+		'url' => 'http://www.propeller.com/submit/?U=PERMALINK&amp;T=TITLE',
+	),
+
 
 	'RawSugar' => Array(
 		'favicon' => 'rawsugar.png',
@@ -423,12 +424,12 @@ $sociable_files = Array(
 	'images/misterwong.gif',
 	'images/mixx.png',
 	'images/myshare.png',
-	'images/netscape.gif',
 	'images/netvouz.png',
 	'images/newsvine.png',
 	'images/plugim.png',
 	'images/popcurrent.png',
 	'images/ppnow.png',
+	'images/propeller.gif',
 	'images/rawsugar.png',
 	'images/rec6.gif',
 	'images/reddit.png',
