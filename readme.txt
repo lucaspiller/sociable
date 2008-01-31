@@ -17,7 +17,7 @@ More info:
 * Read more about [WordPress SEO](http://www.joostdevalk.nl/wordpress-seo/) so you can get the most out of this plugin.
 * Check out the other [Wordpress plugins](http://www.joostdevalk.nl/wordpress/) by the same author.
 
-== Changelog ==
+Changelog
 
 2.5.1. Swapped Netscape for Propeller
 
@@ -25,22 +25,22 @@ More info:
 
 Download, Upgrading, Installation:
 
-=== Upgrade ===
+Upgrade
 1. First deactivate Sociable
 1. Remove the `sociable` directory
 
-=== Install ===
+Install
 1. Unzip the `sociable.zip` file. 
 1. Upload the the `sociable` folder (not just the files in it!) to your `wp-contents/plugins` folder. If you're using FTP, use 'binary' mode.
 
-=== Activate ===
+Activate
 1. In your WordPress administration, go to the Plugins page
 1. Activate the Sociable plugin and a subpage for Sociable will appear
    in your Options menu.
 
 If you find any bugs or have any ideas, please mail me.
 
-=== Advanced Users ===
+Advanced Users
 
 Sociable hooks the_content() and the_excerpt() to display without requiring theme editing. To heavily customize the display, use the admin panel to turn off the display on all pages, then add calls to your theme files:
 
