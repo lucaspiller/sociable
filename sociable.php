@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.5.1
+Version: 2.5.2
 Author: Joost de Valk
 Author URI: http://www.joostdevalk.nl/
 */
@@ -73,7 +73,7 @@ $sociable_known_sites = Array(
 
 	'blogtercimlap' => Array(
 		'favicon' => 'blogter.png',
-		'url' => 'http://cimlap.blogter.hu/index.php?action=suggest_link&title=TITLE&amp;url=PERMALINK',
+		'url' => 'http://cimlap.blogter.hu/index.php?action=suggest_link&amp;title=TITLE&amp;url=PERMALINK',
 	),
 
 	'Blue Dot' => Array(
@@ -131,6 +131,11 @@ $sociable_known_sites = Array(
 		'description' => 'description',
 	),
 
+	'eKudos' => Array(
+		'favicon' => 'ekudos.gif',
+		'url' => 'http://www.ekudos.nl/artikel/nieuw?url=PERMALINK&amp;title=TITLE',
+	),
+
 	'Facebook' => Array(
 		'favicon' => 'facebook.png',
 		'url' => 'http://www.facebook.com/sharer.php?u=PERMALINK&amp;t=TITLE',
@@ -160,7 +165,7 @@ $sociable_known_sites = Array(
 
 	'Google' => Array (
 		'favicon' => 'googlebookmark.png',
-		'url' => 'http://www.google.com/bookmarks/mark?op=edit&bkmk=PERMALINK&amp;title=TITLE'
+		'url' => 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=PERMALINK&amp;title=TITLE'
 	),
 	
 	'Gwar' => Array(
@@ -223,6 +228,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.mister-wong.com/addurl/?bm_url=PERMALINK&amp;bm_description=TITLE&amp;plugin=soc',
 	),
 
+	'MisterWong.DE' => Array(
+		'favicon' => 'misterwong.gif',
+		'url' => 'http://www.mister-wong.de/addurl/?bm_url=PERMALINK&amp;bm_description=TITLE&amp;plugin=soc',
+	),
+	
 	'Mixx' => Array(
 		'favicon' => 'mixx.png',
 		'url' => 'http://www.mixx.com/submit?page_url=PERMALINK&amp;title=TITLE',
@@ -241,6 +251,11 @@ $sociable_known_sites = Array(
 	'Netvouz' => Array(
 		'favicon' => 'netvouz.png',
 		'url' => 'http://www.netvouz.com/action/submitBookmark?url=PERMALINK&amp;title=TITLE&amp;popup=no',
+	),
+
+	'NuJIJ' => Array(
+		'favicon' => 'nujij.gif',
+		'url' => 'http://nujij.nl/jij.lynkx?t=TITLE&amp;u=PERMALINK',
 	),
 
 	'PlugIM' => Array(
@@ -301,6 +316,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.simpy.com/simpy/LinkAdd.do?href=PERMALINK&amp;title=TITLE',
 	),
 
+	'Sk-rt' => Array(
+		'favicon' => 'sk-rt.png',
+		'url' => 'http://www.sk-rt.com/submit.php?url=PERMALINK&amp;title=TITLE',
+	),
+
 	'Slashdot' => Array(
 		'favicon' => 'slashdot.png',
 		'url' => 'http://slashdot.org/bookmark.pl?title=TITLE&amp;url=PERMALINK',
@@ -311,6 +331,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://smarking.com/editbookmark/?url=PERMALINK&amp;title=TITLE',
 	),
 
+	'Socialogs' => Array(
+		'favicon' => 'socialogs.gif',
+		'url' => 'http://socialogs.com/add_story.php?story_url=PERMALINK&amp;story_title=TITLE',
+	),
+	
 	'Spurl' => Array(
 		'favicon' => 'spurl.png',
 		'url' => 'http://www.spurl.net/spurl.php?url=PERMALINK&amp;title=TITLE',
@@ -323,7 +348,7 @@ $sociable_known_sites = Array(
 
 	'Sphinn' => Array(
 		'favicon' => 'sphinn.png',
-		'url' => 'http://sphinn.com/submit.php?url=PERMALINK&title=TITLE',
+		'url' => 'http://sphinn.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
 	'StumbleUpon' => Array(
@@ -403,6 +428,7 @@ $sociable_files = Array(
 	'images/digg.png',
 	'images/dotnetkicks.png',
 	'images/dzone.png',
+	'images/ekudos.gif',
 	'images/facebook.png',
 	'images/fark.png',
 	'images/feedmelinks.png',
@@ -426,6 +452,7 @@ $sociable_files = Array(
 	'images/myshare.png',
 	'images/netvouz.png',
 	'images/newsvine.png',
+	'images/nujij.gif',
 	'images/plugim.png',
 	'images/popcurrent.png',
 	'images/ppnow.png',
@@ -437,8 +464,10 @@ $sociable_files = Array(
 	'images/scuttle.png',
 	'images/shadows.png',
 	'images/simpy.png',
+	'images/sk-rt.png',
 	'images/slashdot.png',
 	'images/smarking.png',
+	'images/socialogs.gif',
 	'images/sphere.png',
 	'images/sphinn.png',
 	'images/spurl.png',
