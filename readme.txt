@@ -4,7 +4,7 @@ Donate link: http://www.joostdevalk.nl/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.3.2
-stable tag: 2.5.2
+stable tag: 2.5.3
 
 Automatically add links on your posts to popular social bookmarking sites.
 
@@ -19,10 +19,9 @@ More info:
 
 Changelog
 
-2.5.2 	Added Sk-rt, Socialogs, MisterWong.de, NuJIJ and eKudos
-		Fixed some validation issues
-		
-2.5.1 	Swapped Netscape for Propeller
+2.5.3 Added Global Grind, Salesmarks, Webnews.de, Xerpi, Yigg
+2.5.2 Added Sk-rt, Socialogs and MisterWong.de
+2.5.1 Swapped Netscape for Propeller
 
 == Installation ==
 

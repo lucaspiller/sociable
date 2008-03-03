@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.5.2
+Version: 2.5.3
 Author: Joost de Valk
 Author URI: http://www.joostdevalk.nl/
 */
@@ -163,6 +163,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://extension.fleck.com/?v=b.0.804&amp;url=PERMALINK',
 	),
 
+	'Global Grind' => Array (
+		'favicon' => 'globalgrind.gif',
+		'url' => 'http://globalgrind.com/submission/submit.aspx?url=PERMALINK&amp;type=Article&amp;title=TITLE'
+	),
+	
 	'Google' => Array (
 		'favicon' => 'googlebookmark.png',
 		'url' => 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=PERMALINK&amp;title=TITLE'
@@ -295,6 +300,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://reddit.com/submit?url=PERMALINK&amp;title=TITLE',
 	),
 
+	'SalesMarks' => Array(
+		'favicon' => 'salesmarks.gif',
+		'url' => 'http://salesmarks.com/submit?edit[url]=PERMALINK&edit[title]=TITLE',
+	),
+	
 	'Scoopeo' => Array(
 		'favicon' => 'scoopeo.png',
 		'url' => 'http://www.scoopeo.com/scoop/new?newurl=PERMALINK&amp;title=TITLE',
@@ -381,6 +391,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://twitthis.com/twit?url=PERMALINK',
 	),
 
+	'Webnews.de' => Array(
+        'favicon' => 'webnews.gif',
+        'url' => 'http://www.webnews.de/einstellen?url=PERMALINK&title=TITLE',
+    ),
+
 	'Webride' => Array(
 		'favicon' => 'webride.png',
 		'url' => 'http://webride.org/discuss/split.php?uri=PERMALINK&amp;title=TITLE',
@@ -397,11 +412,20 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.wykop.pl/dodaj?url=PERMALINK',
 	),
 
+	'Xerpi' => Array(
+		'favicon' => 'xerpi.gif',
+		'url' => 'http://www.xerpi.com/block/add_link_from_extension?url=PERMALINK&amp;title=TITLE',
+	),
+
 	'YahooMyWeb' => Array(
 		'favicon' => 'yahoomyweb.png',
 		'url' => 'http://myweb2.search.yahoo.com/myresults/bookmarklet?u=PERMALINK&amp;=TITLE',
 	),
 
+	'Yigg' => Array(
+		'favicon' => 'yiggit.png',
+		'url' => 'http://yigg.de/neu?exturl=PERMALINK&exttitle=TITLE',
+	 ),
 );
 
 $sociable_files = Array(
@@ -434,6 +458,7 @@ $sociable_files = Array(
 	'images/feedmelinks.png',
 	'images/fleck.gif',
 	'images/furl.png',
+	'images/globalgrind.gif',
 	'images/googlebookmark.png',
 	'images/gwar.gif',
 	'images/haohao.png',
@@ -460,6 +485,7 @@ $sociable_files = Array(
 	'images/rawsugar.png',
 	'images/rec6.gif',
 	'images/reddit.png',
+	'images/salesmarks.gif',
 	'images/scoopeo.png',
 	'images/scuttle.png',
 	'images/shadows.png',
@@ -476,10 +502,12 @@ $sociable_files = Array(
 	'images/tailrank.png',
 	'images/technorati.png',
 	'images/twitter.png',
+	'images/webnews.gif',
 	'images/webride.png',
 	'images/wists.png',
 	'images/wykop.gif',
 	'images/yahoomyweb.png',
+	'images/yiggit.png',
 	'tool-man/',
 	'tool-man/coordinates.js',
 	'tool-man/core.js',
