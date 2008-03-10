@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.5.3
+Version: 2.5.4
 Author: Joost de Valk
 Author URI: http://www.joostdevalk.nl/
 */
@@ -31,6 +31,11 @@ load_plugin_textdomain('sociable', 'wp-content/plugins/sociable/i18n');
 
 $sociable_known_sites = Array(
 
+	'BarraPunto' => Array(
+		'favicon' => 'barrapunto.png',
+		'url' => 'http://barrapunto.com/submit.pl?subj=TITLE&amp;story=PERMALINK',
+	),
+	
 	'blinkbits' => Array(
 		'favicon' => 'blinkbits.png',
 		'url' => 'http://www.blinkbits.com/bookmarklets/save.php?v=1&amp;source_url=PERMALINK&amp;title=TITLE&amp;body=TITLE',
@@ -136,6 +141,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.ekudos.nl/artikel/nieuw?url=PERMALINK&amp;title=TITLE',
 	),
 
+	'e-mail' => Array(
+		'favicon' => 'email.gif',
+		'url' => 'mailto:?subject=TITLE&body=PERMALINK',
+	),
+
 	'Facebook' => Array(
 		'favicon' => 'facebook.png',
 		'url' => 'http://www.facebook.com/sharer.php?u=PERMALINK&amp;t=TITLE',
@@ -183,6 +193,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.haohaoreport.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
+	'HealthRanker' => Array(
+		'favicon' => 'healthranker.gif',
+		'url' => 'http://healthranker.com/submit.php?url=PERMALINK&amp;title=TITLE',
+	),
+
 	'Hemidemi' => Array(
 		'favicon' => 'hemidemi.png',
 		'url' => 'http://www.hemidemi.com/user_bookmark/new?title=TITLE&amp;url=PERMALINK',
@@ -208,6 +223,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://kick.ie/submit/?url=PERMALINK&amp;title=TITLE',
 	),
 
+	'laaik.it' => Array(
+		'favicon' => 'laaikit.png',
+		'url' => 'http://laaik.it/NewStoryCompact.aspx?uri=PERMALINK&amp;headline=TITLE&amp;cat=5e082fcc-8a3b-47e2-acec-fdf64ff19d12',
+	),
+	
 	'LinkaGoGo' => Array(
 		'favicon' => 'linkagogo.png',
 		'url' => 'http://www.linkagogo.com/go/AddNoPopup?url=PERMALINK&amp;title=TITLE',
@@ -228,6 +248,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://ma.gnolia.com/bookmarklet/add?url=PERMALINK&amp;title=TITLE',
 	),
 
+	'Meneame' => Array(
+		'favicon' => 'meneame.gif',
+		'url' => 'http://meneame.net/submit.php?url=PERMALINK',
+	),
+	
 	'MisterWong' => Array(
 		'favicon' => 'misterwong.gif',
 		'url' => 'http://www.mister-wong.com/addurl/?bm_url=PERMALINK&amp;bm_description=TITLE&amp;plugin=soc',
@@ -248,6 +273,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://myshare.url.com.tw/index.php?func=newurl&amp;url=PERMALINK&amp;desc=TITLE',
 	),
 
+	'N4G' => Array(
+		'favicon' => 'n4g.gif',
+		'url' => 'http://www.n4g.com/tips.aspx?url=PERMALINK&amp;title=TITLE',
+	),
+	
 	'NewsVine' => Array(
 		'favicon' => 'newsvine.png',
 		'url' => 'http://www.newsvine.com/_tools/seed&amp;save?u=PERMALINK&amp;h=TITLE',
@@ -437,6 +467,7 @@ $sociable_files = Array(
 	'sociable-admin.css',
 	'wists.js',
 	'images/',
+	'images/barrapunto.png',
 	'images/blinkbits.png',
 	'images/blinklist.png',
 	'images/blogmarks.png',
@@ -453,6 +484,7 @@ $sociable_files = Array(
 	'images/dotnetkicks.png',
 	'images/dzone.png',
 	'images/ekudos.gif',
+	'images/email.gif',
 	'images/facebook.png',
 	'images/fark.png',
 	'images/feedmelinks.png',
@@ -462,19 +494,23 @@ $sociable_files = Array(
 	'images/googlebookmark.png',
 	'images/gwar.gif',
 	'images/haohao.png',
+	'images/healthranker.gif',
 	'images/hemidemi.png',
 	'images/im.png',
 	'images/indiagram.png',
 	'images/indianpad.png',
 	'images/kickit.png',
+	'images/laaikit.png',
 	'images/linkagogo.png',
 	'images/linkter.png',
 	'images/linkter.png',
 	'images/live.png',
 	'images/magnolia.png',
+	'images/meneame.gif',
 	'images/misterwong.gif',
 	'images/mixx.png',
 	'images/myshare.png',
+	'images/n4g.gif',
 	'images/netvouz.png',
 	'images/newsvine.png',
 	'images/nujij.gif',
@@ -541,6 +577,7 @@ function sociable_html($display=Array()) {
 	$post = $wp_query->post;
 	$permalink = urlencode(get_permalink($post->ID));
 	$title = urlencode($post->post_title);
+	$title = str_replace('+','%20',$title);
 	$rss = urlencode(get_bloginfo('ref_url'));
 
 	$html .= "\n<div class=\"sociable\">\n<span class=\"sociable_tagline\">\n";
