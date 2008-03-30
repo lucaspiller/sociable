@@ -613,7 +613,7 @@ function sociable_html($display=Array()) {
 
 	$html .= "</ul>\n</div>\n";
 
-	return $html;
+	return apply_filters('sociable_link',$html);
 }
 
 // Hook the_content to output html if we should display on any page
@@ -643,7 +643,7 @@ function sociable_wp_head() {
 	if (in_array('Wists', get_option('sociable_active_sites'))) {
 		echo '<script language="JavaScript" type="text/javascript" src="' . get_bloginfo('wpurl') . '/wp-content/plugins/sociable/wists.js"></script>'."\n";
 	}
-	if (get_option('sociable_usecss')) {
+	if (get_option('sociable_usecss') == true) {
 		echo '<link rel="stylesheet" type="text/css" media="screen" href="' . get_bloginfo('wpurl') . '/wp-content/plugins/sociable/sociable.css" />'."\n";
 	}
 }
@@ -923,7 +923,7 @@ function sociable_submenu() {
 	</tr>
 	<tr>
 		<th colspan="2">
-			<?php _e('<a href="http://www.joostdevalk.nl/wordpress/sociable/">Sociable</a> is copyright 2006 by <a href="http://push.cx/">Peter Harkins</a> and has been maitained by <a href="http://www.joostdevalk.nl/">Joost de Valk</a> sine 2008, and is released under the GNU GPL version 2. If you like Sociable, please send a link my way so other folks can find out about it, or <a href="http://www.joostdevalk.nl/donate/">donate a token of your appreciation</a>. If you have any problems or good ideas, <a href="http://www.joostdevalk.nl/contact/">contact me</a>.', 'sociable'); ?>
+			<?php _e('<a href="http://www.joostdevalk.nl/wordpress/sociable/">Sociable</a> is copyright 2006 by <a href="http://push.cx/">Peter Harkins</a> and has been maintained by <a href="http://www.joostdevalk.nl/">Joost de Valk</a> since 2008. It\'s released under the GNU GPL version 2. If you like Sociable, please send a link my way so other folks can find out about it, or <a href="http://www.joostdevalk.nl/donate/">donate a token of your appreciation</a>. If you have any problems or good ideas, <a href="http://www.joostdevalk.nl/contact/">contact me</a>.', 'sociable'); ?>
 		</th>
 	</tr>
 </table>
