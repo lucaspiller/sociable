@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.6
+Version: 2.6.1
 Author: Joost de Valk
 Author URI: http://www.joostdevalk.nl/
 */
@@ -595,25 +595,27 @@ function sociable_html($display=Array()) {
 			continue;
 
 		$site = $sociable_known_sites[$sitename];
-		$html .= "\t<li>";
 
 		$url = $site['url'];
 		$url = str_replace('PERMALINK', $permalink, $url);
 		$url = str_replace('TITLE', $title, $url);
 		$url = str_replace('RSS', $rss, $url);
 		$url = str_replace('BLOGNAME', $blogname, $url);
+
+		$link = "<li>";		
+		$link .= "<a rel=\"nofollow\" target=\"_blank\" href=\"$url\" title=\"$sitename\">";
+		$link .= "<img src=\"$imagepath{$site['favicon']}\" title=\"$sitename\" alt=\"$sitename\" class=\"sociable-hovers";
+		if ($site['class'])
+			$link .= " sociable_{$site['class']}";
+		$link .= "\" />";
+		$link .= "</a></li>";
 		
-		$html .= "<a rel=\"nofollow\" target=\"_blank\" href=\"$url\" title=\"$sitename\">";
-		$html .= "<img src=\"$imagepath{$site['favicon']}\" title=\"$sitename\" alt=\"$sitename\" class=\"sociable-hovers";
-                if ($site['class'])
-                    $html .= " sociable_{$site['class']}";
-                $html .= "\" />";
-		$html .= "</a></li>\n";
+		$html .= "\t".apply_filters('sociable_link',$link)."\n";
 	}
 
 	$html .= "</ul>\n</div>\n";
 
-	return apply_filters('sociable_link',$html);
+	return $html;
 }
 
 // Hook the_content to output html if we should display on any page
