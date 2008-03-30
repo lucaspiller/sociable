@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.5.4
+Version: 2.6
 Author: Joost de Valk
 Author URI: http://www.joostdevalk.nl/
 */
@@ -226,6 +226,11 @@ $sociable_known_sites = Array(
 	'laaik.it' => Array(
 		'favicon' => 'laaikit.png',
 		'url' => 'http://laaik.it/NewStoryCompact.aspx?uri=PERMALINK&amp;headline=TITLE&amp;cat=5e082fcc-8a3b-47e2-acec-fdf64ff19d12',
+	),
+
+	'LinkArena' => Array(
+		'favicon' => 'linkarena.gif',
+		'url' => 'http://linkarena.com/bookmarks/addlink/?url=PERMALINK&amp;title=TITLE',
 	),
 	
 	'LinkaGoGo' => Array(
@@ -463,7 +468,6 @@ $sociable_files = Array(
 	'sociable-admin.css',
 	'sociable.css',
 	'sociable.php',
-	'sociable.css',
 	'sociable-admin.css',
 	'wists.js',
 	'images/',
@@ -502,6 +506,7 @@ $sociable_files = Array(
 	'images/kickit.png',
 	'images/laaikit.png',
 	'images/linkagogo.png',
+	'images/linkarena.gif',
 	'images/linkter.png',
 	'images/linkter.png',
 	'images/live.png',
@@ -552,7 +557,6 @@ $sociable_files = Array(
 	'tool-man/dragsort.js',
 	'tool-man/events.js',
 );
-
 
 function sociable_html($display=Array()) {
 	global $sociable_known_sites;
@@ -636,9 +640,12 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
 // Hook wp_head to add css
 add_action('wp_head', 'sociable_wp_head');
 function sociable_wp_head() {
-	if (in_array('Wists', get_option('sociable_active_sites')))
+	if (in_array('Wists', get_option('sociable_active_sites'))) {
 		echo '<script language="JavaScript" type="text/javascript" src="' . get_bloginfo('wpurl') . '/wp-content/plugins/sociable/wists.js"></script>'."\n";
-	echo '<link rel="stylesheet" type="text/css" media="screen" href="' . get_bloginfo('wpurl') . '/wp-content/plugins/sociable/sociable.css" />'."\n";
+	}
+	if (get_option('sociable_usecss')) {
+		echo '<link rel="stylesheet" type="text/css" media="screen" href="' . get_bloginfo('wpurl') . '/wp-content/plugins/sociable/sociable.css" />'."\n";
+	}
 }
 
 // load wp rss functions for update checking.
@@ -663,11 +670,6 @@ function sociable_activation_hook() {
 function sociable_restore_config($force=False) {
 	// Load defaults, taking care not to smash already-set options
 	global $sociable_known_sites;
-
-	// Used to store sites in the db with the idea users would
-	// add sites, but nobody will so I dropped the feature.
-	// This should clean up any old installs.
-	delete_option('sociable_known_sites');
 
 	if ($force or !is_array(get_option('sociable_active_sites')))
 		update_option('sociable_active_sites', array(
@@ -694,10 +696,8 @@ function sociable_restore_config($force=False) {
 			'is_search' => False,
 		));
 
-	// last-updated date defaults to 0000-00-00
-	// this is to trigger the update check on first run
-	if ($force or !get_option('sociable_updated'))
-		update_option('sociable_updated', '0000-00-00');
+	if ($force or !is_bool(get_option('usecss')))
+		update_option('sociable_usecss', true);
 }
 
 // Hook the admin_menu display to add admin page
@@ -790,7 +790,7 @@ function sociable_submenu() {
 	// update options in db if requested
 	if ($_REQUEST['restore']) {
 		sociable_restore_config(True);
-	sociable_message(__("Restored all settings to defaults.", 'sociable'));
+		sociable_message(__("Restored all settings to defaults.", 'sociable'));
 	} else if ($_REQUEST['save']) {
 		// update active sites
 		$active_sites = Array();
@@ -816,6 +816,12 @@ function sociable_submenu() {
 		if (!$_REQUEST['tagline'])
 			$_REQUEST['tagline'] = "";
 		update_option('sociable_tagline', $_REQUEST['tagline']);
+
+		if (!$_REQUEST['usecss'])
+			$usecss = false;
+		else
+			$usecss = true;
+		update_option('sociable_usecss', $usecss);
 		
 		sociable_message(__("Saved changes.", 'sociable'));
 	}
@@ -841,71 +847,86 @@ function sociable_submenu() {
 ?>
 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 
-<div class="wrap" id="sociable_options">
-<fieldset id="sociable_sites">
-
-<h3><?php _e("Sociable Options", 'sociable'); ?></h3>
-
-<p><?php _e("Drag and drop sites to reorder them. Only the sites you check will appear publicly.", 'sociable'); ?></p>
-
-<ul id="sociable_site_list">
-<?php foreach (array_merge($active, $disabled) as $sitename=>$site) { ?>
-	<li
-		id="<?php echo $sitename; ?>"
-		class="sociable_site <?php echo (in_array($sitename, $active_sites)) ? "active" : "inactive"; ?>"
-		onmouseup="javascript:save_reorder('cb_<?php echo $sitename; ?>');"
-	>
-		<input
-			type="checkbox"
-			id="cb_<?php echo $sitename; ?>"
-			class="checkbox"
-			name="active_sites[<?php echo $sitename; ?>]"
-			onclick="javascript:toggle_checkbox('cb_<?php echo $sitename; ?>');"
-			<?php echo (in_array($sitename, $active_sites)) ? ' checked="checked"' : ''; ?>
-		/>
-		<img src="../wp-content/plugins/sociable/images/<?php echo $site['favicon']?>" width="16" height="16" alt="" />
-		<?php print $sitename; ?>
-	</li>
-<?php } ?>
-</ul>
-<input type="hidden" id="site_order" name="site_order" value="<?php echo join('|', array_keys($sociable_known_sites)) ?>" />
-<script language="JavaScript" type="text/javascript"><!--
-	dragsort.makeListSortable(document.getElementById("sociable_site_list"));
---></script>
-
-</fieldset>
-<div style="clear: left; display: none;"><br/></div>
-
-<fieldset id="sociable_tagline">
-<p>
-<?php _e("Change the text displayed in front of the icons below. For complete customization, edit <kbd>sociable.css</kbd> in the Sociable plugin directory.", 'sociable'); ?>
-</p>
-<input type="text" name="tagline" value="<?php echo htmlspecialchars($tagline); ?>" />
-</fieldset>
-
-
-<fieldset id="sociable_conditionals">
-<p><?php _e("The icons appear at the end of each blog post, and posts may show on many different types of pages. Depending on your theme and audience, it may be tacky to display icons on all types of pages.", 'sociable'); ?></p>
-
-<ul style="list-style-type: none">
-	<li><input type="checkbox" name="conditionals[is_home]"<?php echo ($conditionals['is_home']) ? ' checked="checked"' : ''; ?> /> <?php _e("Front page of the blog", 'sociable'); ?></li>
-	<li><input type="checkbox" name="conditionals[is_single]"<?php echo ($conditionals['is_single']) ? ' checked="checked"' : ''; ?> /> <?php _e("Individual blog posts", 'sociable'); ?></li>
-	<li><input type="checkbox" name="conditionals[is_page]"<?php echo ($conditionals['is_page']) ? ' checked="checked"' : ''; ?> /> <?php _e('Individual WordPress "Pages"', 'sociable'); ?></li>
-	<li><input type="checkbox" name="conditionals[is_category]"<?php echo ($conditionals['is_category']) ? ' checked="checked"' : ''; ?> /> <?php _e("Category archives", 'sociable'); ?></li>
-	<li><input type="checkbox" name="conditionals[is_date]"<?php echo ($conditionals['is_date']) ? ' checked="checked"' : ''; ?> /> <?php _e("Date-based archives", 'sociable'); ?></li>
-	<li><input type="checkbox" name="conditionals[is_search]"<?php echo ($conditionals['is_search']) ? ' checked="checked"' : ''; ?> /> <?php _e("Search results", 'sociable'); ?></li>
-</ul>
-</fieldset>
-
-<p class="submit"><input name="save" id="save" tabindex="3" value="<?php _e("Save Changes", 'sociable'); ?>" type="submit" /></p>
-<p class="submit"><input name="restore" id="restore" tabindex="3" value="<?php _e("Restore Built-in Defaults", 'sociable'); ?>" type="submit" style="border: 2px solid #e00;" /></p>
-
-</div>
-
 <div class="wrap">
-<p>
-<?php _e('<a href="http://www.joostdevalk.nl/wordpress/sociable/">Sociable</a> is copyright 2006 by <a href="http://push.cx/">Peter Harkins</a> and update to version 2.5 and thus copyright 2008 by <a href="http://www.joostdevalk.nl/">Joost de Valk</a>, released under the GNU GPL version 2 or later. If you like Sociable, please send a link my way so other folks can find out about it. If you have any problems or good ideas, <a href="http://www.joostdevalk.nl/contact/">contact me</a>.', 'sociable'); ?>
-</p>
+	<h2><?php _e("Sociable Options", 'sociable'); ?></h2>
+	<table class="form-table">
+	<tr>
+		<th style="margin-bottom:0; border-bottom-width:0;"><?php _e("Sites", "sociable"); ?></th>
+		<td style="margin-bottom:0; border-bottom-width:0;"><?php _e("Drag and drop sites to reorder them. Only the sites you check will appear publicly.", 'sociable'); ?></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<ul id="sociable_site_list">
+				<?php foreach (array_merge($active, $disabled) as $sitename=>$site) { ?>
+					<li style="font-size:10px;"
+						id="<?php echo $sitename; ?>"
+						class="sociable_site <?php echo (in_array($sitename, $active_sites)) ? "active" : "inactive"; ?>"
+						onmouseup="javascript:save_reorder('cb_<?php echo $sitename; ?>');"
+					>
+						<input
+							type="checkbox"
+							id="cb_<?php echo $sitename; ?>"
+							class="checkbox"
+							name="active_sites[<?php echo $sitename; ?>]"
+							onclick="javascript:toggle_checkbox('cb_<?php echo $sitename; ?>');"
+							<?php echo (in_array($sitename, $active_sites)) ? ' checked="checked"' : ''; ?>
+						/>
+						<img src="../wp-content/plugins/sociable/images/<?php echo $site['favicon']?>" width="16" height="16" alt="" />
+						<?php print $sitename; ?>
+					</li>
+				<?php } ?>
+			</ul>
+			<input type="hidden" id="site_order" name="site_order" value="<?php echo join('|', array_keys($sociable_known_sites)) ?>" />
+			<script language="JavaScript" type="text/javascript"><!--
+				dragsort.makeListSortable(document.getElementById("sociable_site_list"));
+			--></script>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" valign="top">
+			Tagline:
+		</th>
+		<td>
+			<?php _e("Change the text displayed in front of the icons below. For complete customization, edit <kbd>sociable.css</kbd> in the Sociable plugin directory.", 'sociable'); ?><br/>
+			<input type="text" name="tagline" value="<?php echo htmlspecialchars($tagline); ?>" />
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" valign="top">
+			<?php _e("Position:", "sociable"); ?>
+		</th>
+		<td>
+			<?php _e("The icons appear at the end of each blog post, and posts may show on many different types of pages. Depending on your theme and audience, it may be tacky to display icons on all types of pages.", 'sociable'); ?><br/>
+			<br/>
+			<input type="checkbox" name="conditionals[is_home]"<?php echo ($conditionals['is_home']) ? ' checked="checked"' : ''; ?> /> <?php _e("Front page of the blog", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_single]"<?php echo ($conditionals['is_single']) ? ' checked="checked"' : ''; ?> /> <?php _e("Individual blog posts", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_page]"<?php echo ($conditionals['is_page']) ? ' checked="checked"' : ''; ?> /> <?php _e('Individual WordPress "Pages"', 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_category]"<?php echo ($conditionals['is_category']) ? ' checked="checked"' : ''; ?> /> <?php _e("Category archives", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_date]"<?php echo ($conditionals['is_date']) ? ' checked="checked"' : ''; ?> /> <?php _e("Date-based archives", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_search]"<?php echo ($conditionals['is_search']) ? ' checked="checked"' : ''; ?> /> <?php _e("Search results", 'sociable'); ?><br/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" valign="top">
+			<?php _e("Use CSS:", "sociable"); ?>
+		</th>
+		<td>
+			<input type="checkbox" name="usecss" <?php echo (get_option('sociable_usecss')) ? ' checked="checked"' : ''; ?> /> <?php _e("Use the sociable stylesheet?", "sociable"); ?>
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>
+			<span class="submit"><input name="save" value="<?php _e("Save Changes", 'sociable'); ?>" type="submit" /></span>
+			<span class="submit"><input name="restore" value="<?php _e("Restore Built-in Defaults", 'sociable'); ?>" type="submit"/></span>
+		</td>
+	</tr>
+	<tr>
+		<th colspan="2">
+			<?php _e('<a href="http://www.joostdevalk.nl/wordpress/sociable/">Sociable</a> is copyright 2006 by <a href="http://push.cx/">Peter Harkins</a> and has been maitained by <a href="http://www.joostdevalk.nl/">Joost de Valk</a> sine 2008, and is released under the GNU GPL version 2. If you like Sociable, please send a link my way so other folks can find out about it, or <a href="http://www.joostdevalk.nl/donate/">donate a token of your appreciation</a>. If you have any problems or good ideas, <a href="http://www.joostdevalk.nl/contact/">contact me</a>.', 'sociable'); ?>
+		</th>
+	</tr>
+</table>
 </div>
 
 </form>

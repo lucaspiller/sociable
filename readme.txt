@@ -3,8 +3,8 @@ Contributors: joostdevalk
 Donate link: http://www.joostdevalk.nl/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
-Tested up to: 2.3.2
-stable tag: 2.5.4
+Tested up to: 2.5
+stable tag: 2.6
 
 Automatically add links on your posts to popular social bookmarking sites.
 
