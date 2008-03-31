@@ -3,12 +3,10 @@
 Plugin Name: Sociable
 Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.6.1
+Version: 2.6.2
 Author: Joost de Valk
 Author URI: http://www.joostdevalk.nl/
-*/
 
-/*
 Copyright 2006 Peter Harkins (ph@malaprop.org)
 Copyright 2008 Joost de Valk (joost@joostdevalk.nl)
 
@@ -934,6 +932,11 @@ function sociable_submenu() {
 </form>
 
 <?php
+}
+
+if (get_option('sociable_usecss_set_once') != true) {
+	update_option('sociable_usecss', true);
+	update_option('sociable_usecss_set_once', true);
 }
 
 ?>

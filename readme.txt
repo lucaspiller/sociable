@@ -4,7 +4,7 @@ Donate link: http://www.joostdevalk.nl/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.5
-stable tag: 2.6.1
+stable tag: 2.6.2
 
 Automatically add links on your posts to popular social bookmarking sites.
 
