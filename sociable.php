@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.6.2
+Version: 2.6.3
 Author: Joost de Valk
 Author URI: http://www.joostdevalk.nl/
 
@@ -25,7 +25,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-load_plugin_textdomain('sociable', 'wp-content/plugins/sociable/i18n');
+function sociable_init_locale(){
+	load_plugin_textdomain('sociable', 'wp-content/plugins/sociable/i18n');
+}
+add_filter('init', 'sociable_init_locale');
 
 $sociable_known_sites = Array(
 
@@ -307,6 +310,11 @@ $sociable_known_sites = Array(
                 'description' => 'description',
 	),
 
+	'Pownce' => Array(
+		'favicon' => 'pownce.gif',
+		'url' => 'http://pownce.com/send/link/?url=PERMALINK&amp;note_body=TITLE&amp;note_to=all'
+	),
+
 	'ppnow' => Array(
 		'favicon' => 'ppnow.png',
 		'url' => 'http://www.ppnow.net/submit.php?url=PERMALINK',
@@ -347,6 +355,11 @@ $sociable_known_sites = Array(
 		'favicon' => 'scuttle.png',
 		'url' => 'http://www.scuttle.org/bookmarks.php/maxpower?action=add&amp;address=PERMALINK&amp;title=TITLE',
                 'description' => 'description',
+	),
+
+	'Segnalo' => Array(
+		'favicon' => 'segnalo.gif',
+		'url' => 'http://segnalo.alice.it/post.html.php?url=PERMALINK&amp;title=TITLE',
 	),
 
 	'Shadows' => Array(
@@ -519,6 +532,7 @@ $sociable_files = Array(
 	'images/nujij.gif',
 	'images/plugim.png',
 	'images/popcurrent.png',
+	'images/pownce.gif',
 	'images/ppnow.png',
 	'images/propeller.gif',
 	'images/rawsugar.png',
@@ -527,6 +541,7 @@ $sociable_files = Array(
 	'images/salesmarks.gif',
 	'images/scoopeo.png',
 	'images/scuttle.png',
+	'images/segnalo.gif',
 	'images/shadows.png',
 	'images/simpy.png',
 	'images/sk-rt.png',
