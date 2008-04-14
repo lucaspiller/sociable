@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.6.3
+Version: 2.6.4
 Author: Joost de Valk
 Author URI: http://www.joostdevalk.nl/
 
@@ -75,6 +75,11 @@ $sociable_known_sites = Array(
 	'blogmarks' => Array(
 		'favicon' => 'blogmarks.png',
 		'url' => 'http://blogmarks.net/my/new.php?mini=1&amp;simple=1&amp;url=PERMALINK&amp;title=TITLE',
+	),
+
+	'Blogosphere News' => Array(
+		'favicon' => 'blogospherenews.gif',
+		'url' => 'http://www.blogospherenews.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
 	'blogtercimlap' => Array(
@@ -487,6 +492,7 @@ $sociable_files = Array(
 	'images/blinklist.png',
 	'images/blogmarks.png',
 	'images/blogmemes.png',
+	'images/blogospherenews.gif',
 	'images/blogter.png',
 	'images/bluedot.png',
 	'images/bookmarkhu.png',
