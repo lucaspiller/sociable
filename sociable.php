@@ -149,7 +149,7 @@ $sociable_known_sites = Array(
 
 	'e-mail' => Array(
 		'favicon' => 'email.gif',
-		'url' => 'mailto:?subject=TITLE&body=PERMALINK',
+		'url' => 'mailto:?subject=TITLE&amp;body=PERMALINK',
 	),
 
 	'Facebook' => Array(
@@ -348,7 +348,7 @@ $sociable_known_sites = Array(
 
 	'SalesMarks' => Array(
 		'favicon' => 'salesmarks.gif',
-		'url' => 'http://salesmarks.com/submit?edit[url]=PERMALINK&edit[title]=TITLE',
+		'url' => 'http://salesmarks.com/submit?edit[url]=PERMALINK&amp;edit[title]=TITLE',
 	),
 	
 	'Scoopeo' => Array(
@@ -444,7 +444,7 @@ $sociable_known_sites = Array(
 
 	'Webnews.de' => Array(
         'favicon' => 'webnews.gif',
-        'url' => 'http://www.webnews.de/einstellen?url=PERMALINK&title=TITLE',
+        'url' => 'http://www.webnews.de/einstellen?url=PERMALINK&amp;title=TITLE',
     ),
 
 	'Webride' => Array(
@@ -475,7 +475,7 @@ $sociable_known_sites = Array(
 
 	'Yigg' => Array(
 		'favicon' => 'yiggit.png',
-		'url' => 'http://yigg.de/neu?exturl=PERMALINK&exttitle=TITLE',
+		'url' => 'http://yigg.de/neu?exturl=PERMALINK&amp;exttitle=TITLE',
 	 ),
 );
 
