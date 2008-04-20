@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.6.4
+Version: 2.6.5
 Author: Joost de Valk
 Author URI: http://www.joostdevalk.nl/
 
@@ -82,6 +82,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.blogospherenews.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
+	'Blogsvine' => Array(
+		'favicon' => 'blogsvine.png',
+		'url' => 'http://blogsvine.com/submit.php?url=PERMALINK',
+	),
+	
 	'blogtercimlap' => Array(
 		'favicon' => 'blogter.png',
 		'url' => 'http://cimlap.blogter.hu/index.php?action=suggest_link&amp;title=TITLE&amp;url=PERMALINK',
@@ -452,6 +457,16 @@ $sociable_known_sites = Array(
 		'url' => 'http://webride.org/discuss/split.php?uri=PERMALINK&amp;title=TITLE',
 	),
 
+	'Wikio' => Array(
+		'favicon' => 'wikio.gif',
+		'url' => 'http://www.wikio.com/vote?url=PERMALINK',
+	),
+
+	'Wikio FR' => Array(
+		'favicon' => 'wikio.gif',
+		'url' => 'http://www.wikio.fr/vote?url=PERMALINK',
+	),
+
 	'Wists' => Array(
 		'favicon' => 'wists.png',
 		'url' => 'http://wists.com/s.php?c=&amp;r=PERMALINK&amp;title=TITLE',
@@ -493,6 +508,7 @@ $sociable_files = Array(
 	'images/blogmarks.png',
 	'images/blogmemes.png',
 	'images/blogospherenews.gif',
+	'images/blogsvine.png',
 	'images/blogter.png',
 	'images/bluedot.png',
 	'images/bookmarkhu.png',
@@ -564,6 +580,7 @@ $sociable_files = Array(
 	'images/twitter.png',
 	'images/webnews.gif',
 	'images/webride.png',
+	'images/wikio.gif',
 	'images/wists.png',
 	'images/wykop.gif',
 	'images/yahoomyweb.png',
