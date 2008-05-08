@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.6.5
+Version: 2.6.6
 Author: Joost de Valk
 Author URI: http://www.joostdevalk.nl/
 
@@ -152,9 +152,10 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.ekudos.nl/artikel/nieuw?url=PERMALINK&amp;title=TITLE',
 	),
 
-	'e-mail' => Array(
-		'favicon' => 'email.gif',
+	'email' => Array(
+		'favicon' => 'email_link.png',
 		'url' => 'mailto:?subject=TITLE&amp;body=PERMALINK',
+		'description' => 'E-mail this story to a friend!',
 	),
 
 	'Facebook' => Array(
@@ -317,7 +318,7 @@ $sociable_known_sites = Array(
 	'PopCurrent' => Array(
 		'favicon' => 'popcurrent.png',
 		'url' => 'http://popcurrent.com/submit?url=PERMALINK&amp;title=TITLE&amp;rss=RSS',
-                'description' => 'description',
+        'description' => 'description',
 	),
 
 	'Pownce' => Array(
@@ -330,11 +331,16 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.ppnow.net/submit.php?url=PERMALINK',
 	),
 	
+	'Print' => Array(
+		'favicon' => 'printer.png',
+		'url' => 'javascript:window.print();',
+		'description' => 'Print this article!',
+	),
+	
 	'Propeller' => Array(
 		'favicon' => 'propeller.gif',
 		'url' => 'http://www.propeller.com/submit/?U=PERMALINK&amp;T=TITLE',
 	),
-
 
 	'RawSugar' => Array(
 		'favicon' => 'rawsugar.png',
@@ -556,6 +562,7 @@ $sociable_files = Array(
 	'images/popcurrent.png',
 	'images/pownce.gif',
 	'images/ppnow.png',
+	'images/print.gif',
 	'images/propeller.gif',
 	'images/rawsugar.png',
 	'images/rec6.gif',
@@ -638,9 +645,14 @@ function sociable_html($display=Array()) {
 		$url = str_replace('RSS', $rss, $url);
 		$url = str_replace('BLOGNAME', $blogname, $url);
 
+		if (!isset($site['description']) || $site['description'] == "") {
+			$description = $sitename;
+		} else {
+			$description = $site['description'];
+		}
 		$link = "<li>";		
-		$link .= "<a rel=\"nofollow\" target=\"_blank\" href=\"$url\" title=\"$sitename\">";
-		$link .= "<img src=\"$imagepath{$site['favicon']}\" title=\"$sitename\" alt=\"$sitename\" class=\"sociable-hovers";
+		$link .= "<a rel=\"nofollow\" target=\"_blank\" href=\"$url\" title=\"$description\">";
+		$link .= "<img src=\"$imagepath{$site['favicon']}\" title=\"$description\" alt=\"$description\" class=\"sociable-hovers";
 		if ($site['class'])
 			$link .= " sociable_{$site['class']}";
 		$link .= "\" />";
