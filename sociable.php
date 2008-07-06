@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Sociable
-Plugin URI: http://www.joostdevalk.nl/wordpress/sociable/
+Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.6.6
+Version: 2.6.7
 Author: Joost de Valk
-Author URI: http://www.joostdevalk.nl/
+Author URI: http://yoast.com/
 
 Copyright 2006 Peter Harkins (ph@malaprop.org)
 Copyright 2008 Joost de Valk (joost@joostdevalk.nl)
@@ -129,6 +129,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://de.lirio.us/rubric/post?uri=PERMALINK;title=TITLE;when_done=go_back',
 	),
 
+	'Design Float' => Array(
+		'favicon' => 'designfloat.gif',
+		'url' => 'http://www.designfloat.com/submit.php?url=PERMALINK&amp;title=TITLE',
+	),
+
 	'Digg' => Array(
 		'favicon' => 'digg.png',
 		'url' => 'http://digg.com/submit?phase=2&amp;url=PERMALINK&amp;title=TITLE',
@@ -233,6 +238,11 @@ $sociable_known_sites = Array(
 	'kick.ie' => Array(
 		'favicon' => 'kickit.png',
 		'url' => 'http://kick.ie/submit/?url=PERMALINK&amp;title=TITLE',
+	),
+
+	'Kirtsy' => Array(
+		'favicon' => 'kirtsy.gif',
+		'url' => 'http://www.kirtsy.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
 	'laaik.it' => Array(
@@ -388,11 +398,6 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.simpy.com/simpy/LinkAdd.do?href=PERMALINK&amp;title=TITLE',
 	),
 
-	'Sk-rt' => Array(
-		'favicon' => 'sk-rt.png',
-		'url' => 'http://www.sk-rt.com/submit.php?url=PERMALINK&amp;title=TITLE',
-	),
-
 	'Slashdot' => Array(
 		'favicon' => 'slashdot.png',
 		'url' => 'http://slashdot.org/bookmark.pl?title=TITLE&amp;url=PERMALINK',
@@ -523,6 +528,7 @@ $sociable_files = Array(
 	'images/connotea.png',
 	'images/delicious.png',
 	'images/delirious.png',
+	'images/designfloat.gif',
 	'images/digg.png',
 	'images/dotnetkicks.png',
 	'images/dzone.png',
@@ -543,6 +549,7 @@ $sociable_files = Array(
 	'images/indiagram.png',
 	'images/indianpad.png',
 	'images/kickit.png',
+	'images/kirtsy.gif',
 	'images/laaikit.png',
 	'images/linkagogo.png',
 	'images/linkarena.gif',
@@ -573,7 +580,6 @@ $sociable_files = Array(
 	'images/segnalo.gif',
 	'images/shadows.png',
 	'images/simpy.png',
-	'images/sk-rt.png',
 	'images/slashdot.png',
 	'images/smarking.png',
 	'images/socialogs.gif',
@@ -645,10 +651,10 @@ function sociable_html($display=Array()) {
 		$url = str_replace('RSS', $rss, $url);
 		$url = str_replace('BLOGNAME', $blogname, $url);
 
-		if (!isset($site['description']) || $site['description'] == "") {
-			$description = $sitename;
-		} else {
+		if (isset($site['description']) && $site['description'] != "") {
 			$description = $site['description'];
+		} else {
+			$description = $sitename;
 		}
 		$link = "<li>";		
 		$link .= "<a rel=\"nofollow\" target=\"_blank\" href=\"$url\" title=\"$description\">";
@@ -973,7 +979,7 @@ function sociable_submenu() {
 	</tr>
 	<tr>
 		<th colspan="2">
-			<?php _e('<a href="http://www.joostdevalk.nl/wordpress/sociable/">Sociable</a> is copyright 2006 by <a href="http://push.cx/">Peter Harkins</a> and has been maintained by <a href="http://www.joostdevalk.nl/">Joost de Valk</a> since 2008. It\'s released under the GNU GPL version 2. If you like Sociable, please send a link my way so other folks can find out about it, or <a href="http://www.joostdevalk.nl/donate/">donate a token of your appreciation</a>. If you have any problems or good ideas, <a href="http://www.joostdevalk.nl/contact/">contact me</a>.', 'sociable'); ?>
+			<?php _e('<a href="http://yoast.com/wordpress/sociable/">Sociable</a> is copyright 2006 by <a href="http://push.cx/">Peter Harkins</a> and has been maintained by <a href="http://yoast.com/">Joost de Valk</a> since 2008. It\'s released under the GNU GPL version 2. If you like Sociable, please send a link my way so other folks can find out about it, or <a href="http://yoast.com/donate/">donate a token of your appreciation</a>. If you have any problems or good ideas, <a href="http://yoast.com/contact/">contact me</a>.', 'sociable'); ?>
 		</th>
 	</tr>
 </table>

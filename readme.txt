@@ -1,10 +1,10 @@
 === Sociable ===
 Contributors: joostdevalk
-Donate link: http://www.joostdevalk.nl/donate/
+Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.5.1
-stable tag: 2.6.6
+stable tag: 2.6.7
 
 Automatically add links on your posts to popular social bookmarking sites.
 
@@ -15,12 +15,12 @@ Special thanks to [Robert Harm](http://www.die-truppe.com/) for coming up with l
 
 More info:
 
-* [Sociable](http://www.joostdevalk.nl/wordpress/sociable/).
-* Read more about [WordPress SEO](http://www.joostdevalk.nl/wordpress-seo/) so you can get the most out of this plugin.
-* Check out the other [Wordpress plugins](http://www.joostdevalk.nl/wordpress/) by the same author.
+* [Sociable](http://yoast.com/wordpress/sociable/).
+* Read more about [WordPress SEO](http://yoast.com/articles/wordpress-seo/) so you can get the most out of this plugin.
+* Check out the other [Wordpress plugins](http://yoast.com/wordpress/) by the same author.
 
 Changelog
-
+2.6.7 Renamed Sk*rt to Kirtsy, Added designfloat, fixed description
 2.5.4 Added HealthRanker, N4G, Meneame, BarraPunto, Laaik.it and E-mail option
 2.5.3 Added Global Grind, Salesmarks, Webnews.de, Xerpi, Yigg
 2.5.2 Added NuJIJ, eKudos, Sk-rt, Socialogs and MisterWong.de
