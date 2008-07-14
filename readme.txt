@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.5.1
-stable tag: 2.6.7
+stable tag: 2.6.8
 
 Automatically add links on your posts to popular social bookmarking sites.
 
@@ -19,6 +19,7 @@ More info:
 
 **Changelog**
 
+* 2.6.8 Updated documentation
 * 2.6.7 Renamed Sk*rt to Kirtsy, Added designfloat, fixed description
 * 2.5.4 Added HealthRanker, N4G, Meneame, BarraPunto, Laaik.it and E-mail option
 * 2.5.3 Added Global Grind, Salesmarks, Webnews.de, Xerpi, Yigg
@@ -51,8 +52,8 @@ If you find any bugs or have any ideas, please mail me.
 
 **Advanced Users**
 
-Sociable hooks the_content() and the_excerpt() to display without requiring theme editing. To heavily customize the display, use the admin panel to turn off the display on all pages, then add calls to your theme files:
+Sociable hooks `the_content()` and `the_excerpt()` to display without requiring theme editing. To heavily customize the display, use the admin panel to turn off the display on all pages, then add calls to your theme files:
 
 This is optional extra customization for advanced users:
-`<?php if (function_exists('sociable_html')) { print sociable_html(); } ?> // all active sites`
-`<?php if (function_exists('sociable_html')) { print sociable_html(Array("Reddit", "del.icio.us")); } ?> // only these sites if they are active`
+`&lt;?php if (function_exists(&#x27;sociable_html&#x27;)) { print sociable_html(); } ?&gt; // all active sites`
+`&lt;?php if (function_exists(&#x27;sociable_html&#x27;)) { print sociable_html(Array(&quot;Reddit&quot;, &quot;del.icio.us&quot;)); } ?&gt; // only these sites if they are active`
