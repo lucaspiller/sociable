@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.6.8
+Version: 2.6.9
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -25,8 +25,17 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+// Pre-2.6 compatibility
+if ( !defined('WP_CONTENT_URL') )
+    define( 'WP_CONTENT_URL', get_option('siteurl') . '/wp-content');
+if ( !defined('WP_CONTENT_DIR') )
+    define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
+ 
+// Guess the location
+$sociablepluginpath = WP_CONTENT_DIR.'/plugins/'.plugin_basename(dirname(__FILE__)).'/';
+
 function sociable_init_locale(){
-	load_plugin_textdomain('sociable', 'wp-content/plugins/sociable/i18n');
+	load_plugin_textdomain('sociable', $sociablepluginpath);
 }
 add_filter('init', 'sociable_init_locale');
 
@@ -137,7 +146,7 @@ $sociable_known_sites = Array(
 	'Digg' => Array(
 		'favicon' => 'digg.png',
 		'url' => 'http://digg.com/submit?phase=2&amp;url=PERMALINK&amp;title=TITLE',
-		'description' => 'bodytext',
+		'description' => 'Digg',
 	),
 
 	'DotNetKicks' => Array(
