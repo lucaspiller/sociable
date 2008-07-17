@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.6.9
+Version: 2.8
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -32,7 +32,7 @@ if ( !defined('WP_CONTENT_DIR') )
     define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
  
 // Guess the location
-$sociablepluginpath = WP_CONTENT_DIR.'/plugins/'.plugin_basename(dirname(__FILE__)).'/';
+$sociablepluginpath = WP_CONTENT_URL.'/plugins/'.plugin_basename(dirname(__FILE__)).'/';
 
 function sociable_init_locale(){
 	load_plugin_textdomain('sociable', $sociablepluginpath);
@@ -103,7 +103,7 @@ $sociable_known_sites = Array(
 
 	'Blue Dot' => Array(
 		'favicon' => 'bluedot.png',
-		'url' => 'http://bluedot.us/Authoring.aspx?>u=PERMALINK&amp;title=TITLE',
+		'url' => 'http://bluedot.us/Authoring.aspx?u=PERMALINK&amp;title=TITLE',
 	),
 
 	'Book.mark.hu' => Array(
@@ -361,6 +361,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.propeller.com/submit/?U=PERMALINK&amp;T=TITLE',
 	),
 
+	'Ratimarks' => Array(
+		'favicon' => 'ratimarks.png',
+		'url' => 'http://ratimarks.org/bookmarks.php/?action=add&address=PERMALINK&amp;title=TITLE',
+	),
+
 	'RawSugar' => Array(
 		'favicon' => 'rawsugar.png',
 		'url' => 'http://www.rawsugar.com/tagger/?turl=PERMALINK&amp;tttl=TITLE',
@@ -580,6 +585,7 @@ $sociable_files = Array(
 	'images/ppnow.png',
 	'images/print.gif',
 	'images/propeller.gif',
+	'images/ratimarks.png',	
 	'images/rawsugar.png',
 	'images/rec6.gif',
 	'images/reddit.png',
@@ -617,12 +623,12 @@ $sociable_files = Array(
 );
 
 function sociable_html($display=Array()) {
-	global $sociable_known_sites;
+	global $sociable_known_sites, $sociablepluginpath;
 	$active_sites = get_option('sociable_active_sites');
 
 	$html = "";
 
-	$imagepath = get_bloginfo('wpurl') . '/wp-content/plugins/sociable/images/';
+	$imagepath = $sociablepluginpath.'images/';
 
 	// if no sites are specified, display all active
 	// have to check $active_sites has content because WP
@@ -642,10 +648,10 @@ function sociable_html($display=Array()) {
 	$title = str_replace('+','%20',$title);
 	$rss = urlencode(get_bloginfo('ref_url'));
 
-	$html .= "\n<div class=\"sociable\">\n<span class=\"sociable_tagline\">\n";
-	$html .= stripslashes(get_option("sociable_tagline"));
-	$html .= "\n\t<span>" . __("These icons link to social bookmarking sites where readers can share and discover new web pages.", 'sociable') . "</span>";
-	$html .= "\n</span>\n<ul>\n";
+	$html .= "\n<div class=\"sociable\">\n<div class=\"sociable_tagline\">\n";
+	// $html .= stripslashes(get_option("sociable_tagline"));
+	// $html .= "\n\t<span>" . __("These icons link to social bookmarking sites where readers can share and discover new web pages.", 'sociable') . "</span>";
+	$html .= "\n</div>\n<ul>\n";
 
 	foreach($display as $sitename) {
 		// if they specify an unknown or inactive site, ignore it
@@ -657,8 +663,8 @@ function sociable_html($display=Array()) {
 		$url = $site['url'];
 		$url = str_replace('PERMALINK', $permalink, $url);
 		$url = str_replace('TITLE', $title, $url);
-		$url = str_replace('RSS', $rss, $url);
-		$url = str_replace('BLOGNAME', $blogname, $url);
+		// $url = str_replace('RSS', $rss, $url);
+		// $url = str_replace('BLOGNAME', $blogname, $url);
 
 		if (isset($site['description']) && $site['description'] != "") {
 			$description = $site['description'];
@@ -666,10 +672,10 @@ function sociable_html($display=Array()) {
 			$description = $sitename;
 		}
 		$link = "<li>";		
-		$link .= "<a rel=\"nofollow\" target=\"_blank\" href=\"$url\" title=\"$description\">";
+		$link .= "<a rel=\"nofollow\" href=\"$url\" title=\"$description\">";
 		$link .= "<img src=\"$imagepath{$site['favicon']}\" title=\"$description\" alt=\"$description\" class=\"sociable-hovers";
-		if ($site['class'])
-			$link .= " sociable_{$site['class']}";
+		// if ($site['class'])
+		// 	$link .= " sociable_{$site['class']}";
 		$link .= "\" />";
 		$link .= "</a></li>";
 		
@@ -694,10 +700,14 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
 		    (is_page()     and $conditionals['is_page']) or
 		    (is_category() and $conditionals['is_category']) or
 		    (is_date()     and $conditionals['is_date']) or
-		    (is_search()   and $conditionals['is_search']) or
-		     0)
+		    (is_search()   and $conditionals['is_search'])) {
 			$content .= sociable_html();
-	
+		} elseif ((is_feed() and $conditionals['is_rss'])) {
+			$sociable_html = sociable_html();
+			$sociable_html = strip_tags($sociable_html,"<a><img>");
+			$sociable_html = str_replace('<a rel="nofollow" title="Print this article!"><img src="http://www.css3.info/wp-content/plugins/sociable//images/printer.png" title="Print this article!" alt="Print this article!" class="sociable-hovers" /></a>','',$sociable_html);
+			$content .= $sociable_html . "<br/>";
+		}
 		return $content;
 	}
 }
@@ -759,6 +769,7 @@ function sociable_restore_config($force=False) {
 			'is_category' => False,
 			'is_date' => False,
 			'is_search' => False,
+			'is_rss' => False,
 		));
 
 	if ($force or !is_bool(get_option('usecss')))
@@ -969,6 +980,7 @@ function sociable_submenu() {
 			<input type="checkbox" name="conditionals[is_category]"<?php echo ($conditionals['is_category']) ? ' checked="checked"' : ''; ?> /> <?php _e("Category archives", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_date]"<?php echo ($conditionals['is_date']) ? ' checked="checked"' : ''; ?> /> <?php _e("Date-based archives", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_search]"<?php echo ($conditionals['is_search']) ? ' checked="checked"' : ''; ?> /> <?php _e("Search results", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_rss]"<?php echo ($conditionals['is_rss']) ? ' checked="checked"' : ''; ?> /> <?php _e("RSS feed items", 'sociable'); ?><br/>
 		</td>
 	</tr>
 	<tr>

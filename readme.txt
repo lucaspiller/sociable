@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.5.1
-stable tag: 2.6.9
+stable tag: 2.8
 
 Automatically add links on your posts to popular social bookmarking sites.
 
@@ -19,6 +19,8 @@ More info:
 
 **Changelog**
 
+* 2.8 Added option to show bookmark icons in feed, added Ratimarks, fixed xhtml compliance, fixed blue dot bug
+* 2.6.9 Fixed WP 2.6 compatibility
 * 2.6.8 Updated documentation
 * 2.6.7 Renamed Sk*rt to Kirtsy, Added designfloat, fixed description
 * 2.5.4 Added HealthRanker, N4G, Meneame, BarraPunto, Laaik.it and E-mail option

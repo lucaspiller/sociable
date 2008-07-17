@@ -19,7 +19,7 @@ span.sociable_tagline:hover span {
 	margin: 0 !important;
 	padding: 0 !important;
 }
-.sociable li {
+.sociable ul li {
 	background: none;
 	display: inline;
 	list-style-type: none;
