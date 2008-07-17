@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.8
+Version: 2.8.1
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -649,7 +649,7 @@ function sociable_html($display=Array()) {
 	$rss = urlencode(get_bloginfo('ref_url'));
 
 	$html .= "\n<div class=\"sociable\">\n<div class=\"sociable_tagline\">\n";
-	// $html .= stripslashes(get_option("sociable_tagline"));
+	$html .= stripslashes(get_option("sociable_tagline"));
 	// $html .= "\n\t<span>" . __("These icons link to social bookmarking sites where readers can share and discover new web pages.", 'sociable') . "</span>";
 	$html .= "\n</div>\n<ul>\n";
 
@@ -663,8 +663,8 @@ function sociable_html($display=Array()) {
 		$url = $site['url'];
 		$url = str_replace('PERMALINK', $permalink, $url);
 		$url = str_replace('TITLE', $title, $url);
-		// $url = str_replace('RSS', $rss, $url);
-		// $url = str_replace('BLOGNAME', $blogname, $url);
+		$url = str_replace('RSS', $rss, $url);
+		$url = str_replace('BLOGNAME', $blogname, $url);
 
 		if (isset($site['description']) && $site['description'] != "") {
 			$description = $site['description'];
@@ -674,8 +674,8 @@ function sociable_html($display=Array()) {
 		$link = "<li>";		
 		$link .= "<a rel=\"nofollow\" href=\"$url\" title=\"$description\">";
 		$link .= "<img src=\"$imagepath{$site['favicon']}\" title=\"$description\" alt=\"$description\" class=\"sociable-hovers";
-		// if ($site['class'])
-		// 	$link .= " sociable_{$site['class']}";
+		if ($site['class'])
+			$link .= " sociable_{$site['class']}";
 		$link .= "\" />";
 		$link .= "</a></li>";
 		
@@ -702,11 +702,11 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
 		    (is_date()     and $conditionals['is_date']) or
 		    (is_search()   and $conditionals['is_search'])) {
 			$content .= sociable_html();
-		} elseif ((is_feed() and $conditionals['is_rss'])) {
+		} elseif ((is_feed() and $conditionals['is_feed'])) {
 			$sociable_html = sociable_html();
 			$sociable_html = strip_tags($sociable_html,"<a><img>");
 			$sociable_html = str_replace('<a rel="nofollow" title="Print this article!"><img src="http://www.css3.info/wp-content/plugins/sociable//images/printer.png" title="Print this article!" alt="Print this article!" class="sociable-hovers" /></a>','',$sociable_html);
-			$content .= $sociable_html . "<br/>";
+			$content .= $sociable_html . "<br/><br/>";
 		}
 		return $content;
 	}
@@ -729,14 +729,8 @@ if (!function_exists('parse_w3cdtf')) {
 }
 
 // Plugin config/data setup
-if (function_exists('register_activation_hook')) {
-	// for WP 2
-	register_activation_hook(__FILE__, 'sociable_activation_hook');
-} else {
-	// for WP 1.5, which doesn't have any activation hook
-	if (!is_array(get_option('sociable_active_sites')))
-		sociable_activation_hook();
-}
+register_activation_hook(__FILE__, 'sociable_activation_hook');
+
 function sociable_activation_hook() {
 	return sociable_restore_config(False);
 }
@@ -769,7 +763,7 @@ function sociable_restore_config($force=False) {
 			'is_category' => False,
 			'is_date' => False,
 			'is_search' => False,
-			'is_rss' => False,
+			'is_feed' => False,
 		));
 
 	if ($force or !is_bool(get_option('usecss')))
@@ -882,10 +876,16 @@ function sociable_submenu() {
 
 		// update conditional displays
 		$conditionals = Array();
-		if (!$_REQUEST['conditionals'])
-			$_REQUEST['conditionals'] = Array();
-		foreach(get_option('sociable_conditionals') as $condition=>$toggled)
-			$conditionals[$condition] = array_key_exists($condition, $_REQUEST['conditionals']);
+		if (!$_POST['conditionals'])
+			$_POST['conditionals'] = Array();
+		
+		$curconditionals = get_option('sociable_conditionals');
+		if (!array_key_exists('is_feed',$curconditionals)) {
+			$curconditionals['is_feed'] = false;
+		}
+		foreach($curconditionals as $condition=>$toggled)
+			$conditionals[$condition] = array_key_exists($condition, $_POST['conditionals']);
+			
 		update_option('sociable_conditionals', $conditionals);
 
 		// update tagline
@@ -980,7 +980,7 @@ function sociable_submenu() {
 			<input type="checkbox" name="conditionals[is_category]"<?php echo ($conditionals['is_category']) ? ' checked="checked"' : ''; ?> /> <?php _e("Category archives", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_date]"<?php echo ($conditionals['is_date']) ? ' checked="checked"' : ''; ?> /> <?php _e("Date-based archives", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_search]"<?php echo ($conditionals['is_search']) ? ' checked="checked"' : ''; ?> /> <?php _e("Search results", 'sociable'); ?><br/>
-			<input type="checkbox" name="conditionals[is_rss]"<?php echo ($conditionals['is_rss']) ? ' checked="checked"' : ''; ?> /> <?php _e("RSS feed items", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_feed]"<?php echo ($conditionals['is_feed']) ? ' checked="checked"' : ''; ?> /> <?php _e("RSS feed items", 'sociable'); ?><br/>
 		</td>
 	</tr>
 	<tr>
