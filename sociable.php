@@ -271,7 +271,7 @@ $sociable_known_sites = Array(
 
 	'LinkedIn' => Array(
 		'favicon' => 'linkedin.png',
-		'url' => 'http://www.linkedin.com/shareArticle?mini=true&amp;url=PERMALINK&amp;title=TITLE&amp;source=BLOGNAME&amp;summary=EXCERPT',
+		'url' => 'http://www.linkedin.com/shareArticle?mini=true&url=PERMALINK&title=TITLE',
 	),
 
 	'Linkter' => Array(
@@ -646,12 +646,12 @@ $sociable_files = Array(
 );
 
 function sociable_html($display=Array()) {
-	global $sociable_known_sites, $sociablepluginpath, $wp_query; 
-	
-	$active_sites 	= get_option('sociable_active_sites');
-	$html			= "";
+	global $sociable_known_sites, $sociablepluginpath;
+	$active_sites = get_option('sociable_active_sites');
 
-	$imagepath 		= $sociablepluginpath.'images/';
+	$html = "";
+
+	$imagepath = $sociablepluginpath.'images/';
 
 	// if no sites are specified, display all active
 	// have to check $active_sites has content because WP
@@ -663,20 +663,13 @@ function sociable_html($display=Array()) {
 		return "";
 
 	// Load the post's data
-	$blogname 		= urlencode(get_bloginfo('name')." - ".get_bloginfo('description'));
-	$post 			= $wp_query->post;
-	
-	$excerpt		= urlencode($post->excerpt);
-	if ($excerpt == "") {
-		$excerpt = urlencode(substr(strip_tags($post->post_content),0,250));
-	}
-
-	$permalink 		= urlencode(get_permalink($post->ID));
-	
-	$title 			= urlencode($post->post_title);
-	$title 			= str_replace('+','%20',$title);
-	
-	$rss 			= urlencode(get_bloginfo('ref_url'));
+	$blogname = urlencode(get_bloginfo('wpurl'));
+	global $wp_query; 
+	$post = $wp_query->post;
+	$permalink = urlencode(get_permalink($post->ID));
+	$title = urlencode($post->post_title);
+	$title = str_replace('+','%20',$title);
+	$rss = urlencode(get_bloginfo('ref_url'));
 
 	$html .= "\n<div class=\"sociable\">\n<div class=\"sociable_tagline\">\n";
 	$html .= stripslashes(get_option("sociable_tagline"));
@@ -693,7 +686,6 @@ function sociable_html($display=Array()) {
 		$url = $site['url'];
 		$url = str_replace('PERMALINK', $permalink, $url);
 		$url = str_replace('TITLE', $title, $url);
-		$url = str_replace('EXCERPT', $excerpt, $url);
 		$url = str_replace('RSS', $rss, $url);
 		$url = str_replace('BLOGNAME', $blogname, $url);
 
