@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.8.1
+Version: 2.8.2
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -267,6 +267,11 @@ $sociable_known_sites = Array(
 	'LinkaGoGo' => Array(
 		'favicon' => 'linkagogo.png',
 		'url' => 'http://www.linkagogo.com/go/AddNoPopup?url=PERMALINK&amp;title=TITLE',
+	),
+
+	'LinkedIn' => Array(
+		'favicon' => 'linkedin.png',
+		'url' => 'http://www.linkedin.com/shareArticle?mini=true&url=PERMALINK&title=TITLE',
 	),
 
 	'Linkter' => Array(
@@ -567,6 +572,7 @@ $sociable_files = Array(
 	'images/laaikit.png',
 	'images/linkagogo.png',
 	'images/linkarena.gif',
+	'images/linkedin.png',
 	'images/linkter.png',
 	'images/linkter.png',
 	'images/live.png',
@@ -692,6 +698,7 @@ $sociable_contitionals = get_option('sociable_conditionals');
 if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals)) {
 	add_filter('the_content', 'sociable_display_hook');
 	add_filter('the_excerpt', 'sociable_display_hook');
+	add_filter('the_excerpt_rss', 'sociable_display_hook');
 	
 	function sociable_display_hook($content='') {
 		$conditionals = get_option('sociable_conditionals');
@@ -705,7 +712,7 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
 		} elseif ((is_feed() and $conditionals['is_feed'])) {
 			$sociable_html = sociable_html();
 			$sociable_html = strip_tags($sociable_html,"<a><img>");
-			$sociable_html = str_replace('<a rel="nofollow" title="Print this article!"><img src="http://www.css3.info/wp-content/plugins/sociable//images/printer.png" title="Print this article!" alt="Print this article!" class="sociable-hovers" /></a>','',$sociable_html);
+			$sociable_html = str_replace('<a rel="nofollow" title="Print this article!"><img src="'.$imagepath.'printer.png" title="Print this article!" alt="Print this article!" class="sociable-hovers" /></a>','',$sociable_html);
 			$content .= $sociable_html . "<br/><br/>";
 		}
 		return $content;
