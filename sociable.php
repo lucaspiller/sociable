@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.8.3
+Version: 2.8.4
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -271,7 +271,7 @@ $sociable_known_sites = Array(
 
 	'LinkedIn' => Array(
 		'favicon' => 'linkedin.png',
-		'url' => 'http://www.linkedin.com/shareArticle?mini=true&url=PERMALINK&title=TITLE',
+		'url' => 'http://www.linkedin.com/shareArticle?mini=true&amp;url=PERMALINK&amp;title=TITLE&amp;source=BLOGNAME&amp;summary=EXCERPT',
 	),
 
 	'Linkter' => Array(
@@ -646,7 +646,8 @@ $sociable_files = Array(
 );
 
 function sociable_html($display=Array()) {
-	global $sociable_known_sites, $sociablepluginpath;
+	global $sociable_known_sites, $sociablepluginpath, $wp_query; 
+
 	$active_sites = get_option('sociable_active_sites');
 
 	$html = "";
@@ -663,13 +664,21 @@ function sociable_html($display=Array()) {
 		return "";
 
 	// Load the post's data
-	$blogname = urlencode(get_bloginfo('wpurl'));
-	global $wp_query; 
-	$post = $wp_query->post;
-	$permalink = urlencode(get_permalink($post->ID));
-	$title = urlencode($post->post_title);
-	$title = str_replace('+','%20',$title);
-	$rss = urlencode(get_bloginfo('ref_url'));
+	$blogname 	= urlencode(get_bloginfo('name')." ".get_bloginfo('description'));
+	$post 		= $wp_query->post;
+	
+	$excerpt	= $post->post_excerpt;
+	if ($excerpt == "") {
+		$excerpt = urlencode(substr(strip_tags($post->post_content),0,250));
+	}
+	$excerpt	= str_replace('+','%20',$excerpt);
+	
+	$permalink 	= urlencode(get_permalink($post->ID));
+	
+	$title 		= urlencode($post->post_title);
+	$title 		= str_replace('+','%20',$title);
+	
+	$rss 		= urlencode(get_bloginfo('ref_url'));
 
 	$html .= "\n<div class=\"sociable\">\n<div class=\"sociable_tagline\">\n";
 	$html .= stripslashes(get_option("sociable_tagline"));
@@ -688,6 +697,7 @@ function sociable_html($display=Array()) {
 		$url = str_replace('TITLE', $title, $url);
 		$url = str_replace('RSS', $rss, $url);
 		$url = str_replace('BLOGNAME', $blogname, $url);
+		$url = str_replace('EXCERPT', $excerpt, $url);
 
 		if (isset($site['description']) && $site['description'] != "") {
 			$description = $site['description'];
