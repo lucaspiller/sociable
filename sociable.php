@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.8.4
+Version: 2.9
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -636,13 +636,10 @@ $sociable_files = Array(
 	'images/wykop.gif',
 	'images/yahoomyweb.png',
 	'images/yiggit.png',
-	'tool-man/',
-	'tool-man/coordinates.js',
-	'tool-man/core.js',
-	'tool-man/css.js',
-	'tool-man/drag.js',
-	'tool-man/dragsort.js',
-	'tool-man/events.js',
+	'jquery/',
+	'jquery/ui.core.js',
+	'jquery/ui.sortable.js',
+	'jquery/jquery.js',
 );
 
 function sociable_html($display=Array()) {
@@ -753,11 +750,12 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
 // Hook wp_head to add css
 add_action('wp_head', 'sociable_wp_head');
 function sociable_wp_head() {
+	global $sociablepluginpath;
 	if (in_array('Wists', get_option('sociable_active_sites'))) {
-		echo '<script language="JavaScript" type="text/javascript" src="' . get_bloginfo('wpurl') . '/wp-content/plugins/sociable/wists.js"></script>'."\n";
+		echo '<script language="JavaScript" type="text/javascript" src="' . $sociablepluginpath . 'wists.js"></script>'."\n";
 	}
 	if (get_option('sociable_usecss') == true) {
-		echo '<link rel="stylesheet" type="text/css" media="screen" href="' . get_bloginfo('wpurl') . '/wp-content/plugins/sociable/sociable.css" />'."\n";
+		echo '<link rel="stylesheet" type="text/css" media="screen" href="' . $sociablepluginpath . 'sociable.css" />'."\n";
 	}
 }
 
@@ -817,31 +815,20 @@ function sociable_admin_menu() {
 // Admin page header
 add_action('admin_head', 'sociable_admin_head');
 function sociable_admin_head() {
+	global $sociablepluginpath;
+
+	// jQuery drag and drop: http://docs.jquery.com/UI/Sortables
+	global $wp_version;
+	if ($wp_version < "2.6") { 
 ?>
-
-<!-- The ToolMan lib provides drag and drop: http://tool-man.org/examples/sorting.html -->
-<script language="JavaScript" type="text/javascript" src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sociable/tool-man/core.js"></script>
-<script language="JavaScript" type="text/javascript" src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sociable/tool-man/coordinates.js"></script>
-<script language="JavaScript" type="text/javascript" src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sociable/tool-man/css.js"></script>
-<script language="JavaScript" type="text/javascript" src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sociable/tool-man/drag.js"></script>
-<script language="JavaScript" type="text/javascript" src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sociable/tool-man/dragsort.js"></script>
-<script language="JavaScript" type="text/javascript" src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sociable/tool-man/events.js"></script>
+<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/jquery.js"></script>
+<?php } ?>
+<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.core.js"></script>
+<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.sortable.js"></script>
 <script language="JavaScript" type="text/javascript"><!--
-var dragsort = ToolMan.dragsort();
-var junkdrawer = ToolMan.junkdrawer();
-
-function save_reorder(id) {
-	site_order = document.getElementById('site_order');
-
-	old_order = site_order.value;
-	new_order = junkdrawer.serializeList(document.getElementById('sociable_site_list'));
-	site_order.value = new_order;
-
-	if (!site_order.used || new_order == old_order)
-		toggle_checkbox(id);
-	site_order.used = true;
-}
-
+jQuery(document).ready(function(){
+  jQuery("#sociable_site_list").sortable({});
+});
 /* make checkbox action prettier */
 function toggle_checkbox(id) {
 	var checkbox = document.getElementById(id);
@@ -854,7 +841,7 @@ function toggle_checkbox(id) {
 }
 --></script>
 
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/sociable/sociable-admin.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $sociablepluginpath; ?>sociable-admin.css" />
 <?php
 }
 
@@ -893,7 +880,7 @@ function sociable_upload_errors() {
 
 // The admin page
 function sociable_submenu() {
-	global $sociable_known_sites, $sociable_date, $sociable_files;
+	global $sociable_known_sites, $sociable_date, $sociable_files, $sociablepluginpath;
 
 	// update options in db if requested
 	if ($_REQUEST['restore']) {
@@ -980,26 +967,21 @@ function sociable_submenu() {
 				<?php foreach (array_merge($active, $disabled) as $sitename=>$site) { ?>
 					<li style="font-size:10px;"
 						id="<?php echo $sitename; ?>"
-						class="sociable_site <?php echo (in_array($sitename, $active_sites)) ? "active" : "inactive"; ?>"
-						onmouseup="javascript:save_reorder('cb_<?php echo $sitename; ?>');"
-					>
+						class="sociable_site <?php echo (in_array($sitename, $active_sites)) ? "active" : "inactive"; ?>">
 						<input
 							type="checkbox"
 							id="cb_<?php echo $sitename; ?>"
 							class="checkbox"
 							name="active_sites[<?php echo $sitename; ?>]"
-							onclick="javascript:toggle_checkbox('cb_<?php echo $sitename; ?>');"
+							onclick="javascript:toggle_checkbox('<?php echo $sitename; ?>');"
 							<?php echo (in_array($sitename, $active_sites)) ? ' checked="checked"' : ''; ?>
 						/>
-						<img src="../wp-content/plugins/sociable/images/<?php echo $site['favicon']?>" width="16" height="16" alt="" />
+						<img src="<?php echo $sociablepluginpath.'images/'.$site['favicon']; ?>" width="16" height="16" alt="" />
 						<?php print $sitename; ?>
 					</li>
 				<?php } ?>
 			</ul>
 			<input type="hidden" id="site_order" name="site_order" value="<?php echo join('|', array_keys($sociable_known_sites)) ?>" />
-			<script language="JavaScript" type="text/javascript"><!--
-				dragsort.makeListSortable(document.getElementById("sociable_site_list"));
-			--></script>
 		</td>
 	</tr>
 	<tr>
