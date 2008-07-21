@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.8.2
+Version: 2.8.3
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -271,7 +271,7 @@ $sociable_known_sites = Array(
 
 	'LinkedIn' => Array(
 		'favicon' => 'linkedin.png',
-		'url' => 'http://www.linkedin.com/shareArticle?mini=true&url=PERMALINK&title=TITLE',
+		'url' => 'http://www.linkedin.com/shareArticle?mini=true&amp;url=PERMALINK&amp;title=TITLE&amp;source=BLOGNAME&amp;summary=EXCERPT',
 	),
 
 	'Linkter' => Array(
@@ -307,6 +307,11 @@ $sociable_known_sites = Array(
 	'Mixx' => Array(
 		'favicon' => 'mixx.png',
 		'url' => 'http://www.mixx.com/submit?page_url=PERMALINK&amp;title=TITLE',
+	),
+	
+	'muti' => Array(
+		'favicon' => 'muti.png',
+		'url' => 'http://www.muti.co.za/submit?url=PERMALINK&amp;title=TITLE',
 	),
 	
 	'MyShare' => Array(
@@ -477,6 +482,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://twitthis.com/twit?url=PERMALINK',
 	),
 
+	'Upnews' => Array(
+			'favicon' => 'upnews.gif',
+			'url' => 'http://www.upnews.it/submit?url=PERMALINK&title=TITLE',
+	),
+	
 	'Webnews.de' => Array(
         'favicon' => 'webnews.gif',
         'url' => 'http://www.webnews.de/einstellen?url=PERMALINK&amp;title=TITLE',
@@ -497,6 +507,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.wikio.fr/vote?url=PERMALINK',
 	),
 
+	'Wikio IT' => Array(
+		'favicon' => 'wikio.gif',
+		'url' => 'http://www.wikio.it/vote?url=PERMALINK',
+	),
+	
 	'Wists' => Array(
 		'favicon' => 'wists.png',
 		'url' => 'http://wists.com/s.php?c=&amp;r=PERMALINK&amp;title=TITLE',
@@ -580,6 +595,7 @@ $sociable_files = Array(
 	'images/meneame.gif',
 	'images/misterwong.gif',
 	'images/mixx.png',
+	'images/muti.png',
 	'images/myshare.png',
 	'images/n4g.gif',
 	'images/netvouz.png',
@@ -612,6 +628,7 @@ $sociable_files = Array(
 	'images/tailrank.png',
 	'images/technorati.png',
 	'images/twitter.png',
+	'images/upnews.gif',
 	'images/webnews.gif',
 	'images/webride.png',
 	'images/wikio.gif',
@@ -629,12 +646,12 @@ $sociable_files = Array(
 );
 
 function sociable_html($display=Array()) {
-	global $sociable_known_sites, $sociablepluginpath;
-	$active_sites = get_option('sociable_active_sites');
+	global $sociable_known_sites, $sociablepluginpath, $wp_query; 
+	
+	$active_sites 	= get_option('sociable_active_sites');
+	$html			= "";
 
-	$html = "";
-
-	$imagepath = $sociablepluginpath.'images/';
+	$imagepath 		= $sociablepluginpath.'images/';
 
 	// if no sites are specified, display all active
 	// have to check $active_sites has content because WP
@@ -646,13 +663,20 @@ function sociable_html($display=Array()) {
 		return "";
 
 	// Load the post's data
-	$blogname = urlencode(get_bloginfo('wpurl'));
-	global $wp_query; 
-	$post = $wp_query->post;
-	$permalink = urlencode(get_permalink($post->ID));
-	$title = urlencode($post->post_title);
-	$title = str_replace('+','%20',$title);
-	$rss = urlencode(get_bloginfo('ref_url'));
+	$blogname 		= urlencode(get_bloginfo('name')." - ".get_bloginfo('description'));
+	$post 			= $wp_query->post;
+	
+	$excerpt		= urlencode($post->excerpt);
+	if ($excerpt == "") {
+		$excerpt = urlencode(substr(strip_tags($post->post_content),0,250));
+	}
+
+	$permalink 		= urlencode(get_permalink($post->ID));
+	
+	$title 			= urlencode($post->post_title);
+	$title 			= str_replace('+','%20',$title);
+	
+	$rss 			= urlencode(get_bloginfo('ref_url'));
 
 	$html .= "\n<div class=\"sociable\">\n<div class=\"sociable_tagline\">\n";
 	$html .= stripslashes(get_option("sociable_tagline"));
@@ -669,6 +693,7 @@ function sociable_html($display=Array()) {
 		$url = $site['url'];
 		$url = str_replace('PERMALINK', $permalink, $url);
 		$url = str_replace('TITLE', $title, $url);
+		$url = str_replace('EXCERPT', $excerpt, $url);
 		$url = str_replace('RSS', $rss, $url);
 		$url = str_replace('BLOGNAME', $blogname, $url);
 
@@ -678,7 +703,11 @@ function sociable_html($display=Array()) {
 			$description = $sitename;
 		}
 		$link = "<li>";		
-		$link .= "<a rel=\"nofollow\" href=\"$url\" title=\"$description\">";
+		$link .= "<a rel=\"nofollow\"";
+		if (get_option('sociable_usetargetblank')) {
+			$link .= " target=\"_blank\"";
+		}
+		$link .= " href=\"$url\" title=\"$description\">";
 		$link .= "<img src=\"$imagepath{$site['favicon']}\" title=\"$description\" alt=\"$description\" class=\"sociable-hovers";
 		if ($site['class'])
 			$link .= " sociable_{$site['class']}";
@@ -698,7 +727,7 @@ $sociable_contitionals = get_option('sociable_conditionals');
 if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals)) {
 	add_filter('the_content', 'sociable_display_hook');
 	add_filter('the_excerpt', 'sociable_display_hook');
-	add_filter('the_excerpt_rss', 'sociable_display_hook');
+	// add_filter('the_excerpt_rss', 'sociable_display_hook');
 	
 	function sociable_display_hook($content='') {
 		$conditionals = get_option('sociable_conditionals');
@@ -881,6 +910,12 @@ function sociable_submenu() {
 		delete_option('sociable_active_sites', $active_sites);
 		add_option('sociable_active_sites', $active_sites);
 
+		if ($_POST['usetargetblank']) {
+			update_option('sociable_usetargetblank',true);
+		} else {
+			update_option('sociable_usetargetblank',false);
+		}
+		
 		// update conditional displays
 		$conditionals = Array();
 		if (!$_POST['conditionals'])
@@ -922,10 +957,10 @@ function sociable_submenu() {
 	uksort($disabled, "strnatcasecmp");
 
 	// load options from db to display
-	$tagline = stripslashes(get_option('sociable_tagline'));
-	$conditionals = get_option('sociable_conditionals');
-	$updated = get_option('sociable_updated');
-
+	$tagline 		= stripslashes(get_option('sociable_tagline'));
+	$conditionals 	= get_option('sociable_conditionals');
+	$updated 		= get_option('sociable_updated');
+	$usetargetblank = get_option('sociable_usetargetblank');
 	// display options
 ?>
 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
@@ -997,6 +1032,14 @@ function sociable_submenu() {
 		<td>
 			<input type="checkbox" name="usecss" <?php echo (get_option('sociable_usecss')) ? ' checked="checked"' : ''; ?> /> <?php _e("Use the sociable stylesheet?", "sociable"); ?>
 		</td>
+	</tr>
+	<tr>
+		<th scope="row" valign="top">
+			<?php _e("Open in new window:", "sociable"); ?>
+		</th>
+		<td>
+			<input type="checkbox" name="usetargetblank" <?php echo (get_option('sociable_usetargetblank')) ? ' checked="checked"' : ''; ?> /> <?php _e("Use <code>target=_blank</code> on links? (Forces links to open a new window)", "sociable"); ?>
+		</td>		
 	</tr>
 	<tr>
 		<td>&nbsp;</td>

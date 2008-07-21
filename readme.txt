@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.5.1
-stable tag: 2.8.2
+stable tag: 2.8.3
 
 Automatically add links on your posts to popular social bookmarking sites.
 
@@ -19,6 +19,7 @@ More info:
 
 **Changelog**
 
+* 2.8.3 Added wikio.it, upnews.it, muti.co.za, makes LinkedIn work even better, and makes opening in a new window optional
 * 2.8.2 Now adds icons to feeds with excerpts too, added LinkedIn
 * 2.8.1 Fixed some small issues and made sure tagline shows up again
 * 2.8 Added option to show bookmark icons in feed, added Ratimarks, fixed xhtml compliance, fixed blue dot bug
