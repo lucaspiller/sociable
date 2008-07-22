@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.9
+Version: 2.9.1
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -815,34 +815,34 @@ function sociable_admin_menu() {
 // Admin page header
 add_action('admin_head', 'sociable_admin_head');
 function sociable_admin_head() {
-	global $sociablepluginpath;
+	if ($_GET['page'] == 'Sociable') {
+		global $sociablepluginpath, $wp_version;
 
-	// jQuery drag and drop: http://docs.jquery.com/UI/Sortables
-	global $wp_version;
-	if ($wp_version < "2.6") { 
-?>
-<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/jquery.js"></script>
-<?php } ?>
-<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.core.js"></script>
-<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.sortable.js"></script>
-<script language="JavaScript" type="text/javascript"><!--
-jQuery(document).ready(function(){
-  jQuery("#sociable_site_list").sortable({});
-});
-/* make checkbox action prettier */
-function toggle_checkbox(id) {
-	var checkbox = document.getElementById(id);
+		if ($wp_version < "2.6") { 
+	?>
+	<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/jquery.js"></script>
+	<?php } ?>
+	<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.core.js"></script>
+	<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.sortable.js"></script>
+	<script language="JavaScript" type="text/javascript"><!--
+	jQuery(document).ready(function(){
+	  jQuery("#sociable_site_list").sortable({});
+	});
+	/* make checkbox action prettier */
+	function toggle_checkbox(id) {
+		var checkbox = document.getElementById(id);
 
-	checkbox.checked = !checkbox.checked;
-	if (checkbox.checked)
-		checkbox.parentNode.className = 'active';
-	else
-		checkbox.parentNode.className = 'inactive';
-}
---></script>
+		checkbox.checked = !checkbox.checked;
+		if (checkbox.checked)
+			checkbox.parentNode.className = 'active';
+		else
+			checkbox.parentNode.className = 'inactive';
+	}
+	--></script>
 
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $sociablepluginpath; ?>sociable-admin.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $sociablepluginpath; ?>sociable-admin.css" />
 <?php
+	}
 }
 
 function sociable_message($message) {
