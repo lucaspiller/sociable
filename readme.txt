@@ -3,22 +3,24 @@ Contributors: joostdevalk
 Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
-Tested up to: 2.5.1
-stable tag: 2.9.1
+Tested up to: 2.6
+stable tag: 2.9.3
 
-Automatically add links on your posts to popular social bookmarking sites.
+Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
 
 == Description ==
-Automatically add links on your posts to popular social bookmarking sites like Facebook, Mixx, StumbleUpon, Digg and many many others.
+Automatically add links to your favorite social bookmarking sites on your posts, pages and in your RSS feed. You can choose from 99 different social bookmarking sites!
 
 More info:
 
-* [Sociable](http://yoast.com/wordpress/sociable/).
+* More info on [Sociable](http://yoast.com/wordpress/sociable/), with info on how to add sites to it, and how to integrate it into your WordPress in other ways.
 * Read more about [WordPress SEO](http://yoast.com/articles/wordpress-seo/) so you can get the most out of this plugin.
 * Check out the other [Wordpress plugins](http://yoast.com/wordpress/) by the same author.
 
 **Changelog**
 
+* 2.9.3 Added Leonaut, MySpace, fixed plugin description, added option to disable Sociable on a per post basis, added option to display sociable on tag pages, added extra security to config page, fixed print button, fixed Twitter functionality.
+* 2.9.2 Added Swedish and Chinese localisations, thx to [Mikael Jorhult](http://www.mishkin.se/) and [Hugo Chen](http://take-ez.com/)
 * 2.9.1 Fixed bug where jQuery UI would be loaded twice.
 * 2.9 Removed Tool-Man in favor of jQuery, thx to Martin Joosse.
 * 2.8.4 Bugfixes.

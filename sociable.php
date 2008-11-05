@@ -2,8 +2,8 @@
 /*
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
-Description: Automatically add links on your posts to popular <a href="http://www.maxpower.ca/bookmarking">social bookmarking sites</a>. Go to Options -> Sociable for setup.
-Version: 2.9.1
+Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
+Version: 2.9.3
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -259,6 +259,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://laaik.it/NewStoryCompact.aspx?uri=PERMALINK&amp;headline=TITLE&amp;cat=5e082fcc-8a3b-47e2-acec-fdf64ff19d12',
 	),
 
+	'Leonaut' => Array(
+		'favicon' => 'leonaut.gif',
+		'url' => 'http://www.leonaut.com/submit.php?url=PERMALINK&amp;title=TITLE'
+	),
+	
 	'LinkArena' => Array(
 		'favicon' => 'linkarena.gif',
 		'url' => 'http://linkarena.com/bookmarks/addlink/?url=PERMALINK&amp;title=TITLE',
@@ -317,6 +322,11 @@ $sociable_known_sites = Array(
 	'MyShare' => Array(
 		'favicon' => 'myshare.png',
 		'url' => 'http://myshare.url.com.tw/index.php?func=newurl&amp;url=PERMALINK&amp;desc=TITLE',
+	),
+
+	'MySpace' => Array(
+		'favicon' => 'myspace.png',
+		'url' => 'http://www.myspace.com/Modules/PostTo/Pages/?u=PERMALINK&amp;t=TITLE',
 	),
 
 	'N4G' => Array(
@@ -479,12 +489,12 @@ $sociable_known_sites = Array(
 
 	'TwitThis' => Array(
 		'favicon' => 'twitter.png',
-		'url' => 'http://twitthis.com/twit?url=PERMALINK',
+		'url' => 'http://twitter.com/home?status=PERMALINK',
 	),
 
 	'Upnews' => Array(
 			'favicon' => 'upnews.gif',
-			'url' => 'http://www.upnews.it/submit?url=PERMALINK&title=TITLE',
+			'url' => 'http://www.upnews.it/submit?url=PERMALINK&amp;title=TITLE',
 	),
 	
 	'Webnews.de' => Array(
@@ -585,6 +595,7 @@ $sociable_files = Array(
 	'images/kickit.png',
 	'images/kirtsy.gif',
 	'images/laaikit.png',
+	'images/leonaut.gif',
 	'images/linkagogo.png',
 	'images/linkarena.gif',
 	'images/linkedin.png',
@@ -597,6 +608,7 @@ $sociable_files = Array(
 	'images/mixx.png',
 	'images/muti.png',
 	'images/myshare.png',
+	'images/myspace.png',
 	'images/n4g.gif',
 	'images/netvouz.png',
 	'images/newsvine.png',
@@ -643,7 +655,12 @@ $sociable_files = Array(
 );
 
 function sociable_html($display=Array()) {
-	global $sociable_known_sites, $sociablepluginpath, $wp_query; 
+	global $sociable_known_sites, $sociablepluginpath, $wp_query, $post; 
+
+	$sociableooffmeta = get_post_meta($post->ID,'sociableoff',true);
+	if ($sociableooffmeta == "true") {
+		return "";
+	}
 
 	$active_sites = get_option('sociable_active_sites');
 
@@ -677,10 +694,16 @@ function sociable_html($display=Array()) {
 	
 	$rss 		= urlencode(get_bloginfo('ref_url'));
 
-	$html .= "\n<div class=\"sociable\">\n<div class=\"sociable_tagline\">\n";
-	$html .= stripslashes(get_option("sociable_tagline"));
-	// $html .= "\n\t<span>" . __("These icons link to social bookmarking sites where readers can share and discover new web pages.", 'sociable') . "</span>";
-	$html .= "\n</div>\n<ul>\n";
+	$html .= "\n<div class=\"sociable\">\n";
+	
+	$tagline = get_option("sociable_tagline");
+	if ($tagline != "") {
+		$html .= "<div class=\"sociable_tagline\">\n";
+		$html .= stripslashes($tagline);
+		$html .= "\n</div>";
+	}
+	
+	$html .= "\n<ul>\n";
 
 	foreach($display as $sitename) {
 		// if they specify an unknown or inactive site, ignore it
@@ -703,11 +726,11 @@ function sociable_html($display=Array()) {
 		}
 		$link = "<li>";		
 		$link .= "<a rel=\"nofollow\"";
-		if (get_option('sociable_usetargetblank')) {
+		if (get_option('sociable_usetargetblank') && $site['url'] != 'javascript:window.print();') {
 			$link .= " target=\"_blank\"";
 		}
 		$link .= " href=\"$url\" title=\"$description\">";
-		$link .= "<img src=\"$imagepath{$site['favicon']}\" title=\"$description\" alt=\"$description\" class=\"sociable-hovers";
+		$link .= "<img src=\"".$imagepath.$site['favicon']."\" title=\"$description\" alt=\"$description\" class=\"sociable-hovers";
 		if ($site['class'])
 			$link .= " sociable_{$site['class']}";
 		$link .= "\" />";
@@ -734,6 +757,7 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
 		    (is_single()   and $conditionals['is_single']) or
 		    (is_page()     and $conditionals['is_page']) or
 		    (is_category() and $conditionals['is_category']) or
+			(is_tag() 	   and $conditionals['is_tag']) or
 		    (is_date()     and $conditionals['is_date']) or
 		    (is_search()   and $conditionals['is_search'])) {
 			$content .= sociable_html();
@@ -797,6 +821,7 @@ function sociable_restore_config($force=False) {
 			'is_single' => True,
 			'is_page' => True,
 			'is_category' => False,
+			'is_tag' => False,
 			'is_date' => False,
 			'is_search' => False,
 			'is_feed' => False,
@@ -819,9 +844,9 @@ function sociable_admin_head() {
 		global $sociablepluginpath, $wp_version;
 
 		if ($wp_version < "2.6") { 
+			echo '<script language="JavaScript" type="text/javascript" src="'.$sociablepluginpath.'jquery/jquery.js"></script>';
+		} 
 	?>
-	<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/jquery.js"></script>
-	<?php } ?>
 	<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.core.js"></script>
 	<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.sortable.js"></script>
 	<script language="JavaScript" type="text/javascript"><!--
@@ -878,15 +903,68 @@ function sociable_upload_errors() {
 	return false;
 }
 
+function sociable_meta() {
+	global $post;
+	$sociableoff = false;
+	$sociableoffmeta = get_post_meta($post->ID,'sociableoff',true);
+	if ($sociableoffmeta == "true") {
+		$sociableoff = true;
+	}
+	?>
+	<input type="checkbox" name="sociableoff" <?php if ($sociableoff) { echo 'checked="checked"'; } ?>/> Sociable disabled?
+	<?php
+}
+
+function sociable_option() {
+	global $post;
+	$sociableoff = false;
+	$sociableoffmeta = get_post_meta($post->ID,'sociableoff',true);
+	if ($sociableoffmeta == "true") {
+		$sociableoff = true;
+	}
+	if ( current_user_can('edit_posts') ) { ?>
+	<fieldset id="sociableoption" class="dbx-box">
+	<h3 class="dbx-handle">Sociable</h3>
+	<div class="dbx-content">
+		<input type="checkbox" name="sociableon" <?php if ($sociableoff) { echo 'checked="checked"'; } ?>/> Sociable disabled?
+	</div>
+	</fieldset>
+	<?php 
+	}
+}
+
+function sociable_meta_box() {
+	// Check whether the 2.5 function add_meta_box exists, and if it doesn't use 2.3 functions.
+	if ( function_exists('add_meta_box') ) {
+		add_meta_box('sociable','Sociable','sociable_meta','post');
+		add_meta_box('sociable','Sociable','sociable_meta','page');
+	} else {
+		add_action('dbx_post_sidebar', 'sociable_option');
+		add_action('dbx_page_sidebar', 'sociable_option');
+	}
+}
+add_action('admin_menu', 'sociable_meta_box');
+
+function sociable_insert_post($pID) {
+	if (isset($_POST['sociableoff'])) {
+		add_post_meta($pID,'sociableoff',"true", true) or update_post_meta($pID, 'sociableoff', "true");
+	} else {
+		add_post_meta($pID,'sociableoff',"false", true) or update_post_meta($pID, 'sociableoff', "false");
+	}
+}
+add_action('wp_insert_post', 'sociable_insert_post');
+
 // The admin page
 function sociable_submenu() {
 	global $sociable_known_sites, $sociable_date, $sociable_files, $sociablepluginpath;
 
 	// update options in db if requested
 	if ($_REQUEST['restore']) {
+		check_admin_referer('sociable-config');
 		sociable_restore_config(True);
 		sociable_message(__("Restored all settings to defaults.", 'sociable'));
 	} else if ($_REQUEST['save']) {
+		check_admin_referer('sociable-config');
 		// update active sites
 		$active_sites = Array();
 		if (!$_REQUEST['active_sites'])
@@ -953,6 +1031,10 @@ function sociable_submenu() {
 	// display options
 ?>
 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+<?php
+	if ( function_exists('wp_nonce_field') )
+		wp_nonce_field('sociable-config');
+?>
 
 <div class="wrap">
 	<h2><?php _e("Sociable Options", 'sociable'); ?></h2>
@@ -990,7 +1072,7 @@ function sociable_submenu() {
 		</th>
 		<td>
 			<?php _e("Change the text displayed in front of the icons below. For complete customization, edit <kbd>sociable.css</kbd> in the Sociable plugin directory.", 'sociable'); ?><br/>
-			<input type="text" name="tagline" value="<?php echo htmlspecialchars($tagline); ?>" />
+			<input size="80" type="text" name="tagline" value="<?php echo htmlspecialchars($tagline); ?>" />
 		</td>
 	</tr>
 	<tr>
@@ -1004,6 +1086,7 @@ function sociable_submenu() {
 			<input type="checkbox" name="conditionals[is_single]"<?php echo ($conditionals['is_single']) ? ' checked="checked"' : ''; ?> /> <?php _e("Individual blog posts", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_page]"<?php echo ($conditionals['is_page']) ? ' checked="checked"' : ''; ?> /> <?php _e('Individual WordPress "Pages"', 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_category]"<?php echo ($conditionals['is_category']) ? ' checked="checked"' : ''; ?> /> <?php _e("Category archives", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_tag]"<?php echo ($conditionals['is_tag']) ? ' checked="checked"' : ''; ?> /> <?php _e("Tag listings", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_date]"<?php echo ($conditionals['is_date']) ? ' checked="checked"' : ''; ?> /> <?php _e("Date-based archives", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_search]"<?php echo ($conditionals['is_search']) ? ' checked="checked"' : ''; ?> /> <?php _e("Search results", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_feed]"<?php echo ($conditionals['is_feed']) ? ' checked="checked"' : ''; ?> /> <?php _e("RSS feed items", 'sociable'); ?><br/>
@@ -1050,4 +1133,5 @@ if (get_option('sociable_usecss_set_once') != true) {
 	update_option('sociable_usecss_set_once', true);
 }
 
+require_once("yoast-posts.php");
 ?>
