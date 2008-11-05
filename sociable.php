@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 2.9.4
+Version: 2.9.5
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -169,7 +169,7 @@ $sociable_known_sites = Array(
 	'email' => Array(
 		'favicon' => 'email_link.png',
 		'url' => 'mailto:?subject=TITLE&amp;body=PERMALINK',
-		'description' => 'E-mail this story to a friend!',
+		'description' => __('E-mail this story to a friend!','sociable'),
 	),
 
 	'Facebook' => Array(
@@ -179,9 +179,7 @@ $sociable_known_sites = Array(
 
 	'Fark' => Array(
 		'favicon' => 'fark.png',
-		'url' => 'http://cgi.fark.com/cgi/fark/edit.pl?new_url=PERMALINK&amp;new_comment=TITLE&amp;new_comment=BLOGNAME&amp;linktype=Misc',
-		// To post to a different category, see the drop-down box labeled "Link Type" at
-		// http://cgi.fark.com/cgi/fark/submit.pl for a complete list
+		'url' => 'http://cgi.fark.com/cgi/fark/farkit.pl?h=TITLE&u=PERMALINK',
 	),
 
 	'feedmelinks' => Array(
@@ -367,12 +365,12 @@ $sociable_known_sites = Array(
 	'Print' => Array(
 		'favicon' => 'printer.png',
 		'url' => 'javascript:window.print();',
-		'description' => 'Print this article!',
+		'description' => __('Print this article!', 'sociable'),
 	),
 	
 	'Propeller' => Array(
 		'favicon' => 'propeller.gif',
-		'url' => 'http://www.propeller.com/submit/?U=PERMALINK&amp;T=TITLE',
+		'url' => 'http://www.propeller.com/submit/?url=PERMALINK',
 	),
 
 	'Ratimarks' => Array(
@@ -447,7 +445,7 @@ $sociable_known_sites = Array(
 	),
 
 	'Sphinn' => Array(
-		'favicon' => 'sphinn.png',
+		'favicon' => 'sphinn.gif',
 		'url' => 'http://sphinn.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
@@ -477,7 +475,7 @@ $sociable_known_sites = Array(
 	),
 
 	'TwitThis' => Array(
-		'favicon' => 'twitter.png',
+		'favicon' => 'twitter.gif',
 		'url' => 'http://twitter.com/home?status=PERMALINK',
 	),
 
@@ -527,6 +525,12 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.xerpi.com/block/add_link_from_extension?url=PERMALINK&amp;title=TITLE',
 	),
 
+	'YahooBuzz' => Array(
+		'favicon' => 'yahoobuzz.gif',
+		'url' => 'http://buzz.yahoo.com/submit/?submitUrl=PERMALINK&amp;submitHeadline=TITLE&amp;submitSummary=EXCERPT&amp;submitCategory=science&amp;submitAssetType=text',
+		'description' => 'Yahoo! Buzz',
+	),
+	
 	'YahooMyWeb' => Array(
 		'favicon' => 'yahoomyweb.png',
 		'url' => 'http://myweb2.search.yahoo.com/myresults/bookmarklet?u=PERMALINK&amp;=TITLE',
@@ -620,19 +624,20 @@ $sociable_files = Array(
 	'images/smarking.png',
 	'images/socialogs.gif',
 	'images/sphere.png',
-	'images/sphinn.png',
+	'images/sphinn.gif',
 	'images/spurl.png',
 	'images/stumbleupon.png',
 	'images/taggly.png',
 	'images/tailrank.png',
 	'images/technorati.png',
-	'images/twitter.png',
+	'images/twitter.gif',
 	'images/upnews.gif',
 	'images/webnews.gif',
 	'images/webride.png',
 	'images/wikio.gif',
 	'images/wists.png',
 	'images/wykop.gif',
+	'images/yahoobuzz.gif',
 	'images/yahoomyweb.png',
 	'images/yiggit.png',
 	'jquery/',
