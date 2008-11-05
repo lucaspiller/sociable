@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 2.9.3
+Version: 2.9.4
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -101,9 +101,9 @@ $sociable_known_sites = Array(
 		'url' => 'http://cimlap.blogter.hu/index.php?action=suggest_link&amp;title=TITLE&amp;url=PERMALINK',
 	),
 
-	'Blue Dot' => Array(
+	'Faves' => Array(
 		'favicon' => 'bluedot.png',
-		'url' => 'http://bluedot.us/Authoring.aspx?u=PERMALINK&amp;title=TITLE',
+		'url' => 'http://faves.com/Authoring.aspx?u=PERMALINK&amp;title=TITLE',
 	),
 
 	'Book.mark.hu' => Array(
@@ -354,12 +354,6 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.plugim.com/submit?url=PERMALINK&amp;title=TITLE',
 	),
 
-	'PopCurrent' => Array(
-		'favicon' => 'popcurrent.png',
-		'url' => 'http://popcurrent.com/submit?url=PERMALINK&amp;title=TITLE&amp;rss=RSS',
-        'description' => 'description',
-	),
-
 	'Pownce' => Array(
 		'favicon' => 'pownce.gif',
 		'url' => 'http://pownce.com/send/link/?url=PERMALINK&amp;note_body=TITLE&amp;note_to=all'
@@ -384,11 +378,6 @@ $sociable_known_sites = Array(
 	'Ratimarks' => Array(
 		'favicon' => 'ratimarks.png',
 		'url' => 'http://ratimarks.org/bookmarks.php/?action=add&address=PERMALINK&amp;title=TITLE',
-	),
-
-	'RawSugar' => Array(
-		'favicon' => 'rawsugar.png',
-		'url' => 'http://www.rawsugar.com/tagger/?turl=PERMALINK&amp;tttl=TITLE',
 	),
 
 	'Rec6' => Array(
@@ -614,13 +603,11 @@ $sociable_files = Array(
 	'images/newsvine.png',
 	'images/nujij.gif',
 	'images/plugim.png',
-	'images/popcurrent.png',
 	'images/pownce.gif',
 	'images/ppnow.png',
 	'images/print.gif',
 	'images/propeller.gif',
 	'images/ratimarks.png',	
-	'images/rawsugar.png',
 	'images/rec6.gif',
 	'images/reddit.png',
 	'images/salesmarks.gif',
