@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.6.2
-stable tag: 2.9.7
+stable tag: 2.9.8
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
 
