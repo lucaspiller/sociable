@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 2.9.5
+Version: 2.9.7
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -197,6 +197,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://extension.fleck.com/?v=b.0.804&amp;url=PERMALINK',
 	),
 
+	'GeenRedactie' => array(
+		'favicon' => 'geenredactie.png',
+		'url'=> 'http://www.geenredactie.nl/submit?url=PERMALINK&amp;title=TITLE'
+	),
+	
 	'Global Grind' => Array (
 		'favicon' => 'globalgrind.gif',
 		'url' => 'http://globalgrind.com/submission/submit.aspx?url=PERMALINK&amp;type=Article&amp;title=TITLE'
@@ -454,6 +459,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.stumbleupon.com/submit?url=PERMALINK&amp;title=TITLE',
 	),
 
+	'Symbaloo' => Array(
+		'favicon' => 'symbaloo.png',
+		'url' => 'http://www.symbaloo.com/nl/add/url=PERMALINK&amp;title=TITLE&amp;icon=http%3A//static01.symbaloo.com/_img/favicon.png';
+	),
+	
 	'Taggly' => Array(
 		'favicon' => 'taggly.png',
 		'url' => 'http://taggly.com/bookmarks.php/pass?action=add&amp;address=',
@@ -474,6 +484,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.thisnext.com/pick/new/submit/sociable/?url=PERMALINK&amp;name=TITLE',
 	),
 
+	'Tumblr' => Array(
+			'favicon' => 'tumblr.gif',
+			'url' => 'http://www.tumblr.com/share?v=3&amp;u=PERMALINK&amp;t=TITLE&amp;s=',
+	),
+		
 	'TwitThis' => Array(
 		'favicon' => 'twitter.gif',
 		'url' => 'http://twitter.com/home?status=PERMALINK',
@@ -576,6 +591,7 @@ $sociable_files = Array(
 	'images/feedmelinks.png',
 	'images/fleck.gif',
 	'images/furl.png',
+	'images/geenredactie.png',
 	'images/globalgrind.gif',
 	'images/googlebookmark.png',
 	'images/gwar.gif',
@@ -627,10 +643,12 @@ $sociable_files = Array(
 	'images/sphinn.gif',
 	'images/spurl.png',
 	'images/stumbleupon.png',
+	'images/symbaloo.png',
 	'images/taggly.png',
 	'images/tailrank.png',
 	'images/technorati.png',
 	'images/twitter.gif',
+	'images/tumblr.gif',
 	'images/upnews.gif',
 	'images/webnews.gif',
 	'images/webride.png',
@@ -939,9 +957,15 @@ add_action('admin_menu', 'sociable_meta_box');
 
 function sociable_insert_post($pID) {
 	if (isset($_POST['sociableoff'])) {
-		add_post_meta($pID,'sociableoff',"true", true) or update_post_meta($pID, 'sociableoff', "true");
+		if(get_post_meta($pID, 'sociableoff') == "")
+			add_post_meta($pID, 'sociableoff', "true", true);
+		else
+			update_post_meta($pID, 'sociableoff', "true", true);
 	} else {
-		add_post_meta($pID,'sociableoff',"false", true) or update_post_meta($pID, 'sociableoff', "false");
+		if(get_post_meta($pID, 'sociableoff') == "")
+			add_post_meta($pID, 'sociableoff', "false", true);
+		else
+			update_post_meta($pID, 'sociableoff', "false", true);
 	}
 }
 add_action('wp_insert_post', 'sociable_insert_post');

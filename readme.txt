@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.6.2
-stable tag: 2.9.5
+stable tag: 2.9.7
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
 
@@ -19,6 +19,7 @@ More info:
 
 **Changelog**
 
+* 2.9.6 Added Symbaloo, Tumblr,
 * 2.9.5 Fixed Fark & Propeller links, added missing i18n strings, added Yahoo Buzz 
 * 2.9.4 Removed PopCurrent and Rawsugar as they no longer exist, renamed BlueDot to Faves
 * 2.9.3 Added Leonaut, MySpace, fixed plugin description, added option to disable Sociable on a per post basis, added option to display sociable on tag pages, added extra security to config page, fixed print button, fixed Twitter functionality.
