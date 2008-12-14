@@ -179,7 +179,7 @@ $sociable_known_sites = Array(
 
 	'Fark' => Array(
 		'favicon' => 'fark.png',
-		'url' => 'http://cgi.fark.com/cgi/fark/farkit.pl?h=TITLE&u=PERMALINK',
+		'url' => 'http://cgi.fark.com/cgi/fark/farkit.pl?h=TITLE&amp;u=PERMALINK',
 	),
 
 	'feedmelinks' => Array(
