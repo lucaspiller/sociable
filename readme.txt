@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.6.2
-stable tag: 2.9.8
+stable tag: 2.9.9
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
 
@@ -19,6 +19,8 @@ More info:
 
 **Changelog**
 
+* 2.9.9 Fixes for the custom fields issue.
+* 2.9.8 Fixes for WP 2.7
 * 2.9.6 Added Symbaloo, Tumblr,
 * 2.9.5 Fixed Fark & Propeller links, added missing i18n strings, added Yahoo Buzz 
 * 2.9.4 Removed PopCurrent and Rawsugar as they no longer exist, renamed BlueDot to Faves
