@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 2.9.10
+Version: 2.9.11
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -1134,6 +1134,31 @@ function sociable_submenu() {
 
 <?php
 }
+
+function sociable_add_ozh_adminmenu_icon( $hook ) {
+	static $sociableicon;
+	if (!$sociableicon) {
+		$sociableicon = WP_CONTENT_URL . '/plugins/' . plugin_basename(dirname(__FILE__)). '/book_add.png';
+	}
+	if ($hook == 'Sociable') return $sociableicon;
+	return $hook;
+}
+
+function sociable_filter_plugin_actions( $links, $file ){
+	//Static so we don't call plugin_basename on every plugin row.
+	static $this_plugin;
+	if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
+	
+	if ( $file == $this_plugin ){
+		$settings_link = '<a href="options-general.php?page=Sociable">' . __('Settings') . '</a>';
+		array_unshift( $links, $settings_link ); // before other links
+	}
+	return $links;
+}
+
+add_filter( 'plugin_action_links', 'sociable_filter_plugin_actions', 10, 2 );
+add_filter( 'ozh_adminmenu_icon', 'sociable_add_ozh_adminmenu_icon' );				
+
 
 if (get_option('sociable_usecss_set_once') != true) {
 	update_option('sociable_usecss', true);
