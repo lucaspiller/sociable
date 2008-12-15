@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 2.9.11
+Version: 2.9.12
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -484,9 +484,14 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.thisnext.com/pick/new/submit/sociable/?url=PERMALINK&amp;name=TITLE',
 	),
 
+	'Tipd' => Array(
+		'favicon' => 'tipd.png',
+		'url' => 'http://tipd.com/submit.php?url=PERMALINK',
+	),
+	
 	'Tumblr' => Array(
-			'favicon' => 'tumblr.gif',
-			'url' => 'http://www.tumblr.com/share?v=3&amp;u=PERMALINK&amp;t=TITLE&amp;s=',
+		'favicon' => 'tumblr.gif',
+		'url' => 'http://www.tumblr.com/share?v=3&amp;u=PERMALINK&amp;t=TITLE&amp;s=',
 	),
 		
 	'TwitThis' => Array(
@@ -647,6 +652,7 @@ $sociable_files = Array(
 	'images/taggly.png',
 	'images/tailrank.png',
 	'images/technorati.png',
+	'images/tipd.png',
 	'images/twitter.gif',
 	'images/tumblr.gif',
 	'images/upnews.gif',
