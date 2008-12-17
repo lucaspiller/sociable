@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 2.9.14
+Version: 2.9.15
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -669,6 +669,13 @@ $sociable_files = Array(
 	'jquery/ui.sortable.js',
 	'jquery/jquery.js',
 );
+
+// For maintaining backwards compatability
+if (!function_exists('strip_shortcodes')) {
+	function strip_shortcodes($content) {
+		return $content;
+	}
+}
 
 function sociable_html($display=Array()) {
 	global $sociable_known_sites, $sociablepluginpath, $wp_query, $post; 

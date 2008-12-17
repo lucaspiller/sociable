@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.7
-stable tag: 2.9.13
+stable tag: 2.9.15
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
 
@@ -19,6 +19,7 @@ More info:
 
 **Changelog**
 
+* 2.9.15 Added a fallback for strip_shortcodes to maintain backwards compatibility with WordPress 2.3 and below.
 * 2.9.14 Make sure there are no tags or shortcodes in the excerpt, added ping.fm, removed indiagram (shut down).
 * 2.9.13 Changed Facebook link from sharer.php (meant for a popup window) to share.php (which has the actual menu on it etc.)
 * 2.9.12 Added Tip'd
