@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.7
-stable tag: 2.9.12
+stable tag: 2.9.13
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
 
@@ -19,6 +19,7 @@ More info:
 
 **Changelog**
 
+* 2.9.13 Changed Facebook link from sharer.php (meant for a popup window) to share.php (which has the actual menu on it etc.)
 * 2.9.12 Added Tip'd
 * 2.9.11 Added settings link and Ozh admin menu icon
 * 2.9.10 Fixes issue with excerpt not being urlencoded

@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 2.9.12
+Version: 2.9.13
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -35,6 +35,7 @@ if ( !defined('WP_CONTENT_DIR') )
 $sociablepluginpath = WP_CONTENT_URL.'/plugins/'.plugin_basename(dirname(__FILE__)).'/';
 
 function sociable_init_locale(){
+	global $sociablepluginpath;
 	load_plugin_textdomain('sociable', $sociablepluginpath);
 }
 add_filter('init', 'sociable_init_locale');
@@ -174,7 +175,7 @@ $sociable_known_sites = Array(
 
 	'Facebook' => Array(
 		'favicon' => 'facebook.png',
-		'url' => 'http://www.facebook.com/sharer.php?u=PERMALINK&amp;t=TITLE',
+		'url' => 'http://www.facebook.com/share.php?u=PERMALINK&amp;t=TITLE',
 	),
 
 	'Fark' => Array(
@@ -747,7 +748,7 @@ function sociable_html($display=Array()) {
 		}
 		$link .= " href=\"$url\" title=\"$description\">";
 		$link .= "<img src=\"".$imagepath.$site['favicon']."\" title=\"$description\" alt=\"$description\" class=\"sociable-hovers";
-		if ($site['class'])
+		if (isset($site['class']) && $site['class'])
 			$link .= " sociable_{$site['class']}";
 		$link .= "\" />";
 		$link .= "</a></li>";
@@ -856,7 +857,7 @@ function sociable_admin_menu() {
 // Admin page header
 add_action('admin_head', 'sociable_admin_head');
 function sociable_admin_head() {
-	if ($_GET['page'] == 'Sociable') {
+	if (isset($_GET['page']) && $_GET['page'] == 'Sociable') {
 		global $sociablepluginpath, $wp_version;
 
 		if ($wp_version < "2.6") { 
@@ -972,11 +973,11 @@ function sociable_submenu() {
 	global $sociable_known_sites, $sociable_date, $sociable_files, $sociablepluginpath;
 
 	// update options in db if requested
-	if ($_REQUEST['restore']) {
+	if (isset($_REQUEST['restore']) && $_REQUEST['restore']) {
 		check_admin_referer('sociable-config');
 		sociable_restore_config(True);
 		sociable_message(__("Restored all settings to defaults.", 'sociable'));
-	} else if ($_REQUEST['save']) {
+	} else if (isset($_REQUEST['save']) && $_REQUEST['save']) {
 		check_admin_referer('sociable-config');
 		// update active sites
 		$active_sites = Array();
@@ -990,7 +991,7 @@ function sociable_submenu() {
 		delete_option('sociable_active_sites', $active_sites);
 		add_option('sociable_active_sites', $active_sites);
 
-		if ($_POST['usetargetblank']) {
+		if (isset($_POST['usetargetblank']) && $_POST['usetargetblank']) {
 			update_option('sociable_usetargetblank',true);
 		} else {
 			update_option('sociable_usetargetblank',false);
@@ -1032,7 +1033,7 @@ function sociable_submenu() {
 	$active = Array(); $disabled = $sociable_known_sites;
 	foreach($active_sites as $sitename) {
 		$active[$sitename] = $disabled[$sitename];
-		unset($disabled[$site]);
+		unset($disabled[$sitename]);
 	}
 	uksort($disabled, "strnatcasecmp");
 
