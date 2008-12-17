@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 2.9.13
+Version: 2.9.14
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -233,11 +233,6 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.hemidemi.com/user_bookmark/new?title=TITLE&amp;url=PERMALINK',
 	),
 
-	'IndiaGram' => Array(
-		'favicon' => 'indiagram.png',
-		'url' => 'http://www.indiagram.com/mock/bookmarks/desitrain?action=add&amp;address=PERMALINK&amp;title=TITLE',
-	),
-
 	'IndianPad' => Array(
 		'favicon' => 'indianpad.png',
 		'url' => 'http://www.indianpad.com/submit.php?url=PERMALINK',
@@ -351,6 +346,11 @@ $sociable_known_sites = Array(
 	'NuJIJ' => Array(
 		'favicon' => 'nujij.gif',
 		'url' => 'http://nujij.nl/jij.lynkx?t=TITLE&amp;u=PERMALINK',
+	),
+	
+	'Ping.fm' => Array(
+		'favicon' => 'ping.gif',
+		'url' => 'http://ping.fm/ref/?link=PERMALINK&amp;title=TITLE',
 	),
 
 	'PlugIM' => Array(
@@ -605,7 +605,6 @@ $sociable_files = Array(
 	'images/healthranker.gif',
 	'images/hemidemi.png',
 	'images/im.png',
-	'images/indiagram.png',
 	'images/indianpad.png',
 	'images/kickit.png',
 	'images/kirtsy.gif',
@@ -614,7 +613,6 @@ $sociable_files = Array(
 	'images/linkagogo.png',
 	'images/linkarena.gif',
 	'images/linkedin.png',
-	'images/linkter.png',
 	'images/linkter.png',
 	'images/live.png',
 	'images/magnolia.png',
@@ -628,6 +626,7 @@ $sociable_files = Array(
 	'images/netvouz.png',
 	'images/newsvine.png',
 	'images/nujij.gif',
+	'images/ping.gif',
 	'images/plugim.png',
 	'images/pownce.gif',
 	'images/ppnow.png',
@@ -698,9 +697,9 @@ function sociable_html($display=Array()) {
 	$blogname 	= urlencode(get_bloginfo('name')." ".get_bloginfo('description'));
 	$post 		= $wp_query->post;
 	
-	$excerpt	= urlencode($post->post_excerpt);
+	$excerpt	= urlencode(strip_tags(strip_shortcodes($post->post_excerpt)));
 	if ($excerpt == "") {
-		$excerpt = urlencode(substr(strip_tags($post->post_content),0,250));
+		$excerpt = urlencode(substr(strip_tags(strip_shortcodes($post->post_content)),0,250));
 	}
 	$excerpt	= str_replace('+','%20',$excerpt);
 	

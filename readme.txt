@@ -19,6 +19,7 @@ More info:
 
 **Changelog**
 
+* 2.9.14 Make sure there are no tags or shortcodes in the excerpt, added ping.fm, removed indiagram (shut down).
 * 2.9.13 Changed Facebook link from sharer.php (meant for a popup window) to share.php (which has the actual menu on it etc.)
 * 2.9.12 Added Tip'd
 * 2.9.11 Added settings link and Ozh admin menu icon
