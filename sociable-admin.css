@@ -1,3 +1,8 @@
+li {
+	list-style-type: square;
+	margin-left: 20px;
+	padding-left: 5px;
+}
 #sociable_site_list {
 	list-style-type: none;
 	margin: 0 auto;
@@ -5,12 +10,14 @@
 	font-size: 80%;
 }
 #sociable_site_list li {
+	list-style-type: none;
 	cursor: move;
 	float: left;
 	margin: 2px 2px 0 0;
 	width: 12.7em;
 	height: 20px;
 	text-align: left;
+	font-size: 10px;
 	padding: 4px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -32,5 +39,9 @@
 	filter:alpha(opacity=40);
 }
 #sociable_site_list li input {
-	margin: 2px;
+	height: 12px;
+	margin: 0 5px 0 0;
+	padding: 0;
+	background: transparent;
+	border: none;
 }

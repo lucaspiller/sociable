@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 2.9.15
+Version: 3.0
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -782,6 +782,7 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
 		    (is_category() and $conditionals['is_category']) or
 			(is_tag() 	   and $conditionals['is_tag']) or
 		    (is_date()     and $conditionals['is_date']) or
+			(is_author()   and $conditionals['is_author']) or
 		    (is_search()   and $conditionals['is_search'])) {
 			$content .= sociable_html();
 		} elseif ((is_feed() and $conditionals['is_feed'])) {
@@ -804,11 +805,6 @@ function sociable_wp_head() {
 	if (get_option('sociable_usecss') == true) {
 		echo '<link rel="stylesheet" type="text/css" media="screen" href="' . $sociablepluginpath . 'sociable.css" />'."\n";
 	}
-}
-
-// load wp rss functions for update checking.
-if (!function_exists('parse_w3cdtf')) {
-	require_once(ABSPATH . WPINC . '/rss-functions.php');
 }
 
 // Plugin config/data setup
@@ -847,6 +843,7 @@ function sociable_restore_config($force=False) {
 			'is_tag' => False,
 			'is_date' => False,
 			'is_search' => False,
+			'is_author' => False,
 			'is_feed' => False,
 		));
 
@@ -895,35 +892,6 @@ function sociable_admin_head() {
 
 function sociable_message($message) {
 	echo "<div id=\"message\" class=\"updated fade\"><p>$message</p></div>\n";
-}
-
-// Sanity check the upload worked
-function sociable_upload_errors() {
-	global $sociable_files;
-
-	$cwd = getcwd(); // store current dir for restoration
-	if (!@chdir('../wp-content/plugins'))
-		return __("Couldn't find wp-content/plugins folder. Please make sure WordPress is installed correctly.", 'sociable');
-	if (!is_dir('sociable'))
-		return __("Can't find sociable folder.", 'sociable');
-	chdir('sociable');
-
-	foreach($sociable_files as $file) {
-		if (substr($file, -1) == '/') {
-			if (!is_dir(substr($file, 0, strlen($file) - 1)))
-				return __("Can't find folder:", 'sociable') . " <kbd>$file</kbd>";
-		} else if (!is_file($file))
-		return __("Can't find file:", 'sociable') . " <kbd>$file</kbd>";
-	}
-
-
-	$header_filename = '../../themes/' . get_option('template') . '/header.php';
-	if (!file_exists($header_filename) or strpos(@file_get_contents($header_filename), 'wp_head()') === false)
-		return __("Your theme isn't set up for Sociable to load its style. Please edit <kbd>header.php</kbd> and add a line reading <kbd>&lt?php wp_head(); ?&gt;</kbd> before <kbd>&lt;/head&gt;</kbd> to fix this.", 'sociable');
-
-	chdir($cwd); // restore cwd
-
-	return false;
 }
 
 function sociable_meta() {
@@ -1030,9 +998,6 @@ function sociable_submenu() {
 		
 		sociable_message(__("Saved changes.", 'sociable'));
 	}
-
-	if ($str = sociable_upload_errors())
-		sociable_message("$str</p><p>" . __("In your plugins/sociable folder, you must have these files:", 'sociable') . ' <pre>' . implode("\n", $sociable_files) ); 
 	
 	// show active sites first and in order
 	$active_sites = get_option('sociable_active_sites');
@@ -1060,15 +1025,15 @@ function sociable_submenu() {
 	<h2><?php _e("Sociable Options", 'sociable'); ?></h2>
 	<table class="form-table">
 	<tr>
-		<th style="margin-bottom:0; border-bottom-width:0;"><?php _e("Sites", "sociable"); ?></th>
-		<td style="margin-bottom:0; border-bottom-width:0;"><?php _e("Drag and drop sites to reorder them. Only the sites you check will appear publicly.", 'sociable'); ?></td>
-	</tr>
-	<tr>
-		<td colspan="2">
+		<th>
+			<?php _e("Sites", "sociable"); ?>:<br/>
+			<small><?php _e("Check the sites you want to appear on your site. Drag and drop sites to reorder them.", 'sociable'); ?></small>
+		</th>
+		<td>
+			<div style="width: 100%; height: 100%">
 			<ul id="sociable_site_list">
 				<?php foreach (array_merge($active, $disabled) as $sitename=>$site) { ?>
-					<li style="font-size:10px;"
-						id="<?php echo $sitename; ?>"
+					<li id="<?php echo $sitename; ?>"
 						class="sociable_site <?php echo (in_array($sitename, $active_sites)) ? "active" : "inactive"; ?>">
 						<input
 							type="checkbox"
@@ -1079,19 +1044,20 @@ function sociable_submenu() {
 							<?php echo (in_array($sitename, $active_sites)) ? ' checked="checked"' : ''; ?>
 						/>
 						<img src="<?php echo $sociablepluginpath.'images/'.$site['favicon']; ?>" width="16" height="16" alt="" />
-						<?php print $sitename; ?>
+						<?php echo $sitename; ?>
 					</li>
 				<?php } ?>
 			</ul>
+			</div>
 			<input type="hidden" id="site_order" name="site_order" value="<?php echo join('|', array_keys($sociable_known_sites)) ?>" />
 		</td>
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
-			Tagline:
+			<?php _e("Tagline", "sociable"); ?>
 		</th>
 		<td>
-			<?php _e("Change the text displayed in front of the icons below. For complete customization, edit <kbd>sociable.css</kbd> in the Sociable plugin directory.", 'sociable'); ?><br/>
+			<?php _e("Change the text displayed in front of the icons below. For complete customization, copy the contents of <em>sociable.css</em> in the Sociable plugin directory to your theme's <em>style.css</em> and disable the use of the sociable stylesheet below.", 'sociable'); ?><br/>
 			<input size="80" type="text" name="tagline" value="<?php echo htmlspecialchars($tagline); ?>" />
 		</td>
 	</tr>
@@ -1108,6 +1074,7 @@ function sociable_submenu() {
 			<input type="checkbox" name="conditionals[is_category]"<?php echo ($conditionals['is_category']) ? ' checked="checked"' : ''; ?> /> <?php _e("Category archives", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_tag]"<?php echo ($conditionals['is_tag']) ? ' checked="checked"' : ''; ?> /> <?php _e("Tag listings", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_date]"<?php echo ($conditionals['is_date']) ? ' checked="checked"' : ''; ?> /> <?php _e("Date-based archives", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_author]"<?php echo ($conditionals['is_author']) ? ' checked="checked"' : ''; ?> /> <?php _e("Author archives", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_search]"<?php echo ($conditionals['is_search']) ? ' checked="checked"' : ''; ?> /> <?php _e("Search results", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_feed]"<?php echo ($conditionals['is_feed']) ? ' checked="checked"' : ''; ?> /> <?php _e("RSS feed items", 'sociable'); ?><br/>
 		</td>
@@ -1135,12 +1102,21 @@ function sociable_submenu() {
 			<span class="submit"><input name="restore" value="<?php _e("Restore Built-in Defaults", 'sociable'); ?>" type="submit"/></span>
 		</td>
 	</tr>
-	<tr>
-		<th colspan="2">
-			<?php _e('<a href="http://yoast.com/wordpress/sociable/">Sociable</a> is copyright 2006 by <a href="http://push.cx/">Peter Harkins</a> and has been maintained by <a href="http://yoast.com/">Joost de Valk</a> since 2008. It\'s released under the GNU GPL version 2. If you like Sociable, please send a link my way so other folks can find out about it, or <a href="http://yoast.com/donate/">donate a token of your appreciation</a>. If you have any problems or good ideas, <a href="http://yoast.com/contact/">contact me</a>.', 'sociable'); ?>
-		</th>
-	</tr>
 </table>
+
+<h2>Like this plugin?</h2>
+<p><?php _e('Why not do any of the following:','sociable'); ?></p>
+<ul>
+	<li><?php _e('Link to it so other folks can find out about it.','sociable'); ?></li>
+	<li><?php _e('<a href="http://wordpress.org/extend/plugins/sociable/">Give it a good rating</a> on WordPress.org.','sociable'); ?></li>
+	<li><?php _e('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2017947">Donate a token of your appreciation</a>.','sociable'); ?></li>
+</ul>
+<h2>Need support?</h2>
+<p><?php _e(' If you have any problems or good ideas, please talk about them in the <a href="http://wordpress.org/tags/sociable">Support forums</a>.', 'sociable'); ?></p>
+
+<h2>Credits</h2>
+<p><?php _e('<a href="http://yoast.com/wordpress/sociable/">Sociable</a> was originally developed by <a href="http://push.cx/">Peter Harkins</a> and has been maintained by <a href="http://yoast.com/">Joost de Valk</a> since the beginning of 2008. It\'s released under the GNU GPL version 2.','Sociable'); ?></p>
+
 </div>
 
 </form>
@@ -1171,7 +1147,6 @@ function sociable_filter_plugin_actions( $links, $file ){
 
 add_filter( 'plugin_action_links', 'sociable_filter_plugin_actions', 10, 2 );
 add_filter( 'ozh_adminmenu_icon', 'sociable_add_ozh_adminmenu_icon' );				
-
 
 if (get_option('sociable_usecss_set_once') != true) {
 	update_option('sociable_usecss', true);

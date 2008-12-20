@@ -21,7 +21,7 @@ span.sociable_tagline:hover span {
 }
 .sociable ul li {
 	background: none;
-	display: inline;
+	display: inline !important;
 	list-style-type: none;
 	margin: 0;
 	padding: 1px;
