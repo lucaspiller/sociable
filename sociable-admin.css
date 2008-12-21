@@ -1,4 +1,4 @@
-li {
+.sociablemenu li {
 	list-style-type: square;
 	margin-left: 20px;
 	padding-left: 5px;
@@ -14,7 +14,7 @@ li {
 	cursor: move;
 	float: left;
 	margin: 2px 2px 0 0;
-	width: 12.7em;
+	width: 13em;
 	height: 20px;
 	text-align: left;
 	font-size: 10px;
