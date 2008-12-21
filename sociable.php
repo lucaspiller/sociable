@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 3.0
+Version: 3.0.1
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -563,113 +563,6 @@ $sociable_known_sites = Array(
 	 ),
 );
 
-$sociable_files = Array(
-	'description_selection.js',
-	'sociable-admin.css',
-	'sociable.css',
-	'sociable.php',
-	'sociable-admin.css',
-	'wists.js',
-	'images/',
-	'images/barrapunto.png',
-	'images/blinkbits.png',
-	'images/blinklist.png',
-	'images/blogmarks.png',
-	'images/blogmemes.png',
-	'images/blogospherenews.gif',
-	'images/blogsvine.png',
-	'images/blogter.png',
-	'images/bluedot.png',
-	'images/bookmarkhu.png',
-	'images/bumpzee.png',
-	'images/co.mments.gif',
-	'images/connotea.png',
-	'images/delicious.png',
-	'images/delirious.png',
-	'images/designfloat.gif',
-	'images/digg.png',
-	'images/dotnetkicks.png',
-	'images/dzone.png',
-	'images/ekudos.gif',
-	'images/email.gif',
-	'images/facebook.png',
-	'images/fark.png',
-	'images/feedmelinks.png',
-	'images/fleck.gif',
-	'images/furl.png',
-	'images/geenredactie.png',
-	'images/globalgrind.gif',
-	'images/googlebookmark.png',
-	'images/gwar.gif',
-	'images/haohao.png',
-	'images/healthranker.gif',
-	'images/hemidemi.png',
-	'images/im.png',
-	'images/indianpad.png',
-	'images/kickit.png',
-	'images/kirtsy.gif',
-	'images/laaikit.png',
-	'images/leonaut.gif',
-	'images/linkagogo.png',
-	'images/linkarena.gif',
-	'images/linkedin.png',
-	'images/linkter.png',
-	'images/live.png',
-	'images/magnolia.png',
-	'images/meneame.gif',
-	'images/misterwong.gif',
-	'images/mixx.png',
-	'images/muti.png',
-	'images/myshare.png',
-	'images/myspace.png',
-	'images/n4g.gif',
-	'images/netvouz.png',
-	'images/newsvine.png',
-	'images/nujij.gif',
-	'images/ping.gif',
-	'images/plugim.png',
-	'images/pownce.gif',
-	'images/ppnow.png',
-	'images/print.gif',
-	'images/propeller.gif',
-	'images/ratimarks.png',	
-	'images/rec6.gif',
-	'images/reddit.png',
-	'images/salesmarks.gif',
-	'images/scoopeo.png',
-	'images/scuttle.png',
-	'images/segnalo.gif',
-	'images/shadows.png',
-	'images/simpy.png',
-	'images/slashdot.png',
-	'images/smarking.png',
-	'images/socialogs.gif',
-	'images/sphere.png',
-	'images/sphinn.gif',
-	'images/spurl.png',
-	'images/stumbleupon.png',
-	'images/symbaloo.png',
-	'images/taggly.png',
-	'images/tailrank.png',
-	'images/technorati.png',
-	'images/tipd.png',
-	'images/twitter.gif',
-	'images/tumblr.gif',
-	'images/upnews.gif',
-	'images/webnews.gif',
-	'images/webride.png',
-	'images/wikio.gif',
-	'images/wists.png',
-	'images/wykop.gif',
-	'images/yahoobuzz.gif',
-	'images/yahoomyweb.png',
-	'images/yiggit.png',
-	'jquery/',
-	'jquery/ui.core.js',
-	'jquery/ui.sortable.js',
-	'jquery/jquery.js',
-);
-
 // For maintaining backwards compatability
 if (!function_exists('strip_shortcodes')) {
 	function strip_shortcodes($content) {
@@ -944,7 +837,7 @@ add_action('wp_insert_post', 'sociable_insert_post');
 
 // The admin page
 function sociable_submenu() {
-	global $sociable_known_sites, $sociable_date, $sociable_files, $sociablepluginpath;
+	global $sociable_known_sites, $sociable_date, $sociablepluginpath;
 
 	// update options in db if requested
 	if (isset($_REQUEST['restore']) && $_REQUEST['restore']) {
