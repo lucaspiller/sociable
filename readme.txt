@@ -15,7 +15,7 @@ More info:
 
 * More info on [Sociable](http://yoast.com/wordpress/sociable/), with info on how to add sites to it, and how to integrate it into your WordPress in other ways.
 * Read more about [WordPress SEO](http://yoast.com/articles/wordpress-seo/) so you can get the most out of this plugin.
-* Check out the other [Wordpress plugins](http://yoast.com/wordpress/) by the same author.
+* Check out the other [Wordpress plugins](http://yoast.com/wordpress/) by the same author, and read his blog: [Yoast](http://yoast.com).
 
 **Changelog**
 
@@ -76,8 +76,4 @@ If you find any bugs or have any ideas, please mail me.
 
 **Advanced Users**
 
-Sociable hooks `the_content()` and `the_excerpt()` to display without requiring theme editing. To heavily customize the display, use the admin panel to turn off the display on all pages, then add calls to your theme files:
-
-This is optional extra customization for advanced users:
-`&lt;?php if (function_exists(&#x27;sociable_html&#x27;)) { print sociable_html(); } ?&gt; // all active sites`
-`&lt;?php if (function_exists(&#x27;sociable_html&#x27;)) { print sociable_html(Array(&quot;Reddit&quot;, &quot;del.icio.us&quot;)); } ?&gt; // only these sites if they are active`
+For advanced use of the plugin, see the [Sociable](http://yoast.com/wordpress/sociable/) page on [Yoast](http://yoast.com/)
