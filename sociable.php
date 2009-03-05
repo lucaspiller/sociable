@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 3.0.2
+Version: 3.0.3
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -908,7 +908,7 @@ function sociable_submenu() {
 	$usetargetblank = get_option('sociable_usetargetblank');
 	// display options
 ?>
-<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
+<form action="<?php echo attribute_escape( $_SERVER['REQUEST_URI'] ); ?>" method="post">
 <?php
 	if ( function_exists('wp_nonce_field') )
 		wp_nonce_field('sociable-config');
@@ -951,7 +951,7 @@ function sociable_submenu() {
 		</th>
 		<td>
 			<?php _e("Change the text displayed in front of the icons below. For complete customization, copy the contents of <em>sociable.css</em> in the Sociable plugin directory to your theme's <em>style.css</em> and disable the use of the sociable stylesheet below.", 'sociable'); ?><br/>
-			<input size="80" type="text" name="tagline" value="<?php echo htmlspecialchars($tagline); ?>" />
+			<input size="80" type="text" name="tagline" value="<?php echo attribute_escape($tagline); ?>" />
 		</td>
 	</tr>
 	<tr>
