@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.7.1
-stable tag: 3.0.3
+stable tag: 3.0.4
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
 
@@ -19,6 +19,8 @@ More info:
 
 **Changelog**
 
+* 3.0.4 Added Netvibes
+* 3.0.3 Security enhancements, thx to Mark Jaquith
 * 3.0.2 Fixed CSS bug introduced in 3.0
 * 3.0.1 Removed some other, now obsolete, code, reducing the code size by another 4KB.
 * 3.0 Fixed IE bug in admin. Cleaned up Admin Area and changed support messages. Removed directory checking for all images (speeds up incredibly). Made display: inline !important to prevent vertical icon display. Updated Wykop icon.
