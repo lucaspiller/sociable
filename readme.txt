@@ -14,7 +14,7 @@ Automatically add links to your favorite social bookmarking sites on your posts,
 More info:
 
 * More info on [Sociable](http://yoast.com/wordpress/sociable/), with info on how to add sites to it, and how to integrate it into your WordPress in other ways.
-* Read more about [WordPress SEO](http://yoast.com/articles/wordpress-seo/) so you can get the most out of this plugin.
+* Check out the authors [WordPress Hosting](http://yoast.com/wordpress-hosting/) experience. Good hosting is hard to come by, but it doesn't have to be expensive, Joost tells you why!
 * Check out the other [Wordpress plugins](http://yoast.com/wordpress/) by the same author, and read his blog: [Yoast](http://yoast.com).
 
 **Changelog**

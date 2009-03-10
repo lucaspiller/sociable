@@ -765,9 +765,9 @@ function sociable_admin_head() {
 			echo '<script language="JavaScript" type="text/javascript" src="'.$sociablepluginpath.'jquery/jquery.js"></script>';
 		} 
 	?>
-	<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.core.js"></script>
-	<script language="JavaScript" type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.sortable.js"></script>
-	<script language="JavaScript" type="text/javascript"><!--
+	<script type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.core.js"></script>
+	<script type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.sortable.js"></script>
+	<script type="text/javascript"><!--
 	jQuery(document).ready(function(){
 	  jQuery("#sociable_site_list").sortable({});
 	});
