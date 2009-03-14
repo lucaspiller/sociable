@@ -39,16 +39,19 @@ if (!class_exists('YoastPosts')) {
 				echo $before_widget.$before_title.$widget_name.$after_title;
 				echo '<a href="http://yoast.com/"><img style="margin: 0 0 5px 5px;" src="http://yoast.com/images/yoast-logo-rss.png" align="right" alt="Yoast"/></a>';
 				include_once(ABSPATH . WPINC . '/rss.php');
-				$rss = fetch_rss('http://feeds.feedburner.com/joostdevalk');
-				$items = array_slice($rss->items, 0, 2);
-				?>
-				<?php if (empty($items)) echo '<li>No items</li>';
-				else
-				foreach ( $items as $item ) : ?>
-				<a style="font-size: 14px; font-weight:bold;" href='<?php echo $item['link']; ?>' title='<?php echo $item['title']; ?>'><?php echo $item['title']; ?></a><br/> 
-				<p style="font-size: 10px; color: #aaa;"><?php echo date('j F Y',strtotime($item['pubdate'])); ?></p>
-				<p><?php echo substr($item['summary'],0,strpos($item['summary'], "This is a post from")); ?></p>
-				<?php endforeach;
+				$rss = fetch_rss('http://feeds2.feedburner.com/joostdevalk');
+				if ($rss) {
+					$items = array_slice($rss->items, 0, 2);
+					if (empty($items)) 
+						echo '<li>No items</li>';
+					else {
+						foreach ( $items as $item ) { ?>
+						<a style="font-size: 14px; font-weight:bold;" href='<?php echo $item['link']; ?>' title='<?php echo $item['title']; ?>'><?php echo $item['title']; ?></a><br/> 
+						<p style="font-size: 10px; color: #aaa;"><?php echo date('j F Y',strtotime($item['pubdate'])); ?></p>
+						<p><?php echo substr($item['summary'],0,strpos($item['summary'], "This is a post from")); ?></p>
+						<?php }
+					}
+				}
 				echo $after_widget;
 			}
 		}

@@ -3,12 +3,12 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 3.0.4
+Version: 3.0.5
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
 Copyright 2006 Peter Harkins (ph@malaprop.org)
-Copyright 2008 Joost de Valk (joost@joostdevalk.nl)
+Copyright 2008-2009 Joost de Valk (joost@yoast.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -231,6 +231,11 @@ $sociable_known_sites = Array(
 	'Hemidemi' => Array(
 		'favicon' => 'hemidemi.png',
 		'url' => 'http://www.hemidemi.com/user_bookmark/new?title=TITLE&amp;url=PERMALINK',
+	),
+
+	'Identi.ca' => Array(
+		'favicon' => 'identica.png',
+		'url' => 'http://identi.ca/notice/new?status_textarea=PERMALINK',
 	),
 
 	'IndianPad' => Array(
