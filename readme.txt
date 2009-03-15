@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.2
 Tested up to: 2.7.1
-Stable tag: 3.0.5
+Stable tag: 3.0.6
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
 
@@ -19,6 +19,7 @@ More info:
 
 **Changelog**
 
+* 3.0.6 Fixed xhtml bug in Netvibes integration and added Bitacoras
 * 3.0.5 Added Identi.ca and fixed a bug in Yoast Posts widget
 * 3.0.4 Added Netvibes
 * 3.0.3 Security enhancements, thx to Mark Jaquith

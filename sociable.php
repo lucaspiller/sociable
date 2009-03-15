@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 3.0.5
+Version: 3.0.6
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -45,6 +45,11 @@ $sociable_known_sites = Array(
 	'BarraPunto' => Array(
 		'favicon' => 'barrapunto.png',
 		'url' => 'http://barrapunto.com/submit.pl?subj=TITLE&amp;story=PERMALINK',
+	),
+	
+	'Bitacoras.com' => Array(
+		'favicon' => 'bitacoras.gif',
+		'url' => 'http://bitacoras.com/anotaciones/PERMALINK',
 	),
 	
 	'blinkbits' => Array(
@@ -340,7 +345,7 @@ $sociable_known_sites = Array(
 	
 	'Netvibes' => Array(
 		'favicon' => 'netvibes.png',
-		'url' =>	'http://www.netvibes.com/share?title=TITLE&url=PERMALINK',
+		'url' =>	'http://www.netvibes.com/share?title=TITLE&amp;url=PERMALINK',
 	),
 		
 	'NewsVine' => Array(
