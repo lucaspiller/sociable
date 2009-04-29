@@ -2,8 +2,8 @@
 /*
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
-Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup.
-Version: 3.0.6
+Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
+Version: 3.1
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -25,12 +25,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// Pre-2.6 compatibility
-if ( !defined('WP_CONTENT_URL') )
-    define( 'WP_CONTENT_URL', get_option('siteurl') . '/wp-content');
-if ( !defined('WP_CONTENT_DIR') )
-    define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
- 
 // Guess the location
 $sociablepluginpath = WP_CONTENT_URL.'/plugins/'.plugin_basename(dirname(__FILE__)).'/';
 
@@ -48,7 +42,7 @@ $sociable_known_sites = Array(
 	),
 	
 	'Bitacoras.com' => Array(
-		'favicon' => 'bitacoras.gif',
+		'favicon' => 'bitacoras.png',
 		'url' => 'http://bitacoras.com/anotaciones/PERMALINK',
 	),
 	
@@ -93,7 +87,7 @@ $sociable_known_sites = Array(
 	),
 
 	'Blogosphere News' => Array(
-		'favicon' => 'blogospherenews.gif',
+		'favicon' => 'blogospherenews.png',
 		'url' => 'http://www.blogospherenews.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
@@ -115,7 +109,6 @@ $sociable_known_sites = Array(
 	'Book.mark.hu' => Array(
 		'favicon' => 'bookmarkhu.png',
 		'url' => 'http://book.mark.hu/bookmarks.php/?action=add&amp;address=PERMALINK%2F&amp;title=TITLE',
-                'description' => 'description',
 	),
 
 	'Bumpzee' => Array(
@@ -124,7 +117,7 @@ $sociable_known_sites = Array(
 	),
 
 	'co.mments' => Array(
-		'favicon' => 'co.mments.gif',
+		'favicon' => 'co.mments.png',
 		'url' => 'http://co.mments.com/track?url=PERMALINK&amp;title=TITLE',
 	),
 
@@ -145,7 +138,7 @@ $sociable_known_sites = Array(
 	),
 
 	'Design Float' => Array(
-		'favicon' => 'designfloat.gif',
+		'favicon' => 'designfloat.png',
 		'url' => 'http://www.designfloat.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
@@ -158,17 +151,15 @@ $sociable_known_sites = Array(
 	'DotNetKicks' => Array(
 		'favicon' => 'dotnetkicks.png',
 		'url' => 'http://www.dotnetkicks.com/kick/?url=PERMALINK&amp;title=TITLE',
-		'description' => 'description',
 	),
 
 	'DZone' => Array(
 		'favicon' => 'dzone.png',
 		'url' => 'http://www.dzone.com/links/add.html?url=PERMALINK&amp;title=TITLE',
-		'description' => 'description',
 	),
 
 	'eKudos' => Array(
-		'favicon' => 'ekudos.gif',
+		'favicon' => 'ekudos.png',
 		'url' => 'http://www.ekudos.nl/artikel/nieuw?url=PERMALINK&amp;title=TITLE',
 	),
 
@@ -199,7 +190,7 @@ $sociable_known_sites = Array(
 	),
 
 	'Fleck' => Array(
-		'favicon' => 'fleck.gif',
+		'favicon' => 'fleck.png',
 		'url' => 'http://extension.fleck.com/?v=b.0.804&amp;url=PERMALINK',
 	),
 
@@ -209,7 +200,7 @@ $sociable_known_sites = Array(
 	),
 	
 	'Global Grind' => Array (
-		'favicon' => 'globalgrind.gif',
+		'favicon' => 'globalgrind.png',
 		'url' => 'http://globalgrind.com/submission/submit.aspx?url=PERMALINK&amp;type=Article&amp;title=TITLE'
 	),
 	
@@ -219,7 +210,7 @@ $sociable_known_sites = Array(
 	),
 	
 	'Gwar' => Array(
-		'favicon' => 'gwar.gif',
+		'favicon' => 'gwar.png',
 		'url' => 'http://www.gwar.pl/DodajGwar.html?u=PERMALINK',
 	),
 
@@ -229,7 +220,7 @@ $sociable_known_sites = Array(
 	),
 
 	'HealthRanker' => Array(
-		'favicon' => 'healthranker.gif',
+		'favicon' => 'healthranker.png',
 		'url' => 'http://healthranker.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
@@ -259,7 +250,7 @@ $sociable_known_sites = Array(
 	),
 
 	'Kirtsy' => Array(
-		'favicon' => 'kirtsy.gif',
+		'favicon' => 'kirtsy.png',
 		'url' => 'http://www.kirtsy.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
@@ -269,12 +260,12 @@ $sociable_known_sites = Array(
 	),
 
 	'Leonaut' => Array(
-		'favicon' => 'leonaut.gif',
+		'favicon' => 'leonaut.png',
 		'url' => 'http://www.leonaut.com/submit.php?url=PERMALINK&amp;title=TITLE'
 	),
 	
 	'LinkArena' => Array(
-		'favicon' => 'linkarena.gif',
+		'favicon' => 'linkarena.png',
 		'url' => 'http://linkarena.com/bookmarks/addlink/?url=PERMALINK&amp;title=TITLE',
 	),
 	
@@ -304,17 +295,17 @@ $sociable_known_sites = Array(
 	),
 
 	'Meneame' => Array(
-		'favicon' => 'meneame.gif',
+		'favicon' => 'meneame.png',
 		'url' => 'http://meneame.net/submit.php?url=PERMALINK',
 	),
 	
 	'MisterWong' => Array(
-		'favicon' => 'misterwong.gif',
+		'favicon' => 'misterwong.png',
 		'url' => 'http://www.mister-wong.com/addurl/?bm_url=PERMALINK&amp;bm_description=TITLE&amp;plugin=soc',
 	),
 
 	'MisterWong.DE' => Array(
-		'favicon' => 'misterwong.gif',
+		'favicon' => 'misterwong.png',
 		'url' => 'http://www.mister-wong.de/addurl/?bm_url=PERMALINK&amp;bm_description=TITLE&amp;plugin=soc',
 	),
 	
@@ -339,7 +330,7 @@ $sociable_known_sites = Array(
 	),
 
 	'N4G' => Array(
-		'favicon' => 'n4g.gif',
+		'favicon' => 'n4g.png',
 		'url' => 'http://www.n4g.com/tips.aspx?url=PERMALINK&amp;title=TITLE',
 	),
 	
@@ -359,12 +350,12 @@ $sociable_known_sites = Array(
 	),
 
 	'NuJIJ' => Array(
-		'favicon' => 'nujij.gif',
+		'favicon' => 'nujij.png',
 		'url' => 'http://nujij.nl/jij.lynkx?t=TITLE&amp;u=PERMALINK',
 	),
 	
 	'Ping.fm' => Array(
-		'favicon' => 'ping.gif',
+		'favicon' => 'ping.png',
 		'url' => 'http://ping.fm/ref/?link=PERMALINK&amp;title=TITLE',
 	),
 
@@ -374,7 +365,7 @@ $sociable_known_sites = Array(
 	),
 
 	'Pownce' => Array(
-		'favicon' => 'pownce.gif',
+		'favicon' => 'pownce.png',
 		'url' => 'http://pownce.com/send/link/?url=PERMALINK&amp;note_body=TITLE&amp;note_to=all'
 	),
 
@@ -390,7 +381,7 @@ $sociable_known_sites = Array(
 	),
 	
 	'Propeller' => Array(
-		'favicon' => 'propeller.gif',
+		'favicon' => 'propeller.png',
 		'url' => 'http://www.propeller.com/submit/?url=PERMALINK',
 	),
 
@@ -400,7 +391,7 @@ $sociable_known_sites = Array(
 	),
 
 	'Rec6' => Array(
-		'favicon' => 'rec6.gif',
+		'favicon' => 'rec6.png',
 		'url' => 'http://www.syxt.com.br/rec6/link.php?url=PERMALINK&amp;=TITLE',
 	),
 
@@ -410,7 +401,7 @@ $sociable_known_sites = Array(
 	),
 
 	'SalesMarks' => Array(
-		'favicon' => 'salesmarks.gif',
+		'favicon' => 'salesmarks.png',
 		'url' => 'http://salesmarks.com/submit?edit[url]=PERMALINK&amp;edit[title]=TITLE',
 	),
 	
@@ -426,7 +417,7 @@ $sociable_known_sites = Array(
 	),
 
 	'Segnalo' => Array(
-		'favicon' => 'segnalo.gif',
+		'favicon' => 'segnalo.png',
 		'url' => 'http://segnalo.alice.it/post.html.php?url=PERMALINK&amp;title=TITLE',
 	),
 
@@ -451,7 +442,7 @@ $sociable_known_sites = Array(
 	),
 
 	'Socialogs' => Array(
-		'favicon' => 'socialogs.gif',
+		'favicon' => 'socialogs.png',
 		'url' => 'http://socialogs.com/add_story.php?story_url=PERMALINK&amp;story_title=TITLE',
 	),
 	
@@ -466,7 +457,7 @@ $sociable_known_sites = Array(
 	),
 
 	'Sphinn' => Array(
-		'favicon' => 'sphinn.gif',
+		'favicon' => 'sphinn.png',
 		'url' => 'http://sphinn.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
@@ -506,22 +497,22 @@ $sociable_known_sites = Array(
 	),
 	
 	'Tumblr' => Array(
-		'favicon' => 'tumblr.gif',
+		'favicon' => 'tumblr.png',
 		'url' => 'http://www.tumblr.com/share?v=3&amp;u=PERMALINK&amp;t=TITLE&amp;s=',
 	),
 		
 	'TwitThis' => Array(
-		'favicon' => 'twitter.gif',
+		'favicon' => 'twitter.png',
 		'url' => 'http://twitter.com/home?status=PERMALINK',
 	),
 
 	'Upnews' => Array(
-			'favicon' => 'upnews.gif',
+			'favicon' => 'upnews.png',
 			'url' => 'http://www.upnews.it/submit?url=PERMALINK&amp;title=TITLE',
 	),
 	
 	'Webnews.de' => Array(
-        'favicon' => 'webnews.gif',
+        'favicon' => 'webnews.png',
         'url' => 'http://www.webnews.de/einstellen?url=PERMALINK&amp;title=TITLE',
     ),
 
@@ -531,17 +522,17 @@ $sociable_known_sites = Array(
 	),
 
 	'Wikio' => Array(
-		'favicon' => 'wikio.gif',
+		'favicon' => 'wikio.png',
 		'url' => 'http://www.wikio.com/vote?url=PERMALINK',
 	),
 
 	'Wikio FR' => Array(
-		'favicon' => 'wikio.gif',
+		'favicon' => 'wikio.png',
 		'url' => 'http://www.wikio.fr/vote?url=PERMALINK',
 	),
 
 	'Wikio IT' => Array(
-		'favicon' => 'wikio.gif',
+		'favicon' => 'wikio.png',
 		'url' => 'http://www.wikio.it/vote?url=PERMALINK',
 	),
 	
@@ -552,17 +543,17 @@ $sociable_known_sites = Array(
 	),
 
 	'Wykop' => Array(
-		'favicon' => 'wykop.gif',
+		'favicon' => 'wykop.png',
 		'url' => 'http://www.wykop.pl/dodaj?url=PERMALINK',
 	),
 
 	'Xerpi' => Array(
-		'favicon' => 'xerpi.gif',
+		'favicon' => 'xerpi.png',
 		'url' => 'http://www.xerpi.com/block/add_link_from_extension?url=PERMALINK&amp;title=TITLE',
 	),
 
 	'YahooBuzz' => Array(
-		'favicon' => 'yahoobuzz.gif',
+		'favicon' => 'yahoobuzz.png',
 		'url' => 'http://buzz.yahoo.com/submit/?submitUrl=PERMALINK&amp;submitHeadline=TITLE&amp;submitSummary=EXCERPT&amp;submitCategory=science&amp;submitAssetType=text',
 		'description' => 'Yahoo! Buzz',
 	),
@@ -597,8 +588,11 @@ function sociable_html($display=Array()) {
 
 	$html = "";
 
-	$imagepath = $sociablepluginpath.'images/';
-
+	if (get_option('sociable_imagedir') == "")
+		$imagepath = $sociablepluginpath.'images/';
+	else
+		$imagepath = get_option('sociable_imagedir');
+		
 	// if no sites are specified, display all active
 	// have to check $active_sites has content because WP
 	// won't save an empty array as an option
@@ -696,22 +690,10 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
 		} elseif ((is_feed() and $conditionals['is_feed'])) {
 			$sociable_html = sociable_html();
 			$sociable_html = strip_tags($sociable_html,"<a><img>");
-			$sociable_html = str_replace('<a rel="nofollow" title="Print this article!"><img src="'.$imagepath.'printer.png" title="Print this article!" alt="Print this article!" class="sociable-hovers" /></a>','',$sociable_html);
+			$sociable_html = str_replace('<a rel="nofollow" title="'.__('Print this article!','sociable').'"><img src="'.$imagepath.'printer.png" title="'.__('Print this article!','sociable').'" alt="'.__('Print this article!','sociable').'" class="sociable-hovers" /></a>','',$sociable_html);
 			$content .= $sociable_html . "<br/><br/>";
 		}
 		return $content;
-	}
-}
-
-// Hook wp_head to add css
-add_action('wp_head', 'sociable_wp_head');
-function sociable_wp_head() {
-	global $sociablepluginpath;
-	if (in_array('Wists', get_option('sociable_active_sites'))) {
-		echo '<script language="JavaScript" type="text/javascript" src="' . $sociablepluginpath . 'wists.js"></script>'."\n";
-	}
-	if (get_option('sociable_usecss') == true) {
-		echo '<link rel="stylesheet" type="text/css" media="screen" href="' . $sociablepluginpath . 'sociable.css" />'."\n";
 	}
 }
 
@@ -765,38 +747,40 @@ function sociable_admin_menu() {
 	add_submenu_page('options-general.php', 'Sociable', 'Sociable', 8, 'Sociable', 'sociable_submenu');
 }
 
-// Admin page header
-add_action('admin_head', 'sociable_admin_head');
-function sociable_admin_head() {
+function sociable_admin_js() {
 	if (isset($_GET['page']) && $_GET['page'] == 'Sociable') {
-		global $sociablepluginpath, $wp_version;
-
-		if ($wp_version < "2.6") { 
-			echo '<script language="JavaScript" type="text/javascript" src="'.$sociablepluginpath.'jquery/jquery.js"></script>';
-		} 
-	?>
-	<script type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.core.js"></script>
-	<script type="text/javascript" src="<?php echo $sociablepluginpath; ?>jquery/ui.sortable.js"></script>
-	<script type="text/javascript"><!--
-	jQuery(document).ready(function(){
-	  jQuery("#sociable_site_list").sortable({});
-	});
-	/* make checkbox action prettier */
-	function toggle_checkbox(id) {
-		var checkbox = document.getElementById(id);
-
-		checkbox.checked = !checkbox.checked;
-		if (checkbox.checked)
-			checkbox.parentNode.className = 'active';
-		else
-			checkbox.parentNode.className = 'inactive';
-	}
-	--></script>
-
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $sociablepluginpath; ?>sociable-admin.css" />
-<?php
+		global $sociablepluginpath;
+		
+		wp_enqueue_script('jquery'); 
+		wp_enqueue_script('jquery-ui-core'); 
+		wp_enqueue_script('jquery-ui-sortable'); 
+		wp_enqueue_script('sociable-js',$sociablepluginpath.'sociable-admin.js',array('jquery','jquery-ui-core','jquery-ui-sortable')); 
 	}
 }
+add_action('wp_print_scripts', 'sociable_admin_js');
+
+function sociable_admin_css() {
+	global $sociablepluginpath;
+	if (isset($_GET['page']) && $_GET['page'] == 'Sociable')
+		wp_enqueue_style('sociablecss',$sociablepluginpath.'sociable-admin.css');
+}
+add_action('wp_print_styles', 'sociable_admin_css');
+
+function sociable_js() {
+	if (in_array('Wists', get_option('sociable_active_sites'))) {
+		global $sociablepluginpath;
+		wp_enqueue_script('sociable-wists',$sociablepluginpath.'wists.js'); 
+	}	
+}
+add_action('wp_print_scripts', 'sociable_js');
+
+function sociable_css() {
+	if (get_option('sociable_usecss') == true) {
+		global $sociablepluginpath;
+		wp_enqueue_script('sociable-style',$sociablepluginpath.'sociable.css');
+	}
+}
+add_action('wp_print_styles', 'sociable_css');
 
 function sociable_message($message) {
 	echo "<div id=\"message\" class=\"updated fade\"><p>$message</p></div>\n";
@@ -810,37 +794,13 @@ function sociable_meta() {
 		$sociableoff = true;
 	}
 	?>
-	<input type="checkbox" name="sociableoff" <?php if ($sociableoff) { echo 'checked="checked"'; } ?>/> Sociable disabled?
+	<input type="checkbox" name="sociableoff" <?php if ($sociableoff) { echo 'checked="checked"'; } ?>/> <?php _e('Sociable disabled?','sociable') ?>
 	<?php
 }
 
-function sociable_option() {
-	global $post;
-	$sociableoff = false;
-	$sociableoffmeta = get_post_meta($post->ID,'sociableoff',true);
-	if ($sociableoffmeta == "true") {
-		$sociableoff = true;
-	}
-	if ( current_user_can('edit_posts') ) { ?>
-	<fieldset id="sociableoption" class="dbx-box">
-	<h3 class="dbx-handle">Sociable</h3>
-	<div class="dbx-content">
-		<input type="checkbox" name="sociableon" <?php if ($sociableoff) { echo 'checked="checked"'; } ?>/> Sociable disabled?
-	</div>
-	</fieldset>
-	<?php 
-	}
-}
-
 function sociable_meta_box() {
-	// Check whether the 2.5 function add_meta_box exists, and if it doesn't use 2.3 functions.
-	if ( function_exists('add_meta_box') ) {
-		add_meta_box('sociable','Sociable','sociable_meta','post');
-		add_meta_box('sociable','Sociable','sociable_meta','page');
-	} else {
-		add_action('dbx_post_sidebar', 'sociable_option');
-		add_action('dbx_page_sidebar', 'sociable_option');
-	}
+	add_meta_box('sociable','Sociable','sociable_meta','post');
+	add_meta_box('sociable','Sociable','sociable_meta','page');
 }
 add_action('admin_menu', 'sociable_meta_box');
 
@@ -898,6 +858,8 @@ function sociable_submenu() {
 			$_REQUEST['tagline'] = "";
 		update_option('sociable_tagline', $_REQUEST['tagline']);
 
+		update_option('sociable_imagedir', $_REQUEST['imagedir']);
+
 		if (!$_REQUEST['usecss'])
 			$usecss = false;
 		else
@@ -918,9 +880,11 @@ function sociable_submenu() {
 
 	// load options from db to display
 	$tagline 		= stripslashes(get_option('sociable_tagline'));
+	$imagedir 		= stripslashes(get_option('sociable_imagedir'));
 	$conditionals 	= get_option('sociable_conditionals');
 	$updated 		= get_option('sociable_updated');
 	$usetargetblank = get_option('sociable_usetargetblank');
+	
 	// display options
 ?>
 <form action="<?php echo attribute_escape( $_SERVER['REQUEST_URI'] ); ?>" method="post">
@@ -997,6 +961,15 @@ function sociable_submenu() {
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
+			<?php _e("Image directory", "sociable"); ?>
+		</th>
+		<td>
+			<?php _e("Sociable comes with a nice set of images, if you want to replace those with your own, enter the URL where you've put them in here, and make sure they have the same name as the ones that come with Sociable.", 'sociable'); ?><br/>
+			<input size="80" type="text" name="imagedir" value="<?php echo attribute_escape($imagedir); ?>" />
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" valign="top">
 			<?php _e("Open in new window:", "sociable"); ?>
 		</th>
 		<td>
@@ -1012,23 +985,21 @@ function sociable_submenu() {
 	</tr>
 </table>
 
-<h2>Like this plugin?</h2>
+<h2><?php _e('Like this plugin?','sociable'); ?></h2>
 <p><?php _e('Why not do any of the following:','sociable'); ?></p>
 <ul class="sociablemenu">
 	<li><?php _e('Link to it so other folks can find out about it.','sociable'); ?></li>
 	<li><?php _e('<a href="http://wordpress.org/extend/plugins/sociable/">Give it a good rating</a> on WordPress.org.','sociable'); ?></li>
 	<li><?php _e('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2017947">Donate a token of your appreciation</a>.','sociable'); ?></li>
 </ul>
-<h2>Need support?</h2>
-<p><?php _e(' If you have any problems or good ideas, please talk about them in the <a href="http://wordpress.org/tags/sociable">Support forums</a>.', 'sociable'); ?></p>
+<h2><?php _e('Need support?','sociable'); ?></h2>
+<p><?php _e('If you have any problems or good ideas, please talk about them in the <a href="http://wordpress.org/tags/sociable">Support forums</a>.', 'sociable'); ?></p>
 
-<h2>Credits</h2>
+<h2><?php _e('Credits','sociable'); ?></h2>
 <p><?php _e('<a href="http://yoast.com/wordpress/sociable/">Sociable</a> was originally developed by <a href="http://push.cx/">Peter Harkins</a> and has been maintained by <a href="http://yoast.com/">Joost de Valk</a> since the beginning of 2008. It\'s released under the GNU GPL version 2.','Sociable'); ?></p>
 
 </div>
-
 </form>
-
 <?php
 }
 
@@ -1042,7 +1013,7 @@ function sociable_add_ozh_adminmenu_icon( $hook ) {
 }
 
 function sociable_filter_plugin_actions( $links, $file ){
-	//Static so we don't call plugin_basename on every plugin row.
+	// Static so we don't call plugin_basename on every plugin row.
 	static $this_plugin;
 	if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
 	
