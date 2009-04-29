@@ -9,7 +9,7 @@ Stable tag: 3.1
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. WordPress 2.6 or above required!
 
 == Description ==
-Automatically add links to your favorite social bookmarking sites on your posts, pages and in your RSS feed. You can choose from 99 different social bookmarking sites!
+Automatically add links to your favorite social bookmarking sites on your posts, pages and in your RSS feed. You can choose from 99 different social bookmarking sites! WordPress 2.6 or above is required, if you use an older version, please download [this version,](http://downloads.wordpress.org/plugin/sociable.3.0.6.zip), please keep in mind that version is not maintained.
 
 More info:
 
