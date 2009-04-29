@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.6
 Tested up to: 2.7.1
-Stable tag: 3.1
+Stable tag: 3.1.1
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. WordPress 2.6 or above required!
 
@@ -19,6 +19,7 @@ More info:
 
 **Changelog**
 
+* 3.1.1 Fixed bug with stylesheet introduced in 3.1
 * 3.1 Converted all images to PNG, cleaned up usage of javascript in the backend and switched to the jquery library that comes with WordPress, allowed for usage of an external image directory, removed pre 2.6 compatibility fixes. 
 * 3.0.6 Fixed xhtml bug in Netvibes integration and added Bitacoras
 * 3.0.5 Added Identi.ca and fixed a bug in Yoast Posts widget
