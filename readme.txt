@@ -22,7 +22,7 @@ More info:
 * 3.2
 	This is a MAJOR update to Sociable. It fixes a few bugs, cleans up (or out, actually) a lot of sites that have gone away, updates others to include the excerpt, adds a fantastic new printing and PDF button, an RSS button, and a bunch of new sites. 
 	
-	Major Thanks to Jean Paul of [iPhone Club](http://www.iphoneclub.nl/) for all his work in looking up all the sites.
+	Major Thanks to Jean-Paul of [iPhoneclub](http://www.iphoneclub.nl/) for all his work in looking up all the sites.
 	
 	The full list of changes:
  	* Restored sociable-admin.js, as it got accidentally removed.
