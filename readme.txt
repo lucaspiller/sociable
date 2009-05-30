@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.6
 Tested up to: 2.7.1
-Stable tag: 3.1.1
+Stable tag: 3.2
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. WordPress 2.6 or above required!
 
@@ -19,6 +19,57 @@ More info:
 
 **Changelog**
 
+* 3.2
+	This is a MAJOR update to Sociable. It fixes a few bugs, cleans up (or out, actually) a lot of sites that have gone away, updates others to include the excerpt, adds a fantastic new printing and PDF button, an RSS button, and a bunch of new sites. 
+	
+	Major Thanks to Jean Paul of [iPhone Club](http://www.iphoneclub.nl/) for all his work in looking up all the sites.
+	
+	The full list of changes:
+ 	* Restored sociable-admin.js, as it got accidentally removed.
+	* Added class="sociablefirst" to the first site in the list and class="sociablelast" to the last one
+	* Added:
+		* An RSS button, which links to your sites RSS feed
+		* Printfriendly.com for both printing and creating a PDF, replacing the original "Print" function, which didn't work from RSS
+		* Current
+		* FriendFeed
+		* MSN Reporter.nl 
+		* FS Daily
+		* Hello TXT
+	* Removed the following sites that were no longer working or active:
+		* BlinkBits
+		* Blogmemes.cn, .net, .jp
+		* Blogsvine
+		* Book.mark.hu
+		* Bumpzee
+		* Del.irio.us
+		* Feed Me Links
+		* Furl (replaced by Diigo)
+		* GeenRedactie
+		* Kick.ie
+		* Leonaut
+		* Magnolia
+		* Plug IM
+		* Pownce
+		* Salesmarks
+		* Scuttle
+		* Shadows
+		* Smarking
+		* Spurl
+		* Taggly
+		* Tailrank
+		* Tumblr (due to the change to a POST API, which we, unfortunately, can't support with Sociable)
+	* Updated the following sites to include the excerpt when submitting:
+		* Connotea
+		* Delicious
+		* Digg
+		* Ekudos
+		* Google Bookmarks
+		* NuJij
+		* Ping.fm
+	* Otherwise updated:
+		* Google Bookmarks (new icon)
+		* Fleck (New URL)
+		* Rec6 (new URL)
 * 3.1.1 Fixed bug with stylesheet introduced in 3.1
 * 3.1 Converted all images to PNG, cleaned up usage of javascript in the backend and switched to the jquery library that comes with WordPress, allowed for usage of an external image directory, removed pre 2.6 compatibility fixes. 
 * 3.0.6 Fixed xhtml bug in Netvibes integration and added Bitacoras

@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
-Version: 3.1.1
+Version: 3.2
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -46,19 +46,9 @@ $sociable_known_sites = Array(
 		'url' => 'http://bitacoras.com/anotaciones/PERMALINK',
 	),
 	
-	'blinkbits' => Array(
-		'favicon' => 'blinkbits.png',
-		'url' => 'http://www.blinkbits.com/bookmarklets/save.php?v=1&amp;source_url=PERMALINK&amp;title=TITLE&amp;body=TITLE',
-	),
-
 	'BlinkList' => Array(
 		'favicon' => 'blinklist.png',
 		'url' => 'http://www.blinklist.com/index.php?Action=Blink/addblink.php&amp;Url=PERMALINK&amp;Title=TITLE',
-	),
-
-	'BlogMemes' => Array(
-		'favicon' => 'blogmemes.png',
-		'url' => 'http://www.blogmemes.net/post.php?url=PERMALINK&amp;title=TITLE',
 	),
 
 	'BlogMemes Fr' => Array(
@@ -71,16 +61,6 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.blogmemes.com/post.php?url=PERMALINK&amp;title=TITLE',
 	),
 
-	'BlogMemes Cn' => Array(
-		'favicon' => 'blogmemes.png',
-		'url' => 'http://www.blogmemes.cn/post.php?url=PERMALINK&amp;title=TITLE',
-	),
-
-	'BlogMemes Jp' => Array(
-		'favicon' => 'blogmemes.png',
-		'url' => 'http://www.blogmemes.jp/post.php?url=PERMALINK&amp;title=TITLE',
-	),
-
 	'blogmarks' => Array(
 		'favicon' => 'blogmarks.png',
 		'url' => 'http://blogmarks.net/my/new.php?mini=1&amp;simple=1&amp;url=PERMALINK&amp;title=TITLE',
@@ -91,11 +71,6 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.blogospherenews.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
 
-	'Blogsvine' => Array(
-		'favicon' => 'blogsvine.png',
-		'url' => 'http://blogsvine.com/submit.php?url=PERMALINK',
-	),
-	
 	'blogtercimlap' => Array(
 		'favicon' => 'blogter.png',
 		'url' => 'http://cimlap.blogter.hu/index.php?action=suggest_link&amp;title=TITLE&amp;url=PERMALINK',
@@ -106,16 +81,6 @@ $sociable_known_sites = Array(
 		'url' => 'http://faves.com/Authoring.aspx?u=PERMALINK&amp;title=TITLE',
 	),
 
-	'Book.mark.hu' => Array(
-		'favicon' => 'bookmarkhu.png',
-		'url' => 'http://book.mark.hu/bookmarks.php/?action=add&amp;address=PERMALINK%2F&amp;title=TITLE',
-	),
-
-	'Bumpzee' => Array(
-		'favicon' => 'bumpzee.png',
-		'url' => 'http://www.bumpzee.com/bump.php?u=PERMALINK',
-	),
-
 	'co.mments' => Array(
 		'favicon' => 'co.mments.png',
 		'url' => 'http://co.mments.com/track?url=PERMALINK&amp;title=TITLE',
@@ -123,18 +88,17 @@ $sociable_known_sites = Array(
 
 	'connotea' => Array(
 		'favicon' => 'connotea.png',
-		'url' => 'http://www.connotea.org/addpopup?continue=confirm&amp;uri=PERMALINK&amp;title=TITLE',
+		'url' => 'http://www.connotea.org/addpopup?continue=confirm&amp;uri=PERMALINK&amp;title=TITLE&amp;description=EXCERPT',
 	),
 
-
+	'Current' => Array(
+		'favicon' => 'current.png',
+		'url' => 'http://current.com/clipper.htm?url=PERMALINK&amp;title=TITLE'
+	),
+	
 	'del.icio.us' => Array(
 		'favicon' => 'delicious.png',
-		'url' => 'http://del.icio.us/post?url=PERMALINK&amp;title=TITLE',
-	),
-
-	'De.lirio.us' => Array(
-		'favicon' => 'delirious.png',
-		'url' => 'http://de.lirio.us/rubric/post?uri=PERMALINK;title=TITLE;when_done=go_back',
+		'url' => 'http://delicious.com/post?url=PERMALINK&amp;title=TITLE&amp;notes=EXCERPT',
 	),
 
 	'Design Float' => Array(
@@ -144,8 +108,13 @@ $sociable_known_sites = Array(
 
 	'Digg' => Array(
 		'favicon' => 'digg.png',
-		'url' => 'http://digg.com/submit?phase=2&amp;url=PERMALINK&amp;title=TITLE',
+		'url' => 'http://digg.com/submit?phase=2&amp;url=PERMALINK&amp;title=TITLE&amp;bodytext=EXCERPT',
 		'description' => 'Digg',
+	),
+
+	'Diigo' => Array(
+		'favicon' => 'diigo.png',
+		'url' => 'http://www.diigo.com/post?url=PERMALINK&amp;title=TITLE',
 	),
 
 	'DotNetKicks' => Array(
@@ -160,7 +129,7 @@ $sociable_known_sites = Array(
 
 	'eKudos' => Array(
 		'favicon' => 'ekudos.png',
-		'url' => 'http://www.ekudos.nl/artikel/nieuw?url=PERMALINK&amp;title=TITLE',
+		'url' => 'http://www.ekudos.nl/artikel/nieuw?url=PERMALINK&amp;title=TITLE&amp;desc=EXCERPT',
 	),
 
 	'email' => Array(
@@ -179,26 +148,21 @@ $sociable_known_sites = Array(
 		'url' => 'http://cgi.fark.com/cgi/fark/farkit.pl?h=TITLE&amp;u=PERMALINK',
 	),
 
-	'feedmelinks' => Array(
-		'favicon' => 'feedmelinks.png',
-		'url' => 'http://feedmelinks.com/categorize?from=toolbar&amp;op=submit&amp;url=PERMALINK&amp;name=TITLE',
-	),
-
-	'Furl' => Array(
-		'favicon' => 'furl.png',
-		'url' => 'http://www.furl.net/storeIt.jsp?u=PERMALINK&amp;t=TITLE',
-	),
-
 	'Fleck' => Array(
 		'favicon' => 'fleck.png',
-		'url' => 'http://extension.fleck.com/?v=b.0.804&amp;url=PERMALINK',
+		'url' => 'http://beta3.fleck.com/bookmarklet.php?url=PERMALINK&amp;title=TITLE',
 	),
 
-	'GeenRedactie' => array(
-		'favicon' => 'geenredactie.png',
-		'url'=> 'http://www.geenredactie.nl/submit?url=PERMALINK&amp;title=TITLE'
+	'FriendFeed' => Array(
+		'favicon' => 'friendfeed.png',
+		'url' => 'http://www.friendfeed.com/share?title=TITLE&amp;link=PERMALINK',
 	),
-	
+
+	'FSDaily' => Array(
+		'favicon' => 'fsdaily.png',
+		'url' => 'http://www.fsdaily.com/submit?url=PERMALINK&amp;title=TITLE',
+	),
+
 	'Global Grind' => Array (
 		'favicon' => 'globalgrind.png',
 		'url' => 'http://globalgrind.com/submission/submit.aspx?url=PERMALINK&amp;type=Article&amp;title=TITLE'
@@ -206,7 +170,8 @@ $sociable_known_sites = Array(
 	
 	'Google' => Array (
 		'favicon' => 'googlebookmark.png',
-		'url' => 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=PERMALINK&amp;title=TITLE'
+		'url' => 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=PERMALINK&amp;title=TITLE&amp;annotation=EXCERPT',
+		'description' => 'Google Bookmarks'
 	),
 	
 	'Gwar' => Array(
@@ -223,6 +188,11 @@ $sociable_known_sites = Array(
 		'favicon' => 'healthranker.png',
 		'url' => 'http://healthranker.com/submit.php?url=PERMALINK&amp;title=TITLE',
 	),
+
+	'HelloTxt' => Array(
+        'favicon' => 'hellotxt.png',
+        'url' => 'http://hellotxt.com/?status=TITLE+PERMALINK',
+    ),
 
 	'Hemidemi' => Array(
 		'favicon' => 'hemidemi.png',
@@ -244,11 +214,6 @@ $sociable_known_sites = Array(
 		'url' => 'http://internetmedia.hu/submit.php?url=PERMALINK'
 	),
 
-	'kick.ie' => Array(
-		'favicon' => 'kickit.png',
-		'url' => 'http://kick.ie/submit/?url=PERMALINK&amp;title=TITLE',
-	),
-
 	'Kirtsy' => Array(
 		'favicon' => 'kirtsy.png',
 		'url' => 'http://www.kirtsy.com/submit.php?url=PERMALINK&amp;title=TITLE',
@@ -259,11 +224,6 @@ $sociable_known_sites = Array(
 		'url' => 'http://laaik.it/NewStoryCompact.aspx?uri=PERMALINK&amp;headline=TITLE&amp;cat=5e082fcc-8a3b-47e2-acec-fdf64ff19d12',
 	),
 
-	'Leonaut' => Array(
-		'favicon' => 'leonaut.png',
-		'url' => 'http://www.leonaut.com/submit.php?url=PERMALINK&amp;title=TITLE'
-	),
-	
 	'LinkArena' => Array(
 		'favicon' => 'linkarena.png',
 		'url' => 'http://linkarena.com/bookmarks/addlink/?url=PERMALINK&amp;title=TITLE',
@@ -287,11 +247,6 @@ $sociable_known_sites = Array(
 	'Live' => Array(
 		'favicon' => 'live.png',
 		'url' => 'https://favorites.live.com/quickadd.aspx?marklet=1&amp;url=PERMALINK&amp;title=TITLE',
-	),
-
-	'Ma.gnolia' => Array(
-		'favicon' => 'magnolia.png',
-		'url' => 'http://ma.gnolia.com/bookmarklet/add?url=PERMALINK&amp;title=TITLE',
 	),
 
 	'Meneame' => Array(
@@ -329,6 +284,12 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.myspace.com/Modules/PostTo/Pages/?u=PERMALINK&amp;t=TITLE',
 	),
 
+	'MSNReporter' => Array(
+		'favicon' => 'msnreporter.png',
+		'url' => 'http://reporter.msn.nl/?fn=contribute&amp;Title=TITLE&amp;URL=PERMALINK&amp;cat_id=6&amp;tag_id=31&amp;Remark=EXCERPT',
+		'description' => 'MSN Reporter'
+	),
+	
 	'N4G' => Array(
 		'favicon' => 'n4g.png',
 		'url' => 'http://www.n4g.com/tips.aspx?url=PERMALINK&amp;title=TITLE',
@@ -351,22 +312,12 @@ $sociable_known_sites = Array(
 
 	'NuJIJ' => Array(
 		'favicon' => 'nujij.png',
-		'url' => 'http://nujij.nl/jij.lynkx?t=TITLE&amp;u=PERMALINK',
+		'url' => 'http://nujij.nl/jij.lynkx?t=TITLE&amp;u=PERMALINK&amp;b=EXCERPT',
 	),
 	
 	'Ping.fm' => Array(
 		'favicon' => 'ping.png',
-		'url' => 'http://ping.fm/ref/?link=PERMALINK&amp;title=TITLE',
-	),
-
-	'PlugIM' => Array(
-		'favicon' => 'plugim.png',
-		'url' => 'http://www.plugim.com/submit?url=PERMALINK&amp;title=TITLE',
-	),
-
-	'Pownce' => Array(
-		'favicon' => 'pownce.png',
-		'url' => 'http://pownce.com/send/link/?url=PERMALINK&amp;note_body=TITLE&amp;note_to=all'
+		'url' => 'http://ping.fm/ref/?link=PERMALINK&amp;title=TITLE&amp;body=EXCERPT',
 	),
 
 	'ppnow' => Array(
@@ -374,9 +325,15 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.ppnow.net/submit.php?url=PERMALINK',
 	),
 	
+	'PDF' => Array(
+		'favicon' => 'pdf.png',
+		'url' => 'http://www.printfriendly.com/getpf?url=PERMALINK',
+		'description' => __('Turn this article into a PDF!', 'sociable'),
+	),
+	
 	'Print' => Array(
-		'favicon' => 'printer.png',
-		'url' => 'javascript:window.print();',
+		'favicon' => 'printfriendly.png',
+		'url' => 'http://www.printfriendly.com/print?url=PERMALINK',
 		'description' => __('Print this article!', 'sociable'),
 	),
 	
@@ -392,7 +349,7 @@ $sociable_known_sites = Array(
 
 	'Rec6' => Array(
 		'favicon' => 'rec6.png',
-		'url' => 'http://www.syxt.com.br/rec6/link.php?url=PERMALINK&amp;=TITLE',
+		'url' => 'http://rec6.via6.com/link.php?url=PERMALINK&amp;=TITLE',
 	),
 
 	'Reddit' => Array(
@@ -400,9 +357,9 @@ $sociable_known_sites = Array(
 		'url' => 'http://reddit.com/submit?url=PERMALINK&amp;title=TITLE',
 	),
 
-	'SalesMarks' => Array(
-		'favicon' => 'salesmarks.png',
-		'url' => 'http://salesmarks.com/submit?edit[url]=PERMALINK&amp;edit[title]=TITLE',
+	'RSS' => Array(
+		'favicon' => 'rss.png',
+		'url' => 'FEEDLINK',
 	),
 	
 	'Scoopeo' => Array(
@@ -410,20 +367,9 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.scoopeo.com/scoop/new?newurl=PERMALINK&amp;title=TITLE',
 	),	
 
-	'scuttle' => Array(
-		'favicon' => 'scuttle.png',
-		'url' => 'http://www.scuttle.org/bookmarks.php/maxpower?action=add&amp;address=PERMALINK&amp;title=TITLE',
-                'description' => 'description',
-	),
-
 	'Segnalo' => Array(
 		'favicon' => 'segnalo.png',
 		'url' => 'http://segnalo.alice.it/post.html.php?url=PERMALINK&amp;title=TITLE',
-	),
-
-	'Shadows' => Array(
-		'favicon' => 'shadows.png',
-		'url' => 'http://www.shadows.com/features/tcr.htm?url=PERMALINK&amp;title=TITLE',
 	),
 
 	'Simpy' => Array(
@@ -436,21 +382,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://slashdot.org/bookmark.pl?title=TITLE&amp;url=PERMALINK',
 	),
 
-	'Smarking' => Array(
-		'favicon' => 'smarking.png',
-		'url' => 'http://smarking.com/editbookmark/?url=PERMALINK&amp;title=TITLE',
-	),
-
 	'Socialogs' => Array(
 		'favicon' => 'socialogs.png',
 		'url' => 'http://socialogs.com/add_story.php?story_url=PERMALINK&amp;story_title=TITLE',
 	),
 	
-	'Spurl' => Array(
-		'favicon' => 'spurl.png',
-		'url' => 'http://www.spurl.net/spurl.php?url=PERMALINK&amp;title=TITLE',
-	),
-
 	'SphereIt' => Array(
 		'favicon' => 'sphere.png',
 		'url' => 'http://www.sphere.com/search?q=sphereit:PERMALINK&amp;title=TITLE',
@@ -471,19 +407,9 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.symbaloo.com/nl/add/url=PERMALINK&amp;title=TITLE&amp;icon=http%3A//static01.symbaloo.com/_img/favicon.png',
 	),
 	
-	'Taggly' => Array(
-		'favicon' => 'taggly.png',
-		'url' => 'http://taggly.com/bookmarks.php/pass?action=add&amp;address=',
-	),
-
 	'Technorati' => Array(
 		'favicon' => 'technorati.png',
 		'url' => 'http://technorati.com/faves?add=PERMALINK',
-	),
-
-	'TailRank' => Array(
-		'favicon' => 'tailrank.png',
-		'url' => 'http://tailrank.com/share/?text=&amp;link_href=PERMALINK&amp;title=TITLE',
 	),
 
 	'ThisNext' => Array(
@@ -558,9 +484,9 @@ $sociable_known_sites = Array(
 		'description' => 'Yahoo! Buzz',
 	),
 	
-	'YahooMyWeb' => Array(
+	'Yahoo! Bookmarks' => Array(
 		'favicon' => 'yahoomyweb.png',
-		'url' => 'http://myweb2.search.yahoo.com/myresults/bookmarklet?u=PERMALINK&amp;=TITLE',
+		'url' => 'http://bookmarks.yahoo.com/toolbar/savebm?u=PERMALINK&amp;t=TITLE&opener=bm&amp;ei=UTF-8&amp;d=EXCERPT',
 	),
 
 	'Yigg' => Array(
@@ -604,6 +530,7 @@ function sociable_html($display=Array()) {
 
 	// Load the post's data
 	$blogname 	= urlencode(get_bloginfo('name')." ".get_bloginfo('description'));
+	$blogrss	= get_bloginfo('rss2_url'); 
 	$post 		= $wp_query->post;
 	
 	$excerpt	= urlencode(strip_tags(strip_shortcodes($post->post_excerpt)));
@@ -630,6 +557,8 @@ function sociable_html($display=Array()) {
 	
 	$html .= "\n<ul>\n";
 
+	$i = 0;
+	$totalsites = count($display);
 	foreach($display as $sitename) {
 		// if they specify an unknown or inactive site, ignore it
 		if (!in_array($sitename, $active_sites))
@@ -643,15 +572,22 @@ function sociable_html($display=Array()) {
 		$url = str_replace('RSS', $rss, $url);
 		$url = str_replace('BLOGNAME', $blogname, $url);
 		$url = str_replace('EXCERPT', $excerpt, $url);
-
+		$url = str_replace('FEEDLINK', $blogrss, $url);
+		
 		if (isset($site['description']) && $site['description'] != "") {
 			$description = $site['description'];
 		} else {
 			$description = $sitename;
 		}
-		$link = "<li>";		
+		if ($i == 0) {
+			$link = '<li class="sociablefirst">';
+		} else if ($totalsites == ($i+1)) {
+			$link = '<li class="sociablelast">';
+		} else {
+			$link = '<li>';
+		}
 		$link .= "<a rel=\"nofollow\"";
-		if (get_option('sociable_usetargetblank') && $site['url'] != 'javascript:window.print();') {
+		if (get_option('sociable_usetargetblank')) {
 			$link .= " target=\"_blank\"";
 		}
 		$link .= " href=\"$url\" title=\"$description\">";
@@ -661,7 +597,9 @@ function sociable_html($display=Array()) {
 		$link .= "\" />";
 		$link .= "</a></li>";
 		
+		// $html .= "\t".$link."\n";
 		$html .= "\t".apply_filters('sociable_link',$link)."\n";
+		$i++;
 	}
 
 	$html .= "</ul>\n</div>\n";
@@ -690,7 +628,6 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
 		} elseif ((is_feed() and $conditionals['is_feed'])) {
 			$sociable_html = sociable_html();
 			$sociable_html = strip_tags($sociable_html,"<a><img>");
-			$sociable_html = str_replace('<a rel="nofollow" title="'.__('Print this article!','sociable').'"><img src="'.$imagepath.'printer.png" title="'.__('Print this article!','sociable').'" alt="'.__('Print this article!','sociable').'" class="sociable-hovers" /></a>','',$sociable_html);
 			$content .= $sociable_html . "<br/><br/>";
 		}
 		return $content;
@@ -711,6 +648,7 @@ function sociable_restore_config($force=False) {
 
 	if ($force or !is_array(get_option('sociable_active_sites')))
 		update_option('sociable_active_sites', array(
+			'Print',
 			'Digg',
 			'Sphinn',
 			'del.icio.us',
