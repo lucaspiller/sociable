@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
-Version: 3.2.2
+Version: 3.2.3
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -843,9 +843,7 @@ function sociable_submenu() {
 						<input
 							type="checkbox"
 							id="cb_<?php echo $sitename; ?>"
-							class="checkbox"
 							name="active_sites[<?php echo $sitename; ?>]"
-							onclick="javascript:toggle_checkbox('<?php echo $sitename; ?>');"
 							<?php echo (in_array($sitename, $active_sites)) ? ' checked="checked"' : ''; ?>
 						/>
 						<img src="<?php echo $sociablepluginpath.'images/'.$site['favicon']; ?>" width="16" height="16" alt="" />

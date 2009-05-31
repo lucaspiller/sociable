@@ -1,13 +1,13 @@
 jQuery(document).ready(function(){
-  jQuery("#sociable_site_list").sortable({});
-});
-/* make checkbox action prettier */
-function toggle_checkbox(id) {
-	var checkbox = document.getElementById(id);
+	jQuery("#sociable_site_list").sortable({});
 
-	checkbox.checked = !checkbox.checked;
-	if (checkbox.checked)
-		checkbox.parentNode.className = 'active';
-	else
-		checkbox.parentNode.className = 'inactive';
-}
+	jQuery("#sociable_site_list input:checkbox").change(function() {
+		if (jQuery(this).attr('checked')) {
+			jQuery(this).parent().removeClass("inactive");
+			jQuery(this).parent().addClass("active");
+		} else {
+			jQuery(this).parent().removeClass('active');
+			jQuery(this).parent().addClass('inactive');
+		}
+	} );
+});

@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.6
 Tested up to: 2.8
-Stable tag: 3.2.2
+Stable tag: 3.2.3
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. WordPress 2.6 or above required!
 
@@ -19,6 +19,7 @@ More info:
 
 **Changelog**
 
+* 3.2.3 Removed the last bit of non jQuery javascript, improved styling and visual feedback when selecting a site
 * 3.2.2 Moved style loading to admin_print_styles and scripts to admin_print_scripts
 * 3.2.1 Fixed a bug with printing styles in 2.8 beta
 * 3.2
