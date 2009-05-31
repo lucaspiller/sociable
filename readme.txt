@@ -3,7 +3,7 @@ Contributors: joostdevalk
 Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.6
-Tested up to: 2.7.1
+Tested up to: 2.8
 Stable tag: 3.2
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. WordPress 2.6 or above required!
@@ -19,6 +19,7 @@ More info:
 
 **Changelog**
 
+* 3.2.1 Fixed a bug with printing styles in 2.8 beta
 * 3.2
 	This is a MAJOR update to Sociable. It fixes a few bugs, cleans up (or out, actually) a lot of sites that have gone away, updates others to include the excerpt, adds a fantastic new printing and PDF button, an RSS button, and a bunch of new sites. 
 	

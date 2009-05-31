@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
-Version: 3.2
+Version: 3.2.1
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -422,11 +422,6 @@ $sociable_known_sites = Array(
 		'url' => 'http://tipd.com/submit.php?url=PERMALINK',
 	),
 	
-	'Tumblr' => Array(
-		'favicon' => 'tumblr.png',
-		'url' => 'http://www.tumblr.com/share?v=3&amp;u=PERMALINK&amp;t=TITLE&amp;s=',
-	),
-		
 	'TwitThis' => Array(
 		'favicon' => 'twitter.png',
 		'url' => 'http://twitter.com/home?status=PERMALINK',
@@ -690,8 +685,8 @@ function sociable_admin_js() {
 		global $sociablepluginpath;
 		
 		wp_enqueue_script('jquery'); 
-		wp_enqueue_script('jquery-ui-core'); 
-		wp_enqueue_script('jquery-ui-sortable'); 
+		wp_enqueue_script('jquery-ui-core',false,array('jquery')); 
+		wp_enqueue_script('jquery-ui-sortable',false,array('jquery','jquery-ui-core')); 
 		wp_enqueue_script('sociable-js',$sociablepluginpath.'sociable-admin.js',array('jquery','jquery-ui-core','jquery-ui-sortable')); 
 	}
 }
@@ -700,9 +695,9 @@ add_action('wp_print_scripts', 'sociable_admin_js');
 function sociable_admin_css() {
 	global $sociablepluginpath;
 	if (isset($_GET['page']) && $_GET['page'] == 'Sociable')
-		wp_enqueue_style('sociablecss',$sociablepluginpath.'sociable-admin.css');
+		echo '<link rel="stylesheet" href="'.$sociablepluginpath.'sociable-admin.css" type="text/css" media="screen" charset="utf-8"/>';
 }
-add_action('wp_print_styles', 'sociable_admin_css');
+add_action('admin_head', 'sociable_admin_css');
 
 function sociable_js() {
 	if (in_array('Wists', get_option('sociable_active_sites'))) {
