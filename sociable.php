@@ -1,9 +1,10 @@
 <?php
+	// return;
 /*
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
-Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites.
-Version: 3.2.3
+Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup. This is based on the original <a href="http://yoast.com/wordpress/sociable">Sociable plugin</a> by Joost de Valk and has only been modified to support using awe.sm for links.
+Version: 3.3
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -135,11 +136,13 @@ $sociable_known_sites = Array(
 	'email' => Array(
 		'favicon' => 'email_link.png',
 		'url' => 'mailto:?subject=TITLE&amp;body=PERMALINK',
+		'awesm_channel' => 'mailto',
 		'description' => __('E-mail this story to a friend!','sociable'),
 	),
 
 	'Facebook' => Array(
 		'favicon' => 'facebook.png',
+		'awesm_channel' => 'facebook-post',
 		'url' => 'http://www.facebook.com/share.php?u=PERMALINK&amp;t=TITLE',
 	),
 
@@ -177,6 +180,11 @@ $sociable_known_sites = Array(
 	'Gwar' => Array(
 		'favicon' => 'gwar.png',
 		'url' => 'http://www.gwar.pl/DodajGwar.html?u=PERMALINK',
+	),
+
+	'HackerNews' => Array(
+		'favicon' => 'hackernews.png',
+		'url' => 'http://news.ycombinator.com/submitlink?u=PERMALINK&amp;t=TITLE',
 	),
 
 	'Haohao' => Array(
@@ -281,6 +289,7 @@ $sociable_known_sites = Array(
 
 	'MySpace' => Array(
 		'favicon' => 'myspace.png',
+		'awesm_channel' => 'myspace',
 		'url' => 'http://www.myspace.com/Modules/PostTo/Pages/?u=PERMALINK&amp;t=TITLE',
 	),
 
@@ -317,6 +326,7 @@ $sociable_known_sites = Array(
 	
 	'Ping.fm' => Array(
 		'favicon' => 'ping.png',
+		'awesm_channel' => 'pingfm',
 		'url' => 'http://ping.fm/ref/?link=PERMALINK&amp;title=TITLE&amp;body=EXCERPT',
 	),
 
@@ -327,13 +337,13 @@ $sociable_known_sites = Array(
 	
 	'PDF' => Array(
 		'favicon' => 'pdf.png',
-		'url' => 'http://www.printfriendly.com/getpf?url=PERMALINK',
+		'url' => 'http://www.printfriendly.com/getpf?url=PERMALINK&amp;partner=sociable',
 		'description' => __('Turn this article into a PDF!', 'sociable'),
 	),
 	
 	'Print' => Array(
 		'favicon' => 'printfriendly.png',
-		'url' => 'http://www.printfriendly.com/print?url=PERMALINK',
+		'url' => 'http://www.printfriendly.com/print?url=PERMALINK&amp;partner=sociable',
 		'description' => __('Print this article!', 'sociable'),
 	),
 	
@@ -407,6 +417,13 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.symbaloo.com/nl/add/url=PERMALINK&amp;title=TITLE&amp;icon=http%3A//static01.symbaloo.com/_img/favicon.png',
 	),
 	
+	'Techmeme' => Array( 
+		'favicon' => 'techmeme.png',
+		'awesm_channel' => 'twitter-techmeme', 
+		'url' => 'http://twitter.com/home/?status=tip%20@Techmeme%20PERMALINK%20TITLE', 
+		'description' => 'Suggest to Techmeme via Twitter'
+	), 
+
 	'Technorati' => Array(
 		'favicon' => 'technorati.png',
 		'url' => 'http://technorati.com/faves?add=PERMALINK',
@@ -422,9 +439,10 @@ $sociable_known_sites = Array(
 		'url' => 'http://tipd.com/submit.php?url=PERMALINK',
 	),
 	
-	'TwitThis' => Array(
+	'Twitter' => Array(
 		'favicon' => 'twitter.png',
-		'url' => 'http://twitter.com/home?status=PERMALINK',
+		'awesm_channel' => 'twitter',
+		'url' => 'http://twitter.com/home?status=TITLE%20-%20PERMALINK',
 	),
 
 	'Upnews' => Array(
@@ -497,7 +515,7 @@ if (!function_exists('strip_shortcodes')) {
 	}
 }
 
-function sociable_html($display=Array()) {
+function sociable_html($display=array()) {
 	global $sociable_known_sites, $sociablepluginpath, $wp_query, $post; 
 
 	$sociableooffmeta = get_post_meta($post->ID,'sociableoff',true);
@@ -513,6 +531,8 @@ function sociable_html($display=Array()) {
 		$imagepath = $sociablepluginpath.'images/';
 	else
 		$imagepath = get_option('sociable_imagedir');
+
+	$awesmapikey = get_option('sociable_awesmapikey');
 		
 	// if no sites are specified, display all active
 	// have to check $active_sites has content because WP
@@ -562,7 +582,7 @@ function sociable_html($display=Array()) {
 		$site = $sociable_known_sites[$sitename];
 
 		$url = $site['url'];
-		$url = str_replace('PERMALINK', $permalink, $url);
+		// Removed $url = str_replace('PERMALINK', $permalink, $url);
 		$url = str_replace('TITLE', $title, $url);
 		$url = str_replace('RSS', $rss, $url);
 		$url = str_replace('BLOGNAME', $blogname, $url);
@@ -574,6 +594,33 @@ function sociable_html($display=Array()) {
 		} else {
 			$description = $sitename;
 		}
+
+		// Added Start		
+		if (get_option('sociable_awesmenable') == true &! empty($site['awesm_channel']) ){
+			// if awe.sm is enabled and it is an awe.sm supported site, be awe.sm
+			$permalink = str_replace('&', '%26', $permalink); 
+			$destination = str_replace('PERMALINK', 'TARGET', $url);
+			$destination = str_replace('&amp;', '%26', $destination);
+			$channel = urlencode($site['awesm_channel']);
+			if ($_GET['awesm']) {
+				// if the page was arrived at through an awe.sm URL, make that the parent
+				$parent = $_GET['awesm'];
+				$parentargument = '&p=' . $parent;
+			} else {
+				// otherwise, there is no parent
+				$parentargument = '';
+			}
+
+			if (strpos($channel, 'direct') != false) {
+				$url = $sociablepluginpath.'awesmate.php?c='.$channel.'&t='.$permalink.'&d='.$destination.'&dir=true'.$parentargument;
+			} else {
+				$url = $sociablepluginpath.'awesmate.php?c='.$channel.'&t='.$permalink.'&d='.$destination.$parentargument;	
+			}
+		} else {
+			// otherwise, just be plain 	
+			$url = str_replace('PERMALINK', $permalink, $url);		
+		}
+
 		if ($i == 0) {
 			$link = '<li class="sociablefirst">';
 		} else if ($totalsites == ($i+1)) {
@@ -582,7 +629,7 @@ function sociable_html($display=Array()) {
 			$link = '<li>';
 		}
 		$link .= "<a rel=\"nofollow\"";
-		if (get_option('sociable_usetargetblank')) {
+		if (get_option('sociable_usetargetblank') && empty($site['awesm_channel'])) {
 			$link .= " target=\"_blank\"";
 		}
 		$link .= " href=\"$url\" title=\"$description\">";
@@ -772,6 +819,19 @@ function sociable_submenu() {
 			update_option('sociable_usetargetblank',false);
 		}
 		
+		// Added Start
+		// update awe.sm settings
+		if (isset($_POST['awesmenable']) && $_POST['awesmenable']) {
+			update_option('sociable_awesmenable',true);
+		} else {
+			update_option('sociable_awesmenable',false);
+		}
+		
+		if (!$_REQUEST['awesmapikey'])
+			$_REQUEST['awesmapikey'] = "";
+		update_option('sociable_awesmapikey', $_REQUEST['awesmapikey']);
+		// Added End
+
 		// update conditional displays
 		$conditionals = Array();
 		if (!$_POST['conditionals'])
@@ -817,6 +877,8 @@ function sociable_submenu() {
 	$conditionals 	= get_option('sociable_conditionals');
 	$updated 		= get_option('sociable_updated');
 	$usetargetblank = get_option('sociable_usetargetblank');
+	$awesmapikey  	= get_option('sociable_awesmapikey'); // Added
+	$awesmenable	= get_option('sociable_awesmenable'); // Added
 	
 	// display options
 ?>
@@ -908,6 +970,16 @@ function sociable_submenu() {
 		</td>		
 	</tr>
 	<tr>
+		<th scope="row" valign="top">
+			<?php _e("awe.sm:", "sociable"); ?>
+		</th>
+		<td>
+			<?php _e("You can choose to automatically have the links posted to certain sites shortened via awe.sm and encoded with the channel info and your API Key.", 'sociable'); ?><br/>
+			<input type="checkbox" name="awesmenable" <?php echo (get_option('sociable_awesmenable')) ? ' checked="checked"' : ''; ?> /> <?php _e("Enable awe.sm URLs? (When this is enabled, <strong>all sites</strong> to which awe.sm URLs are posted will open in a new window)", "sociable"); ?><br/>
+			<?php _e("awe.sm API Key:", 'sociable'); ?> <input size="65" type="text" name="awesmapikey" value="<?php echo $awesmapikey; ?>" />
+		</td>
+	</tr>
+	<tr>
 		<td>&nbsp;</td>
 		<td>
 			<span class="submit"><input name="save" value="<?php _e("Save Changes", 'sociable'); ?>" type="submit" /></span>
@@ -928,6 +1000,7 @@ function sociable_submenu() {
 
 <h2><?php _e('Credits','sociable'); ?></h2>
 <p><?php _e('<a href="http://yoast.com/wordpress/sociable/">Sociable</a> was originally developed by <a href="http://push.cx/">Peter Harkins</a> and has been maintained by <a href="http://yoast.com/">Joost de Valk</a> since the beginning of 2008. It\'s released under the GNU GPL version 2.','Sociable'); ?></p>
+
 
 </div>
 </form>
