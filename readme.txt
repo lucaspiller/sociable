@@ -9,13 +9,19 @@ Stable tag: 3.3.1
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 
 == Description ==
-Automatically add links to your favorite social bookmarking sites on your posts, pages and in your RSS feed. You can choose from 99 different social bookmarking sites! WordPress 2.6 or above is required, if you use an older version, please download [this version,](http://downloads.wordpress.org/plugin/sociable.3.0.6.zip), please keep in mind that version is not maintained.
+Automatically add links to your favorite social bookmarking sites on your posts, pages and in your RSS feed. You can choose from 99 different social bookmarking sites! WordPress 2.6 or above is required, if you use an older version, please download [this version](http://downloads.wordpress.org/plugin/sociable.3.0.6.zip), please keep in mind that version is not maintained.
 
 More info:
 
 * More info on [Sociable](http://yoast.com/wordpress/sociable/), with info on how to add sites to it, and how to integrate it into your WordPress in other ways.
 * Check out the authors [WordPress Hosting](http://yoast.com/wordpress-hosting/) experience. Good hosting is hard to come by, but it doesn't have to be expensive, Joost tells you why!
 * Check out the other [Wordpress plugins](http://yoast.com/wordpress/) by the same author, and read his blog: [Yoast](http://yoast.com).
+
+== Screenshots ==
+
+1. The Sociable backend, easily select sites and drag & drop to change the order of appearance.
+2. Sociable with its default styling.
+3. Sociable in use on [Yoast.com](http://yoast.com/), with the custom image options and its own styling.
 
 == Changelog ==
 
