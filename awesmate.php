@@ -7,6 +7,11 @@
 	header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
 
 	$awesmapikey  	= get_option('sociable_awesmapikey'); 
+	if (!empty($awesmapikey)) { 
+		$key = '&api_key=' . $awesmapikey; 
+	} else { 
+		$key = ''; 
+	}
 	$destination 	= str_replace('TARGET', 'AWESM_TARGET', urldecode( $_GET['d'] ) );	
 	$channel		= urldecode( $_GET['c'] );
 	$permalink		= urldecode( $_GET['t'] );
@@ -26,7 +31,7 @@
 		$parentargument = '';
 	}
 	
-	$url = 'http://create.awe.sm/url/share?api_key='.$awesmapikey.'&version=1&share_type='.urlencode($channel).'&create_type=sociable-wordpress&target='.urlencode($permalink).'&destination='.urlencode($destination).$direct.$parentargument;
+	$url = 'http://create.awe.sm/url/share?&version=1'.$key.'&share_type='.urlencode($channel).'&create_type=sociable-wordpress&target='.urlencode($permalink).'&destination='.urlencode($destination).$direct.$parentargument;
 	
 	$url = str_replace("+","%20",$url);
 	header("Location: ".$url);

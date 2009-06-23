@@ -1,10 +1,9 @@
 <?php
-	// return;
 /*
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup. This is based on the original <a href="http://yoast.com/wordpress/sociable">Sociable plugin</a> by Joost de Valk and has only been modified to support using awe.sm for links.
-Version: 3.3
+Version: 3.3.1
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -532,8 +531,6 @@ function sociable_html($display=array()) {
 	else
 		$imagepath = get_option('sociable_imagedir');
 
-	$awesmapikey = get_option('sociable_awesmapikey');
-		
 	// if no sites are specified, display all active
 	// have to check $active_sites has content because WP
 	// won't save an empty array as an option
@@ -553,11 +550,8 @@ function sociable_html($display=array()) {
 		$excerpt = urlencode(substr(strip_tags(strip_shortcodes($post->post_content)),0,250));
 	}
 	$excerpt	= str_replace('+','%20',$excerpt);
-	
 	$permalink 	= urlencode(get_permalink($post->ID));
-	
-	$title 		= urlencode($post->post_title);
-	$title 		= str_replace('+','%20',$title);
+	$title 		= str_replace('+','%20',urlencode($post->post_title));
 	
 	$rss 		= urlencode(get_bloginfo('ref_url'));
 
@@ -629,17 +623,20 @@ function sociable_html($display=array()) {
 			$link = '<li>';
 		}
 		$link .= "<a rel=\"nofollow\"";
-		if (get_option('sociable_usetargetblank') && empty($site['awesm_channel'])) {
+		if (get_option('sociable_usetargetblank')) {
 			$link .= " target=\"_blank\"";
 		}
 		$link .= " href=\"$url\" title=\"$description\">";
-		$link .= "<img src=\"".$imagepath.$site['favicon']."\" title=\"$description\" alt=\"$description\" class=\"sociable-hovers";
-		if (isset($site['class']) && $site['class'])
-			$link .= " sociable_{$site['class']}";
-		$link .= "\" />";
+		if (get_option('sociable_usetextlinks')) {
+			$link .= $description;
+		} else {
+			$link .= "<img src=\"".$imagepath.$site['favicon']."\" title=\"$description\" alt=\"$description\" class=\"sociable-hovers";
+			if (isset($site['class']) && $site['class'])
+				$link .= " sociable_{$site['class']}";
+			$link .= "\" />";
+		}
 		$link .= "</a></li>";
 		
-		// $html .= "\t".$link."\n";
 		$html .= "\t".apply_filters('sociable_link',$link)."\n";
 		$i++;
 	}
@@ -813,25 +810,20 @@ function sociable_submenu() {
 		delete_option('sociable_active_sites', $active_sites);
 		add_option('sociable_active_sites', $active_sites);
 
-		if (isset($_POST['usetargetblank']) && $_POST['usetargetblank']) {
-			update_option('sociable_usetargetblank',true);
-		} else {
-			update_option('sociable_usetargetblank',false);
+		foreach ( array('usetargetblank', 'awesmenable', 'usecss', 'usetextlinks') as $val ) {
+			if ( isset($_POST[$val]) && $_POST[$val] )
+				update_option('sociable_'.$val,true);
+			else
+				update_option('sociable_'.$val,false);
 		}
 		
-		// Added Start
-		// update awe.sm settings
-		if (isset($_POST['awesmenable']) && $_POST['awesmenable']) {
-			update_option('sociable_awesmenable',true);
-		} else {
-			update_option('sociable_awesmenable',false);
+		foreach ( array('awesmapikey', 'tagline', 'imagedir') as $val ) {
+			if ( !$_POST[$val] )
+				update_option( 'sociable_'.$val, '');
+			else
+				update_option( 'sociable_'.$val, $_POST[$val] );
 		}
 		
-		if (!$_REQUEST['awesmapikey'])
-			$_REQUEST['awesmapikey'] = "";
-		update_option('sociable_awesmapikey', $_REQUEST['awesmapikey']);
-		// Added End
-
 		// update conditional displays
 		$conditionals = Array();
 		if (!$_POST['conditionals'])
@@ -846,19 +838,6 @@ function sociable_submenu() {
 			
 		update_option('sociable_conditionals', $conditionals);
 
-		// update tagline
-		if (!$_REQUEST['tagline'])
-			$_REQUEST['tagline'] = "";
-		update_option('sociable_tagline', $_REQUEST['tagline']);
-
-		update_option('sociable_imagedir', $_REQUEST['imagedir']);
-
-		if (!$_REQUEST['usecss'])
-			$usecss = false;
-		else
-			$usecss = true;
-		update_option('sociable_usecss', $usecss);
-		
 		sociable_message(__("Saved changes.", 'sociable'));
 	}
 	
@@ -872,13 +851,8 @@ function sociable_submenu() {
 	uksort($disabled, "strnatcasecmp");
 
 	// load options from db to display
-	$tagline 		= stripslashes(get_option('sociable_tagline'));
-	$imagedir 		= stripslashes(get_option('sociable_imagedir'));
 	$conditionals 	= get_option('sociable_conditionals');
 	$updated 		= get_option('sociable_updated');
-	$usetargetblank = get_option('sociable_usetargetblank');
-	$awesmapikey  	= get_option('sociable_awesmapikey'); // Added
-	$awesmenable	= get_option('sociable_awesmenable'); // Added
 	
 	// display options
 ?>
@@ -923,7 +897,7 @@ function sociable_submenu() {
 		</th>
 		<td>
 			<?php _e("Change the text displayed in front of the icons below. For complete customization, copy the contents of <em>sociable.css</em> in the Sociable plugin directory to your theme's <em>style.css</em> and disable the use of the sociable stylesheet below.", 'sociable'); ?><br/>
-			<input size="80" type="text" name="tagline" value="<?php echo attribute_escape($tagline); ?>" />
+			<input size="80" type="text" name="tagline" value="<?php echo attribute_escape(stripslashes(get_option('sociable_tagline'))); ?>" />
 		</td>
 	</tr>
 	<tr>
@@ -954,11 +928,19 @@ function sociable_submenu() {
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
+			<?php _e("Use Text Links:", "sociable"); ?>
+		</th>
+		<td>
+			<input type="checkbox" name="usetextlinks" <?php echo (get_option('sociable_usetextlinks')) ? ' checked="checked"' : ''; ?> /> <?php _e("Use text links without images?", "sociable"); ?>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row" valign="top">
 			<?php _e("Image directory", "sociable"); ?>
 		</th>
 		<td>
 			<?php _e("Sociable comes with a nice set of images, if you want to replace those with your own, enter the URL where you've put them in here, and make sure they have the same name as the ones that come with Sociable.", 'sociable'); ?><br/>
-			<input size="80" type="text" name="imagedir" value="<?php echo attribute_escape($imagedir); ?>" />
+			<input size="80" type="text" name="imagedir" value="<?php echo attribute_escape(stripslashes(get_option('sociable_imagedir'))); ?>" />
 		</td>
 	</tr>
 	<tr>
@@ -975,8 +957,8 @@ function sociable_submenu() {
 		</th>
 		<td>
 			<?php _e("You can choose to automatically have the links posted to certain sites shortened via awe.sm and encoded with the channel info and your API Key.", 'sociable'); ?><br/>
-			<input type="checkbox" name="awesmenable" <?php echo (get_option('sociable_awesmenable')) ? ' checked="checked"' : ''; ?> /> <?php _e("Enable awe.sm URLs? (When this is enabled, <strong>all sites</strong> to which awe.sm URLs are posted will open in a new window)", "sociable"); ?><br/>
-			<?php _e("awe.sm API Key:", 'sociable'); ?> <input size="65" type="text" name="awesmapikey" value="<?php echo $awesmapikey; ?>" />
+			<input type="checkbox" name="awesmenable" <?php echo (get_option('sociable_awesmenable')) ? ' checked="checked"' : ''; ?> /> <?php _e("Enable awe.sm URLs?", "sociable"); ?><br/>
+			<?php _e("awe.sm API Key:", 'sociable'); ?> <input size="65" type="text" name="awesmapikey" value="<?php echo get_option('sociable_awesmapikey'); ?>" />
 		</td>
 	</tr>
 	<tr>
