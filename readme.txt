@@ -27,6 +27,7 @@ More info:
 
 = 3.3.5 =
 * Added a Hyves button.
+* Fixed MSN Reporter button.
 
 = 3.3.4 =
 * Fixed RSS.
