@@ -2,8 +2,8 @@
 /*
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
-Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. Go to <a href="options-general.php?page=Sociable">Settings -> Sociable</a> for setup. This is based on the original <a href="http://yoast.com/wordpress/sociable">Sociable plugin</a> by Joost de Valk and has only been modified to support using awe.sm for links.
-Version: 3.3.1
+Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
+Version: 3.3.3
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -25,8 +25,8 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// Guess the location
-$sociablepluginpath = WP_CONTENT_URL.'/plugins/'.plugin_basename(dirname(__FILE__)).'/';
+// Determine the location
+$sociablepluginpath = plugins_url('', __FILE__).'/';
 
 function sociable_init_locale(){
 	global $sociablepluginpath;
@@ -329,6 +329,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://ping.fm/ref/?link=PERMALINK&amp;title=TITLE&amp;body=EXCERPT',
 	),
 
+	'Posterous' => Array(
+		'favicon' => 'posterous.png',
+		'url' => 'http://posterous.com/share?linkto=PERMALINK&amp;title=TITLE&amp;selection=EXCERPT',
+	),
+	
 	'ppnow' => Array(
 		'favicon' => 'ppnow.png',
 		'url' => 'http://www.ppnow.net/submit.php?url=PERMALINK',
@@ -336,7 +341,7 @@ $sociable_known_sites = Array(
 	
 	'PDF' => Array(
 		'favicon' => 'pdf.png',
-		'url' => 'http://www.printfriendly.com/getpf?url=PERMALINK&amp;partner=sociable',
+		'url' => 'http://www.printfriendly.com/print?url=PERMALINK&amp;partner=sociable',
 		'description' => __('Turn this article into a PDF!', 'sociable'),
 	),
 	
@@ -438,6 +443,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://tipd.com/submit.php?url=PERMALINK',
 	),
 	
+	'Tumblr' => Array(
+		'favicon' => 'tumblr.png',
+		'url' => 'http://www.tumblr.com/share?v=3&amp;u=PERMALINK&amp;t=TITLE&amp;s=EXCERPT',
+	),
+	
 	'Twitter' => Array(
 		'favicon' => 'twitter.png',
 		'awesm_channel' => 'twitter',
@@ -507,13 +517,6 @@ $sociable_known_sites = Array(
 	 ),
 );
 
-// For maintaining backwards compatability
-if (!function_exists('strip_shortcodes')) {
-	function strip_shortcodes($content) {
-		return $content;
-	}
-}
-
 function sociable_html($display=array()) {
 	global $sociable_known_sites, $sociablepluginpath, $wp_query, $post; 
 
@@ -576,7 +579,6 @@ function sociable_html($display=array()) {
 		$site = $sociable_known_sites[$sitename];
 
 		$url = $site['url'];
-		// Removed $url = str_replace('PERMALINK', $permalink, $url);
 		$url = str_replace('TITLE', $title, $url);
 		$url = str_replace('RSS', $rss, $url);
 		$url = str_replace('BLOGNAME', $blogname, $url);
@@ -589,21 +591,19 @@ function sociable_html($display=array()) {
 			$description = $sitename;
 		}
 
-		// Added Start		
 		if (get_option('sociable_awesmenable') == true &! empty($site['awesm_channel']) ){
 			// if awe.sm is enabled and it is an awe.sm supported site, be awe.sm
 			$permalink = str_replace('&', '%26', $permalink); 
 			$destination = str_replace('PERMALINK', 'TARGET', $url);
 			$destination = str_replace('&amp;', '%26', $destination);
 			$channel = urlencode($site['awesm_channel']);
+
+			$parentargument = '';
 			if ($_GET['awesm']) {
 				// if the page was arrived at through an awe.sm URL, make that the parent
 				$parent = $_GET['awesm'];
 				$parentargument = '&p=' . $parent;
-			} else {
-				// otherwise, there is no parent
-				$parentargument = '';
-			}
+			} 
 
 			if (strpos($channel, 'direct') != false) {
 				$url = $sociablepluginpath.'awesmate.php?c='.$channel.'&t='.$permalink.'&d='.$destination.'&dir=true'.$parentargument;
@@ -611,7 +611,6 @@ function sociable_html($display=array()) {
 				$url = $sociablepluginpath.'awesmate.php?c='.$channel.'&t='.$permalink.'&d='.$destination.$parentargument;	
 			}
 		} else {
-			// otherwise, just be plain 	
 			$url = str_replace('PERMALINK', $permalink, $url);		
 		}
 
@@ -651,7 +650,6 @@ $sociable_contitionals = get_option('sociable_conditionals');
 if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals)) {
 	add_filter('the_content', 'sociable_display_hook');
 	add_filter('the_excerpt', 'sociable_display_hook');
-	// add_filter('the_excerpt_rss', 'sociable_display_hook');
 	
 	function sociable_display_hook($content='') {
 		$conditionals = get_option('sociable_conditionals');
@@ -673,16 +671,13 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
 	}
 }
 
-// Plugin config/data setup
 register_activation_hook(__FILE__, 'sociable_activation_hook');
 
 function sociable_activation_hook() {
 	return sociable_restore_config(False);
 }
 
-// restore built-in defaults, optionally overwriting existing values
 function sociable_restore_config($force=False) {
-	// Load defaults, taking care not to smash already-set options
 	global $sociable_known_sites;
 
 	if ($force or !is_array(get_option('sociable_active_sites')))
@@ -696,11 +691,9 @@ function sociable_restore_config($force=False) {
 			'Google',
 		));
 
-	// tagline defaults to a Hitchiker's Guide to the Galaxy reference
 	if ($force or !is_string(get_option('sociable_tagline')))
 		update_option('sociable_tagline', "<strong>" . __("Share and Enjoy:", 'sociable') . "</strong>");
 
-	// only display on single posts and pages by default
 	if ($force or !is_array(get_option('sociable_conditionals')))
 		update_option('sociable_conditionals', array(
 			'is_home' => False,
@@ -718,7 +711,6 @@ function sociable_restore_config($force=False) {
 		update_option('sociable_usecss', true);
 }
 
-// Hook the admin_menu display to add admin page
 add_action('admin_menu', 'sociable_admin_menu');
 function sociable_admin_menu() {
 	add_submenu_page('options-general.php', 'Sociable', 'Sociable', 8, 'Sociable', 'sociable_submenu');
@@ -787,18 +779,15 @@ function sociable_insert_post($pID) {
 }
 add_action('wp_insert_post', 'sociable_insert_post');
 
-// The admin page
 function sociable_submenu() {
 	global $sociable_known_sites, $sociable_date, $sociablepluginpath;
 
-	// update options in db if requested
 	if (isset($_REQUEST['restore']) && $_REQUEST['restore']) {
 		check_admin_referer('sociable-config');
 		sociable_restore_config(True);
 		sociable_message(__("Restored all settings to defaults.", 'sociable'));
 	} else if (isset($_REQUEST['save']) && $_REQUEST['save']) {
 		check_admin_referer('sociable-config');
-		// update active sites
 		$active_sites = Array();
 		if (!$_REQUEST['active_sites'])
 			$_REQUEST['active_sites'] = Array();
@@ -863,6 +852,7 @@ function sociable_submenu() {
 ?>
 
 <div class="wrap">
+	<?php screen_icon(); ?>
 	<h2><?php _e("Sociable Options", 'sociable'); ?></h2>
 	<table class="form-table">
 	<tr>
@@ -1018,5 +1008,44 @@ if (get_option('sociable_usecss_set_once') != true) {
 	update_option('sociable_usecss_set_once', true);
 }
 
-require_once("yoast-posts.php");
+if (!function_exists('yst_db_widget')) {
+	function yst_db_widget($image = 'normal', $num = 3, $excerptsize = 250, $showdate = true) {
+		require_once(ABSPATH.WPINC.'/rss.php');  
+		if ( $rss = fetch_rss( 'http://feeds2.feedburner.com/joostdevalk' ) ) {
+			echo '<div class="rss-widget">';
+			if ($image == 'normal') {
+				echo '<a href="http://yoast.com/" title="Go to Yoast.com"><img src="http://cdn.yoast.com/yoast-logo-rss.png" class="alignright" alt="Yoast"/></a>';			
+			} else {
+				echo '<a href="http://yoast.com/" title="Go to Yoast.com"><img width="80" src="http://cdn.yoast.com/yoast-logo-rss.png" class="alignright" alt="Yoast"/></a>';			
+			}
+			echo '<ul>';
+			$rss->items = array_slice( $rss->items, 0, $num );
+			foreach ( (array) $rss->items as $item ) {
+				echo '<li>';
+				echo '<a class="rsswidget" href="'.clean_url( $item['link'], $protocolls=null, 'display' ).'">'. htmlentities($item['title']) .'</a> ';
+				if ($showdate)
+					echo '<span class="rss-date">'. date('F j, Y', strtotime($item['pubdate'])) .'</span>';
+				echo '<div class="rssSummary">'. yst_text_limit($item['summary'],$excerptsize) .'</div>';
+				echo '</li>';
+			}
+			echo '</ul>';
+			echo '<div style="border-top: 1px solid #ddd; padding-top: 10px; text-align:center;">';
+			echo '<a href="http://feeds2.feedburner.com/joostdevalk"><img src="'.get_bloginfo('wpurl').'/wp-includes/images/rss.png" alt=""/> Subscribe with RSS</a>';
+			if ($image == 'normal') {
+				echo ' &nbsp; &nbsp; &nbsp; ';
+			} else {
+				echo '<br/>';
+			}
+			echo '<a href="http://yoast.com/email-blog-updates/"><img src="http://cdn.yoast.com/email_sub.png" alt=""/> Subscribe by email</a>';
+			echo '</div>';
+			echo '</div>';
+		}
+	}
+ 
+	function yst_widget_setup() {
+	    wp_add_dashboard_widget( 'yst_db_widget' , 'The Latest news from Yoast' , 'yst_db_widget');
+	}
+ 
+	add_action('wp_dashboard_setup', 'yst_widget_setup');
+}
 ?>

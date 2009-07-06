@@ -1,10 +1,10 @@
 === Sociable ===
-Contributors: joostdevalk
+Contributors: joostdevalk, sociable
 Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.6
-Tested up to: 2.8
-Stable tag: 3.3.1
+Tested up to: 2.8.1
+Stable tag: 3.3.3
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 
@@ -24,6 +24,13 @@ More info:
 3. Sociable in use on [Yoast.com](http://yoast.com/), with the custom image options and its own styling.
 
 == Changelog ==
+
+= 3.3.2 =
+* Brought back Tumblr
+* Updated PDF link
+* Added Posterous
+* Smushed all images using [Smush.it](http://smush.it/), reducing the total image file size with 31.72 KB (42.03%)!
+* Removed pre - 2.6 compatibility code
 
 = 3.3.1 =
 * Added new option to use pure text links, instead of image links.
