@@ -25,6 +25,9 @@ More info:
 
 == Changelog ==
 
+= 3.3.5 =
+* Added a Hyves button.
+
 = 3.3.4 =
 * Fixed RSS.
 

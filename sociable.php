@@ -206,6 +206,11 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.hemidemi.com/user_bookmark/new?title=TITLE&amp;url=PERMALINK',
 	),
 
+	'Hyves' => Array(
+		'favicon' => 'hyves.png',
+		'url' => 'http://www.hyves.nl/profilemanage/add/tips/?name=TITLE&amp;text=EXCERPT+PERMALINK&amp;rating=5',
+	),
+
 	'Identi.ca' => Array(
 		'favicon' => 'identica.png',
 		'url' => 'http://identi.ca/notice/new?status_textarea=PERMALINK',
