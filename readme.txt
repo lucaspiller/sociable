@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.6
 Tested up to: 2.8.1
-Stable tag: 3.3.4
+Stable tag: 3.3.6
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 
@@ -14,7 +14,6 @@ Automatically add links to your favorite social bookmarking sites on your posts,
 More info:
 
 * More info on [Sociable](http://yoast.com/wordpress/sociable/), with info on how to add sites to it, and how to integrate it into your WordPress in other ways.
-* Check out the authors [WordPress Hosting](http://yoast.com/wordpress-hosting/) experience. Good hosting is hard to come by, but it doesn't have to be expensive, Joost tells you why!
 * Check out the other [Wordpress plugins](http://yoast.com/wordpress/) by the same author, and read his blog: [Yoast](http://yoast.com).
 
 == Screenshots ==
@@ -24,6 +23,10 @@ More info:
 3. Sociable in use on [Yoast.com](http://yoast.com/), with the custom image options and its own styling.
 
 == Changelog ==
+
+= 3.3.6 =
+* Reverted plugin URL fix because of too many people on old WordPress installations complaining. (Upgrade, people, upgrade!)
+* Added PHPDoc throughout the plugins code.
 
 = 3.3.5 =
 * Added a Hyves button.

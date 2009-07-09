@@ -28,12 +28,24 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 // Determine the location
 $sociablepluginpath = plugins_url('', __FILE__).'/';
 
+/**
+ * This function makes sure Sociable is able to load the different language files from
+ * the i18n subfolder of the Sociable directory
+ **/
 function sociable_init_locale(){
 	global $sociablepluginpath;
-	load_plugin_textdomain('sociable', $sociablepluginpath);
+	load_plugin_textdomain('sociable', false, 'i18n');
 }
 add_filter('init', 'sociable_init_locale');
 
+
+/**
+ * @global array Contains all sites that Sociable supports, array items have 4 keys:
+ * required favicon - the favicon for the site, a 16x16px PNG, to be found in the images subdirectory
+ * required url - submit URL of the site, containing at least PERMALINK
+ * description - description, used in several spots, but most notably as alt and title text for the link
+ * awesm_channel - the channel awe.sm files the traffic under
+ */
 $sociable_known_sites = Array(
 
 	'BarraPunto' => Array(
@@ -522,8 +534,17 @@ $sociable_known_sites = Array(
 	 ),
 );
 
+/**
+ * Returns the Sociable links list.
+ *
+ * @param array $display optional list of links to return in HTML
+ * @global $sociable_known_sites array the list of sites that Sociable uses
+ * @global $sociablepluginpath string the path to the plugin
+ * @global $wp_query object the WordPress query object
+ * @return string $html HTML for links list.
+ */
 function sociable_html($display=array()) {
-	global $sociable_known_sites, $sociablepluginpath, $wp_query, $post; 
+	global $sociable_known_sites, $sociablepluginpath, $wp_query; 
 
 	$sociableooffmeta = get_post_meta($post->ID,'sociableoff',true);
 	if ($sociableooffmeta == "true") {
@@ -532,12 +553,12 @@ function sociable_html($display=array()) {
 
 	$active_sites = get_option('sociable_active_sites');
 
-	$html = "";
-
-	if (get_option('sociable_imagedir') == "")
-		$imagepath = $sociablepluginpath.'images/';
-	else
-		$imagepath = get_option('sociable_imagedir');
+	// If a path is specified where Sociable should find its images, use that, otherwise, 
+	// set the image path to the images subdirectory of the Sociable plugin.
+	// Image files need to be png's.
+	$imagepath = get_option('sociable_imagedir');
+	if ($imagepath == "")
+		$imagepath = $sociablepluginpath.'images/';		
 
 	// if no sites are specified, display all active
 	// have to check $active_sites has content because WP
@@ -548,23 +569,27 @@ function sociable_html($display=array()) {
 	if (empty($display))
 		return "";
 
-	// Load the post's data
+	// Load the post's and blog's data
 	$blogname 	= urlencode(get_bloginfo('name')." ".get_bloginfo('description'));
 	$blogrss	= get_bloginfo('rss2_url'); 
 	$post 		= $wp_query->post;
 	
+	// Grab the excerpt, if there is no excerpt, create one
 	$excerpt	= urlencode(strip_tags(strip_shortcodes($post->post_excerpt)));
 	if ($excerpt == "") {
 		$excerpt = urlencode(substr(strip_tags(strip_shortcodes($post->post_content)),0,250));
 	}
+	// Clean the excerpt for use with links
 	$excerpt	= str_replace('+','%20',$excerpt);
 	$permalink 	= urlencode(get_permalink($post->ID));
 	$title 		= str_replace('+','%20',urlencode($post->post_title));
 	
 	$rss 		= urlencode(get_bloginfo('ref_url'));
 
-	$html .= "\n<div class=\"sociable\">\n";
+	// Start preparing the output
+	$html = "\n<div class=\"sociable\">\n";
 	
+	// If a tagline is set, display it above the links list
 	$tagline = get_option("sociable_tagline");
 	if ($tagline != "") {
 		$html .= "<div class=\"sociable_tagline\">\n";
@@ -572,12 +597,17 @@ function sociable_html($display=array()) {
 		$html .= "\n</div>";
 	}
 	
+	/**
+	 * Start the list of links
+	 */
 	$html .= "\n<ul>\n";
 
 	$i = 0;
 	$totalsites = count($display);
 	foreach($display as $sitename) {
-		// if they specify an unknown or inactive site, ignore it
+		/**
+		 * If they specify an unknown or inactive site, ignore it.
+		 */
 		if (!in_array($sitename, $active_sites))
 			continue;
 
@@ -596,8 +626,10 @@ function sociable_html($display=array()) {
 			$description = $sitename;
 		}
 
-		if (get_option('sociable_awesmenable') == true &! empty($site['awesm_channel']) ){
-			// if awe.sm is enabled and it is an awe.sm supported site, be awe.sm
+		if (get_option('sociable_awesmenable') == true &! empty($site['awesm_channel']) ) {
+			/**
+			 * if awe.sm is enabled and it is an awe.sm supported site, use awe.sm
+			 */
 			$permalink = str_replace('&', '%26', $permalink); 
 			$destination = str_replace('PERMALINK', 'TARGET', $url);
 			$destination = str_replace('&amp;', '%26', $destination);
@@ -605,7 +637,9 @@ function sociable_html($display=array()) {
 
 			$parentargument = '';
 			if ($_GET['awesm']) {
-				// if the page was arrived at through an awe.sm URL, make that the parent
+				/**
+				 * if the page was arrived at through an awe.sm URL, make that the parent
+				 */ 
 				$parent = $_GET['awesm'];
 				$parentargument = '&p=' . $parent;
 			} 
@@ -616,9 +650,17 @@ function sociable_html($display=array()) {
 				$url = $sociablepluginpath.'awesmate.php?c='.$channel.'&t='.$permalink.'&d='.$destination.$parentargument;	
 			}
 		} else {
+			/**
+			 * if awe.sm is not used, simply replace PERMALINK with $permalink
+			 */ 
 			$url = str_replace('PERMALINK', $permalink, $url);		
 		}
 
+		/**
+		 * Start building each list item. They're build up separately to allow filtering by other
+		 * plugins.
+		 * Give the first and last list item in the list an extra class to allow for cool CSS tricks
+		 */
 		if ($i == 0) {
 			$link = '<li class="sociablefirst">';
 		} else if ($totalsites == ($i+1)) {
@@ -626,11 +668,22 @@ function sociable_html($display=array()) {
 		} else {
 			$link = '<li>';
 		}
+		
+		/**
+		 * Start building the link, nofollow it to make sure Search engines don't follow it, 
+		 * and optionally add target=_blank to open in a new window if that option is set in the 
+		 * backend.
+		 */
 		$link .= "<a rel=\"nofollow\"";
 		if (get_option('sociable_usetargetblank')) {
 			$link .= " target=\"_blank\"";
 		}
 		$link .= " href=\"$url\" title=\"$description\">";
+		
+		/**
+		 * If the option to use text links is enabled in the backend, display a text link, otherwise, 
+		 * display an image.
+		 */
 		if (get_option('sociable_usetextlinks')) {
 			$link .= $description;
 		} else {
@@ -641,6 +694,11 @@ function sociable_html($display=array()) {
 		}
 		$link .= "</a></li>";
 		
+		/**
+		 * Add the list item to the output HTML, but allow other plugins to filter the content first.
+		 * This is used for instance in the Google Analytics for WordPress plugin to track clicks
+		 * on Sociable links.
+		 */
 		$html .= "\t".apply_filters('sociable_link',$link)."\n";
 		$i++;
 	}
@@ -650,12 +708,17 @@ function sociable_html($display=array()) {
 	return $html;
 }
 
-// Hook the_content to output html if we should display on any page
+/**
+ * Hook the_content to output html if we should display on any page
+ */
 $sociable_contitionals = get_option('sociable_conditionals');
 if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals)) {
 	add_filter('the_content', 'sociable_display_hook');
 	add_filter('the_excerpt', 'sociable_display_hook');
 	
+	/**
+	 * Loop through the settings and check whether Sociable should be outputted.
+	 */
 	function sociable_display_hook($content='') {
 		$conditionals = get_option('sociable_conditionals');
 		if ((is_home()     and $conditionals['is_home']) or
@@ -676,13 +739,19 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
 	}
 }
 
+/**
+ * Set the default settings on activation on the plugin.
+ */
+function sociable_activation_hook() {
+	return sociable_restore_config(false);
+}
 register_activation_hook(__FILE__, 'sociable_activation_hook');
 
-function sociable_activation_hook() {
-	return sociable_restore_config(False);
-}
-
-function sociable_restore_config($force=False) {
+/**
+ * Add the Sociable menu to the Settings menu
+ * @param boolean $force if set to true, force updates the settings.
+ */
+function sociable_restore_config($force=false) {
 	global $sociable_known_sites;
 
 	if ($force or !is_array(get_option('sociable_active_sites')))
@@ -712,15 +781,22 @@ function sociable_restore_config($force=False) {
 			'is_feed' => False,
 		));
 
-	if ($force or !is_bool(get_option('usecss')))
+	if ($force or !is_bool(get_option('sociable_usecss')))
 		update_option('sociable_usecss', true);
 }
 
-add_action('admin_menu', 'sociable_admin_menu');
+/**
+ * Add the Sociable menu to the Settings menu
+ */
 function sociable_admin_menu() {
-	add_submenu_page('options-general.php', 'Sociable', 'Sociable', 8, 'Sociable', 'sociable_submenu');
+	add_options_page('Sociable', 'Sociable', 8, 'Sociable', 'sociable_submenu');
 }
+add_action('admin_menu', 'sociable_admin_menu');
 
+/**
+ * Make sure the required javascript files are loaded in the Sociable backend, and that they are only
+ * loaded in the Sociable settings page, and nowhere else.
+ */
 function sociable_admin_js() {
 	if (isset($_GET['page']) && $_GET['page'] == 'Sociable') {
 		global $sociablepluginpath;
@@ -728,11 +804,15 @@ function sociable_admin_js() {
 		wp_enqueue_script('jquery'); 
 		wp_enqueue_script('jquery-ui-core',false,array('jquery')); 
 		wp_enqueue_script('jquery-ui-sortable',false,array('jquery','jquery-ui-core')); 
-		wp_enqueue_script('sociable-js',$sociablepluginpath.'sociable-admin.js',array('jquery','jquery-ui-core','jquery-ui-sortable')); 
+		wp_enqueue_script('sociable-js',$sociablepluginpath.'sociable-admin.js', array('jquery','jquery-ui-core','jquery-ui-sortable')); 
 	}
 }
 add_action('admin_print_scripts', 'sociable_admin_js');
 
+/**
+ * Make sure the required stylesheet is loaded in the Sociable backend, and that it is only
+ * loaded in the Sociable settings page, and nowhere else.
+ */
 function sociable_admin_css() {
 	global $sociablepluginpath;
 	if (isset($_GET['page']) && $_GET['page'] == 'Sociable')
@@ -740,6 +820,10 @@ function sociable_admin_css() {
 }
 add_action('admin_print_styles', 'sociable_admin_css');
 
+/**
+ * If Wists is active, load it's js file. This is the only site that historically has had a JS file
+ * in Sociable. For all other sites this has so far been refused.
+ */
 function sociable_js() {
 	if (in_array('Wists', get_option('sociable_active_sites'))) {
 		global $sociablepluginpath;
@@ -748,18 +832,28 @@ function sociable_js() {
 }
 add_action('wp_print_scripts', 'sociable_js');
 
+/**
+ * If the user has the (default) setting of using the Sociable CSS, load it.
+ */
 function sociable_css() {
 	if (get_option('sociable_usecss') == true) {
 		global $sociablepluginpath;
-		echo '<link rel="stylesheet" href="'.$sociablepluginpath.'sociable.css" type="text/css" media="screen" charset="utf-8"/>';
+		wp_enqueue_style('sociable-front-css',$sociablepluginpath.'sociable.css'); 
 	}
 }
-add_action('wp_head', 'sociable_css');
+add_action('wp_print_styles', 'sociable_css');
 
+/**
+ * Update message, used in the admin panel to show messages to users.
+ */
 function sociable_message($message) {
 	echo "<div id=\"message\" class=\"updated fade\"><p>$message</p></div>\n";
 }
 
+/**
+ * Displays a checkbox that allows users to disable Sociable on a
+ * per post or page basis.
+ */
 function sociable_meta() {
 	global $post;
 	$sociableoff = false;
@@ -772,24 +866,33 @@ function sociable_meta() {
 	<?php
 }
 
+/**
+ * Add the checkbox defined above to post and page edit screens.
+ */
 function sociable_meta_box() {
 	add_meta_box('sociable','Sociable','sociable_meta','post');
 	add_meta_box('sociable','Sociable','sociable_meta','page');
 }
 add_action('admin_menu', 'sociable_meta_box');
 
+/**
+ * If the post is inserted, delete the sociableoff value and reenable it when its been set.
+ */
 function sociable_insert_post($pID) {
 	delete_post_meta($pID, 'sociableoff');
 	update_post_meta($pID, 'sociableoff', ($_POST['sociableoff'] ? 'true' : 'false'));
 }
 add_action('wp_insert_post', 'sociable_insert_post');
 
+/**
+ * Displays the Sociable admin menu, first section (re)stores the settings.
+ */
 function sociable_submenu() {
 	global $sociable_known_sites, $sociable_date, $sociablepluginpath;
 
 	if (isset($_REQUEST['restore']) && $_REQUEST['restore']) {
 		check_admin_referer('sociable-config');
-		sociable_restore_config(True);
+		sociable_restore_config(true);
 		sociable_message(__("Restored all settings to defaults.", 'sociable'));
 	} else if (isset($_REQUEST['save']) && $_REQUEST['save']) {
 		check_admin_referer('sociable-config');
@@ -799,8 +902,10 @@ function sociable_submenu() {
 		foreach($_REQUEST['active_sites'] as $sitename=>$dummy)
 			$active_sites[] = $sitename;
 		update_option('sociable_active_sites', $active_sites);
-		// have to delete and re-add because update doesn't hit the db for identical arrays
-		// (sorting does not influence associated array equality in PHP)
+		/**
+		 * Have to delete and re-add because update doesn't hit the db for identical arrays
+		 * (sorting does not influence associated array equality in PHP)
+		 */
 		delete_option('sociable_active_sites', $active_sites);
 		add_option('sociable_active_sites', $active_sites);
 
@@ -818,7 +923,9 @@ function sociable_submenu() {
 				update_option( 'sociable_'.$val, $_POST[$val] );
 		}
 		
-		// update conditional displays
+		/**
+		 * Update conditional displays
+		 */
 		$conditionals = Array();
 		if (!$_POST['conditionals'])
 			$_POST['conditionals'] = Array();
@@ -835,20 +942,21 @@ function sociable_submenu() {
 		sociable_message(__("Saved changes.", 'sociable'));
 	}
 	
-	// show active sites first and in order
+	/**
+	 * Show active sites first and in the right order.
+	 */
 	$active_sites = get_option('sociable_active_sites');
-	$active = Array(); $disabled = $sociable_known_sites;
-	foreach($active_sites as $sitename) {
+	$active = Array(); 
+	$disabled = $sociable_known_sites;
+	foreach( $active_sites as $sitename ) {
 		$active[$sitename] = $disabled[$sitename];
 		unset($disabled[$sitename]);
 	}
 	uksort($disabled, "strnatcasecmp");
-
-	// load options from db to display
-	$conditionals 	= get_option('sociable_conditionals');
-	$updated 		= get_option('sociable_updated');
 	
-	// display options
+	/**
+	 * Display options.
+	 */
 ?>
 <form action="<?php echo attribute_escape( $_SERVER['REQUEST_URI'] ); ?>" method="post">
 <?php
@@ -902,6 +1010,12 @@ function sociable_submenu() {
 		<td>
 			<?php _e("The icons appear at the end of each blog post, and posts may show on many different types of pages. Depending on your theme and audience, it may be tacky to display icons on all types of pages.", 'sociable'); ?><br/>
 			<br/>
+			<?php
+			/**
+			 * Load conditions under which Sociable displays
+			 */
+			$conditionals 	= get_option('sociable_conditionals');
+			?>
 			<input type="checkbox" name="conditionals[is_home]"<?php echo ($conditionals['is_home']) ? ' checked="checked"' : ''; ?> /> <?php _e("Front page of the blog", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_single]"<?php echo ($conditionals['is_single']) ? ' checked="checked"' : ''; ?> /> <?php _e("Individual blog posts", 'sociable'); ?><br/>
 			<input type="checkbox" name="conditionals[is_page]"<?php echo ($conditionals['is_page']) ? ' checked="checked"' : ''; ?> /> <?php _e('Individual WordPress "Pages"', 'sociable'); ?><br/>
@@ -918,7 +1032,7 @@ function sociable_submenu() {
 			<?php _e("Use CSS:", "sociable"); ?>
 		</th>
 		<td>
-			<input type="checkbox" name="usecss" <?php echo (get_option('sociable_usecss')) ? ' checked="checked"' : ''; ?> /> <?php _e("Use the sociable stylesheet?", "sociable"); ?>
+			<input type="checkbox" name="usecss" <?php checked( get_option('sociable_usecss'), false ); ?> /> <?php _e("Use the sociable stylesheet?", "sociable"); ?>
 		</td>
 	</tr>
 	<tr>
@@ -926,7 +1040,7 @@ function sociable_submenu() {
 			<?php _e("Use Text Links:", "sociable"); ?>
 		</th>
 		<td>
-			<input type="checkbox" name="usetextlinks" <?php echo (get_option('sociable_usetextlinks')) ? ' checked="checked"' : ''; ?> /> <?php _e("Use text links without images?", "sociable"); ?>
+			<input type="checkbox" name="usetextlinks" <?php checked( get_option('sociable_usetextlinks'), true ); ?> /> <?php _e("Use text links without images?", "sociable"); ?>
 		</td>
 	</tr>
 	<tr>
