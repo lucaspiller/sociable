@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
-Version: 3.3.5
+Version: 3.3.7
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -25,8 +25,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-// Determine the location
-$sociablepluginpath = plugins_url('', __FILE__).'/';
+/**
+ * Determine the location
+ */
+$sociablepluginpath = WP_CONTENT_URL.'/plugins/'.plugin_basename(dirname(__FILE__)).'/';
 
 /**
  * This function makes sure Sociable is able to load the different language files from
@@ -1032,7 +1034,7 @@ function sociable_submenu() {
 			<?php _e("Use CSS:", "sociable"); ?>
 		</th>
 		<td>
-			<input type="checkbox" name="usecss" <?php checked( get_option('sociable_usecss'), false ); ?> /> <?php _e("Use the sociable stylesheet?", "sociable"); ?>
+			<input type="checkbox" name="usecss" <?php checked( get_option('sociable_usecss'), true ); ?> /> <?php _e("Use the sociable stylesheet?", "sociable"); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1057,7 +1059,7 @@ function sociable_submenu() {
 			<?php _e("Open in new window:", "sociable"); ?>
 		</th>
 		<td>
-			<input type="checkbox" name="usetargetblank" <?php echo (get_option('sociable_usetargetblank')) ? ' checked="checked"' : ''; ?> /> <?php _e("Use <code>target=_blank</code> on links? (Forces links to open a new window)", "sociable"); ?>
+			<input type="checkbox" name="usetargetblank" <?php checked( get_option('sociable_usetargetblank'), true ); ?> /> <?php _e("Use <code>target=_blank</code> on links? (Forces links to open a new window)", "sociable"); ?>
 		</td>		
 	</tr>
 	<tr>
@@ -1066,7 +1068,7 @@ function sociable_submenu() {
 		</th>
 		<td>
 			<?php _e("You can choose to automatically have the links posted to certain sites shortened via awe.sm and encoded with the channel info and your API Key.", 'sociable'); ?><br/>
-			<input type="checkbox" name="awesmenable" <?php echo (get_option('sociable_awesmenable')) ? ' checked="checked"' : ''; ?> /> <?php _e("Enable awe.sm URLs?", "sociable"); ?><br/>
+			<input type="checkbox" name="awesmenable" <?php checked( get_option('sociable_awesmenable'), true ); ?> /> <?php _e("Enable awe.sm URLs?", "sociable"); ?><br/>
 			<?php _e("awe.sm API Key:", 'sociable'); ?> <input size="65" type="text" name="awesmapikey" value="<?php echo get_option('sociable_awesmapikey'); ?>" />
 		</td>
 	</tr>
@@ -1098,6 +1100,9 @@ function sociable_submenu() {
 <?php
 }
 
+/**
+ * Add an icon for the Sociable plugin's settings page to the dropdown for Ozh's admin dropdown menu
+ */
 function sociable_add_ozh_adminmenu_icon( $hook ) {
 	static $sociableicon;
 	if (!$sociableicon) {
@@ -1106,7 +1111,12 @@ function sociable_add_ozh_adminmenu_icon( $hook ) {
 	if ($hook == 'Sociable') return $sociableicon;
 	return $hook;
 }
+add_filter( 'ozh_adminmenu_icon', 'sociable_add_ozh_adminmenu_icon' );				
 
+/**
+ * Add a settings link to the Plugins page, so people can go straight from the plugin page to the
+ * settings page.
+ */
 function sociable_filter_plugin_actions( $links, $file ){
 	// Static so we don't call plugin_basename on every plugin row.
 	static $this_plugin;
@@ -1118,15 +1128,11 @@ function sociable_filter_plugin_actions( $links, $file ){
 	}
 	return $links;
 }
-
 add_filter( 'plugin_action_links', 'sociable_filter_plugin_actions', 10, 2 );
-add_filter( 'ozh_adminmenu_icon', 'sociable_add_ozh_adminmenu_icon' );				
 
-if (get_option('sociable_usecss_set_once') != true) {
-	update_option('sociable_usecss', true);
-	update_option('sociable_usecss_set_once', true);
-}
-
+/**
+ * Add the Yoast.com RSS feed to the WordPress dashboard
+ */
 if (!function_exists('yst_db_widget')) {
 	function yst_text_limit( $text, $limit, $finish = ' [&hellip;]') {
 		if( strlen( $text ) > $limit ) {
