@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
-Version: 3.3.8
+Version: 3.4
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -548,6 +548,11 @@ $sociable_known_sites = Array(
 function sociable_html($display=array()) {
 	global $sociable_known_sites, $sociablepluginpath, $wp_query, $post; 
 
+	/**
+	 * Make it possible for other plugins or themes to add buttons to Sociable
+	 */
+	$sociable_known_sites = apply_filters('sociable_known_sites',$sociable_known_sites);
+
 	$sociableoff = get_post_meta($post->ID,'sociableoff',true);
 	if ($sociableoff === true || $sociableoff == "true") {
 		return "";
@@ -689,7 +694,12 @@ function sociable_html($display=array()) {
 		if (get_option('sociable_usetextlinks')) {
 			$link .= $description;
 		} else {
-			$link .= "<img src=\"".$imagepath.$site['favicon']."\" title=\"$description\" alt=\"$description\" class=\"sociable-hovers";
+			if (strpos($site['favicon'], 'http') === 0) {
+				$imgsrc = $site['favicon'];
+			} else {
+				$imgsrc = $imagepath.$site['favicon'];
+			}
+			$link .= "<img src=\"".$imgsrc."\" title=\"$description\" alt=\"$description\" class=\"sociable-hovers";
 			if (isset($site['class']) && $site['class'])
 				$link .= " sociable_{$site['class']}";
 			$link .= "\" />";
@@ -892,6 +902,8 @@ add_action('wp_insert_post', 'sociable_insert_post');
 function sociable_submenu() {
 	global $sociable_known_sites, $sociable_date, $sociablepluginpath;
 
+	$sociable_known_sites = apply_filters('sociable_known_sites',$sociable_known_sites);
+	
 	if (isset($_REQUEST['restore']) && $_REQUEST['restore']) {
 		check_admin_referer('sociable-config');
 		sociable_restore_config(true);
@@ -987,7 +999,18 @@ function sociable_submenu() {
 							name="active_sites[<?php echo $sitename; ?>]"
 							<?php echo (in_array($sitename, $active_sites)) ? ' checked="checked"' : ''; ?>
 						/>
-						<img src="<?php echo $sociablepluginpath.'images/'.$site['favicon']; ?>" width="16" height="16" alt="" />
+						<?php
+						$imagepath = get_option('sociable_imagedir');
+						if ($imagepath == "")
+							$imagepath = $sociablepluginpath.'images/';		
+						
+						if (strpos($site['favicon'], 'http') === 0) {
+							$imgsrc = $site['favicon'];
+						} else {
+							$imgsrc = $imagepath.$site['favicon'];
+						}
+						?>
+						<img src="<?php echo $imgsrc; ?>" width="16" height="16" alt="<?php echo $site['description'] ?>" />
 						<?php echo $sitename; ?>
 					</li>
 				<?php } ?>
