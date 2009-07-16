@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
-Version: 3.4
+Version: 3.4.1
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -427,7 +427,7 @@ $sociable_known_sites = Array(
 
 	'Sphinn' => Array(
 		'favicon' => 'sphinn.png',
-		'url' => 'http://sphinn.com/submit.php?url=PERMALINK&amp;title=TITLE',
+		'url' => 'http://sphinn.com/index.php?c=post&m=submit&link=PERMALINK',
 	),
 
 	'StumbleUpon' => Array(
