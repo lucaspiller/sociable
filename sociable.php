@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
-Version: 3.3.7
+Version: 3.3.8
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -546,10 +546,10 @@ $sociable_known_sites = Array(
  * @return string $html HTML for links list.
  */
 function sociable_html($display=array()) {
-	global $sociable_known_sites, $sociablepluginpath, $wp_query; 
+	global $sociable_known_sites, $sociablepluginpath, $wp_query, $post; 
 
-	$sociableooffmeta = get_post_meta($post->ID,'sociableoff',true);
-	if ($sociableooffmeta == "true") {
+	$sociableoff = get_post_meta($post->ID,'sociableoff',true);
+	if ($sociableoff === true || $sociableoff == "true") {
 		return "";
 	}
 
@@ -860,11 +860,11 @@ function sociable_meta() {
 	global $post;
 	$sociableoff = false;
 	$sociableoffmeta = get_post_meta($post->ID,'sociableoff',true);
-	if ($sociableoffmeta == "true") {
+	if ($sociableoffmeta == "true" || $sociableoffmeta === true) {
 		$sociableoff = true;
 	}
 	?>
-	<input type="checkbox" name="sociableoff" <?php if ($sociableoff) { echo 'checked="checked"'; } ?>/> <?php _e('Sociable disabled?','sociable') ?>
+	<input type="checkbox" id="sociableoff" name="sociableoff" <?php if ($sociableoff) { echo 'checked="checked"'; } ?>/> <label for="sociableoff"><?php _e('Sociable disabled?','sociable') ?></label>
 	<?php
 }
 
@@ -882,7 +882,7 @@ add_action('admin_menu', 'sociable_meta_box');
  */
 function sociable_insert_post($pID) {
 	delete_post_meta($pID, 'sociableoff');
-	update_post_meta($pID, 'sociableoff', ($_POST['sociableoff'] ? 'true' : 'false'));
+	update_post_meta($pID, 'sociableoff', (isset($_POST['sociableoff']) ? true : false));
 }
 add_action('wp_insert_post', 'sociable_insert_post');
 
