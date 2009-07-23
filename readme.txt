@@ -4,7 +4,7 @@ Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.6
 Tested up to: 2.8.2
-Stable tag: 3.4.2
+Stable tag: 3.4.3
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 
@@ -23,6 +23,9 @@ More info:
 3. Sociable in use on [Yoast.com](http://yoast.com/), with the custom image options and its own styling.
 
 == Changelog ==
+
+= 3.4.3 =
+* Fixed the bug mentioned [here](http://wordpress.org/support/topic/288487) and [here](http://wordpress.org/support/topic/290753) that made it impossible to disable Sociable on a per post/page basis (for real, now).
 
 = 3.4.2 =
 * Added a site specific id to each links anchor tag.

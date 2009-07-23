@@ -569,7 +569,7 @@ function sociable_html($display=array()) {
 	$sociable_known_sites = apply_filters('sociable_known_sites',$sociable_known_sites);
 
 	$sociableoff = get_post_meta($post->ID,'sociableoff',true);
-	if ($sociableoff === true || $sociableoff == "true") {
+	if ($sociableoff == true || $sociableoff == "true") {
 		return "";
 	}
 
@@ -898,8 +898,8 @@ function sociable_meta() {
  * Add the checkbox defined above to post and page edit screens.
  */
 function sociable_meta_box() {
-	add_meta_box('sociable','Sociable','sociable_meta','post');
-	add_meta_box('sociable','Sociable','sociable_meta','page');
+	add_meta_box('sociable','Sociable','sociable_meta','post','side');
+	add_meta_box('sociable','Sociable','sociable_meta','page','side');
 }
 add_action('admin_menu', 'sociable_meta_box');
 
