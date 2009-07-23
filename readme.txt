@@ -3,8 +3,8 @@ Contributors: joostdevalk, sociable
 Donate link: http://yoast.com/donate/
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.6
-Tested up to: 2.8.1
-Stable tag: 3.4.1
+Tested up to: 2.8.2
+Stable tag: 3.4.2
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 
@@ -24,8 +24,13 @@ More info:
 
 == Changelog ==
 
+= 3.4.2 =
+* Added a site specific id to each links anchor tag.
+* Fixed the bug mentioned [here](http://wordpress.org/support/topic/288487) and [here](http://wordpress.org/support/topic/290753) that made it impossible to disable Sociable on a per post/page basis. 
+* "Reintroduced" TwitThis as Twitter.
+
 = 3.4.1 =
-* Fixed the Sphinn submit link
+* Fixed the Sphinn submit link.
 
 = 3.4 =
 * Added the option to add a site to Sociable through a filter, read [How to add a site to Sociable](http://yoast.com/add-sites-to-sociable/).

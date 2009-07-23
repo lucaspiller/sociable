@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
-Version: 3.4.1
+Version: 3.4.3
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -29,6 +29,15 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  * Determine the location
  */
 $sociablepluginpath = WP_CONTENT_URL.'/plugins/'.plugin_basename(dirname(__FILE__)).'/';
+
+/**
+ * For backwards compatibility, esc_attr was added in 2.8
+ */
+if (! function_exists('esc_attr')) {
+	function esc_attr( $text ) {
+		return attribute_escape( $text );
+	}
+}
 
 /**
  * This function makes sure Sociable is able to load the different language files from
@@ -467,6 +476,12 @@ $sociable_known_sites = Array(
 		'url' => 'http://www.tumblr.com/share?v=3&amp;u=PERMALINK&amp;t=TITLE&amp;s=EXCERPT',
 	),
 	
+	'Twitthis' => Array(
+		'favicon' => 'twitter.png',
+		'awesm_channel' => 'twitter',
+		'url' => 'http://twitter.com/home?status=TITLE%20-%20PERMALINK',
+	),
+
 	'Twitter' => Array(
 		'favicon' => 'twitter.png',
 		'awesm_channel' => 'twitter',
@@ -681,7 +696,8 @@ function sociable_html($display=array()) {
 		 * and optionally add target=_blank to open in a new window if that option is set in the 
 		 * backend.
 		 */
-		$link .= "<a rel=\"nofollow\"";
+		$link .= '<a rel="nofollow"';
+		$link .= ' id="'.esc_attr(strtolower($sitename)).'"';
 		if (get_option('sociable_usetargetblank')) {
 			$link .= " target=\"_blank\"";
 		}
@@ -870,11 +886,11 @@ function sociable_meta() {
 	global $post;
 	$sociableoff = false;
 	$sociableoffmeta = get_post_meta($post->ID,'sociableoff',true);
-	if ($sociableoffmeta == "true" || $sociableoffmeta === true) {
+	if ($sociableoffmeta == "true" || $sociableoffmeta == true) {
 		$sociableoff = true;
 	}
 	?>
-	<input type="checkbox" id="sociableoff" name="sociableoff" <?php if ($sociableoff) { echo 'checked="checked"'; } ?>/> <label for="sociableoff"><?php _e('Sociable disabled?','sociable') ?></label>
+	<input type="checkbox" id="sociableoff" name="sociableoff" <?php checked($sociableoff); ?>/> <label for="sociableoff"><?php _e('Sociable disabled?','sociable') ?></label>
 	<?php
 }
 
@@ -892,7 +908,7 @@ add_action('admin_menu', 'sociable_meta_box');
  */
 function sociable_insert_post($pID) {
 	delete_post_meta($pID, 'sociableoff');
-	update_post_meta($pID, 'sociableoff', (isset($_POST['sociableoff']) ? true : false));
+	add_post_meta($pID, 'sociableoff', (isset($_POST['sociableoff']) ? true : false), true);
 }
 add_action('wp_insert_post', 'sociable_insert_post');
 
