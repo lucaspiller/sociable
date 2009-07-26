@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://yoast.com/wordpress/sociable/
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
-Version: 3.4.3
+Version: 3.4.4
 Author: Joost de Valk
 Author URI: http://yoast.com/
 
@@ -563,15 +563,14 @@ $sociable_known_sites = Array(
 function sociable_html($display=array()) {
 	global $sociable_known_sites, $sociablepluginpath, $wp_query, $post; 
 
+	if (get_post_meta($post->ID,'_sociableoff',true)) {
+		return "";
+	}
+
 	/**
 	 * Make it possible for other plugins or themes to add buttons to Sociable
 	 */
 	$sociable_known_sites = apply_filters('sociable_known_sites',$sociable_known_sites);
-
-	$sociableoff = get_post_meta($post->ID,'sociableoff',true);
-	if ($sociableoff == true || $sociableoff == "true") {
-		return "";
-	}
 
 	$active_sites = get_option('sociable_active_sites');
 
@@ -652,7 +651,7 @@ function sociable_html($display=array()) {
 			/**
 			 * if awe.sm is enabled and it is an awe.sm supported site, use awe.sm
 			 */
-			$permalink = str_replace('&', '%26', $permalink); 
+			$permalink = str_replace('&', '%2526', $permalink); 
 			$destination = str_replace('PERMALINK', 'TARGET', $url);
 			$destination = str_replace('&amp;', '%26', $destination);
 			$channel = urlencode($site['awesm_channel']);
@@ -701,7 +700,7 @@ function sociable_html($display=array()) {
 		if (get_option('sociable_usetargetblank')) {
 			$link .= " target=\"_blank\"";
 		}
-		$link .= " href=\"$url\" title=\"$description\">";
+		$link .= " href=\"javascript:window.location='".urlencode($url)."';\" title=\"$description\">";
 		
 		/**
 		 * If the option to use text links is enabled in the backend, display a text link, otherwise, 
@@ -771,6 +770,8 @@ if (is_array($sociable_contitionals) and in_array(true, $sociable_contitionals))
  * Set the default settings on activation on the plugin.
  */
 function sociable_activation_hook() {
+	global $wpdb;
+	$wpdb->query("DELETE FROM $wpdb->postmeta WHERE meta_key = 'sociableoff'");
 	return sociable_restore_config(false);
 }
 register_activation_hook(__FILE__, 'sociable_activation_hook');
@@ -809,7 +810,7 @@ function sociable_restore_config($force=false) {
 			'is_feed' => False,
 		));
 
-	if ($force or !is_bool(get_option('sociable_usecss')))
+	if ( $force OR !( get_option('sociable_usecss') ) )
 		update_option('sociable_usecss', true);
 }
 
@@ -885,10 +886,9 @@ function sociable_message($message) {
 function sociable_meta() {
 	global $post;
 	$sociableoff = false;
-	$sociableoffmeta = get_post_meta($post->ID,'sociableoff',true);
-	if ($sociableoffmeta == "true" || $sociableoffmeta == true) {
+	if (get_post_meta($post->ID,'_sociableoff',true)) {
 		$sociableoff = true;
-	}
+	} 
 	?>
 	<input type="checkbox" id="sociableoff" name="sociableoff" <?php checked($sociableoff); ?>/> <label for="sociableoff"><?php _e('Sociable disabled?','sociable') ?></label>
 	<?php
@@ -904,11 +904,16 @@ function sociable_meta_box() {
 add_action('admin_menu', 'sociable_meta_box');
 
 /**
- * If the post is inserted, delete the sociableoff value and reenable it when its been set.
+ * If the post is inserted, set the appropriate state for the sociable off setting.
  */
 function sociable_insert_post($pID) {
-	delete_post_meta($pID, 'sociableoff');
-	add_post_meta($pID, 'sociableoff', (isset($_POST['sociableoff']) ? true : false), true);
+	if (isset($_POST['sociableoff'])) {
+		if (!get_post_meta($post->ID,'_sociableoff',true))
+			add_post_meta($pID, '_sociableoff', true, true);
+	} else {
+		if (get_post_meta($post->ID,'_sociableoff',true))
+			delete_post_meta($pID, '_sociableoff');
+	}
 }
 add_action('wp_insert_post', 'sociable_insert_post');
 
@@ -1057,15 +1062,15 @@ function sociable_submenu() {
 			 */
 			$conditionals 	= get_option('sociable_conditionals');
 			?>
-			<input type="checkbox" name="conditionals[is_home]"<?php echo ($conditionals['is_home']) ? ' checked="checked"' : ''; ?> /> <?php _e("Front page of the blog", 'sociable'); ?><br/>
-			<input type="checkbox" name="conditionals[is_single]"<?php echo ($conditionals['is_single']) ? ' checked="checked"' : ''; ?> /> <?php _e("Individual blog posts", 'sociable'); ?><br/>
-			<input type="checkbox" name="conditionals[is_page]"<?php echo ($conditionals['is_page']) ? ' checked="checked"' : ''; ?> /> <?php _e('Individual WordPress "Pages"', 'sociable'); ?><br/>
-			<input type="checkbox" name="conditionals[is_category]"<?php echo ($conditionals['is_category']) ? ' checked="checked"' : ''; ?> /> <?php _e("Category archives", 'sociable'); ?><br/>
-			<input type="checkbox" name="conditionals[is_tag]"<?php echo ($conditionals['is_tag']) ? ' checked="checked"' : ''; ?> /> <?php _e("Tag listings", 'sociable'); ?><br/>
-			<input type="checkbox" name="conditionals[is_date]"<?php echo ($conditionals['is_date']) ? ' checked="checked"' : ''; ?> /> <?php _e("Date-based archives", 'sociable'); ?><br/>
-			<input type="checkbox" name="conditionals[is_author]"<?php echo ($conditionals['is_author']) ? ' checked="checked"' : ''; ?> /> <?php _e("Author archives", 'sociable'); ?><br/>
-			<input type="checkbox" name="conditionals[is_search]"<?php echo ($conditionals['is_search']) ? ' checked="checked"' : ''; ?> /> <?php _e("Search results", 'sociable'); ?><br/>
-			<input type="checkbox" name="conditionals[is_feed]"<?php echo ($conditionals['is_feed']) ? ' checked="checked"' : ''; ?> /> <?php _e("RSS feed items", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_home]"<?php checked($conditionals['is_home']); ?> /> <?php _e("Front page of the blog", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_single]"<?php checked($conditionals['is_single']); ?> /> <?php _e("Individual blog posts", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_page]"<?php checked($conditionals['is_page']); ?> /> <?php _e('Individual WordPress "Pages"', 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_category]"<?php checked($conditionals['is_category']); ?> /> <?php _e("Category archives", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_tag]"<?php checked($conditionals['is_tag']); ?> /> <?php _e("Tag listings", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_date]"<?php checked($conditionals['is_date']); ?> /> <?php _e("Date-based archives", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_author]"<?php checked($conditionals['is_author']); ?> /> <?php _e("Author archives", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_search]"<?php checked($conditionals['is_search']); ?> /> <?php _e("Search results", 'sociable'); ?><br/>
+			<input type="checkbox" name="conditionals[is_feed]"<?php checked($conditionals['is_feed']); ?> /> <?php _e("RSS feed items", 'sociable'); ?><br/>
 		</td>
 	</tr>
 	<tr>
