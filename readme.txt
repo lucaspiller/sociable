@@ -1,7 +1,6 @@
 === Sociable ===
-Contributors: joostdevalk, sociable
-Donate link: http://yoast.com/donate/
-Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
+Contributors: sociable
+Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks, blogplay
 Requires at least: 2.6
 Tested up to: 2.8.4
 Stable tag: 3.4.4
@@ -13,14 +12,13 @@ Automatically add links to your favorite social bookmarking sites on your posts,
 
 More info:
 
-* More info on [Sociable](http://yoast.com/wordpress/sociable/), with info on how to add sites to it, and how to integrate it into your WordPress in other ways.
-* Check out the other [Wordpress plugins](http://yoast.com/wordpress/) by the same author, and read his blog: [Yoast](http://yoast.com).
+* More info on [Sociable](http://www.blogplay.com/plugin), with info on how to add sites to it, and how to integrate it into your WordPress in other ways.
++ For an update log follow [@blogplaycom](http://www.twitter.com/blogplaycom)
 
 == Screenshots ==
 
 1. The Sociable backend, easily select sites and drag & drop to change the order of appearance.
 2. Sociable with its default styling.
-3. Sociable in use on [Yoast.com](http://yoast.com/), with the custom image options and its own styling.
 
 == Changelog ==
 
@@ -298,4 +296,4 @@ If you find any bugs or have any ideas, please mail me.
 
 **Advanced Users**
 
-For advanced use of the plugin, see the [Sociable](http://yoast.com/wordpress/sociable/) page on [Yoast](http://yoast.com/)
+For advanced use of the plugin, see the [Sociable](http://www.blogplay.com/sociable-for-wordpress) page on [Blogplay](http://www.blogplay.com/plugin)
