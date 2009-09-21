@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Sociable
-Plugin URI: http://yoast.com/wordpress/sociable/
+Plugin URI: http://blogplay.com/plugin
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 Version: 3.4.4
 Author: Joost de Valk
-Author URI: http://yoast.com/
+Author URI: http://blogplay.com
 
 Copyright 2006 Peter Harkins (ph@malaprop.org)
 Copyright 2008-2009 Joost de Valk (joost@yoast.com)
