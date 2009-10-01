@@ -176,118 +176,118 @@ $sociable_known_sites = Array(
 	'Fleck' => Array(
 		'favicon' => 'fleck.png',
 		'url' => 'http://beta3.fleck.com/bookmarklet.php?url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(18,19),
+		'spriteCoordinates' => Array(19,19),
 	),
 
 	'FriendFeed' => Array(
 		'favicon' => 'friendfeed.png',
 		'url' => 'http://www.friendfeed.com/share?title=TITLE&amp;link=PERMALINK',
-		'spriteCoordinates' => Array(36,19),
+		'spriteCoordinates' => Array(37,19),
 	),
 
 	'FSDaily' => Array(
 		'favicon' => 'fsdaily.png',
 		'url' => 'http://www.fsdaily.com/submit?url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(54,19),
+		'spriteCoordinates' => Array(55,19),
 	),
 
 	'Global Grind' => Array (
 		'favicon' => 'globalgrind.png',
 		'url' => 'http://globalgrind.com/submission/submit.aspx?url=PERMALINK&amp;type=Article&amp;title=TITLE',
-		'spriteCoordinates' => Array(72,19),
+		'spriteCoordinates' => Array(73,19),
 	),
 	
 	'Google' => Array (
 		'favicon' => 'googlebookmark.png',
 		'url' => 'http://www.google.com/bookmarks/mark?op=edit&amp;bkmk=PERMALINK&amp;title=TITLE&amp;annotation=EXCERPT',
 		'description' => 'Google Bookmarks',
-		'spriteCoordinates' => Array(90,19),
+		'spriteCoordinates' => Array(91,19),
 	),
 	
 	'Gwar' => Array(
 		'favicon' => 'gwar.png',
 		'url' => 'http://www.gwar.pl/DodajGwar.html?u=PERMALINK',
-		'spriteCoordinates' => Array(108,19),
+		'spriteCoordinates' => Array(109,19),
 		'supportsIframe' => false,
 	),
 
 	'HackerNews' => Array(
 		'favicon' => 'hackernews.png',
 		'url' => 'http://news.ycombinator.com/submitlink?u=PERMALINK&amp;t=TITLE',
-		'spriteCoordinates' => Array(126,19),
+		'spriteCoordinates' => Array(127,19),
 	),
 
 	'Haohao' => Array(
 		'favicon' => 'haohao.png',
 		'url' => 'http://www.haohaoreport.com/submit.php?url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(144,19),
+		'spriteCoordinates' => Array(145,19),
 	),
 
 	'HealthRanker' => Array(
 		'favicon' => 'healthranker.png',
 		'url' => 'http://healthranker.com/submit.php?url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(162,19),
+		'spriteCoordinates' => Array(163,19),
 	),
 
 	'HelloTxt' => Array(
         'favicon' => 'hellotxt.png',
         'url' => 'http://hellotxt.com/?status=TITLE+PERMALINK',
-		'spriteCoordinates' => Array(180,19),
+		'spriteCoordinates' => Array(181,19),
     ),
 
 	'Hemidemi' => Array(
 		'favicon' => 'hemidemi.png',
 		'url' => 'http://www.hemidemi.com/user_bookmark/new?title=TITLE&amp;url=PERMALINK',
-    	'spriteCoordinates' => Array(198,19),
+    	'spriteCoordinates' => Array(199,19),
 	),
 
 	'Hyves' => Array(
 		'favicon' => 'hyves.png',
 		'url' => 'http://www.hyves.nl/profilemanage/add/tips/?name=TITLE&amp;text=EXCERPT+PERMALINK&amp;rating=5',
-		'spriteCoordinates' => Array(216,19),
+		'spriteCoordinates' => Array(217,19),
 	),
 
 	'Identi.ca' => Array(
 		'favicon' => 'identica.png',
 		'url' => 'http://identi.ca/notice/new?status_textarea=PERMALINK',
-		'spriteCoordinates' => Array(234,19),
+		'spriteCoordinates' => Array(235,19),
 		'supportsIframe' => false,
 	),
 
 	'IndianPad' => Array(
 		'favicon' => 'indianpad.png',
 		'url' => 'http://www.indianpad.com/submit.php?url=PERMALINK',
-		'spriteCoordinates' => Array(252,19),
+		'spriteCoordinates' => Array(253,19),
 	),
 
 	'Internetmedia' => Array(
 		'favicon' => 'im.png',
 		'url' => 'http://internetmedia.hu/submit.php?url=PERMALINK',
-		'spriteCoordinates' => Array(270,19),
+		'spriteCoordinates' => Array(271,19),
 	),
 
 	'Kirtsy' => Array(
 		'favicon' => 'kirtsy.png',
 		'url' => 'http://www.kirtsy.com/submit.php?url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(288,19),
+		'spriteCoordinates' => Array(289,19),
 	),
 
 	'laaik.it' => Array(
 		'favicon' => 'laaikit.png',
 		'url' => 'http://laaik.it/NewStoryCompact.aspx?uri=PERMALINK&amp;headline=TITLE&amp;cat=5e082fcc-8a3b-47e2-acec-fdf64ff19d12',
-		'spriteCoordinates' => Array(306,19),
+		'spriteCoordinates' => Array(307,19),
 	),
 
 	'LinkArena' => Array(
 		'favicon' => 'linkarena.png',
 		'url' => 'http://linkarena.com/bookmarks/addlink/?url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(324,19),
+		'spriteCoordinates' => Array(325,19),
 	),
 	
 	'LinkaGoGo' => Array(
 		'favicon' => 'linkagogo.png',
 		'url' => 'http://www.linkagogo.com/go/AddNoPopup?url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(342,19),
+		'spriteCoordinates' => Array(343,19),
 	),
 
 	'LinkedIn' => Array(
@@ -299,57 +299,57 @@ $sociable_known_sites = Array(
 	'Linkter' => Array(
 		'favicon' => 'linkter.png',
 		'url' => 'http://www.linkter.hu/index.php?action=suggest_link&amp;url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(18,37),
+		'spriteCoordinates' => Array(19,37),
 	),
 	
 	'Live' => Array(
 		'favicon' => 'live.png',
 		'url' => 'https://favorites.live.com/quickadd.aspx?marklet=1&amp;url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(36,37),
+		'spriteCoordinates' => Array(37,37),
 	),
 
 	'Meneame' => Array(
 		'favicon' => 'meneame.png',
 		'url' => 'http://meneame.net/submit.php?url=PERMALINK',
-		'spriteCoordinates' => Array(54,37),
+		'spriteCoordinates' => Array(55,37),
 		'supportsIframe' => false,
 	),
 	
 	'MisterWong' => Array(
 		'favicon' => 'misterwong.png',
 		'url' => 'http://www.mister-wong.com/addurl/?bm_url=PERMALINK&amp;bm_description=TITLE&amp;plugin=soc',
-		'spriteCoordinates' => Array(72,37),
+		'spriteCoordinates' => Array(73,37),
 	),
 
 	'MisterWong.DE' => Array(
 		'favicon' => 'misterwong.png',
 		'url' => 'http://www.mister-wong.de/addurl/?bm_url=PERMALINK&amp;bm_description=TITLE&amp;plugin=soc',
-		'spriteCoordinates' => Array(72,37),
+		'spriteCoordinates' => Array(73,37),
 	),
 	
 	'Mixx' => Array(
 		'favicon' => 'mixx.png',
 		'url' => 'http://www.mixx.com/submit?page_url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(90,37),
+		'spriteCoordinates' => Array(91,37),
 	),
 	
 	'muti' => Array(
 		'favicon' => 'muti.png',
 		'url' => 'http://www.muti.co.za/submit?url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(108,37),
+		'spriteCoordinates' => Array(109,37),
 	),
 	
 	'MyShare' => Array(
 		'favicon' => 'myshare.png',
 		'url' => 'http://myshare.url.com.tw/index.php?func=newurl&amp;url=PERMALINK&amp;desc=TITLE',
-		'spriteCoordinates' => Array(126,37),
+		'spriteCoordinates' => Array(127,37),
 	),
 
 	'MySpace' => Array(
 		'favicon' => 'myspace.png',
 		'awesm_channel' => 'myspace',
 		'url' => 'http://www.myspace.com/Modules/PostTo/Pages/?u=PERMALINK&amp;t=TITLE',
-		'spriteCoordinates' => Array(144,37),
+		'spriteCoordinates' => Array(145,37),
 		'supportsIframe' => false,
 	),
 
@@ -357,62 +357,62 @@ $sociable_known_sites = Array(
 		'favicon' => 'msnreporter.png',
 		'url' => 'http://reporter.nl.msn.com/?fn=contribute&amp;Title=TITLE&amp;URL=PERMALINK&amp;cat_id=6&amp;tag_id=31&amp;Remark=EXCERPT',
 		'description' => 'MSN Reporter',
-		'spriteCoordinates' => Array(162,37),
+		'spriteCoordinates' => Array(163,37),
 	),
 	
 	'N4G' => Array(
 		'favicon' => 'n4g.png',
 		'url' => 'http://www.n4g.com/tips.aspx?url=PERMALINK&amp;title=TITLE',
-		'spriteCoordinates' => Array(180,37),
+		'spriteCoordinates' => Array(181,37),
 	),
 	
 	'Netvibes' => Array(
 		'favicon' => 'netvibes.png',
 		'url' =>	'http://www.netvibes.com/share?title=TITLE&amp;url=PERMALINK',
-		'spriteCoordinates' => Array(198,37),
+		'spriteCoordinates' => Array(199,37),
 	),
 		
 	'NewsVine' => Array(
 		'favicon' => 'newsvine.png',
 		'url' => 'http://www.newsvine.com/_tools/seed&amp;save?u=PERMALINK&amp;h=TITLE',
-		'spriteCoordinates' => Array(216,37),
+		'spriteCoordinates' => Array(217,37),
 	),
 
 	'Netvouz' => Array(
 		'favicon' => 'netvouz.png',
 		'url' => 'http://www.netvouz.com/action/submitBookmark?url=PERMALINK&amp;title=TITLE&amp;popup=no',
-		'spriteCoordinates' => Array(234,37),
+		'spriteCoordinates' => Array(235,37),
 	),
 
 	'NuJIJ' => Array(
 		'favicon' => 'nujij.png',
 		'url' => 'http://nujij.nl/jij.lynkx?t=TITLE&amp;u=PERMALINK&amp;b=EXCERPT',
-		'spriteCoordinates' => Array(252,37),
+		'spriteCoordinates' => Array(253,37),
 	),
 	
 	'Ping.fm' => Array(
 		'favicon' => 'ping.png',
 		'awesm_channel' => 'pingfm',
 		'url' => 'http://ping.fm/ref/?link=PERMALINK&amp;title=TITLE&amp;body=EXCERPT',
-		'spriteCoordinates' => Array(270,37),
+		'spriteCoordinates' => Array(271,37),
 	),
 
 	'Posterous' => Array(
 		'favicon' => 'posterous.png',
 		'url' => 'http://posterous.com/share?linkto=PERMALINK&amp;title=TITLE&amp;selection=EXCERPT',
-		'spriteCoordinates' => Array(288,37),
+		'spriteCoordinates' => Array(289,37),
 	),
 	
 	'PDF' => Array(
 		'favicon' => 'pdf.png',
 		'url' => 'http://www.printfriendly.com/print?url=PERMALINK&amp;partner=sociable',
-		'spriteCoordinates' => Array(324,37),
+		'spriteCoordinates' => Array(325,37),
 	),
 	
 	'Print' => Array(
 		'favicon' => 'printfriendly.png',
 		'url' => 'http://www.printfriendly.com/print?url=PERMALINK&amp;partner=sociable',
-		'spriteCoordinates' => Array(342,37),
+		'spriteCoordinates' => Array(343,37),
 	),
 	
 	'Propeller' => Array(
@@ -622,7 +622,7 @@ $sociable_known_sites = Array(
 	 
 	 'Blogplay' => Array(
 	 	'favicon' => '',
-	 	'url' => 'http://blogplay.com',
+	 	'url' => 'http://www.blogplay.com',
 	 	'spriteCoordinates' => Array(199,73),
 	 	'supportsIframe' => false,
 	 ),
