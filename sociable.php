@@ -622,7 +622,7 @@ $sociable_known_sites = Array(
 	 
 	 'Blogplay' => Array(
 	 	'favicon' => 'blogplay.png',
-	 	'url' => 'http://blogplay.com/plugin',
+	 	'url' => 'http://blogplay.com',
 	 	'spriteCoordinates' => Array(199,73),
 	 	'supportsIframe' => false,
 	 ),
