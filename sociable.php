@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://blogplay.com/plugin
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
-Version: 3.5.0
+Version: 3.5.1
 Author: Blogplay
 Author URI: http://blogplay.com/
 
@@ -483,7 +483,7 @@ $sociable_known_sites = Array(
 
 	'Sphinn' => Array(
 		'favicon' => 'sphinn.png',
-		'url' => 'http://sphinn.com/index.php?c=post&m=submit&link=PERMALINK',
+		'url' => 'http://sphinn.com/index.php?c=post&amp;m=submit&amp;link=PERMALINK',
 		'spriteCoordinates' => Array(199,55),
 	),
 
@@ -614,15 +614,15 @@ $sociable_known_sites = Array(
 	 ),
 	 
 	 'Add to favorites' => Array(
-	 	'favicon' => '',
+	 	'favicon' => 'addtofavorites.png',
 	 	'url' => 'javascript:AddToFavorites();',
 	 	'spriteCoordinates' => Array(181,73),
 	 	'supportsIframe' => false,
 	 ),
 	 
 	 'Blogplay' => Array(
-	 	'favicon' => '',
-	 	'url' => 'http://blogplay.com',
+	 	'favicon' => 'blogplay.png',
+	 	'url' => 'http://blogplay.com/plugin',
 	 	'spriteCoordinates' => Array(199,73),
 	 	'supportsIframe' => false,
 	 ),
@@ -774,20 +774,20 @@ function sociable_html($display=array()) {
 		 */
 		$link .= '<a ';
 		$link .= ($sitename=="Blogplay") ? '' : 'rel="nofollow"';
-		$link .= ' id="'.esc_attr(strtolower($sitename)).'"';
+		$link .= ' id="'.esc_attr(strtolower(str_replace(" ", "", $sitename))).'" ';
 		/**
 		 * Use the iframe option if it is enabled and supported by the service/site
 		 */
 		if (get_option('sociable_useiframe') && !isset($site['supportsIframe'])) {
 			$iframeWidth = get_option('sociable_iframewidth',900);
 			$iframeHeight = get_option('sociable_iframeheight',500);
-			$link .= 'class="thickbox" href="' . $url . "?TB_iframe=true&height=$iframeHeight&width=$iframeWidth\">";
+			$link .= 'class="thickbox" href="' . $url . "?TB_iframe=true&amp;height=$iframeHeight&amp;width=$iframeWidth\">";
 		} else {
-			if(!$sitename == "Add to favorites") {
+			if(!($sitename=="Add to favorites")) {
 				if (get_option('sociable_usetargetblank')) {
 					$link .= " target=\"_blank\"";
 				}
-				$link .= " href=\"".$url."';\" title=\"$description\">";
+				$link .= " href=\"".$url."\" title=\"$description\">";
 			} else {
 				$link .= " href=\"$url\" title=\"$description\">";			
 			} 
@@ -803,14 +803,14 @@ function sociable_html($display=array()) {
 			/**
 			 * If site doesn't have sprite information
 			 */
-			if (!isset($site['spriteCoordinates'])) {
+			if (!isset($site['spriteCoordinates']) || get_option('sociable_disablesprite',false) || is_feed()) {
 				if (strpos($site['favicon'], 'http') === 0) {
 					$imgsrc = $site['favicon'];
 				} else {
 					$imgsrc = $imagepath.$site['favicon'];
 				}
 				$link .= "<img src=\"".$imgsrc."\" title=\"$description\" alt=\"$description\"";
-				$link .= (!get_option('sociable_disablealpha',false)) ? " class=\"sociable-hovers\"" : "";
+				$link .= (!get_option('sociable_disablealpha',false)) ? " class=\"sociable-hovers" : "";
 			/**
 			 * If site has sprite information use it
 			 */
@@ -818,12 +818,15 @@ function sociable_html($display=array()) {
 				$imgsrc = $imagepath."services-sprite.gif";
 				$services_sprite_url = $imagepath . "services-sprite.png";
 				$spriteCoords = $site['spriteCoordinates'];
-				$link .= "<img src=\"".$imgsrc."\" title=\"$description\" alt=\"$description\" style=\"background: transparent url($services_sprite_url) no-repeat; background-position:-$spriteCoords[0]px -$spriteCoords[1]px\"";
-				$link .= (!get_option('sociable_disablealpha',false)) ? " class=\"sociable-hovers\"" : "";
+				$link .= "<img src=\"".$imgsrc."\" title=\"$description\" alt=\"$description\" style=\"width: 16px; height: 16px; background: transparent url($services_sprite_url) no-repeat; background-position:-$spriteCoords[0]px -$spriteCoords[1]px\"";
+				$link .= (!get_option('sociable_disablealpha',false)) ? " class=\"sociable-hovers" : "";
 			}
-			if (isset($site['class']) && $site['class'])
-				$link .= " sociable_{$site['class']}";
-			$link .= "\" />";
+			if (isset($site['class']) && $site['class']) {
+				$link .= (!get_option('sociable_disablealpha',false)) ? " sociable_{$site['class']}\"" : " class=\"sociable_{$site['class']}\"";
+			} else {
+				$link .= (!get_option('sociable_disablealpha',false)) ? "\"" : "";
+			}
+			$link .= " />";
 		}
 		$link .= "</a></li>";
 		
@@ -920,19 +923,25 @@ function sociable_restore_config($force=false) {
 	if ( $force OR !( get_option('sociable_usecss') ) )
 		update_option('sociable_usecss', true);
 		
-	if ( $force or !( get_option('sociable_iframewidth')))
-	{
+	if ( $force or !( get_option('sociable_iframewidth')))	{
 		update_option('sociable_iframewidth',900);
 	}
-	if ( $force or !( get_option('sociable_iframeheight')))
-	{
+	if ( $force or !( get_option('sociable_iframeheight')))	{
 		update_option('sociable_iframeheight',500);
 	}
 	
-	if ( $force or !( get_option('sociable_disablealpha')))
-	{
+	if ( $force or !( get_option('sociable_disablealpha')))	{
 		update_option('sociable_disablealpha',false);
 	}
+	
+	if ( $force or !( get_option('sociable_disablesprite')) ) {
+		update_option('sociable_disablesprite',false);
+	}
+	
+	if ( $force or !( get_option('sociable_disablewidget')) ) {
+		update_option('sociable_disablewidget',false);
+	}
+	
 }
 
 /**
@@ -1079,7 +1088,7 @@ function sociable_submenu() {
 		delete_option('sociable_active_sites', $active_sites);
 		add_option('sociable_active_sites', $active_sites);
 
-		foreach ( array('usetargetblank', 'useiframe', 'disablealpha', 'awesmenable', 'usecss', 'usetextlinks') as $val ) {
+		foreach ( array('usetargetblank', 'useiframe', 'disablealpha', 'disablesprite', 'awesmenable', 'usecss', 'usetextlinks', 'disablewidget') as $val ) {
 			if ( isset($_POST[$val]) && $_POST[$val] )
 				update_option('sociable_'.$val,true);
 			else
@@ -1195,6 +1204,14 @@ function sociable_submenu() {
 	</tr>
 	<tr>
 		<th scope="row" valign="top">
+			<?php _e("Disable sprite usage for images?", "sociable"); ?>
+		</th>
+		<td>
+			<input type="checkbox" name="disablesprite" <?php checked( get_option('sociable_disablesprite'), true ) ; ?> />
+		</td>
+	</tr>	
+	<tr>
+		<th scope="row" valign="top">
 			<?php _e("Disable alpha mask on share toolbar?", "sociable"); ?>
 		</th>
 		<td>
@@ -1288,6 +1305,14 @@ function sociable_submenu() {
 		</td>
 	</tr>
 	<tr>
+		<th scope="row" valign="top">
+			<?php _e("Disable Blogplay's widget from dashboard:", "sociable"); ?>
+		</th>
+		<td>
+			<input type="checkbox" name="disablewidget" <?php checked( get_option('sociable_disablewidget'), true ); ?> />
+		</td>		
+	</tr>	
+	<tr>
 		<td>&nbsp;</td>
 		<td>
 			<span class="submit"><input name="save" value="<?php _e("Save Changes", 'sociable'); ?>" type="submit" /></span>
@@ -1345,7 +1370,7 @@ function sociable_filter_plugin_actions( $links, $file ){
 add_filter( 'plugin_action_links', 'sociable_filter_plugin_actions', 10, 2 );
 
 /**
- * Add the Yoast.com RSS feed to the WordPress dashboard
+ * Add the Blogplay.com RSS feed to the WordPress dashboard
  */
 if (!function_exists('blogplay_db_widget')) {
 	function blogplay_text_limit( $text, $limit, $finish = ' [&hellip;]') {
@@ -1396,6 +1421,8 @@ if (!function_exists('blogplay_db_widget')) {
 	    wp_add_dashboard_widget( 'blogplay_db_widget' , 'The Latest news from BlogPlay.Com' , 'blogplay_db_widget');
 	}
  
-	add_action('wp_dashboard_setup', 'blogplay_widget_setup');
+	if (!get_option('sociable_disablewidget',false)) {
+		add_action('wp_dashboard_setup', 'blogplay_widget_setup');
+	}
 }
 ?>

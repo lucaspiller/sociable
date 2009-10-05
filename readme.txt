@@ -1,9 +1,10 @@
 === Sociable ===
-Contributors: sociable
-Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks, blogplay
+Contributors: joostdevalk, sociable
+Donate link: http://yoast.com/donate/
+Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks
 Requires at least: 2.6
 Tested up to: 2.8.4
-Stable tag: 3.5.0
+Stable tag: 3.4.4
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 
@@ -12,18 +13,25 @@ Automatically add links to your favorite social bookmarking sites on your posts,
 
 More info:
 
-* More info on [Sociable](http://www.blogplay.com/plugin), with info on how to add sites to it, and how to integrate it into your WordPress in other ways.
-+ For an update log follow [@blogplaycom](http://www.twitter.com/blogplaycom)
+* More info on [Sociable](http://yoast.com/wordpress/sociable/), with info on how to add sites to it, and how to integrate it into your WordPress in other ways.
+* Check out the other [Wordpress plugins](http://yoast.com/wordpress/) by the same author, and read his blog: [Yoast](http://yoast.com).
 
 == Screenshots ==
 
 1. The Sociable backend, easily select sites and drag & drop to change the order of appearance.
 2. Sociable with its default styling.
+3. Sociable in use on [Yoast.com](http://yoast.com/), with the custom image options and its own styling.
 
 == Changelog ==
 
+= 3.5.1 =
+* Fixed the xhtml validation issues
+* 'target=blank' (open link in new window) issue solved
+* Sprites can now be disabled, allowing for custom icons
+* Sprites have been disabled for RSS
+* You can now deactivate the blogplay widget from your wordpress dashboard
+ 
 = 3.5.0 =
-
 * The icons now load in a CSS Sprites, allowing for faster download times.
 * These services have been discontinued: BlogMeme FR, BlogMeme SP, co.mments, DesignFloat.com, PPNow.net, Symbaloo.com.
 * You can now add links to your browser favorites.
@@ -304,4 +312,4 @@ If you find any bugs or have any ideas, please mail me.
 
 **Advanced Users**
 
-For advanced use of the plugin, see the [Sociable](http://www.blogplay.com/sociable-for-wordpress) page on [Blogplay](http://www.blogplay.com/plugin)
+For advanced use of the plugin, see the [Sociable](http://yoast.com/wordpress/sociable/) page on [Yoast](http://yoast.com/)
