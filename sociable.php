@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://blogplay.com/plugin
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
-Version: 3.5.1
+Version: 3.5.2
 Author: Blogplay
 Author URI: http://blogplay.com/
 
@@ -120,7 +120,13 @@ $sociable_known_sites = Array(
 		'url' => 'http://delicious.com/post?url=PERMALINK&amp;title=TITLE&amp;notes=EXCERPT',
 		'spriteCoordinates' => Array(199,1),
 	),
-
+	
+	'Design Float' => Array(
+		'favicon' => 'designfloat.png',
+		'url' => 'http://www.designfloat.com/submit.php?url=PERMALINK&amp;title=TITLE',
+		'spriteCoordinates' => Array(217,1),
+	),
+	
 	'Digg' => Array(
 		'favicon' => 'digg.png',
 		'url' => 'http://digg.com/submit?phase=2&amp;url=PERMALINK&amp;title=TITLE&amp;bodytext=EXCERPT',
@@ -626,6 +632,62 @@ $sociable_known_sites = Array(
 	 	'spriteCoordinates' => Array(199,73),
 	 	'supportsIframe' => false,
 	 ),
+	 
+	 // 3.5.2
+	 
+	'MOB' => Array(
+        'favicon' => 'mob.png',
+        'url' => 'http://www.mob.com/share.php?u=PERMALINK&t=TITLE',
+        'description' => 'MOB',
+	 	'spriteCoordinates' => Array(217,73),
+    ),
+    
+	'豆瓣' => Array(
+        'favicon' => 'douban.png',
+        'url' => 'http://www.douban.com/recommend/?url=PERMALINK&title=TITLE',
+        'description' => '豆瓣',
+    	'spriteCoordinates' => Array(235,73),
+    ),
+
+    '豆瓣九点' => Array(
+        'favicon' => 'douban9.png',
+        'url' => 'http://www.douban.com/recommend/?url=PERMALINK&title=TITLE&n=1',
+        'description' => '豆瓣九点',
+    	'spriteCoordinates' => Array(253,73),
+    ),    
+
+    'QQ书签' => Array(
+        'favicon' => 'qq.png',
+        'url' => 'http://shuqian.qq.com/post?jumpback=1&title=TITLE&uri=PERMALINK',
+        'description' => 'QQ书签',
+    	'spriteCoordinates' => Array(271,73),
+    ),    
+    
+    'LaTafanera' => Array(
+        'favicon' => 'latafanera.png',
+        'url' => 'http://latafanera.cat/submit.php?url=PERMALINK',
+    	'spriteCoordinates' => Array(289,73),
+    ),
+    
+    'SheToldMe' => Array(
+        'favicon' => 'shetoldme.png',
+        'url' => 'http://shetoldme.com/publish?url=PERMALINK&title=TITLE',
+    	'spriteCoordinates' => Array(307,73),
+    ),
+
+	'viadeo FR' => Array(
+        'favicon' => 'viadeo.png',
+        'url' => 'http://www.viadeo.com/shareit/share/?url=PERMALINK&title=TITLE&urllanguage=fr',
+    	'spriteCoordinates' => Array(325,73),
+    ),
+        
+	'Diggita' => Array(
+        'favicon' => 'diggita.png',
+        'url' => 'http://www.diggita.it/submit.php?url=PERMALINK&title=TITLE',
+        'description' => 'Diggita',
+    	'spriteCoordinates' => Array(343,73),
+    ),   	 
+    
 );
 
 /**
@@ -774,7 +836,7 @@ function sociable_html($display=array()) {
 		 */
 		$link .= '<a ';
 		$link .= ($sitename=="Blogplay") ? '' : 'rel="nofollow"';
-		$link .= ' id="'.esc_attr(strtolower(str_replace(" ", "", $sitename))).'" ';
+		//$link .= ' id="'.esc_attr(strtolower(str_replace(" ", "", $sitename))).'" ';
 		/**
 		 * Use the iframe option if it is enabled and supported by the service/site
 		 */
@@ -1113,6 +1175,10 @@ function sociable_submenu() {
 				update_option( 'sociable_'.$val, $_POST[$val] );
 		}
 		
+		if (isset($_POST["imagedir"]) && !trim($_POST["imagedir"]) == "") {
+			update_option('sociable_disablesprite',true);
+		}
+		
 		/**
 		 * Update conditional displays
 		 */
@@ -1177,21 +1243,25 @@ function sociable_submenu() {
 						/>
 						<?php
 						$imagepath = get_option('sociable_imagedir');
-						if ($imagepath == "")
-							$imagepath = $sociablepluginpath.'images/';		
 						
-						if (!isset($site['spriteCoordinates'])) {
+						if ($imagepath == "") {
+							$imagepath = $sociablepluginpath.'images/';
+						} else {		
+							$imagepath .= (substr($imagepath,strlen($imagepath)-1,1)=="/") ? "" : "/";
+						}
+						
+						if (!isset($site['spriteCoordinates']) || get_option('sociable_disablesprite')) {
 							if (strpos($site['favicon'], 'http') === 0) {
 								$imgsrc = $site['favicon'];
 							} else {
 								$imgsrc = $imagepath.$site['favicon'];
 							}
-							echo "<img src=\"$imgsrc\" width=\"16\" height=\"16\" alt=\"" . $site[description] . "\" />";
+							echo "<img src=\"$imgsrc\" width=\"16\" height=\"16\" />";
 						} else {
 							$imgsrc = $imagepath."services-sprite.gif";
 							$services_sprite_url = $imagepath . "services-sprite.png";
 							$spriteCoords = $site['spriteCoordinates'];
-							echo "<img src=\"$imgsrc\" width=\"16\" height=\"16\" style=\"background: transparent url($services_sprite_url) no-repeat; background-position:-$spriteCoords[0]px -$spriteCoords[1]px\" alt=\"" . $site[description] . "\" />";
+							echo "<img src=\"$imgsrc\" width=\"16\" height=\"16\" style=\"background: transparent url($services_sprite_url) no-repeat; background-position:-$spriteCoords[0]px -$spriteCoords[1]px\" />";
 						}
 						
 						echo $sitename; ?>
@@ -1273,7 +1343,8 @@ function sociable_submenu() {
 		</th>
 		<td>
 			<?php _e("Sociable comes with a nice set of images, if you want to replace those with your own, enter the URL where you've put them in here, and make sure they have the same name as the ones that come with Sociable.", 'sociable'); ?><br/>
-			<input size="80" type="text" name="imagedir" value="<?php echo attribute_escape(stripslashes(get_option('sociable_imagedir'))); ?>" />
+			<input size="80" type="text" name="imagedir" value="<?php echo attribute_escape(stripslashes(get_option('sociable_imagedir'))); ?>" /><br />
+			(automatically disables sprite usage)
 		</td>
 	</tr>
 	<tr>

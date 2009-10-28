@@ -2,8 +2,8 @@
 Contributors: sociable
 Tags: social, bookmark, bookmarks, bookmarking, social bookmarking, social bookmarks, blogplay
 Requires at least: 2.6
-Tested up to: 2.8.4
-Stable tag: 3.5.1
+Tested up to: 2.8.5
+Stable tag: 3.5.2
 
 Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 
@@ -21,6 +21,11 @@ More info:
 2. Sociable with its default styling.
 
 == Changelog ==
+
+= 3.5.2 = 
+* Added new services MOB, 豆瓣, 豆瓣九点, QQ书签, LaTafanera, SheToldMe, viadeo FR, Diggita, Design Float
+* Removed ID properties from sociable anchor tags (share links) 
+* FIXED: Having a custom image directory now disables sprite usage, and the icons of services are displayed on sociable configuration page.
 
 = 3.5.1 =
 * Fixed the xhtml validation issues
