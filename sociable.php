@@ -835,7 +835,7 @@ function sociable_html($display=array()) {
 		 * backend.
 		 */
 		$link .= '<a ';
-		$link .= ($sitename=="Blogplay") ? '' : 'rel="nofollow"';
+		$link .= ($sitename=="Blogplay") ? '' : 'rel="nofollow" ';
 		//$link .= ' id="'.esc_attr(strtolower(str_replace(" ", "", $sitename))).'" ';
 		/**
 		 * Use the iframe option if it is enabled and supported by the service/site
