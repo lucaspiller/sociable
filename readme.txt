@@ -3,7 +3,10 @@ Author: sociable
 Tags: sociable, social bookmarking, social bookmarks, social icons,  bookmarking, share, sharing, be sociable share, share and enjoy, digg, delicious, twitter, facebook, blinklist, stumbleupon, gmail, posterous, tumblr
 Requires Wordpress at least version: 2.8
 Tested up to version: 3.2.1
+Requires at least: 2.6
 
+Tested up to: 2.8.5
+Stable tag: 3.5.2
 == Description ==
 Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,2mm downloads now, here comes the version 4.0, with everything you expect to get, and then some. 
 
