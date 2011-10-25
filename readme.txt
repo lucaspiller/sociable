@@ -74,11 +74,11 @@ Please send us an email to sociable [ at ] startups.com
 == Changelog ==
 
 = 4.0.3 =
-Fix Other issues IIS 6.0 and PHP 5.3.x
+* Fix Other issues IIS 6.0 and PHP 5.3.x
 
 
 = 4.0.2 =
-Fix IIS 6.0 and PHP 5.3.x
+* Fix IIS 6.0 and PHP 5.3.x
 
 = 4.0.1 =
 * Changed the old motto "share and enjoy" for "Be Sociable, Share" much more attractive. Of cours you can customize it to whatever you want.
