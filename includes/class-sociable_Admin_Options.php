@@ -226,7 +226,7 @@ class sociable_Admin_Options{
 					
 				<BR/>
 				<DIV style="width:100%;height:60px;">
-					<INPUT type="text" class="Tagline-INPUT" id="tagline" name="sociable_options[tagline]" value="<?=$sociable_options["tagline"];?>" /> 
+					<INPUT type="text" class="Tagline-INPUT" id="tagline" name="sociable_options[tagline]" value="<?php echo$sociable_options["tagline"];?>" /> 
 					
 					<DIV class="ToSociable" >
 							<INPUT type="checkbox" <? if (!empty($sociable_options["help_grow"])) echo "checked = 'checked'";?> name="sociable_options[help_grow]" id="LinkToSociable" />
@@ -275,13 +275,13 @@ class sociable_Admin_Options{
 					if ($sociable_options["icon_size"] == 64) $checked64 = "checked='checked'";
 					//echo $checked16;
 				?>
-				<SPAN class="IconSize-Item">	<INPUT  value="16" type="radio" name="sociable_options[icon_size]" <?=$checked16;?> />16x16 Pixels </SPAN>
+				<SPAN class="IconSize-Item">	<INPUT  value="16" type="radio" name="sociable_options[icon_size]" <?php echo$checked16;?> />16x16 Pixels </SPAN>
 					
-				<SPAN class="IconSize-Item">	<INPUT <?=$checked32;?> value="32" type="radio" name="sociable_options[icon_size]" />32x32 Pixels </SPAN>
+				<SPAN class="IconSize-Item">	<INPUT <?php echo$checked32;?> value="32" type="radio" name="sociable_options[icon_size]" />32x32 Pixels </SPAN>
 					
-				<SPAN class="IconSize-Item">	<INPUT <?=$checked48;?> value="48" type="radio"  name="sociable_options[icon_size]"/>48x48 Pixels </SPAN>
+				<SPAN class="IconSize-Item">	<INPUT <?php echo$checked48;?> value="48" type="radio"  name="sociable_options[icon_size]"/>48x48 Pixels </SPAN>
 					
-				<SPAN class="IconSize-Item">	<INPUT <?=$checked64;?> value="64" type="radio" name="sociable_options[icon_size]" />64x64 Pixels </SPAN>
+				<SPAN class="IconSize-Item">	<INPUT <?php echo$checked64;?> value="64" type="radio" name="sociable_options[icon_size]" />64x64 Pixels </SPAN>
 				
 				
 			</DIV>
@@ -319,17 +319,17 @@ class sociable_Admin_Options{
 							//echo $imagepath;
 				?>
 				
-				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?=$checked1?> value="option1" type="radio" /> <IMG  src="<?=$imagepath?>icon_styles/<?=$sociable_options["icon_size"]?>/option1_<?=$sociable_options["icon_size"]?>.jpg"  /> </SPAN>
+				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?php echo$checked1?> value="option1" type="radio" /> <IMG  src="<?php echo$imagepath?>icon_styles/<?php echo$sociable_options["icon_size"]?>/option1_<?php echo$sociable_options["icon_size"]?>.jpg"  /> </SPAN>
 				<BR/><BR/>
-				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?=$checked2?> value="option2" type="radio" /> <IMG  src="<?=$imagepath?>icon_styles/<?=$sociable_options["icon_size"]?>/option2_<?=$sociable_options["icon_size"]?>.jpg"  /> </SPAN>
+				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?php echo$checked2?> value="option2" type="radio" /> <IMG  src="<?php echo$imagepath?>icon_styles/<?php echo$sociable_options["icon_size"]?>/option2_<?php echo$sociable_options["icon_size"]?>.jpg"  /> </SPAN>
 				<BR/><BR/>
-				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?=$checked3?> value="option3" type="radio" /> <IMG  src="<?=$imagepath?>icon_styles/<?=$sociable_options["icon_size"]?>/option3_<?=$sociable_options["icon_size"]?>.jpg"  />  </SPAN>
+				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?php echo$checked3?> value="option3" type="radio" /> <IMG  src="<?php echo$imagepath?>icon_styles/<?php echo$sociable_options["icon_size"]?>/option3_<?php echo$sociable_options["icon_size"]?>.jpg"  />  </SPAN>
 				<BR/><BR/>
-				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?=$checked4?> value="option4" type="radio" /> <IMG  src="<?=$imagepath?>icon_styles/<?=$sociable_options["icon_size"]?>/option4_<?=$sociable_options["icon_size"]?>.jpg"  /> </SPAN>
+				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?php echo$checked4?> value="option4" type="radio" /> <IMG  src="<?php echo$imagepath?>icon_styles/<?php echo$sociable_options["icon_size"]?>/option4_<?php echo$sociable_options["icon_size"]?>.jpg"  /> </SPAN>
 				<BR/><BR/>
-				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?=$checked5?> value="option5" type="radio" /> <IMG  src="<?=$imagepath?>icon_styles/<?=$sociable_options["icon_size"]?>/option5_<?=$sociable_options["icon_size"]?>.jpg"  />  </SPAN>
+				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?php echo$checked5?> value="option5" type="radio" /> <IMG  src="<?php echo$imagepath?>icon_styles/<?php echo$sociable_options["icon_size"]?>/option5_<?php echo$sociable_options["icon_size"]?>.jpg"  />  </SPAN>
 				<BR/><BR/>				
-				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?=$checked6?> value="option6" type="radio" /> <IMG  src="<?=$imagepath?>icon_styles/16/option_6_16.png"  />  </SPAN>
+				<SPAN class="IconStyle-Item">	<INPUT name="sociable_options[icon_option]" <?php echo$checked6?> value="option6" type="radio" /> <IMG  src="<?php echo$imagepath?>icon_styles/16/option_6_16.png"  />  </SPAN>
 				<BR/><BR/>				
 			</DIV>	
 				
