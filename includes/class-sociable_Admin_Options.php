@@ -207,7 +207,7 @@ class sociable_Admin_Options{
 					
 				<BR/>
 				
-				<DIV style="margin:0 0 0 25px" class="Post-TXT" id="Post-TXT" ><? _e("This is your post here...","sociable")?></DIV>
+				<DIV style="margin:0 0 0 25px" class="Post-TXT" id="Post-TXT" ><?php  _e("This is your post here...","sociable")?></DIV>
 		
 				<DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</DIV>
 				
@@ -216,22 +216,22 @@ class sociable_Admin_Options{
 			</DIV>
 			<TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Tagline-Title">
 				<TR>
-					<TD class="Border-Left" ></TD><TD  class="BG-Middle" ><?_e("Tagline","sociable");?></TD><TD class="Border-Right"></TD>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" ><?php  _e("Tagline","sociable");?></TD><TD class="Border-Right"></TD>
 				</TR>
 			</TABLE>
 			<BR/>
 			
 			<DIV class="Content-Box" id="Tagline-Content">
-				<DIV  class="Tagline-TXT" id="Tagline-TXT" ><? _e('Previously we used "Share and Enjoy", remember the good old days?',"sociable");?></DIV>
+				<DIV  class="Tagline-TXT" id="Tagline-TXT" ><?php  _e('Previously we used "Share and Enjoy", remember the good old days?',"sociable");?></DIV>
 					
 				<BR/>
 				<DIV style="width:100%;height:60px;">
 					<INPUT type="text" class="Tagline-INPUT" id="tagline" name="sociable_options[tagline]" value="<?php echo$sociable_options["tagline"];?>" /> 
 					
 					<DIV class="ToSociable" >
-							<INPUT type="checkbox" <? if (!empty($sociable_options["help_grow"])) echo "checked = 'checked'";?> name="sociable_options[help_grow]" id="LinkToSociable" />
-							<? _e("Link to Sociable","sociable");?><BR/>
-							<SPAN style="font-size:14px;"><? _e("(Help us grow, please leave the link so others discover Sociable from your blog)","sociable");?></SPAN>
+							<INPUT type="checkbox" <?php if (!empty($sociable_options["help_grow"])) echo "checked = 'checked'";?> name="sociable_options[help_grow]" id="LinkToSociable" />
+							<?php  _e("Link to Sociable","sociable");?><BR/>
+							<SPAN style="font-size:14px;"><?php  _e("(Help us grow, please leave the link so others discover Sociable from your blog)","sociable");?></SPAN>
 					</DIV>
 				</DIV>
 			</DIV>
@@ -239,14 +239,14 @@ class sociable_Admin_Options{
                              
 			<TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Tagline-Title">
 				<TR>
-					<TD class="Border-Left" ></TD><TD  class="BG-Middle" ><? _e("Icons to Include","sociable");?></TD><TD class="Border-Right"></TD>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" ><?php  _e("Icons to Include","sociable");?></TD><TD class="Border-Right"></TD>
 				</TR>
 			</TABLE>
 			<BR/>
 			
 			<DIV class="Content-Box" id="IconsToInclude-Box" style="">
 				<DIV  class="IconsToInclude-TXT" id="IconsToInclude-TXT" >
-					<? _e("Check the sites you want to appear on your blog.","sociable");?>
+					<?php  _e("Check the sites you want to appear on your blog.","sociable");?>
 				</DIV>
 					
 				<BR/>
@@ -258,7 +258,7 @@ class sociable_Admin_Options{
 			
 			<TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="IconSize-Title" style="margin-top:20px;">
 				<TR>
-					<TD class="Border-Left" ></TD><TD  class="BG-Middle" ><? _e("Icons Size","sociable");?></TD><TD class="Border-Right"></TD>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" ><?php  _e("Icons Size","sociable");?></TD><TD class="Border-Right"></TD>
 				</TR>
 			</TABLE>
 			<BR/>
@@ -288,14 +288,14 @@ class sociable_Admin_Options{
 			
 			<TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="IconSize-Title" style="margin-top:20px;">
 				<TR>
-					<TD class="Border-Left" ></TD><TD  class="BG-Middle" ><? _e("Icons Style","sociable");?></TD><TD class="Border-Right"></TD>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" ><?php  _e("Icons Style","sociable");?></TD><TD class="Border-Right"></TD>
 				</TR>
 			</TABLE>
 			<BR/>
 			
 			<DIV class="Content-Box" id="IconSize-Content" style="padding:20px;">
 				
-				<?
+				<?php
 					$checked1 = "";
 					$checked2 = "";
 					$checked3 = "";
@@ -335,103 +335,103 @@ class sociable_Admin_Options{
 				
 			<TABLE class="Title-Box" style="cursor:pointer;"  cellspacing="0" cellpadding="0" onclick="hideOrShow('Locations');" >
 				<TR>
-					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="Locations-Title" ><span id="Locations-Tab">+ </span><? _e("Locations","sociable");?></TD><TD class="Border-Right"></TD>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="Locations-Title" ><span id="Locations-Tab">+ </span><?php  _e("Locations","sociable");?></TD><TD class="Border-Right"></TD>
 				</TR>
 			</TABLE>
 			<BR/>
 			
 			<DIV class="Content-Box" id="Locations-Content" style="display:none;" >
-				<DIV  class="Locations-TXT" id="Locations-TXT" ><? _e("Please select the locations that you wish to allow the Sociable plugin to  insert itself.","sociable");?></DIV>
+				<DIV  class="Locations-TXT" id="Locations-TXT" ><?php  _e("Please select the locations that you wish to allow the Sociable plugin to  insert itself.","sociable");?></DIV>
 					
 				<BR/>
 				<DIV align="center" style="width:100%;">
 					<TABLE  align="center" class="Locations-List" cellspacing="0" border=0 cellpadding="10">
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Home page","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["locations"]["is_front_page"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_front_page]" id="HomePage" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Home page","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_front_page"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_front_page]" id="HomePage" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("The front page of the blog (if set to a static page), or the main blog page (if set to your latest posts).","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("The front page of the blog (if set to a static page), or the main blog page (if set to your latest posts).","sociable");?></SPAN>
 															
 							</TD>
 						</TR>
 						
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Blog page","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["locations"]["is_home"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_home]" id="BlogPage" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Blog page","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_home"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_home]" id="BlogPage" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("The home page of the blog if is set to your latest posts, or the posts page if the home page is set to a static page","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("The home page of the blog if is set to your latest posts, or the posts page if the home page is set to a static page","sociable");?></SPAN>
 															
 							</TD>
 						</TR>
 						
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Posts","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["locations"]["is_single"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_single]" id="Posts" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Posts","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_single"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_single]" id="Posts" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Single post pages","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("Single post pages","sociable");?></SPAN>
 															
 							</TD>
 						</TR>
 						
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Pages","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["locations"]["is_page"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_page]" id="Pages" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Pages","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_page"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_page]" id="Pages" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Individual Wordpress pages","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("Individual Wordpress pages","sociable");?></SPAN>
 															
 							</TD>
 						</TR>
 						
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Category archives","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["locations"]["is_category"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_category]" id="CategoryArchives" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Category archives","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_category"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_category]" id="CategoryArchives" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Category archive pages","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("Category archive pages","sociable");?></SPAN>
 															
 							</TD>
 						</TR>
 						
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Date archives","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT  <? if(!empty($sociable_options["locations"]["is_date"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_date]" id="DateArchives" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Date archives","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT  <?php if(!empty($sociable_options["locations"]["is_date"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_date]" id="DateArchives" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Date archive pages","sociable");?> </SPAN>
+															<SPAN class="TXT"><?php  _e("Date archive pages","sociable");?> </SPAN>
 															
 							</TD>
 						</TR>
 						
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Tag archives","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["locations"]["is_tag"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_tag]" id="TagArchives" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Tag archives","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_tag"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_tag]" id="TagArchives" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Tag archive pages","sociable");?> </SPAN>
+															<SPAN class="TXT"><?php  _e("Tag archive pages","sociable");?> </SPAN>
 															
 							</TD>
 						</TR>
 						
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Author archives","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["locations"]["is_author"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_author]" id="AuthorArchives" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Author archives","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_author"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_author]" id="AuthorArchives" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Author archive pages","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("Author archive pages","sociable");?></SPAN>
 															
 							</TD>
 						</TR>
 						
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Search results","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["locations"]["is_search"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_search]" id="SearchResults" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Search results","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_search"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_search]" id="SearchResults" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Search results pages","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("Search results pages","sociable");?></SPAN>
 															
 							</TD>
 						</TR>
 						
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("RSS feeds","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["locations"]["is_rss"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_rss]" id="RssFeeds" /></TD>
+							<TD align="right" class="Title" ><?php  _e("RSS feeds","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_rss"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_rss]" id="RssFeeds" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("RSS feeds","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("RSS feeds","sociable");?></SPAN>
 															
 							</TD>
 						</TR>
@@ -444,7 +444,7 @@ class sociable_Admin_Options{
 			
 			<TABLE class="Title-Box" style="cursor:pointer;" cellspacing="0" cellpadding="0" onclick="hideOrShow('GeneralOptions');">
 				<TR>
-					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="GeneralOptions-Title" ><span id="GeneralOptions-Tab"> + </span> <? _e("General Options","sociable");?></TD><TD class="Border-Right"></TD>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="GeneralOptions-Title" ><span id="GeneralOptions-Tab"> + </span> <?php  _e("General Options","sociable");?></TD><TD class="Border-Right"></TD>
 				</TR>
 			</TABLE>
 			<BR/>
@@ -455,13 +455,13 @@ class sociable_Admin_Options{
 				<DIV align="center" style="width:100%;">
 					<TABLE  align="center" class="GeneralOptions-List" cellspacing="0" border=0 cellpadding	="10" >
 						<TR valign="top" >
-							<TD align="right" class="Title" ><?_e("Automatic mode","sociable")?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["automatic_mode"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[automatic_mode]" id="AutoMode" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Automatic mode","sociable")?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["automatic_mode"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[automatic_mode]" id="AutoMode" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Do you want to automatically use Sociable on the locations specified?","sociable");?> </SPAN>
+															<SPAN class="TXT"><?php  _e("Do you want to automatically use Sociable on the locations specified?","sociable");?> </SPAN>
 															<BR/>
 															<SPAN class="sTXT">
-																	<? _e("If this is unchecked, you will have to use the shortcode[sociable/] or template","sociable");?> tag  ?php if( function_exists( do_sociable() ) ){ do_sociable(); } 
+																	<?php  _e("If this is unchecked, you will have to use the shortcode[sociable/] or template","sociable");?> tag  ?php if( function_exists( do_sociable() ) ){ do_sociable(); } 
 															</SPAN>		
 															
 							</TD>
@@ -470,41 +470,41 @@ class sociable_Admin_Options{
 						
 						</TR>
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Use styleSheet","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["use_stylesheet"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[use_stylesheet]" id="UseStyleSheets" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Use styleSheet","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["use_stylesheet"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[use_stylesheet]" id="UseStyleSheets" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Do you want to use the default stylesheet for sociable?","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("Do you want to use the default stylesheet for sociable?","sociable");?></SPAN>
 							</TD>
 						</TR>
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Use your own icons","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["custom_icons"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[custom_icons]" id="UseStyleSheets" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Use your own icons","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["custom_icons"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[custom_icons]" id="UseStyleSheets" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Do you want to use your own icons for sociable?","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("Do you want to use your own icons for sociable?","sociable");?></SPAN>
 							</TD>
 						</TR>
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Use images","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["use_images"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[use_images]" id="UseImages" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Use images","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["use_images"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[use_images]" id="UseImages" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Do you want to use the Sociable images? If not, the plugin will insert plain text links.","sociable");?></SPAN>
-							</TD>
-						</TR>
-						
-						
-						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Use alpha mask","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["use_alphamask"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[use_alphamask]" id="AlphaMask" /></TD>
-							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("Do you want to use alpha masks on the images (available only on the Original Sociable)?","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("Do you want to use the Sociable images? If not, the plugin will insert plain text links.","sociable");?></SPAN>
 							</TD>
 						</TR>
 						
+						
 						<TR valign="top" >
-							<TD align="right" class="Title" ><? _e("Open in new window","sociable");?></TD>
-							<TD align="left" style="width:5px;" ><INPUT <? if(!empty($sociable_options["new_window"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[new_window]" id="OpenNewWindow" /></TD>
+							<TD align="right" class="Title" ><?php  _e("Use alpha mask","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["use_alphamask"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[use_alphamask]" id="AlphaMask" /></TD>
 							<TD align="left" class="Content">
-															<SPAN class="TXT"><? _e("do you want to open the links in a new window?","sociable");?></SPAN>
+															<SPAN class="TXT"><?php  _e("Do you want to use alpha masks on the images (available only on the Original Sociable)?","sociable");?></SPAN>
+							</TD>
+						</TR>
+						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Open in new window","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["new_window"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[new_window]" id="OpenNewWindow" /></TD>
+							<TD align="left" class="Content">
+															<SPAN class="TXT"><?php  _e("do you want to open the links in a new window?","sociable");?></SPAN>
 							</TD>
 						</TR>
 						
@@ -516,19 +516,19 @@ class sociable_Admin_Options{
 				</DIV>
 			</DIV>
 		
-				<? //<HR style="height:10px;background:#18305d;"/>?>
+				<?php //<HR style="height:10px;background:#18305d;"/>?>
 		<?php settings_fields( 'sociable_options_group' ); ?>
 		</FORM>
 		<DIV class="Content-Box" >
 			<DIV id="ActionsBar">
 				<DIV class="SaveChanges" onClick="document.getElementById('form1').submit();" style="cursor:pointer;line-height:15px;"><br/>
-					<span style="margin:30px;"><? _e("Save Changes","sociable");?></span>
+					<span style="margin:30px;"><?php  _e("Save Changes","sociable");?></span>
 				</DIV>
 				<DIV class="ResetSociable" id="sociable_reset" name="sociable_reset" onClick="document.getElementById('sociable_reset_form').submit();" style="cursor:pointer;line-height:15px;font-size:12px;"><br/>
-					<span style="margin:40px;margin-left:35px;"><? _e("Reset Sociable","sociable");?></span>
+					<span style="margin:40px;margin-left:35px;"><?php  _e("Reset Sociable","sociable");?></span>
 				</DIV>
 				<DIV class="UninstallSociable" onClick="document.getElementById('sociable_remove_form').submit();"  style="cursor:pointer;line-height:15px;font-size:12px;"><br/>
-					<span style="margin:25px;margin-left:20px;"><? _e("Completly Uninstall Sociable","sociable");?></span>
+					<span style="margin:25px;margin-left:20px;"><?php  _e("Completly Uninstall Sociable","sociable");?></span>
 				</DIV>
 			</DIV>
 		</DIV>
