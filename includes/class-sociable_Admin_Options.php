@@ -203,7 +203,7 @@ class sociable_Admin_Options{
                 <BR/>
 			
 			<DIV    class="Content-Box" id="Preview-Content">
-				<DIV style="margin:0 0 0 25px" align="left" class="Live-Preview" id="Live-Preview" ><? _e("Live preview of how Sociable will appear on your blog.","sociable")?></DIV>
+				<DIV style="margin:0 0 0 25px" align="left" class="Live-Preview" id="Live-Preview" ><?php _e("Live preview of how Sociable will appear on your blog.","sociable")?></DIV>
 					
 				<BR/>
 				
@@ -264,7 +264,7 @@ class sociable_Admin_Options{
 			<BR/>
 			
 			<DIV class="Content-Box" style="margin-left:-3px" id="IconSize-Content">
-				<?
+				<?php
 					$checked16 = "";
 					$checked32 = "";
 					$checked48 = "";
