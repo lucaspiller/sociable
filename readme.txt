@@ -6,7 +6,7 @@ Tested up to version: 3.2.1
 Requires at least: 2.6
 
 Tested up to: 2.8.5
-Stable tag: 4.0.2.
+Stable tag: 4.0.1
 == Description ==
 Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,2mm downloads now, here comes the version 4.0, with everything you expect to get, and then some. 
 
