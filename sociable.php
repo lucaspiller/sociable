@@ -3,7 +3,7 @@
 Plugin Name: Sociable
 Plugin URI: http://blogplay.com/plugin
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
-Version: 4.0.3
+Version: 4.0.4
 Author: Blogplay
 Author URI: http://blogplay.com/
 
@@ -54,7 +54,7 @@ $sociable_options = get_option( 'sociable_options' );
  * General Init Function
  */
 function sociable_init(){
-    global $sociable_post_types, $sociable_taxonomies, $sociable_options;	//echo dirname( plugin_basename( __FILE__ ) )."/includes"
+    global $sociable_post_types, $sociable_taxonomies, $sociable_options;		if (!isset($sociable_options['icon_size']) || $sociable_options['icon_size'] == "" ) sociable_reset();	//echo dirname( plugin_basename( __FILE__ ) )."/includes"
     load_plugin_textdomain( 'sociable', false, dirname( plugin_basename( __FILE__ ) )."/languages" );
     $active_sites = ( isset( $sociable_options['active_sites'] ) ) ? $sociable_options['active_sites'] : array() ;
     //Set The Post Types
