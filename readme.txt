@@ -69,7 +69,7 @@ Sociable plugin wouldn't be what it is today if it weren't for these people that
 You can still use them. It's just they're not the default anymore.
 
 = I want to reach you, but not for a technical question =
-Please send us an email to sociable [ at ] startups.com
+Please send us an email to  sociableblogplay [ at ] gmail.com
 
 == Changelog ==
 
