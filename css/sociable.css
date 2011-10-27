@@ -53,33 +53,33 @@ span.sociable_tagline:hover span {
 
 
 .option1_32{
-background:url("/wp-content/plugins/sociable/images/sprites/option1_32.png") no-repeat scroll;
+background:url("../images/sprites/option1_32.png") no-repeat scroll;
 display: block;float: left;height: 32px;width: 32px;
 }
 .option1_16{
-background:url("/wp-content/plugins/sociable/images/sprites/option1_16.png") no-repeat scroll;
+background:url("../images/sprites/option1_16.png") no-repeat scroll;
 display: block;float: left;height: 16px;width: 16px;
 }
 .option1_64{
-background:url("/wp-content/plugins/sociable/images/sprites/option1_64.png") no-repeat scroll;
+background:url("../images/sprites/option1_64.png") no-repeat scroll;
 display: block;float: left;height: 64px;width: 64px;
 }
 .option1_48{
-background:url("/wp-content/plugins/sociable/images/sprites/option1_48.png") no-repeat scroll;
+background:url("../images/sprites/option1_48.png") no-repeat scroll;
 display: block;float: left;height: 48px;width: 48px;
 }
 
 
 .option2_32{
-background:url("/wp-content/plugins/sociable/images/sprites/option2_32.png") no-repeat scroll;
+background:url("../images/sprites/option2_32.png") no-repeat scroll;
 display: block;float: left;height: 32px;width: 32px;
 }
 .option2_16{
-background:url("/wp-content/plugins/sociable/images/sprites/option2_16.png") no-repeat scroll;
+background:url("../images/sprites/option2_16.png") no-repeat scroll;
 display: block;float: left;height: 16px;width: 16px;
 }
 .option2_64{
-background:url("/wp-content/plugins/sociable/images/sprites/option2_64.png") no-repeat scroll;
+background:url("../images/sprites/option2_64.png") no-repeat scroll;
 display: block;float: left;height: 64px;width: 64px;
 }
 .option2_48{
@@ -89,57 +89,58 @@ display: block;float: left;height: 48px;width: 48px;
 
 
 .option3_32{
-background:url("/wp-content/plugins/sociable/images/sprites/option3_32.png") no-repeat scroll;
+background:url("../images/sprites/option3_32.png") no-repeat scroll;
 display: block;float: left;height: 32px;width: 32px;
 }
 .option3_16{
-background:url("/wp-content/plugins/sociable/images/sprites/option3_16.png") no-repeat scroll;
+background:url("../images/sprites/option3_16.png") no-repeat scroll;
 display: block;float: left;height: 16px;width: 16px;
 }
 .option3_64{
-background:url("/wp-content/plugins/sociable/images/sprites/option3_64.png") no-repeat scroll;
+background:url("../images/sprites/option3_64.png") no-repeat scroll;
 display: block;float: left;height: 64px;width: 64px;
 }
 .option3_48{
-background:url("/wp-content/plugins/sociable/images/sprites/option3_48.png") no-repeat scroll;
+background:url("../images/sprites/option3_48.png") no-repeat scroll;
 display: block;float: left;height: 48px;width: 48px;
 }
 
 
 .option4_32{
-background:url("/wp-content/plugins/sociable/images/sprites/option4_32.png") no-repeat scroll;
+background:url("../images/sprites/option4_32.png") no-repeat scroll;
 display: block;float: left;height: 32px;width: 32px;
 }
 .option4_16{
-background:url("/wp-content/plugins/sociable/images/sprites/option4_16.png") no-repeat scroll;
+background:url("../images/sprites/option4_16.png") no-repeat scroll;
 display: block;float: left;height: 16px;width: 16px;
 }
 .option4_64{
-background:url("/wp-content/plugins/sociable/images/sprites/option4_64.png") no-repeat scroll;
+background:url("../images/sprites/option4_64.png") no-repeat scroll;
 display: block;float: left;height: 64px;width: 64px;
 }
 .option4_48{
-background:url("/wp-content/plugins/sociable/images/sprites/option4_48.png") no-repeat scroll;
+background:url("../images/sprites/option4_48.png") no-repeat scroll;
 display: block;float: left;height: 48px;width: 48px;
 }
 
 
 .option5_32{
-background:url("/wp-content/plugins/sociable/images/sprites/option5_32.png") no-repeat scroll;
+background:url("../images/sprites/option5_32.png") no-repeat scroll;
 display: block;float: left;height: 32px;width: 32px;
 }
 .option5_16{
-background:url("/wp-content/plugins/sociable/images/sprites/option5_16.png") no-repeat scroll;
+background:url("../images/sprites/option5_16.png") no-repeat scroll;
 display: block;float: left;height: 16px;width: 16px;
 }
 .option5_64{
-background:url("/wp-content/plugins/sociable/images/sprites/option5_64.png") no-repeat scroll;
+background:url("../images/sprites/option5_64.png") no-repeat scroll;
 display: block;float: left;height: 64px;width: 64px;
-}
+} 
+
 .option5_48{
-background:url("/wp-content/plugins/sociable/images/sprites/option5_48.png") no-repeat scroll;
+background:url("../images/sprites/option5_48.png") no-repeat scroll;
 display: block;float: left;height: 48px;width: 48px;
-}
+} 
 
 
 #sociable {

@@ -211,7 +211,7 @@ function sociable_html( $display = array() ){
 	}
 	
 	$inner .="</ul>";
-	$html .='<div onMouseout="fixOnMouseOut(this,event,\'post-'.$post->ID.'\')" id="sociable-post-'.$post->ID.'" style="display:none;">   
+	$html .='</ul><div onMouseout="fixOnMouseOut(this,event,\'post-'.$post->ID.'\')" id="sociable-post-'.$post->ID.'" style="display:none;">   
     <div style="top: auto; left: auto; display: block;" id="sociable">
 
 		<div class="popup">

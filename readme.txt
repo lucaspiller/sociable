@@ -6,7 +6,7 @@ Tested up to version: 3.2.1
 Requires at least: 2.6
 
 Tested up to: 2.8.5
-Stable tag: 4.0.5
+Stable tag: 4.0.6
 == Description ==
 Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,2mm downloads now, here comes the version 4.0, with everything you expect to get, and then some. 
 
@@ -25,7 +25,7 @@ What happened to the old icons? You can still use them in the new version, but t
 
 Sociable finds its home outside of the WordPress environment on Blogplay.com- 
 
-*** Sociable 4.0.5 *** 
+*** Sociable 4.0.6 *** 
 
 = Recent Updates = 
 * Changed the old motto "share and enjoy" for "Be Sociable, Share" much more attractive. Of cours you can customize it to whatever you want.
@@ -73,8 +73,15 @@ Please send us an email to sociable [ at ] startups.com
 
 == Changelog ==
 
+= 4.0.6 =
+* FIXED: Allow Sub Directory Blogs (http://domain.com/blog)
+
 = 4.0.5 =
+* FIXED: Other Upgrade issues
+
+= 4.0.4 =
 * FIXED: Upgrade issues
+
 
 = 4.0.3 =
 * Fix IIS 6.0 and PHP 5.3.x
