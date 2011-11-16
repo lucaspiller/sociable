@@ -1,7 +1,7 @@
 ﻿=== Sociable ===
 Author: sociable
 Tags: sociable, social bookmarking, social bookmarks, social icons,  bookmarking, share, sharing, be sociable share, share and enjoy, digg, delicious, twitter, facebook, blinklist, stumbleupon, gmail, posterous, tumblr
-Requires Wordpress at least version: 2.8
+Requires Wordpress at least version: 2.6
 Tested up to version: 3.2.1
 Requires at least: 2.6
 
