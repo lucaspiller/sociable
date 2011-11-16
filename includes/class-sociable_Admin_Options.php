@@ -128,9 +128,10 @@ class sociable_Admin_Options{
         }
         
         $out ='<ul id="sociable_site_list" >' ;
-        
+        $io = 0;
         foreach( $sites as $sitename => $site ){
-             
+				
+			
             //Set Checked And Active If Relevant
             if( array_key_exists( $sitename, $active_sites ) ){
                 $checked = 'checked="checked"';
@@ -139,8 +140,13 @@ class sociable_Admin_Options{
                 $checked = '';
                 $active = 'inactive';
             }
-            	if ( $sitename != "More"){
-            $image = _get_sociable_image( $site, '' );
+            if ( $sitename != "More"){
+				if (isset($site["counter"])){
+					//$image = "<img src='".SOCIABLE_HTTP_PATH."images/".$site["favicon"]."'>";
+					$image = $site["url"];
+				}else{
+					$image = _get_sociable_image( $site, '' );
+				}
 			}else{
 			$image = "<img src='".SOCIABLE_HTTP_PATH."images/more.png'>";
 			}
@@ -164,8 +170,9 @@ class sociable_Admin_Options{
             $out .= '<input type="checkbox" id="cb_' . $sitename . '" name="sociable_options[active_sites][' . $sitename . ']" ' . $checked . ' />';
             
             $out .= $image;
-            
+            if (!isset($site["counter"])){
             $out .= $sitename;
+			}
                 
             $out .= '</li>';
             
@@ -499,7 +506,13 @@ class sociable_Admin_Options{
 															<SPAN class="TXT"><?php  _e("Do you want to use alpha masks on the images (available only on the Original Sociable)?","sociable");?></SPAN>
 							</TD>
 						</TR>
-						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Bottom and Top","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["topandbottom"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[topandbottom]" id="TopAndBottom" /></TD>
+							<TD align="left" class="Content">
+															<SPAN class="TXT"><?php  _e("Do you want to use Sociable plugin to show up at the top and bottom?","sociable");?></SPAN>
+							</TD>
+						</TR>
 						<TR valign="top" >
 							<TD align="right" class="Title" ><?php  _e("Open in new window","sociable");?></TD>
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["new_window"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[new_window]" id="OpenNewWindow" /></TD>

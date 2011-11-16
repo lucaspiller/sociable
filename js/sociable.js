@@ -10,6 +10,8 @@ function more(obj, id){
 	//console.log(sociable.style.offsetTop);
 	sociable.style.postion = "absloute";
 	sociable.style.top = button.offsetTop;
+	//alert(button.offsetTop);
+	//alert(button.offsetLeft);
 	sociable.style.left = button.offsetLeft;
 	//console.log(sociable.style.offsetTop);
 	box.style.display = "";
@@ -64,5 +66,15 @@ function fixOnMouseOut(element, event, id) {
 	}
 }
 
+
+      window.___gcfg = {
+        lang: 'en-US'
+      };
+
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
 
 
