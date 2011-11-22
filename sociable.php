@@ -13,7 +13,7 @@ Plugin URI: http://blogplay.com/plugin
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 
 
-Version: 4.1.2
+Version: 4.1.3
 
 
 Author: Blogplay
