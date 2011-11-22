@@ -201,7 +201,7 @@ class sociable_Admin_Options{
             <form method="post" action="options.php" id="form1" autocomplete="off">
                 
                 <?php wp_nonce_field('sociable-config'); ?>
-                
+                <INPUT type="hidden" class="version-INPUT" id="version" name="sociable_options[version]" value="<?php echo$sociable_options["version"];?>" /> 
                 <TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Preview-Title" style="margin:0 0 0 25px">
 				<TR>
 					<TD class="Border-Left" ></TD><TD  class="BG-Middle" >Preview</TD><TD class="Border-Right"></TD>
