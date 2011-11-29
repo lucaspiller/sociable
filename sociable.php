@@ -13,7 +13,7 @@ Plugin URI: http://blogplay.com/plugin
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 
 
-Version: 4.1.3
+Version: 4.1.4
 
 
 Author: Blogplay
@@ -436,7 +436,7 @@ function sociable_reset(){
 			'counter' =>1,
             'favicon' => 'likecounter.png',
 
-            'url' => '<iframe src="//www.facebook.com/plugins/like.php?href=PERMALINK&send=false&layout=button_count&show_faces=false&action=like&colorscheme=light&font" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:32px;width:100px" allowTransparency="true"></iframe>',
+            'url' => '<iframe src="//www.facebook.com/plugins/like.php?href=PERMALINKCOUNT&send=false&layout=button_count&show_faces=false&action=like&colorscheme=light&font" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:32px;width:100px" allowTransparency="true"></iframe>',
  
 			'spriteCoordinates' => Array( 
 
@@ -495,7 +495,7 @@ function sociable_reset(){
 			'counter' =>1,
             'favicon' => 'twitter.png',
 
-            'url' => '<a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>',
+            'url' => '<a href="https://twitter.com/share" data-text="TITLE (via @sociablesite)" data-url="PERMALINK" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>',
 
             'spriteCoordinates' => Array( 
 
@@ -540,7 +540,7 @@ function sociable_reset(){
 
             'favicon' => 'linkedin.png',
 
-            'url' => '<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script><script type="IN/Share" data-counter="right"></script>',
+            'url' => '<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script><script type="IN/Share" data-url="PERMALINKCOUNT" data-counter="right"></script>',
 
             'spriteCoordinates' => Array( 
 
@@ -604,7 +604,7 @@ function sociable_reset(){
 			'counter' =>1,
             'favicon' => 'digg.png',
 
-            'url' => "<script type='text/javascript'>(function() {var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];s.type = 'text/javascript';s.async = true;s.src = 'http://widgets.digg.com/buttons.js';s1.parentNode.insertBefore(s, s1);})();</script><a class='DiggThisButton DiggCompact'></a>",
+            'url' => "<script type='text/javascript'>(function() {var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];s.type = 'text/javascript';s.async = true;s.src = 'http://widgets.digg.com/buttons.js';s1.parentNode.insertBefore(s, s1);})();</script><a href='http://digg.com/submit?url=PERMALINK&amp;title=TITLE'  class='DiggThisButton DiggCompact'></a>",
 
             'spriteCoordinates' => Array( 
 
@@ -668,7 +668,7 @@ function sociable_reset(){
 			'counter' =>1,
             'favicon' => 'stumbleupon.png',
 
-            'url' => '<script src="http://www.stumbleupon.com/hostedbadge.php?s=2"></script>',
+            'url' => '<script src="http://www.stumbleupon.com/hostedbadge.php?s=2&r=PERMALINKCOUNT"></script>',
 
             'spriteCoordinates' => Array( 
 
@@ -713,7 +713,7 @@ function sociable_reset(){
 
                 /*    'url' => '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <g:plusone annotation="bubble" size="medium"></g:plusone>',*/
-					'url' => '<g:plusone annotation="bubble" size="medium"></g:plusone>',
+					'url' => '<g:plusone annotation="bubble" href="PERMALINKCOUNT" size="medium"></g:plusone>',
 /*
     <script type="text/javascript">
       window.___gcfg = {

@@ -103,6 +103,8 @@ function sociable_html( $display = array(),$location = "" ){
 	$excerpt	= str_replace('+','%20',$excerpt);
 
 	$permalink 	= urlencode(get_permalink($post->ID));
+	
+	$permalinkCOUNT 	= get_permalink($post->ID);
 
 	$title 		= str_replace('+','%20',urlencode($post->post_title));
 
@@ -226,7 +228,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 		$url = str_replace('FEEDLINK', $blogrss, $url);
 
+		$url = str_replace('PERMALINKCOUNT', $permalinkCOUNT, $url);
+		
         $url = str_replace('PERMALINK', $permalink, $url);		
+		
+			
 
 		
 
@@ -348,7 +354,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 		$url = str_replace('FEEDLINK', $blogrss, $url);
 
-        $url = str_replace('PERMALINK', $permalink, $url);		
+		$url = str_replace('PERMALINKCOUNT', $permalinkCOUNT, $url);
+		
+        $url = str_replace('PERMALINK', $permalink, $url);	
+		
+				
 
 		$link = '<li style="heigth:'.$sociable_options['icon_size'].'px;width:'.$sociable_options['icon_size'].'px">';
 
@@ -503,8 +513,12 @@ function sociable_html( $display = array(),$location = "" ){
 		$url = str_replace('EXCERPT', $excerpt, $url);
 
 		$url = str_replace('FEEDLINK', $blogrss, $url);
+		
+		$url = str_replace('PERMALINKCOUNT', $permalinkCOUNT, $url);
 
         $url = str_replace('PERMALINK', $permalink, $url);	
+		
+	
 
 	$link.= $url."</li>";	
 
