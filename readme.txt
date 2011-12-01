@@ -6,7 +6,7 @@ Tested up to version: 3.2.1
 Requires at least: 2.6
 
 Tested up to: 3.2.1
-Stable tag: 4.1.4
+Stable tag: 4.1.5
 == Description ==
 Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,2mm downloads now, here comes the version 4.1, with everything you expect to get, and then some. 
 
@@ -25,7 +25,7 @@ What happened to the old icons? You can still use them in the new version, but t
 
 Sociable finds its home outside of the WordPress environment on Blogplay.com- 
 
-*** Sociable 4.1.4 *** 
+*** Sociable 4.1.5 *** 
 
 = Recent Updates = 
 * Changed the old motto "share and enjoy" for "Be Sociable, Share" much more attractive. Of cours you can customize it to whatever you want.
@@ -72,6 +72,9 @@ You can still use them. It's just they're not the default anymore.
 Please send us an email to  sociableblogplay [ at ] gmail.com
 
 == Changelog ==
+
+= 4.1.5 =
+* FIXED: Some Fixes
 
 = 4.1.4 =
 * FIXED: Some Fixes

@@ -13,7 +13,7 @@ Plugin URI: http://blogplay.com/plugin
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 
 
-Version: 4.1.4
+Version: 4.1.5
 
 
 Author: Blogplay
@@ -169,7 +169,7 @@ function sociable_init(){
 
     global $sociable_post_types, $sociable_taxonomies, $sociable_options;
 	
-	if (!isset($sociable_options['icon_size']) || $sociable_options['icon_size'] == "" || !isset($sociable_options['version']) ||  $sociable_options['version'] != "4.1.4" ) sociable_reset();
+	if (!isset($sociable_options['icon_size']) || $sociable_options['icon_size'] == "" || !isset($sociable_options['version']) ||  $sociable_options['version'] != "4.1.5" ) sociable_reset();
 	//echo dirname( plugin_basename( __FILE__ ) )."/includes"
 
     load_plugin_textdomain( 'sociable', false, dirname( plugin_basename( __FILE__ ) )."/languages" );
@@ -353,7 +353,7 @@ function sociable_reset(){
 
 
   $sociable_options = array(
-		'version' =>'4.1.2',
+		'version' =>'4.1.5',
 
         'automatic_mode'         => 'on',
 
@@ -495,11 +495,7 @@ function sociable_reset(){
 			'counter' =>1,
             'favicon' => 'twitter.png',
 
-<<<<<<< .mine
             'url' => '<a href="https://twitter.com/share" data-text="TITLECOUNT - PERMALINKCOUNT (via #sociablesite)" data-url="PERMALINKCOUNT" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>',
-=======
-            'url' => '<a href="https://twitter.com/share" data-text="TITLE (via @sociablesite)" data-url="PERMALINK" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>',
->>>>>>> .r469748
 
             'spriteCoordinates' => Array( 
 
