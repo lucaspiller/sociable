@@ -107,7 +107,7 @@ function sociable_html( $display = array(),$location = "" ){
 	$permalinkCOUNT 	= get_permalink($post->ID);
 
 	$title 		= str_replace('+','%20',urlencode($post->post_title));
-
+	$titleCOUNT = $post->post_title;
 	
 
 	$rss 		= urlencode(get_bloginfo('ref_url'));
@@ -218,6 +218,7 @@ function sociable_html( $display = array(),$location = "" ){
 
         $url = ( isset( $site['script'] ) ) ? $site['script'] :  $site['url'];
 
+		$url = str_replace('TITLECOUNT', $titleCOUNT, $url);
 		$url = str_replace('TITLE', $title, $url);
 
 		$url = str_replace('RSS', $rss, $url);
@@ -344,6 +345,8 @@ function sociable_html( $display = array(),$location = "" ){
 
         $url = ( isset( $site['script'] ) ) ? $site['script'] :  $site['url'];
 
+		$url = str_replace('TITLECOUNT', $titleCOUNT, $url);
+		
 		$url = str_replace('TITLE', $title, $url);
 
 		$url = str_replace('RSS', $rss, $url);
@@ -504,6 +507,8 @@ function sociable_html( $display = array(),$location = "" ){
 
         $url = ( isset( $site['script'] ) ) ? $site['script'] :  $site['url'];
 
+		$url = str_replace('TITLECOUNT', $titleCOUNT, $url);
+		
 		$url = str_replace('TITLE', $title, $url);
 
 		$url = str_replace('RSS', $rss, $url);
