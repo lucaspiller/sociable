@@ -499,7 +499,7 @@ function sociable_html( $display = array(),$location = "" ){
 
 			//echo $sitename."<br>";
 
-	$link = '<li id="'.str_replace(" ","_",$sitename).'">';	
+	$link = '<li id="'.str_replace("+","p",str_replace(" ","_",$sitename)).'">';	
 
 	
 
@@ -577,7 +577,12 @@ function auto_sociable( $content ){
 
     global $sociable_options;
 
-    
+	
+	if (!isset($sociable_options["active"])){
+		
+		return $content;
+	}
+	    
 
     if( ! isset( $sociable_options['locations'] ) || ! is_array( $sociable_options['locations'] ) || empty( $sociable_options['locations'] ) ){
 

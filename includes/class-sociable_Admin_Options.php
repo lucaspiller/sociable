@@ -10,35 +10,636 @@ class sociable_Admin_Options{
      * A Function To Hook To Admin Init.
      */
     function init(){        
-        
-        //Register Settings
-		//echo dirname( plugin_basename( __FILE__ ) );
-		//load_plugin_textdomain( 'sociable', false, dirname( plugin_basename( __FILE__ ) ) );
+  		
         register_setting( 'sociable_options_group' , 'sociable_options' );
         
         //Add The Settings Sections
-        add_settings_section( 'sociable_locations', __( 'Locations' ),  array( 'sociable_Admin_Options' , 'location_options_callback' )  , 'sociable_options' );
+       // add_settings_section( 'sociable_locations', __( 'Locations' ),  array( 'sociable_Admin_Options' , 'location_options_callback' )  , 'sociable_options' );
         
-        add_settings_section( 'sociable_options', __( 'General Options' ),  array( 'sociable_Admin_Options' , 'general_options_callback' )  , 'sociable_options' );
+       // add_settings_section( 'sociable_options', __( 'General Options' ),  array( 'sociable_Admin_Options' , 'general_options_callback' )  , 'sociable_options' );
         
-        //Add All The Settings Fields
-        //self::add_settings_fields();
-        
-        
+		
+		register_setting( 'skyscraper_options_group' , 'skyscraper_options' );
+		
+	//	add_settings_section( 'sociable_locations', __( 'Locations' ),  array( 'sociable_Admin_Options' , 'location_options_callback' )  , 'skyscraper_options' );
+		
     }
+    
+    function skyscraper_init(){        
+  		
+
+    	register_setting( 'skyscraper_options_group' , 'skyscraper_options' );
+
+		add_settings_section( 'sociable_locations', __( 'Locations' ),  array( 'sociable_Admin_Options' , 'location_options_callback' )  , 'skyscraper_options' );
+		
+        //Add All The Settings Fields
+        //self::add_settings_fields();      
+    }
+    
+    function Select_Sociable_Page(){
+	 
+        global $sociable_options;
+		?>
+		
+		
+		
+			<div class="wrap" style="margin-top:25px">    
+		
+					<div style="width: 80%; margin-left: 25px; color: rgb(147, 147, 147); font-weight: bold; font-size: 15px;">
+					Congrats! You are joining the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,5mm downloads now, here comes the latest version 4.1 <br /><br />
+You can select Sociable Classic and/or Sociable Skyscraper to spread the World, increase your traffic and your reader's ability to share your posts! <br /> <br />
+					</div>
+					    
+			<div class="wrap" style="width:42%;float:left">                
+                <?php //wp_nonce_field('sociable-config'); ?>
+               
+                <TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Preview-Title" style="margin:0 0 0 25px">
+				
+				
+				<TR>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" >Skyscraper Sociable</TD><TD class="Border-Right"></TD>
+				</TR>
+				<TR>
+					<TD colspan="3" >
+							<table>
+							<tr>
+							<td>
+							<img src="/wp-content/plugins/sociable/images/skyphoto.png" style="margin-left:-5px;margin-top:20px;" />
+							</td>
+							<td valign="top" >
+								<br/><br/>
+								<span style="font-size:18px;color:#18305e;font-weight:bold;">Skyscraper Sociable</span>
+								<p style="font-size:12px;color:#939393;font-weight:bold;" >
+											Now introducing the ultimate advanced and feature packed plugin for setting up rating system on your WordPress blog. 
+<br/ ><br/ >
+Sociable Skyscraper allows you to set up different rating systems for posts, pages and comments with great degree of customization.
+<br/ ><br/ >
+List of features is so smart and non-stop growing:
+<br/ ><br/ >
+You can get more "Sociable" with Sociable Skyscraper and easily getting
+Rating and Review of: posts, pages, comments, Facebook, G+, LinkedIN,
+Twitter as well as multiple ratings for posts and pages. Visitor's counter,
+visitor's from Facebook and Twitter... As a plus you get an easy way to get
+TOP or HOME from Sociable Skyscraper.
+<br/ ><br/ >
+Enjoy it now!!!
+<br/ ><br/ >
+Be Sociable, Share!!! 
+								</p>
+								
+								<a href="?page=skyscraper_options" style="color:#ffffff;text-decoration:none;" ><img src="/wp-content/plugins/sociable/images/button_newsky.png" ></a>
+							
+							</td>
+							</tr>
+							</table>
+					</TD>
+					
+					
+				</TR>
+				</TABLE>
+                <BR/>
+				
+			</div>
+			<div class="wrap" style="margin-left:30px;width:48%;float:left">
+			<TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Preview-Title" style="margin:0 0 0 25px">
+				<TR>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" >Classic Sociable</TD><TD class="Border-Right"></TD>
+				</TR>
+				<TR>
+					<TD colspan="3" >
+						<div style="margin-left:5px;">
+							<br /><br />
+								<span style="font-size:18px;color:#18305e;font-weight:bold;">Classic Sociable</span>
+							
+								<p style="font-size:12px;color:#939393;font-weight:bold;" >
+									We've improved our visual interface, the default icons are now much
+<br/ >
+more appealing, and a touch bit larger (you do want your readers to
+<br/ >
+share your posts, don't you? :) Get it now! 
+								</p>
+									<img src="/wp-content/plugins/sociable/images/socciable_old.png" ><br/>
+									<div style="height: 176px;"></div>
+								<a href="?page=sociable_options" style="color:#ffffff;text-decoration:none;" ><img src="/wp-content/plugins/sociable/images/button_sociabb.png" ></a>
+							</div>
+					</TD>
+					
+				</TR>
+				</TABLE>
+                <BR/>
+			
+			</div>
+			</div>
+
+    <?php }
+    
+    function create_select_options($value){
+	
+		for($i=3; $i<=9; ){
+			
+			$sel = "";
+			if ($value == $i){
+				$sel = "selected";
+			}
+			echo "<option ".$sel." value='".$i."'> latest ".$i."</option>";
+				
+			$i = $i+3;		
+		}
+
+	}
+	
+
+    
+    function Create_Options_Page_Skycraper(){  
+				
+	        global $skyscraper_options;
+		
+		?>
+			<div class="wrap" style="width:48%;float:left">
+			
+			<DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" >			
+			<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fblogplay.com%2F&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=80&amp;appId=133479460071366" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:40px;" allowTransparency="true"></iframe>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blogplay.com/" data-via="sociablesite" data-hashtags="sociable">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
+			<br />	
+			</div>
+            <form method="post" action="options.php" id="form1" autocomplete="off">
+                
+                <?php wp_nonce_field('sociable-config'); ?>
+                <INPUT type="hidden" class="version-INPUT" id="version" name="skyscraper_options[version]" value="<?php echo $skyscraper_options["version"];?>" /> 
+                <TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Preview-Title" style="margin:0 0 0 25px">
+				<TR>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" ><?php  _e("Style Options","sociable");?></TD><TD class="Border-Right"></TD>
+				</TR>
+				</TABLE>
+                <BR/>               
+					<DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" >
+							<?php  _e("Text Size","sociable");?>: 
+							<select id="text_size" name="skyscraper_options[text_size]" style="margin-left:73px">
+							<?php 
+								for($px=10; $px <= 20; $px++) {
+									
+									$sel = "";
+									if($px== $skyscraper_options["text_size"])$sel = "selected";
+							?>
+								<option <?php echo $sel?> value="<?php echo $px?>"><?php echo $px?>px</option>
+							<? 
+							
+							}?>
+						</select>
+					</DIV>					
+				
+					<DIV style="margin:0 0 0 24px" class="Post-subTXT" id="Post-subTXT" ><?php  _e("Widget Width","sociable");?>: 
+						<select id="text_size" id="widget_width" name="skyscraper_options[widget_width]" style="margin-left:50px">
+							<?php 
+								for($wi=70; $wi <= 90; ) {
+									
+									$sel = "";
+									if($wi== $skyscraper_options["widget_width"])$sel = "selected";
+							?>
+								<option <?php echo $sel?> value="<?php echo $wi?>"><?php echo $wi?>px</option>
+							<?php 
+							$wi +=5;
+							}?>
+						</select>
+							
+					</DIV>
+										
+					<DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" ><?php  _e("Background Color","sociable");?>: 
+				
+						<input value="<?php echo $skyscraper_options['background_color']?>" style="margin-left:22px" id="background_color" name="skyscraper_options[background_color]" type="text"  /> ( #fefefe default color)
+						
+					</DIV>
+					
+					<DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" ><?php  _e("Labels Color","sociable");?>: 
+				
+						<input value="<?php echo $skyscraper_options['labels_color']?>" style="margin-left:49px" id="background_color" name="skyscraper_options[labels_color]" type="text"  /> ( #f7f7f7 default color)
+						
+					</DIV>
+					
+						<BR/>			
+				<TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Tagline-Title">
+					<TR>
+						<TD class="Border-Left" ></TD><TD  class="BG-Middle" >
+						Social Options
+						</TD>
+						<TD class="Border-Right"></TD>
+					</TR>
+				</TABLE>
+				<BR/>
+				<DIV  style="margin:0 0 0 25px" class="Post-subTXT">
+				<?php  _e("Your Twitter username","sociable");?>: 
+				<?php
+				
+					if (!empty($skyscraper_options["twitter_username"])){
+						$twitter_username = $skyscraper_options["twitter_username"];
+					}
+					else{
+						$twitter_username = "@";
+					}
+				?>
+				<input type="text" name="skyscraper_options[twitter_username]" value="<?php echo $twitter_username?>"  />	
+				<select name="skyscraper_options[num_tweets]" id="num_tweets">
+				<?php self:: create_select_options($skyscraper_options["num_tweets"]) ?>
+				</select>
+				</DIV>
+				<BR/>
+				<DIV  style="margin:0 0 0 25px" class="Post-subTXT">
+				<?php  _e("Your RSS feed","sociable");?>: 
+				<?php
+				
+					if (!empty($skyscraper_options["rss_feed"])){
+						$rss_feed = $skyscraper_options["rss_feed"];
+					}
+					else{
+						$rss_feed = "http://";
+					}
+				?>
+				<input type="text" name="skyscraper_options[rss_feed]" style="margin-left: 46px;" value="<?php echo $rss_feed?>"  />
+				<select name="skyscraper_options[num_rss]" id="num_rss">
+				<?php self:: create_select_options($skyscraper_options["num_rss"]) ?>
+				</select>
+				</DIV>
+				<BR/>
+				<DIV  style="margin:0 0 0 25px" class="Post-subTXT">
+							<?php
+								$checked = "";
+								if (isset($skyscraper_options["counters"]["check"])){
+									$checked = "checked";
+								}
+								
+								$folded = "";
+								$unfolded= "";
+								if (isset($skyscraper_options["counters"]["folded"])){
+										if($skyscraper_options["counters"]["folded"] == "1"){
+											$folded = "checked";
+											$unfolded= "";
+										}else{
+											$unfolded = "checked";
+											$folded= "";
+										}
+								}
+								
+							
+							?>
+					<input type="checkbox" <?php echo $checked ?> name="skyscraper_options[counters][check]" id="" /> 
+					Counters 
+					<input name="skyscraper_options[counters][folded]" <?php echo $unfolded?> value="0" type="radio">Folded 
+					<input name="skyscraper_options[counters][folded]" <?php echo $folded?> value="1" type="radio">Unfolded
+				</DIV> 
+				<BR/> 
+				<DIV  style="margin:0 0 0 25px" class="Post-subTXT">
+					<?php
+								$checked = "";
+								if (isset($skyscraper_options["share"]["check"])){
+									$checked = "checked";
+								}
+								
+								if (isset($skyscraper_options["share"]["folded"])){
+										if($skyscraper_options["share"]["folded"] == "1"){
+											$folded = "checked";
+											$unfolded= "";
+										}else{
+											$unfolded = "checked";
+											$folded= "";
+										}
+								}
+								
+								
+							?>
+					
+					<input type="checkbox" <?php echo $checked ?> name="skyscraper_options[share][check]" /> Share 
+					<input style="margin-left:19px" <?php echo $unfolded?> value="0" name="skyscraper_options[share][folded]" type="radio">Folded 
+					<input name="skyscraper_options[share][folded]" <?php echo $folded?> value="1"  type="radio">Unfolded
+				</DIV>
+				<DIV   class="Content-Box" id="Preview-Content">
+				
+				</DIV>
+					<div style="clear:both"></div>				
+		
+				<BR/>
+				<DIV class="Content-Box" id="Preview-Content">
+					<ul class="items_li">
+						<li>
+							<?php
+								$checked = "";
+								if (isset($skyscraper_options['follow_us_check']) && $skyscraper_options['follow_us_check'] == "on"){
+									$checked = "checked";
+								}
+							?>
+							Follow Us
+							<ul class="sub_item_li">
+								<li>
+									<?php
+										$checked = "";
+										if (isset($skyscraper_options['follow_us']['twitter']["active"]) && $skyscraper_options['follow_us']['twitter']["active"] == "on"){
+											$checked = "checked";
+										}
+									?>
+									<input <?php echo $checked ?> name="skyscraper_options[follow_us][twitter][active]" type="checkbox" style="padding-bottom:5px" />
+									<?php
+										$account = "http://twitter.com/";
+										if(!empty($skyscraper_options["follow_us"]["twitter"]["account"])){
+												$account = $skyscraper_options["follow_us"]["twitter"]["account"];
+										}
+									?>
+						<input type="hidden" value="t.png" name="skyscraper_options[follow_us][twitter][logo]" />
+						<img style="padding-bottom:5px" src="/wp-content/plugins/sociable/images/toolbar/t.png"/>
+						<input size="40" name="skyscraper_options[follow_us][twitter][account]" value="<?php echo $account?>" type="text" />
+								</li>
+								<li>
+									<?php
+										$checked = "";
+										if ( isset($skyscraper_options['follow_us']['feed']["active"]) && $skyscraper_options['follow_us']['feed']["active"] == "on"){
+											$checked = "checked";
+										}
+									?>
+									<input <?php echo $checked ?> name="skyscraper_options[follow_us][feed][active]" type="checkbox" style="padding-bottom:5px" />
+							<input type="hidden" value="rss.png" name="skyscraper_options[follow_us][feed][logo]" />
+									<?php
+										$rss = "http://";
+										if(!empty($skyscraper_options["follow_us"]["feed"]["account"])){
+												
+												$rss = $skyscraper_options["follow_us"]["feed"]["account"];
+										}
+									?>
+						<img style="padding-bottom:5px" src="/wp-content/plugins/sociable/images/toolbar/rss.png"/>
+						<input size="40" value="<?php echo $rss?>" name="skyscraper_options[follow_us][feed][account]" type="text" />
+								</li>
+								<li>
+									<?php
+										$checked = "";
+										if ( isset($skyscraper_options['follow_us']['fb']["active"]) && $skyscraper_options['follow_us']['fb']["active"] == "on"){
+											$checked = "checked";
+										}
+									?>
+									<input <?php echo $checked ?> name="skyscraper_options[follow_us][fb][active]" type="checkbox" style="padding-bottom:5px" />
+								<input type="hidden" value="f.png" name="skyscraper_options[follow_us][fb][logo]" />
+							
+									<?php
+										$fb = "http://facebook.com/";
+										if(!empty($skyscraper_options["follow_us"]["fb"]["account"])){
+												
+												$fb = $skyscraper_options["follow_us"]["fb"]["account"];
+										}
+									?>
+							<img style="padding-bottom:5px" src="/wp-content/plugins/sociable/images/toolbar/f.png"/>
+							<input size="40" value="<?php echo $fb?>" name="skyscraper_options[follow_us][fb][account]" type="text" />
+								</li>
+								
+								<li>
+									<?php
+										$checked = "";
+										if ( isset($skyscraper_options['follow_us']['li']["active"]) && $skyscraper_options['follow_us']['li']["active"] == "on"){
+											$checked = "checked";
+										}
+									?>
+									<input <?php echo $checked ?> name="skyscraper_options[follow_us][li][active]" type="checkbox" style="padding-bottom:5px" />
+						<input type="hidden" value="i.png" name="skyscraper_options[follow_us][li][logo]" />
+						<input type="hidden" value="linkedin.com/in/" name="skyscraper_options[follow_us][li][url]" />
+									<?php
+										$li = "http://linkedin.com/";
+										if(!empty($skyscraper_options["follow_us"]["li"]["account"])){
+												
+												$li = $skyscraper_options["follow_us"]["li"]["account"];
+										}
+									?>
+					<img style="padding-bottom:5px" src="/wp-content/plugins/sociable/images/toolbar/i.png"/>
+					<input size="40" value="<?php echo $li?>" name="skyscraper_options[follow_us][li][account]" type="text" />
+								</li>								
+							</ul>
+						</li>						
+					</ul>
+				</DIV>
+				<br />				
+			<!-- general options -->	
+			<TABLE class="Title-Box" style="cursor:pointer;" cellspacing="0" cellpadding="0" onclick="hideOrShow('GeneralOptions');">
+				<TR>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="GeneralOptions-Title" ><span id="GeneralOptions-Tab"> + </span> <?php  _e("General Options","sociable");?></TD><TD class="Border-Right"></TD>
+				</TR>
+			</TABLE>
+			<BR/>
+			
+			<DIV class="Content-Box" id="GeneralOptions-Content" style="display:none;" >
+				
+				<BR/>
+				<DIV align="center" style="width:100%;">
+					<TABLE  align="center" class="GeneralOptions-List" cellspacing="0" border=0 cellpadding	="10" >
+						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Widget Position","sociable")?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["widget_position"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[widget_position]" id="widget_position" /></TD>
+							<TD align="left" class="Content">
+															<SPAN class="TXT"><?php  _e("Check if you want Sociable Fixed on the screen","sociable");?> </SPAN>
+							<BR/>
+														
+							</TD>
+						</TR>
+					</TABLE>						
+					<BR/><BR/>
+				</DIV>
+			</DIV>
+						<TABLE class="Title-Box" style="cursor:pointer;"  cellspacing="0" cellpadding="0" onclick="hideOrShow('Locations');" >
+				<TR>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="Locations-Title" ><span id="Locations-Tab">+ </span><?php  _e("Locations","sociable");?></TD><TD class="Border-Right"></TD>
+				</TR>
+			</TABLE>
+			<BR/>
+			
+			<DIV class="Content-Box" id="Locations-Content" style="display:none;" >
+				<DIV  class="Locations-TXT" id="Locations-TXT" ><?php  _e("Please select the locations that you wish to allow the Sociable plugin to  insert itself.","sociable");?></DIV>
+					
+				<BR/>
+				<DIV align="center" style="width:100%;">
+					<TABLE  align="center" class="Locations-List" cellspacing="0" border=0 cellpadding="10">
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Home page","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_front_page"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_front_page]" id="HomePage" /></TD>
+							<TD align="left" class="Content">
+															<SPAN class="TXT"><?php  _e("The front page of the blog (if set to a static page), or the main blog page (if set to your latest posts).","sociable");?></SPAN>
+															
+							</TD>
+						</TR>
+						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Blog page","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_home"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_home]" id="BlogPage" /></TD>
+							<TD align="left" class="Content">
+															<SPAN class="TXT"><?php  _e("The home page of the blog if is set to your latest posts, or the posts page if the home page is set to a static page","sociable");?></SPAN>
+															
+							</TD>
+						</TR>
+						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Posts","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_single"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_single]" id="Posts" /></TD>
+							<TD align="left" class="Content">
+															<SPAN class="TXT"><?php  _e("Single post pages","sociable");?></SPAN>
+															
+							</TD>
+						</TR>
+						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Pages","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_page"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_page]" id="Pages" /></TD>
+							<TD align="left" class="Content">
+															<SPAN class="TXT"><?php  _e("Individual Wordpress pages","sociable");?></SPAN>
+															
+							</TD>
+						</TR>
+						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Category archives","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_category"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_category]" id="CategoryArchives" /></TD>
+							<TD align="left" class="Content">
+						<SPAN class="TXT"><?php  _e("Category archive pages","sociable");?></SPAN>
+															
+							</TD>
+						</TR>
+						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Date archives","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT  <?php if(!empty($skyscraper_options["locations"]["is_date"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_date]" id="DateArchives" /></TD>
+							<TD align="left" class="Content">
+						<SPAN class="TXT"><?php  _e("Date archive pages","sociable");?> </SPAN>
+															
+							</TD>
+						</TR>
+						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Tag archives","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_tag"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_tag]" id="TagArchives" /></TD>
+							<TD align="left" class="Content">
+															<SPAN class="TXT"><?php  _e("Tag archive pages","sociable");?> </SPAN>
+															
+							</TD>
+						</TR>
+						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Author archives","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_author"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_author]" id="AuthorArchives" /></TD>
+							<TD align="left" class="Content">
+															<SPAN class="TXT"><?php  _e("Author archive pages","sociable");?></SPAN>
+															
+							</TD>
+						</TR>
+						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("Search results","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_search"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_search]" id="SearchResults" /></TD>
+							<TD align="left" class="Content">
+															<SPAN class="TXT"><?php  _e("Search results pages","sociable");?></SPAN>
+															
+							</TD>
+						</TR>
+						
+						<TR valign="top" >
+							<TD align="right" class="Title" ><?php  _e("RSS feeds","sociable");?></TD>
+							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_rss"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_rss]" id="RssFeeds" /></TD>
+							<TD align="left" class="Content">
+															<SPAN class="TXT"><?php  _e("RSS feeds","sociable");?></SPAN>
+															
+							</TD>
+						</TR>
+					
+					</TABLE>	
+					<BR/><BR/>
+				</DIV>
+			</DIV>
+			
+			<TABLE class="Title-Box" style="cursor:pointer;"  cellspacing="0" cellpadding="0" onclick="hideOrShow('Active');" >
+				<TR>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="Active-Title" ><span id="Active-Tab">+ </span><?php  _e("Active Skyscraper","sociable");?></TD><TD class="Border-Right"></TD>
+				</TR>
+			</TABLE>
+			
+			<div style="display: block;" id="Active-Content" class="Content-Box">
+				
+				<br>
+				<div align="center" style="width:100%;">
+					<table align="center" cellspacing="0" cellpadding="10" border="0" class="GeneralOptions-List">
+						
+						<tbody><tr valign="top">
+							<td align="right" class="Title">Active Skyscraper</td>
+							<td align="left" style="width:5px;">
+							<input <?php if(isset($skyscraper_options["active"])) echo "checked='checked'"?> type="checkbox" id="active" name="skyscraper_options[active]" ></td>
+							<td align="left" class="Content">
+							<span class="TXT">Check if you want Sociable Skyscraper enable </span>
+							<br>
+														
+							</td>
+						</tr>
+					</tbody></table>						
+					<br><br>
+				</div>
+			</div>
+			<br/><br/>
+			<?php settings_fields( 'skyscraper_options_group' ); ?>
+			</form>
+			<div class="Content-Box">
+					
+			 <form id="sociable_reset_form" action="" method="POST">
+                <?php wp_nonce_field('sociable-reset'); ?>
+				<input type="hidden" id="skyscraper_reset" name="skyscraper_reset" value="1">
+                <?php //submit_button( __( 'Reset Sociable' ) , 'primary', 'sociable_reset', false ); ?>
+            </form>		
+					
+			<div id="ActionsBar">
+				<div style="cursor:pointer;line-height:15px;" onclick="document.getElementById('form1').submit();" class="SaveChanges"><br>
+					<span style="margin:30px;">Save Changes</span>
+				</div>
+				<div style="cursor:pointer;line-height:15px;font-size:12px;" onclick="document.getElementById('sociable_reset_form').submit();" name="sociable_reset" id="sociable_reset" class="ResetSociable"><br>
+					<span style="margin:40px;margin-left:35px;">Reset Skyscraper</span>
+				</div>
+			</div>
+		</div>		
+		
+			</div>
+			<div style="float:left;width:49%;margin-left:15px" name="skyscraper" id="skyscraper">
+			<script type="text/javascript" src="../js/async_call.js"></script>		
+			</div>
+
+    <?php 
+	}
     
     /**
      * Add The Menu Pages To The Administration Options
      */
+     
     function add_menu_pages(){
+    
         global $sociable_post_types;
         
-        $page = add_options_page( __( 'Sociable Options' ), __( 'Sociable' ), 'manage_options', 'sociable_options' , array( 'sociable_Admin_Options' , 'Create_Options_Page' ) );
+        $url = $_SERVER["QUERY_STRING"];
+       //	$page[] = add_options_page( __( 'Sociable Options' ), __( 'Sociable Plugin' ), 'manage_options', 'sociable_select' , array( 'sociable_Admin_Options' , 'Select_Sociable_Page' ) );
+		//$page[]= add_plugins_page( __( 'Sociable Options' ), __( 'Sociable Plugin' ), 'manage_options', 'Create_Options_Page_Skycraper'  );
+		//$page[]= add_plugins_page( 'sociable_options', 'sociable_options', 'read', 'Create_Options_Page'  );
+	$page[] =	add_options_page( "","", 'manage_options', 'sociable_select' , array( 'sociable_Admin_Options' , 'Select_Sociable_Page' ) );
+	$page[] =	add_options_page( "","", 'manage_options', 'sociable_options' , array( 'sociable_Admin_Options' , 'Create_Options_Page' ) );
+	$page[] =	add_options_page( "","", 'manage_options', 'skyscraper_options' , array( 'sociable_Admin_Options' , 'Create_Options_Page_Skycraper' ) );
+		// Add a new submenu under Settings:
+         //	$page[] =  add_options_page(__( 'Sociable Options' ),__( 'Sociable Plugin' ), 'manage_options', 'sociable_select', 'Select_Sociable_Page');
 
-        //Add CSS And Javascript Specific To This Options Pages
-        add_action( 'admin_print_styles-' . $page , array( 'sociable_Admin_Options' , 'enqueue_styles' ) );
-        add_action( 'admin_print_scripts-' . $page , array( 'sociable_Admin_Options' , 'enqueue_scripts' ) ); 
+	    // Add a new top-level menu (ill-advised):
+    add_menu_page(__( 'Sociable Options' ), __( 'Select Sociable Plugin' ), 'manage_options', '/options-general.php?page=sociable_select' );
+
+    // Add a submenu to the custom top-level menu:
+    add_submenu_page('options-general.php?page=sociable_select',  __( 'Sociable Options' ), __( 'Sociable Options' ), 'manage_options', 'sociable_options' , array( 'sociable_Admin_Options' , 'Create_Options_Page' ) );
+
+    // Add a second submenu to the custom top-level menu:
+    add_submenu_page('options-general.php?page=sociable_select',  __( 'Skyscraper Options' ), __( 'Skyscraper Options' ), 'manage_options', 'skyscraper_options' , array( 'sociable_Admin_Options' , 'Create_Options_Page_Skycraper' ) );
+
+		
+        //Add CSS And Javascript Specific To This Options Pages 
+        add_action( 'admin_print_styles-' . $page[0] , array( 'sociable_Admin_Options' , 'enqueue_styles' ) );
+        add_action( 'admin_print_scripts-' . $page[0] , array( 'sociable_Admin_Options' , 'enqueue_scripts' ) ); 
         
+        add_action( 'admin_print_styles-' . $page[1] , array( 'sociable_Admin_Options' , 'enqueue_styles' ) );
+        add_action( 'admin_print_scripts-' . $page[1] , array( 'sociable_Admin_Options' , 'enqueue_scripts' ) ); 
+
+        add_action( 'admin_print_styles-' . $page[2] , array( 'sociable_Admin_Options' , 'enqueue_styles' ) );
+        add_action( 'admin_print_scripts-' . $page[2] , array( 'sociable_Admin_Options' , 'enqueue_scripts' ) ); 
+	
         if( isset( $_POST['sociable_reset'] ) ){
             check_admin_referer( 'sociable-reset' );
             
@@ -46,12 +647,13 @@ class sociable_Admin_Options{
             wp_redirect( $_SERVER['HTTP_REFERER' ] ); 
         }  
         
-        if( isset( $_POST['sociable_remove'] ) ){
-            check_admin_referer( 'deactivate-sociable' );
+        if( isset( $_POST['skyscraper_reset'] ) ){
+            check_admin_referer( 'sociable-reset' );
             
-            sociable_2_remove();
-            //wp_redirect( $_SERVER['HTTP_REFERER' ] ); 
-        } 
+            skyscraper_reset();
+            wp_redirect( $_SERVER['HTTP_REFERER' ] ); 
+        }  
+        
         
         /*
          * We can create The Meta Boxes Here
@@ -69,7 +671,7 @@ class sociable_Admin_Options{
      * Function to Enqueue The Styles For The Options Page
      */
     function enqueue_styles(){
-	 wp_enqueue_style( 'style-admin-css', SOCIABLE_HTTP_PATH . 'css/style-admin.css' );
+	 	wp_enqueue_style( 'style-admin-css', SOCIABLE_HTTP_PATH . 'css/style-admin.css' );
         wp_enqueue_style( 'sociable-admin-css', SOCIABLE_HTTP_PATH . 'css/sociable-admin.css' );
         wp_enqueue_style( 'sociablecss' , SOCIABLE_HTTP_PATH . 'css/sociable.css' );
     }
@@ -92,16 +694,28 @@ class sociable_Admin_Options{
      * Function To Add The Settings Fields.
      */
 
-    function do_site_selection_list(){
-
-        global $sociable_options;
+    function do_site_selection_list($plugin = 'sociable'){
+		        
+		if ($plugin == 'sociable'){
+			
+			global $sociable_options;
+			$option_plugin = $sociable_options;
+			$name_plugin = "sociable_options";
+		}
+		else{
+			
+			global $skyscraper_options;
+			$option_plugin = $skyscraper_options;
+			$name_plugin = "skyscraper_options";
+		}
+         
         
         $sociable_known_sites = get_option( 'sociable_known_sites' );
 
         /*
          * Sort The List Based On The Active Sites So That They Display Correctly.
          */
-        $active_sites = isset( $sociable_options['active_sites'] ) && is_array( $sociable_options['active_sites'] )  ? $sociable_options['active_sites'] : array() ;
+        $active_sites = isset( $option_plugin['active_sites'] ) && is_array( $option_plugin['active_sites'] )  ? $option_plugin['active_sites'] : array() ;
         
         //Start Blank
         $active = Array(); 
@@ -119,7 +733,7 @@ class sociable_Admin_Options{
         
         $sites = array_merge( $active, $disabled );
         
-        $imagepath = isset( $sociable_options['sociable_imagedir'] ) ? $sociable_options['sociable_imagedir'] : '' ;
+        $imagepath = isset( $option_plugin['sociable_imagedir'] ) ? $option_plugin['sociable_imagedir'] : '' ;
         
         if ($imagepath == "") {
                 $imagepath = trailingslashit( SOCIABLE_HTTP_PATH ) . 'images/';
@@ -167,7 +781,7 @@ class sociable_Admin_Options{
             
             $out .= '<li id="' . $sitename . '" class="' . $active . '">';
             
-            $out .= '<input type="checkbox" id="cb_' . $sitename . '" name="sociable_options[active_sites][' . $sitename . ']" ' . $checked . ' />';
+            $out .= '<input type="checkbox" id="cb_' . $sitename . '" name="'.$name_plugin.'[active_sites][' . $sitename . ']" ' . $checked . ' />';
             
             $out .= $image;
             if (!isset($site["counter"])){
@@ -188,15 +802,19 @@ class sociable_Admin_Options{
      */
     function Create_Options_Page(){ 
         global $sociable_options;
+	
 		?>
-		
-		
-		
-			
+					
 			<div class="wrap">
-        
+        	
+        <DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" >			
+			<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fblogplay.com%2F&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=80&amp;appId=133479460071366" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:40px;" allowTransparency="true"></iframe><br />
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blogplay.com/" data-via="sociablesite" data-hashtags="sociable">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
+			<br />	
+			</div>
 
-            <h2 style="clear:both;"><?php _e( 'Sociable 2 Options' ); ?></h2>
+            <h2 style="clear:both;"><?php _e( 'Sociable Options' ); ?></h2>
 
             <form method="post" action="options.php" id="form1" autocomplete="off">
                 
@@ -282,7 +900,7 @@ class sociable_Admin_Options{
 					if ($sociable_options["icon_size"] == 64) $checked64 = "checked='checked'";
 					//echo $checked16;
 				?>
-				<SPAN class="IconSize-Item">	<INPUT  value="16" type="radio" name="sociable_options[icon_size]" <?php echo$checked16;?> />16x16 Pixels </SPAN>
+				<SPAN class="IconSize-Item">	<INPUT  value="16" type="radio" name="sociable_options[icon_size]" <?php echo $checked16;?> />16x16 Pixels </SPAN>
 					
 				<SPAN class="IconSize-Item">	<INPUT <?php echo$checked32;?> value="32" type="radio" name="sociable_options[icon_size]" />32x32 Pixels </SPAN>
 					
@@ -528,7 +1146,32 @@ class sociable_Admin_Options{
 					<BR/><BR/>
 				</DIV>
 			</DIV>
-		
+					<TABLE class="Title-Box" style="cursor:pointer;"  cellspacing="0" cellpadding="0" onclick="hideOrShow('Active');" >
+				<TR>
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="Active-Title" ><span id="Active-Tab">+ </span><?php  _e("Active Sociable Classic","sociable");?></TD><TD class="Border-Right"></TD>
+				</TR>
+			</TABLE>
+			
+			<div style="display: block;" id="Active-Content" class="Content-Box">
+				
+				<br>
+				<div align="center" style="width:100%;">
+					<table align="center" cellspacing="0" cellpadding="10" border="0" class="GeneralOptions-List">
+						
+						<tbody><tr valign="top">
+							<td align="right" class="Title">Active Sociable Classic</td>
+							<td align="left" style="width:5px;">
+							<input <?php if(isset($sociable_options["active"])) echo "checked='checked'"?> type="checkbox" id="active" name="sociable_options[active]" /></td>
+							<td align="left" class="Content">
+								<span class="TXT">Check if you want Sociable Classic enable </span>
+							<br>
+														
+							</td>
+						</tr>
+					</tbody></table>						
+					<br><br>
+				</div>
+			</div>
 				<?php //<HR style="height:10px;background:#18305d;"/>?>
 		<?php settings_fields( 'sociable_options_group' ); ?>
 		</FORM>
@@ -563,11 +1206,7 @@ class sociable_Admin_Options{
                 <?php //submit_button( __( 'Reset Sociable' ) , 'primary', 'sociable_reset', false ); ?>
             </form>
             
-            <form id="sociable_remove_form" action="plugins.php" method="POST">
-                <?php wp_nonce_field('deactivate-sociable'); ?>
-				<input type="hidden" id="sociable_remove" name="sociable_remove" value="1">
-                <?php //submit_button( __( 'Completely Uninstall Sociable' ) , 'primary', 'sociable_remove', false ); ?>
-            </form>
+          
 
 		</div>
 
