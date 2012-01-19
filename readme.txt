@@ -111,7 +111,7 @@ Sociable plugin wouldn't be what it is today if it weren't for these people that
 
 4. Or you can pick your own style
 
-
+5. Select wich plugin want to customize
 
 
 == Installation ==
