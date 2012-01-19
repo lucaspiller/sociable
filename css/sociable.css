@@ -1,13 +1,14 @@
 div.sociable { /*margin: 8px 0;*/}
 
-#___plusone_0 {
+li div#___plusone_0 {
 float:right !important;
 width:60px !important;
 }
-#___plusone_1 {
+li#Google_p div {
 float:right !important;
 width:60px !important;
 }
+/*
 #___plusone_2{
 float:right !important;
 width:60px !important;
@@ -36,7 +37,7 @@ width:60px !important;
 float:right !important;
 width:60px !important;
 }
-
+*/
 
 div.sociable li#Twitter_Counter iframe{
 width:100px !important;

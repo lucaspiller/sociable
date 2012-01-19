@@ -14,7 +14,7 @@
 	float: left;
 	margin: 2px 2px 0 0;
 	width: 153px;
-	height:auto;
+	height:45px;
 	text-align: left;
 	font-size: 10px;
 	padding: 4px;
@@ -64,4 +64,15 @@
 
 .soc_clear{
     clear:both;
+}
+
+.items_li{
+	font-size:16px;
+}
+.sub_item_li {
+
+    margin-bottom: 16px;
+    margin-left: 54px;
+    margin-top: 6px;
+    font-size: 14px;
 }
