@@ -343,7 +343,7 @@ function sociable_init(){
 	wp_enqueue_style("skyscraper_style_toolbar", SOCIABLE_HTTP_PATH."/css/toolbar.css");
     global $sociable_post_types, $sociable_taxonomies, $sociable_options, $skyscraper_options;
 
-	if (!isset($sociable_options['icon_size']) || $sociable_options['icon_size'] == "" || !isset($sociable_options['version']) ||  $sociable_options['version'] != "4.1.6" ) sociable_reset();
+	if (!isset($sociable_options['icon_size']) || $sociable_options['icon_size'] == "" || !isset($sociable_options['version'])) sociable_reset();
 
 	
 	if ( $skyscraper_options['version'] != "1.0" ){
@@ -657,7 +657,7 @@ function sociable_reset(){
 
 		'icon_option' => 'option1',
 
-		
+		"active" 	=> 1
 
 
 
