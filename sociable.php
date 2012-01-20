@@ -6,7 +6,21 @@
 
 
 
+
+
+
+
+
+
+
+
 /*
+
+
+
+
+
+
 
 
 
@@ -18,7 +32,19 @@ Plugin Name: Sociable
 
 
 
+
+
+
+
+
+
 Plugin URI: http://blogplay.com/plugin
+
+
+
+
+
+
 
 
 
@@ -30,13 +56,31 @@ Description: Automatically add links on your posts, pages and RSS feed to your f
 
 
 
-Version: 4.1.7
+
+
+
+
+
+
+Version: 4.1.8
+
+
+
+
+
+
 
 
 
 
 
 Author: Blogplay
+
+
+
+
+
+
 
 
 
@@ -54,13 +98,37 @@ Author URI: http://blogplay.com/
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 Copyright 2006 Peter Harkins (ph@malaprop.org)
 
 
 
 
 
+
+
+
+
+
+
 Copyright 2008-2009 Joost de Valk (joost@yoast.com)
+
+
+
+
+
+
 
 
 
@@ -80,7 +148,27 @@ Copyright 2009-Present Blogplay.com (info@blogplay.com)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 This program is free software; you can redistribute it and/or modify
+
+
+
+
+
+
 
 
 
@@ -92,7 +180,19 @@ it under the terms of the GNU General Public License as published by
 
 
 
+
+
+
+
+
+
 the Free Software Foundation; either version 2 of the License, or
+
+
+
+
+
+
 
 
 
@@ -110,7 +210,25 @@ the Free Software Foundation; either version 2 of the License, or
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 This program is distributed in the hope that it will be useful,
+
+
+
+
+
+
 
 
 
@@ -122,7 +240,19 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 
 
 
+
+
+
+
+
+
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+
+
+
+
+
+
 
 
 
@@ -140,7 +270,25 @@ GNU General Public License for more details.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 You should have received a copy of the GNU General Public License
+
+
+
+
+
+
 
 
 
@@ -152,7 +300,31 @@ along with this program; if not, write to the Free Software
 
 
 
+
+
+
+
+
+
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -182,13 +354,37 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 
 
 
 
 
+
+
+
+
+
+
  * Define Some Paths
+
+
+
+
+
+
 
 
 
@@ -201,7 +397,20 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
 
+
+
+
+
+
+
+
 define( 'SOCIABLE_HTTP_PATH' , WP_PLUGIN_URL . '/' . str_replace(basename( __FILE__) , "" , plugin_basename(__FILE__) ) );
+
+
+
+
+
+
 
 
 
@@ -219,7 +428,25 @@ define( 'SOCIABLE_ABSPATH' , WP_PLUGIN_DIR . '/' . str_replace(basename( __FILE_
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*
+
+
+
+
+
+
 
 
 
@@ -231,7 +458,19 @@ define( 'SOCIABLE_ABSPATH' , WP_PLUGIN_DIR . '/' . str_replace(basename( __FILE_
 
 
 
+
+
+
+
+
+
  */
+
+
+
+
+
+
 
 
 
@@ -240,10 +479,22 @@ define( 'SOCIABLE_ABSPATH' , WP_PLUGIN_DIR . '/' . str_replace(basename( __FILE_
 include 'includes/class-sociable_Admin_Options.php';
 
 
+
+
+
 include("includes/skyscraper_output.php");
 
 
+
+
+
 include 'includes/class-Sociable_Globals.php';
+
+
+
+
+
+
 
 
 
@@ -261,7 +512,25 @@ include 'includes/sociable_output.php';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*
+
+
+
+
+
+
 
 
 
@@ -273,7 +542,19 @@ include 'includes/sociable_output.php';
 
 
 
+
+
+
+
+
+
  */
+
+
+
+
+
+
 
 
 
@@ -285,20 +566,45 @@ include 'includes/sociable_output.php';
 
 
 
+
+
+
+
+
+
 $sociable_options = get_option( 'sociable_options' );
+
+
 
 $skyscraper_options = get_option( 'skyscraper_options' );
 
+
+
 $skyscraper_latest = get_option( 'skyscraper_latest' );
 
+
+
 $skyscraper_mentions = get_option( 'skyscraper_mentions' );
+
 //print_r($sociable_options);
 
 
 
 
 
+
+
+
+
+
+
 //$sociable_post_types = array(); //Set This blank here, won't work before init
+
+
+
+
+
+
 
 
 
@@ -316,7 +622,25 @@ $skyscraper_mentions = get_option( 'skyscraper_mentions' );
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*
+
+
+
+
+
+
 
 
 
@@ -328,7 +652,19 @@ $skyscraper_mentions = get_option( 'skyscraper_mentions' );
 
 
 
+
+
+
+
+
+
  */
+
+
+
+
+
+
 
 
 
@@ -336,48 +672,93 @@ $skyscraper_mentions = get_option( 'skyscraper_mentions' );
 
 function sociable_init(){
 
+
+
 	wp_enqueue_script('jquery'); 	
+
 	wp_enqueue_script( 'oplugin' , SOCIABLE_HTTP_PATH . 'js/async_call.js' );
+
 	wp_enqueue_script( 'async_call' , SOCIABLE_HTTP_PATH . 'js/oPlugin.js' );
+
 	wp_enqueue_style("skyscraper_style_shape",SOCIABLE_HTTP_PATH."/css/shape.css");
+
 	wp_enqueue_style("skyscraper_style_toolbar", SOCIABLE_HTTP_PATH."/css/toolbar.css");
+
     global $sociable_post_types, $sociable_taxonomies, $sociable_options, $skyscraper_options;
+
+
 
 	if (!isset($sociable_options['icon_size']) || $sociable_options['icon_size'] == "" || !isset($sociable_options['version'])) sociable_reset();
 
+
+
 	
+
 	if ( $skyscraper_options['version'] != "1.0" ){
+
 		skyscraper_reset();
+
 	}
+
+
 
 	//echo dirname( plugin_basename( __FILE__ ) )."/includes"
 
+
+
     load_plugin_textdomain( 'sociable', false, dirname( plugin_basename( __FILE__ ) )."/languages" );
+
+
 
     $active_sites = ( isset( $sociable_options['active_sites'] ) ) ? $sociable_options['active_sites'] : array() ;
 
+
+
     //Set The Post Types
+
     $sociable_post_types = Sociable_Globals::sociable_get_post_types();
 
+
+
     //Set The Custom Taxonomies
+
     $sociable_taxonomies = Sociable_Globals::sociable_get_taxonomies();
+
+
 
     wp_enqueue_script( 'sociable' , SOCIABLE_HTTP_PATH . 'js/sociable.js' );
 
+
+
 	wp_enqueue_script( 'addtofavourites' , SOCIABLE_HTTP_PATH . 'js/addtofavorites.js' );
 
+
+
     if( ! is_admin() ){
+
       //Load Up The Front Of Site CSS And JS
+
+
 
         if( array_key_exists( 'Add to favorites' , $active_sites ) ){
 
+
+
 //            wp_enqueue_script( 'addtofavourites' , SOCIABLE_HTTP_PATH . 'js/addtofavorites.js' );
+
         }
 
+
+
         if( isset( $sociable_options['use_stylesheet'] ) ){
+
             wp_enqueue_style( 'sociablecss' , SOCIABLE_HTTP_PATH . 'css/sociable.css' );
+
         }
+
     }
+
+
 
 }
 
@@ -391,7 +772,25 @@ function sociable_init(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*
+
+
+
+
+
+
 
 
 
@@ -403,7 +802,19 @@ function sociable_init(){
 
 
 
+
+
+
+
+
+
  */
+
+
+
+
+
+
 
 
 
@@ -414,13 +825,30 @@ add_action( 'admin_init' , array( 'sociable_Admin_Options' , 'init' ) );
 
 
 
+
+
+
+
+
 add_action( 'admin_menu' , array( 'sociable_Admin_Options' , 'add_menu_pages' ) );
+
 	
 
 
 
 
+
+
+
+
+
 add_action( 'save_post' , array( 'sociable_Admin_Options' , 'save_post' ) );
+
+
+
+
+
+
 
 
 
@@ -437,13 +865,40 @@ add_action( 'init' , 'sociable_init' );
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 add_filter( 'the_content', 'auto_sociable' );
+
+
 
 //add_filter( 'get_pages', 'auto_skyscraper' );
 
+
+
 //add_filter( 'the_excerpt', 'auto_skyscraper' );
 
+
+
 add_filter( 'the_excerpt', 'auto_sociable' );
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -460,6 +915,13 @@ register_activation_hook(__FILE__, 'sociable_activate' );
 
 
 
+
+
+
+
+
+
+
 register_deactivation_hook( __FILE__, 'sociable_deactivate' );
 
 
@@ -468,7 +930,21 @@ register_deactivation_hook( __FILE__, 'sociable_deactivate' );
 
 
 
+
+
+
+
+
+
+
+
 /*
+
+
+
+
+
+
 
 
 
@@ -480,7 +956,19 @@ register_deactivation_hook( __FILE__, 'sociable_deactivate' );
 
 
 
+
+
+
+
+
+
  */
+
+
+
+
+
+
 
 
 
@@ -492,7 +980,19 @@ function sociable_activate(){
 
 
 
+
+
+
+
+
+
     
+
+
+
+
+
+
 
 
 
@@ -504,7 +1004,19 @@ function sociable_activate(){
 
 
 
+
+
+
+
+
+
         return sociable_reset();
+
+
+
+
+
+
 
 
 
@@ -516,7 +1028,19 @@ function sociable_activate(){
 
 
 
+
+
+
+
+
+
     
+
+
+
+
+
+
 
 
 
@@ -532,7 +1056,23 @@ function sociable_activate(){
 
 
 
+
+
+
+
+
+
+
+
+
+
 /*
+
+
+
+
+
+
 
 
 
@@ -544,7 +1084,19 @@ function sociable_activate(){
 
 
 
+
+
+
+
+
+
  */
+
+
+
+
+
+
 
 
 
@@ -553,19 +1105,38 @@ function sociable_activate(){
 function sociable_reset(){
 
 
+
+
+
     global $wpdb;
+
+
+
 
 
     //reset all data to factory defaults, install if is there.
 
+
+
     //Delete All Metadata From The Database ?
+
+
 
     $wpdb->query("DELETE FROM $wpdb->postmeta WHERE meta_key = '_sociableoff'");
 
 
+
+ 
+
     $sociable_options = array(
 
-		'version' =>'4.1.7',
+
+
+		'version' =>'4.1.8',
+
+
+
+
 
 
 
@@ -573,7 +1144,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
         'tagline'                => 'Be Sociable, Share!',
+
+
+
+
 
 
 
@@ -581,19 +1160,39 @@ function sociable_reset(){
 
 
 
+
+
+
+
         'use_stylesheet'         => 'on',
+
+
+
+
 
 
 
         'use_images'             => 'on',
 
 
+
+
+
         'use_alphamask'          => 'on',
+
         'new_window'             => 'on',
+
+
 
 		
 
+
+
 		'help_grow'              => 'on', 
+
+
+
+
 
 
 
@@ -601,7 +1200,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'is_single' => 'on',
+
+
+
+
 
 
 
@@ -609,59 +1216,121 @@ function sociable_reset(){
 
 
 
+
+
+
+
         ),
+
+
+
+
 
 
 
         'active_sites'           => array(
 
+
+
 			'Twitter'  => 'on',
+
+
 
             'Facebook' => 'on',
 
+
+
 			'email'=>'on',
+
+
 
 			'Add to favorites'=>'on',
 
+
+
            'StumbleUpon'  =>'on',
+
+
 
 			'Delicious'   =>'on',
 
+
+
 			'Google Reader' =>'on',
+
+
 
 			'LinkedIn' => 'on',
 
+
+
 			'BlinkList' =>'on',
+
+
 
 			'More' => 'on',
 
+
+
 			'Twitter Counter' =>'on',
+
+
 
 			'Facebook Counter' =>'on',
 
+
+
 			'Google +' =>'on',
+
+
 
 			'LinkedIn Counter' =>'on',			 
 
+
+
 			'StumbleUpon Counter' =>'on'
 
-			
+
 
 			
+
+
+
+			
+
+
 
         ),
 
 
 
+
+
+
+
         'icon_size'       => '32',
 
+
+
 		'icon_option' => 'option1',
+
+
 
 		"active" 	=> 1
 
 
 
+
+
+
+
     );
+
+
+
+
+
+
 
 
 
@@ -669,9 +1338,17 @@ function sociable_reset(){
 
     $sociable_known_sites = array(
 
+
+
 	
 
+
+
         'Facebook'    => array(
+
+
+
+
 
 
 
@@ -679,7 +1356,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'url' => 'http://www.facebook.com/share.php?u=PERMALINK&amp;t=TITLE',
+
+
+
+
 
 
 
@@ -687,7 +1372,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '16' => array("-48px","0px"),
+
+
+
+
 
 
 
@@ -695,7 +1388,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '48' => array("-144px","0px"),
+
+
+
+
 
 
 
@@ -703,25 +1404,51 @@ function sociable_reset(){
 
 
 
+
+
+
+
             )
+
+
 
         ),
 
+
+
 		
+
+
 
 		'Facebook Counter'    => array(
 
+
+
 			'counter' =>1,
+
+
 
             'favicon' => 'likecounter.png',
 
 
 
+
+
+
+
             'url' => '<iframe src="//www.facebook.com/plugins/like.php?href=PERMALINKCOUNT&send=false&layout=button_count&show_faces=false&action=like&colorscheme=light&font" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:32px;width:100px" allowTransparency="true"></iframe>',
+
+
 
  
 
+
+
 			'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -729,7 +1456,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-96px","0px"),
+
+
+
+
 
 
 
@@ -737,13 +1472,27 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-192px","0px")
+
+
+
+
 
 
 
             )
 
+
+
         ), 
+
+
+
+
 
 
 
@@ -751,7 +1500,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'favicon' => 'myspace.png',
+
+
+
+
 
 
 
@@ -759,7 +1516,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -767,7 +1532,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("0px","-32px"),
+
+
+
+
 
 
 
@@ -775,7 +1548,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("0px","-64px")
+
+
+
+
 
 
 
@@ -783,7 +1564,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
         ),
+
+
+
+
 
 
 
@@ -791,7 +1580,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'favicon' => 'twitter.png',
+
+
+
+
 
 
 
@@ -799,7 +1596,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -807,7 +1612,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-288px","-32px"),
+
+
+
+
 
 
 
@@ -815,7 +1628,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-576px","-64px")
+
+
+
+
 
 
 
@@ -823,15 +1644,31 @@ function sociable_reset(){
 
 
 
+
+
+
+
         ),
+
+
+
+
 
 
 
 		        'Twitter Counter'     => array(
 
+
+
 			'counter' =>1,
 
+
+
             'favicon' => 'twitter.png',
+
+
+
+
 
 
 
@@ -839,7 +1676,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -847,7 +1692,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-288px","-32px"),
+
+
+
+
 
 
 
@@ -855,7 +1708,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-576px","-64px")
+
+
+
+
 
 
 
@@ -863,19 +1724,39 @@ function sociable_reset(){
 
 
 
+
+
+
+
         ),
 
-		
+
 
 		
 
+
+
 		
+
+
+
+		
+
+
 
         'LinkedIn'    => array(
 
 
 
+
+
+
+
             'favicon' => 'linkedin.png',
+
+
+
+
 
 
 
@@ -883,7 +1764,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -891,7 +1780,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-288px","0px"),
+
+
+
+
 
 
 
@@ -899,7 +1796,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-576px","0px")
+
+
+
+
 
 
 
@@ -907,17 +1812,35 @@ function sociable_reset(){
 
 
 
+
+
+
+
             
+
+
+
+
 
 
 
         ),
 
+
+
 		
+
+
 
 		        'LinkedIn Counter'    => array(
 
+
+
 				'counter'=>1,
+
+
+
+
 
 
 
@@ -925,11 +1848,23 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'url' => '<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script><script type="IN/Share" data-url="PERMALINKCOUNT" data-counter="right"></script>',
 
 
 
+
+
+
+
             'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -937,7 +1872,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-288px","0px"),
+
+
+
+
 
 
 
@@ -945,11 +1888,23 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-576px","0px")
 
 
 
+
+
+
+
             )
+
+
+
+
 
 
 
@@ -957,7 +1912,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
         ),
+
+
+
+
 
 
 
@@ -965,7 +1928,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
         'Delicious'   => array(
+
+
+
+
 
 
 
@@ -973,11 +1944,23 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'url' => 'http://delicious.com/post?url=PERMALINK&amp;title=TITLE&amp;notes=EXCERPT',
 
 
 
+
+
+
+
             'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -985,7 +1968,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-32px","0px"),
+
+
+
+
 
 
 
@@ -993,11 +1984,23 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-64px","0px")
 
 
 
+
+
+
+
             )
+
+
+
+
 
 
 
@@ -1005,11 +2008,23 @@ function sociable_reset(){
 
 
 
+
+
+
+
         'Digg'        => array(
 
 
 
+
+
+
+
             'favicon' => 'digg.png',
+
+
+
+
 
 
 
@@ -1017,7 +2032,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1025,7 +2048,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-64px","0px"),
+
+
+
+
 
 
 
@@ -1033,7 +2064,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-128px","0px")
+
+
+
+
 
 
 
@@ -1041,15 +2080,31 @@ function sociable_reset(){
 
 
 
+
+
+
+
         ),
+
+
+
+
 
 
 
 		'Digg Counter'        => array(
 
+
+
 			'counter' =>1,
 
+
+
             'favicon' => 'digg.png',
+
+
+
+
 
 
 
@@ -1057,7 +2112,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1065,7 +2128,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-64px","0px"),
+
+
+
+
 
 
 
@@ -1073,7 +2144,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-128px","0px")
+
+
+
+
 
 
 
@@ -1081,19 +2160,39 @@ function sociable_reset(){
 
 
 
+
+
+
+
         ),
 
 
 
-		
+
+
+
 
 		
 
-		
+
 
 		
+
+
+
+		
+
+
+
+		
+
+
 
         'Reddit'      => array(
+
+
+
+
 
 
 
@@ -1101,11 +2200,23 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'url' => 'http://reddit.com/submit?url=PERMALINK&amp;title=TITLE',
 
 
 
+
+
+
+
             'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1113,7 +2224,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-128px","-32px"),
+
+
+
+
 
 
 
@@ -1121,7 +2240,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-256px","-64px")
+
+
+
+
 
 
 
@@ -1129,7 +2256,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
         ),
+
+
+
+
 
 
 
@@ -1137,11 +2272,23 @@ function sociable_reset(){
 
 
 
+
+
+
+
         'StumbleUpon'  => array(
 
 
 
+
+
+
+
             'favicon' => 'stumbleupon.png',
+
+
+
+
 
 
 
@@ -1149,7 +2296,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1157,7 +2312,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-224px","-32px"),
+
+
+
+
 
 
 
@@ -1165,19 +2328,39 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-448px","-64px")
+
+
+
+
 
 
 
             )),
 
+
+
 			
+
+
 
 			        'StumbleUpon Counter'  => array(
 
+
+
 			'counter' =>1,
 
+
+
             'favicon' => 'stumbleupon.png',
+
+
+
+
 
 
 
@@ -1185,7 +2368,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
             'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1193,7 +2384,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-224px","-32px"),
+
+
+
+
 
 
 
@@ -1201,7 +2400,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-448px","-64px")
+
+
+
+
 
 
 
@@ -1209,13 +2416,27 @@ function sociable_reset(){
 
 
 
+
+
+
+
         ),
+
+
 
 		 'Google Bookmarks' => Array (
 
 
 
+
+
+
+
                     'favicon' => 'google.png',
+
+
+
+
 
 
 
@@ -1223,7 +2444,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                     'description' => 'Google Bookmarks',
+
+
+
+
 
 
 
@@ -1231,7 +2460,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '16' => array("-96px","0px"),
+
+
+
+
 
 
 
@@ -1239,7 +2476,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '48' => array("-288px","0px"),
+
+
+
+
 
 
 
@@ -1247,19 +2492,39 @@ function sociable_reset(){
 
 
 
+
+
+
+
             )
+
+
+
+
 
 
 
             ),
 
+
+
 			
+
+
 
 			'Google +' => Array (
 
+
+
 			
 
+
+
 					'counter' =>1,
+
+
+
+
 
 
 
@@ -1267,37 +2532,75 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 /*    'url' => '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+
+
 
 <g:plusone annotation="bubble" size="medium"></g:plusone>',*/
 
+
+
 					'url' => '<g:plusone annotation="bubble" href="PERMALINKCOUNT" size="medium"></g:plusone>',
+
+
 
 /*
 
+
+
     <script type="text/javascript">
+
+
 
       window.___gcfg = {
 
+
+
         lang: \'en-US\'
+
+
 
       };
 
 
 
+
+
+
+
       (function() {
+
+
 
         var po = document.createElement(\'script\'); po.type = \'text/javascript\'; po.async = true;
 
+
+
         po.src = \'https://apis.google.com/js/plusone.js\';
+
+
 
         var s = document.getElementsByTagName(\'script\')[0]; s.parentNode.insertBefore(po, s);
 
+
+
       })();
+
+
 
     </script>
 
+
+
 ',*/
+
+
+
+
 
 
 
@@ -1305,7 +2608,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                     'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1313,7 +2624,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-192px","0px"),
+
+
+
+
 
 
 
@@ -1321,7 +2640,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-384px","0px")
+
+
+
+
 
 
 
@@ -1329,11 +2656,23 @@ function sociable_reset(){
 
 
 
+
+
+
+
             ),
+
+
 
 			
 
+
+
 			            'HackerNews' => Array(
+
+
+
+
 
 
 
@@ -1341,11 +2680,23 @@ function sociable_reset(){
 
 
 
+
+
+
+
                     'url' => 'http://news.ycombinator.com/submitlink?u=PERMALINK&amp;t=TITLE',
 
 
 
+
+
+
+
                    'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1353,7 +2704,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-256px","0px"),
+
+
+
+
 
 
 
@@ -1361,7 +2720,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-512px","0px")
+
+
+
+
 
 
 
@@ -1369,9 +2736,19 @@ function sociable_reset(){
 
 
 
+
+
+
+
             ),
 
+
+
 			   'MSNReporter' => Array(
+
+
+
+
 
 
 
@@ -1379,7 +2756,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                     'url' => 'http://reporter.es.msn.com/?fn=contribute&amp;Title=TITLE&amp;URL=PERMALINK&amp;cat_id=6&amp;tag_id=31&amp;Remark=EXCERPT',
+
+
+
+
 
 
 
@@ -1387,7 +2772,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                     'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1395,7 +2788,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-352px","0px"),
+
+
+
+
 
 
 
@@ -1403,7 +2804,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-704px","0px")
+
+
+
+
 
 
 
@@ -1411,19 +2820,39 @@ function sociable_reset(){
 
 
 
+
+
+
+
             ),
+
+
+
+
 
 
 
 			
 
+
+
 			 'BlinkList' => Array(
+
+
 
                     'favicon' => 'blinklist.png',
 
+
+
                     'url' => 'http://www.blinklist.com/index.php?Action=Blink/addblink.php&amp;Url=PERMALINK&amp;Title=TITLE',
 
+
+
                     'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1431,7 +2860,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("0px","0px"),
+
+
+
+
 
 
 
@@ -1439,23 +2876,47 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("0px","0px")
 
 
 
+
+
+
+
             ),
+
+
 
                     'supportsIframe' => false,
 
+
+
             ),
+
+
 
 			'Sphinn' => Array(
 
+
+
                     'favicon' => 'sphinn.png',
+
+
 
                     'url' => 'http://sphinn.com/index.php?c=post&amp;m=submit&amp;link=PERMALINK',
 
+
+
                     'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1463,7 +2924,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-192px","-32px"),
+
+
+
+
 
 
 
@@ -1471,23 +2940,47 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-384px","-64px")
+
+
+
+
 
 
 
             )
 
+
+
             ),
+
+
 
 			
 
+
+
 			'Posterous' => Array(
+
+
 
                     'favicon' => 'posterous.png',
 
+
+
                     'url' => 'http://posterous.com/share?linkto=PERMALINK&amp;title=TITLE&amp;selection=EXCERPT',
 
+
+
                     'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1495,7 +2988,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-64px","-32px"),
+
+
+
+
 
 
 
@@ -1503,21 +3004,43 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-128px","-64px")
+
+
+
+
 
 
 
             )
 
+
+
             ),
+
+
 
 			'Tumblr' => Array(
 
+
+
                     'favicon' => 'tumblr.png',
+
+
 
                     'url' => 'http://www.tumblr.com/share?v=3&amp;u=PERMALINK&amp;t=TITLE&amp;s=EXCERPT',
 
+
+
                    'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1525,7 +3048,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-256px","-32px"),
+
+
+
+
 
 
 
@@ -1533,23 +3064,47 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-512px","-64px")
+
+
+
+
 
 
 
 				),
 
+
+
                     'supportsIframe' => false
+
+
 
             ),
 
+
+
 			'email' => Array(
+
+
 
                     'favicon' => 'gmail.png',
 
+
+
 					'url' => 'https://mail.google.com/mail/?view=cm&fs=1&to&su=TITLE&body=PERMALINK&ui=2&tf=1&shva=1',
 
+
+
                     'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1557,7 +3112,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-160px","0px"),
+
+
+
+
 
 
 
@@ -1565,25 +3128,51 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-320px","0px")
 
 
 
+
+
+
+
             ),
+
+
 
                     'supportsIframe' => false
 
+
+
             ),
+
+
 
 			
 
+
+
 			'Google Reader' => array (
+
+
 
 					'favicon' => 'googlebuzz.png',
 
+
+
 						'url' => 'http://www.google.com/reader/link?url=PERMALINK&amp;title=TITLE&amp;srcURL=PERMALINK&amp;srcTitle=BLOGNAME',
 
+
+
 				'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1591,7 +3180,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-224px","0px"),
+
+
+
+
 
 
 
@@ -1599,21 +3196,43 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' =>  array("-448px","0px")
+
+
+
+
 
 
 
             )
 
+
+
 			),
+
+
 
 			 'Add to favorites' => array(
 
+
+
 			 'favicon' => 'favorites.png',
+
+
 
 			 'url' => 'javascript:AddToFavorites();',
 
+
+
 			 'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1621,7 +3240,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("-128px","0px"),
+
+
+
+
 
 
 
@@ -1629,21 +3256,43 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("-256px","0px")
+
+
+
+
 
 
 
             )
 
+
+
 		 ),
+
+
 
 			 'More' => array(
 
+
+
 			 'favicon' => 'more.png',
+
+
 
 			 'url' => 'javascript:more();',
 
+
+
 			'spriteCoordinates' => Array( 
+
+
+
+
 
 
 
@@ -1651,7 +3300,15 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '32' => array("0px","0px"),
+
+
+
+
 
 
 
@@ -1659,68 +3316,143 @@ function sociable_reset(){
 
 
 
+
+
+
+
                 '64' => array("0px","0px")
+
+
+
+
 
 
 
             )
 
+
+
 		 ),
 
+
+
     );
+
  
-	
-    //Update will create if it doesn't exist.
 
 	
+
+    //Update will create if it doesn't exist.
+
+
+
+	
+
     update_option( 'sociable_known_sites' , $sociable_known_sites );
+
     update_option( 'sociable_options'     , $sociable_options );
+
     update_option( 'sociable_helpus'      ,	1); 
+
 }
+
+
 
 function skyscraper_reset(){
 
+
+
 	$skyscraper_options = array(
+
 						"version" 					=> "1.0",
+
 						"widget_width" 				=> "60px",
+
 						"widget_position" 			=> "1",
+
 						"background_color" 			=> "#fefefe",
+
 						"labels_color" 				=> "#f7f7f7",
+
 						"text_size" 				=> "10px",
+
 						"counters" 					=> array("check" => "0",
+
 															"folded" => "0"),
+
 						"share" 					=> array("check" => "0",
+
 															"folded" => "0"),
+
 						"num_tweets"				=> 3,
+
 						"num_rss"					=>3,
+
 						"locations"					=> array("is_front_page" => 1,
+
 															"is_home" 		 => 1,
+
 															"is_single" 	 => 1,
+
 															"is_page" 	 	 => 1,
+
 															"is_category" 	 => 1,
+
 															"is_date" 		 => 1,
+
 															"is_tag" 		 => 1,
+
 															"is_author" 	 => 1,
+
 															"is_search" 	 => 1,
+
 															"is_rss" 		 => 1  ),
+
 															
+
 					  "counters"					=> array("check" => 1,
+
 					  										 "folded" => 1),
+
 					  "share"						=> array("check" => 1,
+
 					  										 "folded" => 1),
+
 					  "active"						=> 1
+
 															   											
+
 	);
 
+
+
     update_option( 'skyscraper_options'   , $skyscraper_options );
+
     
+
     	
+
 	$skyscraper_latest = array();
+
 	update_option("skyscraper_latest",$skyscraper_latest );
+
 	
+
 	$skyscraper_mentions = array();
+
 	update_option("skyscraper_mentions",$skyscraper_mentions );
+
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1731,6 +3463,12 @@ function skyscraper_reset(){
 
 
 /*
+
+
+
+
+
+
 
 
 
@@ -1742,7 +3480,19 @@ function skyscraper_reset(){
 
 
 
+
+
+
+
+
+
  */
+
+
+
+
+
+
 
 
 
@@ -1754,7 +3504,19 @@ function sociable_deactivate(){
 
 
 
+
+
+
+
+
+
 //    global $wpdb;
+
+
+
+
+
+
 
 
 
@@ -1766,7 +3528,19 @@ function sociable_deactivate(){
 
 
 
+
+
+
+
+
+
 //    $wpdb->query("DELETE FROM $wpdb->postmeta WHERE meta_key = '_sociableoff'");
+
+
+
+
+
+
 
 
 
@@ -1778,7 +3552,19 @@ function sociable_deactivate(){
 
 
 
+
+
+
+
+
+
 //    return delete_option( 'sociable_options' );
+
+
+
+
+
+
 
 
 
@@ -1796,7 +3582,25 @@ function sociable_deactivate(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /*
+
+
+
+
+
+
 
 
 
@@ -1808,7 +3612,19 @@ function sociable_deactivate(){
 
 
 
+
+
+
+
+
+
  */
+
+
+
+
+
+
 
 
 
@@ -1820,13 +3636,31 @@ function sociable_2_remove(){
 
 
 
+
+
+
+
+
+
     require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 
 
 
 
 
+
+
+
+
+
+
     
+
+
+
+
+
+
 
 
 
@@ -1838,7 +3672,19 @@ function sociable_2_remove(){
 
 
 
+
+
+
+
+
+
     //Delete The Metadata
+
+
+
+
+
+
 
 
 
@@ -1850,7 +3696,19 @@ function sociable_2_remove(){
 
 
 
+
+
+
+
+
+
     //delete The Options
+
+
+
+
+
+
 
 
 
@@ -1862,7 +3720,19 @@ function sociable_2_remove(){
 
 
 
+
+
+
+
+
+
     
+
+
+
+
+
+
 
 
 
@@ -1874,13 +3744,37 @@ function sociable_2_remove(){
 
 
 
+
+
+
+
+
+
     wp_redirect( '/wp-admin/plugins.php?deactivate=true' );
 
 
 
 
 
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1898,7 +3792,19 @@ function sociable_2_remove(){
 
 
 
+
+
+
+
+
+
  * Generic Plugin Wide Functions
+
+
+
+
+
+
 
 
 
@@ -1912,7 +3818,19 @@ function sociable_2_remove(){
 
 
 
+
+
+
+
+
+
+
+
 function _get_sociable_image_path(){
+
+
+
+
 
 
 
@@ -1920,23 +3838,47 @@ function _get_sociable_image_path(){
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
     if( empty( $sociable_options['custom_icons'] )){
 
+
+
 		if ($sociable_options['icon_option'] !="option6"){
+
+
 
         $path = trailingslashit( SOCIABLE_HTTP_PATH . 'images/'.$sociable_options['icon_option']."/" . $sociable_options['icon_size'] );
 
+
+
 		}else{
+
+
 
 		
 
+
+
 		$path = trailingslashit( SOCIABLE_HTTP_PATH . 'images/original/');
 
+
+
 		}
+
+
+
+
 
 
 
@@ -1944,15 +3886,31 @@ function _get_sociable_image_path(){
 
 
 
+
+
+
+
         $path = trailingslashit( SOCIABLE_HTTP_PATH . 'images/customIcons/');
+
+
+
+
 
 
 
     }
 
+
+
  
 
+
+
      
+
+
+
+
 
 
 
@@ -1960,7 +3918,25 @@ function _get_sociable_image_path(){
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1976,11 +3952,23 @@ function _get_sociable_image_path(){
 
 function _get_sociable_image( $site, $description ){
 
+
+
 global $sociable_options;
 
 
 
+
+
+
+
     $imageclass = '';
+
+
+
+
+
+
 
 
 
@@ -1992,13 +3980,31 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
     $imagepath = _get_sociable_image_path();
 
 
 
 
 
+
+
+
+
+
+
     //Get The Source Of The Image
+
+
+
+
+
+
 
 
 
@@ -2016,7 +4022,25 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
         if ( strpos( $site['favicon'], 'http' ) === 0 ) {
+
+
+
+
+
+
 
 
 
@@ -2028,7 +4052,19 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
         } else {
+
+
+
+
+
+
 
 
 
@@ -2040,7 +4076,25 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2064,7 +4118,25 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
         $imagesource = $imagepath . "services-sprite.gif";
+
+
+
+
+
+
 
 
 
@@ -2082,7 +4154,25 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
         $spriteCoords = $site['spriteCoordinates'];
+
+
+
+
+
+
 
 
 
@@ -2094,7 +4184,25 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
         $size = $sociable_options['icon_size'];
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2118,7 +4226,27 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
 
 
 
@@ -2130,7 +4258,17 @@ global $sociable_options;
 
 
 
+
+
+
+
     if( isset( $sociable_options['use_alphamask'] ) ){
+
+
+
+
+
+
 
 
 
@@ -2142,7 +4280,25 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2160,7 +4316,19 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
     if ( isset( $site['class'] ) ) {
+
+
+
+
+
+
 
 
 
@@ -2172,7 +4340,25 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2190,7 +4376,19 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
         $imagestyle = 'style="' . $imagestyle . '"';
+
+
+
+
+
+
 
 
 
@@ -2204,17 +4402,41 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
+
+
 	if ($sociable_options['icon_option'] !="option6"){
+
+
+
+
 
 
 
     $image = '<img  src="' . $imagesource . '" title="' . $description . '" alt="' . $description . '"' . $imagestyle . ' />' ;
 
+
+
 	}else{
+
+
 
 	$image = '<img class="' . $imageclass . '" src="' . $imagesource . '" title="' . $description . '" alt="' . $description . '"' . $imagestyle . ' />' ;
 
+
+
 	}
+
+
+
+
+
+
 
 
 
@@ -2226,13 +4448,29 @@ global $sociable_options;
 
 
 
+
+
+
+
+
+
     return $image;
 
 
 
 
 
+
+
+
+
+
+
 }
+
+
+
+
 
 
 
