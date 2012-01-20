@@ -13,14 +13,14 @@ Requires at least: 2.6
 
 Tested up to: 3.2.1
 
-Stable tag: 4.1.7
+Stable tag: 4.1.8
 
 == Description ==
-Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,5mm downloads now, here comes the latest version 4.1.7, with everything you expect to get, and now introducing Sociable Skyscraper: the ultimate advanced packed plugin for setting up rating system on your WordPress blog. Sociable Skyscraper allows you to set up pages and comments with great degree of customization. 
+Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,5mm downloads now, here comes the latest version 4.1.8, with everything you expect to get, and now introducing Sociable Skyscraper: the ultimate advanced packed plugin for setting up rating system on your WordPress blog. Sociable Skyscraper allows you to set up pages and comments with great degree of customization. 
 About Sociable Skyscraper
 Sociable Skyscraper is the ultimate advanced and feature packed plugin for setting up rating system on your WordPress blog. Plugin allows you to set up different rating systems for posts, pages and comments with great degree of customization.
 List of features is so smart, very long and non-stop growing: 
-	You can get more Sociable with Sociable Skyscraper and easily getting Rating and Review of: posts, pages, comments, Facebook, G+, LinkedIN, Twitter. Multiple ratings for posts and pages. Latest twits, latests posts, follows, mentions. Visitor´s counter, visitor´s from Facebook and Twitter. As a plus you get an easy way to get TOP or HOME from Sociable Skyscraper. 
+	You can get more Sociable with Sociable Skyscraper and easily getting Rating and Review of: posts, pages, comments, Facebook, G+, LinkedIN, Twitter. Multiple ratings for posts and pages. Latest twits, latests posts, follows, mentions. Visitor's counter, visitor's from Facebook and Twitter. As a plus you get an easy way to get TOP or HOME from Sociable Skyscraper. 
 
 About Sociable Classic
 As you know, we've improved our visual interface, the default icons are now much more appealing, and a touch bit larger (you do want your readers to share your posts, don't you? :)
@@ -35,8 +35,8 @@ Be Sociable, Share!!!
 
 
 
+[vimeo http://vimeo.com/31023684] 
 
-[vimeo http://vimeo.com/31023684]S 
 
 Have technical support issues? Please leave them in the forum: http://wordpress.org/tags/sociable?forum_id=10 
 
@@ -52,12 +52,14 @@ Sociable finds its home outside of the WordPress environment on Blogplay.com-
 
 
 
-*** Sociable 4.1.7 *** 
+*** Sociable 4.1.8 *** 
 
 
 
 
 = Recent Updates = 
+
+* Added skyscraper plugin, with counters, share icons and feed of your rss tweets, and more.
 
 * Changed the old motto "share and enjoy" for "Be Sociable, Share" much more attractive. Of course you can customize it to whatever you want.
 
@@ -151,6 +153,10 @@ Please send us an email to  sociableblogplay [ at ] gmail.com
 
 
 == Changelog ==
+
+= 4.1.8 =
+
+* FIXED: Some Fixes
 
 = 4.1.7 =
 
