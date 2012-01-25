@@ -6,7 +6,7 @@ Tested up to version: 3.2.1
 Requires at least: 2.6
 
 Tested up to: 3.2.1
-Stable tag: 4.1.9.1
+Stable tag: 4.2.0
 
 == Description ==
 Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,5mm downloads now, here comes the latest version 4.1.8, with everything you expect to get, and now introducing Sociable Skyscraper: the ultimate advanced packed plugin for setting up rating system on your WordPress blog. Sociable Skyscraper allows you to set up pages and comments with great degree of customization. 
@@ -146,6 +146,14 @@ Please send us an email to  sociableblogplay [ at ] gmail.com
 
 
 == Changelog ==
+
+= 4.2.0 =
+
+* FIXED: Some Fixes
+
+= 4.1.9 =
+
+* FIXED: Some Fixes
 
 = 4.1.8 =
 
