@@ -766,7 +766,7 @@ Description: Automatically add links on your posts, pages and RSS feed to your f
 
 
 
-Version: 4.1.9
+Version: 4.1.10
 
 
 
@@ -13858,7 +13858,7 @@ function sociable_reset(){
 
 
 
-		'version' =>'4.1.9',
+		'version' =>'4.1.10',
 
 
 
