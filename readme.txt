@@ -1,4 +1,3 @@
-<<<<<<< .mine
 === Sociable ===
 
 Author: sociable
@@ -14,7 +13,7 @@ Requires at least: 2.6
 
 Tested up to: 3.2.1
 
-Stable tag: 4.1.10
+Stable tag: 4.2.1
 
 == Description ==
 Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,5mm downloads now, here comes the latest version 4.1.10, with everything you expect to get, and now introducing Sociable Skyscraper: the ultimate advanced packed plugin for setting up rating system on your WordPress blog. Sociable Skyscraper allows you to set up pages and comments with great degree of customization. 
@@ -1663,4 +1662,3 @@ If you find any bugs or have any ideas, please mail me.
 
 For advanced use of the plugin, see the [Sociable](http://www.blogplay.com/sociable-for-wordpress) page on [Blogplay](http://www.blogplay.com/plugin)
 
->>>>>>> .r495569
