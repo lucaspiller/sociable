@@ -36,7 +36,7 @@ You can get even more Sociable with Sociable Skyscraper and: Rating and Review o
 	 
 And now the over 1.5 million WordPress Blogs with the Sociable Plugin can also use the Inbound.org icon. Inbound.org is a for-fun partnership of Rand from Moz and Dharmesh from HubSpot which offers community-curated marketing news. We like their idea so much and we hope you enjoy discovering and sharing great stuff from the inbound marketing fields of blogging, SEO, Social media, content marketing, conversion rate optimization, web analytics and more.
 
-We´re constantly interacting with you via our Forum and/or emails, which means we´re enhancing our free tool faster and more accurately thanks to your feedback. Please tell us your comments so we can make it better together.  
+We're constantly interacting with you via our Forum and/or emails, which means we´re enhancing our free tool faster and more accurately thanks to your feedback. Please tell us your comments so we can make it better together.  
 
 
 About Sociable Classic
