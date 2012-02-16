@@ -18,7 +18,7 @@ Stable tag: 4.2.2
 
 
 
-Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,5mm downloads now, here comes the latest version 4.2.2 .
+Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,5mm downloads.
 
 
 
@@ -29,7 +29,7 @@ Sociable continues being the fastest growing leader in the sharing space of Word
 Sociable Skyscraper allows you to set up pages and comments with a great degree of customization. 
 
 
-=About Sociable Skyscraper=
+= About Sociable Skyscraper =
 
 Sociable Skyscraper is the ultimate advanced and feature-packed plugin for setting up a rating system on your WordPress blog. This plugin allows you to set up different rating systems for posts, pages and comments with a great degree of customization.
 Sociable Skyscraper's list of features is smart, extensive and ever-growing: 
@@ -40,7 +40,7 @@ And now the over 1.5 million WordPress Blogs with the Sociable Plugin can also u
 We're constantly interacting with you via our Forum and/or emails, which means we're enhancing our free tool faster and more accurately thanks to your feedback. Please tell us your comments so we can make it better together.  
 
 
-=About Sociable Classic=
+= About Sociable Classic =
 
 As you know, we've recently improved our visual interface. The default icons are now much more appealing, and a tad bit larger (you want your readers to share your posts, don't you?)
 
