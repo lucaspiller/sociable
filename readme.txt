@@ -25,21 +25,23 @@ Sociable continues being the leader in the sharing space of WordPress plugins. S
 == Description ==
 
 
-Sociable continues being the fastest growing leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1.5 million downloads now, here comes the latest version: 4.1. After introducing Sociable Skyscraper, the ultimate advanced and feature-packed plugin for setting up a rating system on your WordPress blog, we´ve developed Sociable Slider. It is sort of banner that reminds your readers to spread the word. You can select and customize several features, such as text, color, and length in order to ensure your readers and their friends a great Sociable Experience. 
+Sociable continues being the fastest growing leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1.5 million downloads now, here comes the latest version: 4.1. After introducing Sociable Skyscraper, the ultimate advanced and feature-packed plugin for setting up a rating system on your WordPress blog, we've developed Sociable Slider. It is sort of banner that reminds your readers to spread the word. You can select and customize several features, such as text, color, and length in order to ensure your readers and their friends a great Sociable Experience. 
 Sociable Skyscraper allows you to set up pages and comments with a great degree of customization. 
 
 
 About Sociable Skyscraper
+
 Sociable Skyscraper is the ultimate advanced and feature-packed plugin for setting up a rating system on your WordPress blog. This plugin allows you to set up different rating systems for posts, pages and comments with a great degree of customization.
 Sociable Skyscraper's list of features is smart, extensive and ever-growing: 
 You can get even more Sociable with Sociable Skyscraper and: Rating and Review of: posts, pages, comments, Facebook, G+, LinkedIN, and Twitter. Multiple ratings for posts and pages. Latest tweets, latest posts, follows, and mentions. Visitor counter, visitors from Facebook and Twitter. As an added bonus, you also get an easy way to get to the TOP of the page or back HOME from Sociable Skyscraper.
 	 
 And now the over 1.5 million WordPress Blogs with the Sociable Plugin can also use the Inbound.org icon. Inbound.org is a for-fun partnership of Rand from Moz and Dharmesh from HubSpot which offers community-curated marketing news. We like their idea so much and we hope you enjoy discovering and sharing great stuff from the inbound marketing fields of blogging, SEO, Social media, content marketing, conversion rate optimization, web analytics and more.
 
-We're constantly interacting with you via our Forum and/or emails, which means we´re enhancing our free tool faster and more accurately thanks to your feedback. Please tell us your comments so we can make it better together.  
+We're constantly interacting with you via our Forum and/or emails, which means we're enhancing our free tool faster and more accurately thanks to your feedback. Please tell us your comments so we can make it better together.  
 
 
 About Sociable Classic
+
 As you know, we've recently improved our visual interface. The default icons are now much more appealing, and a tad bit larger (you want your readers to share your posts, don't you?)
 
 Enjoy it now!
