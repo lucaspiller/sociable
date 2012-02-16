@@ -32,12 +32,11 @@ Sociable Skyscraper allows you to set up pages and comments with a great degree 
 About Sociable Skyscraper
 Sociable Skyscraper is the ultimate advanced and feature-packed plugin for setting up a rating system on your WordPress blog. This plugin allows you to set up different rating systems for posts, pages and comments with a great degree of customization.
 Sociable Skyscraper's list of features is smart, extensive and ever-growing: 
-	You can get even more Sociable with Sociable Skyscraper and: Rating and Review of: posts, pages, comments, Facebook, G+, LinkedIN, and Twitter. Multiple ratings for posts and pages. Latest tweets, latest posts, follows, and mentions. Visitor counter, visitors from Facebook and Twitter. As an added bonus, you also get an easy way to get to the TOP of the page or back HOME from Sociable Skyscraper.
+You can get even more Sociable with Sociable Skyscraper and: Rating and Review of: posts, pages, comments, Facebook, G+, LinkedIN, and Twitter. Multiple ratings for posts and pages. Latest tweets, latest posts, follows, and mentions. Visitor counter, visitors from Facebook and Twitter. As an added bonus, you also get an easy way to get to the TOP of the page or back HOME from Sociable Skyscraper.
 	 
 And now the over 1.5 million WordPress Blogs with the Sociable Plugin can also use the Inbound.org icon. Inbound.org is a for-fun partnership of Rand from Moz and Dharmesh from HubSpot which offers community-curated marketing news. We like their idea so much and we hope you enjoy discovering and sharing great stuff from the inbound marketing fields of blogging, SEO, Social media, content marketing, conversion rate optimization, web analytics and more.
 
-
-	We´re constantly interacting with you via our Forum and/or emails, which means we´re enhancing our free tool faster and more accurately thanks to your feedback. Please tell us your comments so we can make it better together.  
+We´re constantly interacting with you via our Forum and/or emails, which means we´re enhancing our free tool faster and more accurately thanks to your feedback. Please tell us your comments so we can make it better together.  
 
 
 About Sociable Classic
