@@ -1,36 +1,20 @@
 <?php
 
-
-
 /*
-
-
 
  * The Output And Shortcode Functions For sociable
 
-
-
  */
 
-/*
 
+
+/*
 
 
  * Returns The Sociable Output For The Global $post Object Do Not 
 
 
-
  */
-
-
-
- 
-
-
-
- 
-
- 
 
 
 
@@ -41,16 +25,9 @@ function sociable_html( $display = array(),$location = "" ){
     global $sociable_options, $wp_query, $post; 
 
 
-
     //ra( $sociable_options );
 
-
-
         $sociable_known_sites = get_option( 'sociable_known_sites' );
-
-
-
-        
 
 
 
@@ -58,7 +35,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
             $post = get_post( $post_id = 1 );
+
+
+
+
 
 
 
@@ -66,61 +51,57 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
- 
-
-
-
 	if ( get_post_meta($post->ID,'_sociableoff',true)) {
-
-
 
 		return "";
 
 
-
 	}
-
-	
 
 
 
 	$active_sites = $sociable_options['active_sites'];
 
-	// Get The Image Path
 
+
+	// Get The Image Path
 
 
 	//$imagepath = _get_sociable_image_path();		
 
+
+
 	// if no sites are specified, display all active
 
 
-
 	// have to check $active_sites has content because WP
-
 
 
 	// won't save an empty array as an option
 
 
 
+
+
+
+
 	if ( empty($display) && isset( $active_sites ) )
 
 
-
 		$display = $active_sites;
-
 
 
 	// if no sites are active, display nothing
 
 
 
+
 	if ( empty($display) )
 
 
-
 		return "";
+
+
 
 	// Load the post's and blog's data
 
@@ -129,12 +110,8 @@ function sociable_html( $display = array(),$location = "" ){
 	$blogname 	= urlencode(get_bloginfo('name')." ".get_bloginfo('description'));
 
 
-
 	$blogrss	= get_bloginfo('rss2_url');
 
-
-
-	
 
 
 
@@ -142,7 +119,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	$excerpt	= urlencode(strip_tags(strip_shortcodes($post->post_excerpt)));
+
+
+
+
 
 
 
@@ -150,79 +135,57 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
-		$excerpt = urlencode(substr(strip_tags(strip_shortcodes($post->post_content)),0,250));
 
+
+
+
+		$excerpt = urlencode(substr(strip_tags(strip_shortcodes($post->post_content)),0,250));
 
 
 	}
 
 
-
-        
-
-
-
 	// Clean the excerpt for use with links
 
 
-
 	$excerpt	= str_replace('+','%20',$excerpt);
-
 
 
 	$permalink 	= urlencode(get_permalink($post->ID));
 
 
 
-	
-
-
 
 	$permalinkCOUNT 	= get_permalink($post->ID);
 
 
-
 	$title 		= str_replace('+','%20',urlencode($post->post_title));
-
 
 
 	$titleCOUNT = $post->post_title;
 
 
 
-	
-
-
-
 	$rss 		= urlencode(get_bloginfo('ref_url'));
+
+
 
 	// Start preparing the output
 
-
-
 	$html = '<!-- Start Sociable --><div class="sociable">';
-
-
-
-	
 
 
 
 	// If a tagline is set, display it above the links list
 
 
-
 	$tagline = isset( $sociable_options['tagline'] ) ? $sociable_options['tagline'] : '' ;
-
 
 
 	if ($tagline != '') {
 
 
-
 		$html .= '<div class="sociable_tagline">';
-
-
 
 				if (isset( $sociable_options['help_grow'] )) {
 
@@ -231,45 +194,30 @@ function sociable_html( $display = array(),$location = "" ){
 					$addSize = "";
 
 
-
 					if ($sociable_options['icon_size'] ==16) $addSize = "font-size:11px;";
-
 
 
 				$html .= "<a class='sociable_tagline' target='_blank' href='http://blogplay.com' style='".$addSize."color:#333333;text-decoration:none'>".$tagline."</a>";
 
 
-
 				}else{
-
 
 
                 $html .= $tagline;
 
-
-
 				}
 
 
-
 		$html .= "</div>";
-
 
 
 	}
 
 
 
-	
-
-
-
 	/**
 
-
-
 	 * Start the list of links
-
 
 
 	 */
@@ -278,39 +226,47 @@ function sociable_html( $display = array(),$location = "" ){
 
 	$html .= "<ul class='clearfix'>";
 
+
+
 	$i = 0;
 
-
-
 	$totalsites = count($display);
+
+
+
+
 
 
 
      $margin = "0px";
 
 
-
 	switch ($sociable_options['icon_size']){
-
-
-
-	
-
-
 
 	case "16": $margin = "padding-top: 0;margin-top:-2px";
 
 
 
-	break;
 
+
+
+
+	break;
 
 
 	case "32": $margin = "margin-top:9px";
 
 
 
+
+
+
+
 	break;
+
+
+
+
 
 
 
@@ -318,7 +274,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	break;
+
+
+
+
 
 
 
@@ -326,7 +290,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	break;
+
+
+
+
 
 
 
@@ -334,7 +306,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	
+
+
+
+
 
 
 
@@ -342,11 +322,13 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
-	
-
 
 
 	if (isset($display["More"])){
+
+
+
+
 
 
 
@@ -354,7 +336,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	array_push($display,"More");
+
+
+
+
 
 
 
@@ -362,7 +352,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	}
+
+
+
+
 
 
 
@@ -370,11 +368,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	foreach($display as $sitename => $val ) {
-
-
-
-		
 
 
 
@@ -385,12 +383,11 @@ function sociable_html( $display = array(),$location = "" ){
 			continue;
 
 
-
-        
-
-
-
 		$site = $sociable_known_sites[$sitename];
+
+
+
+
 
 
 
@@ -398,7 +395,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$url = str_replace('TITLECOUNT', $titleCOUNT, $url);
+
+
+
+
 
 
 
@@ -406,7 +411,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$url = str_replace('RSS', $rss, $url);
+
+
+
+
 
 
 
@@ -414,7 +427,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$url = str_replace('EXCERPT', $excerpt, $url);
+
+
+
+
 
 
 
@@ -422,11 +443,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$url = str_replace('PERMALINKCOUNT', $permalinkCOUNT, $url);
-
-
-
-		
 
 
 
@@ -434,19 +455,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
-		
-
-
-
-			
-
-
-
-		
-
-
-
 		if (isset($site['description']) && $site['description'] != "") {
+
+
+
+
 
 
 
@@ -454,7 +467,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		} else {
+
+
+
+
 
 
 
@@ -462,11 +483,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		}
-
-
-
-		
 
 
 
@@ -474,7 +495,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		if (!empty($sociable_options["custom_icons"])){
+
+
+
+
 
 
 
@@ -482,7 +511,12 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
 		}else{
+
+
+
+
 
 
 
@@ -490,11 +524,20 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 				$linkitem = ( ! isset( $sociable_options['use_images'] ) ) ? $description : _get_sociable_image( $site, $description );
 
 
 
+
+
+
+
 			}else{
+
 
 
 
@@ -510,7 +553,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
         $posX = $site["spriteCoordinates"][$sociable_options['icon_size']]["0"];
+
+
+
+
 
 
 
@@ -518,7 +569,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$backgroundFile = $sociable_options['icon_option']."_".$sociable_options['icon_size'].".png";
+
+
+
+
 
 
 
@@ -526,7 +585,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$href = $url;
+
+
+
+
 
 
 
@@ -534,11 +601,23 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
         if ($sitename == "Add to favorites" || $sitename=="More"){
 
 
 
+
+
+
+
 			if ($sitename == "More"){
+
+
+
+
 
 
 
@@ -546,7 +625,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 			}else{
+
+
+
+
 
 
 
@@ -563,6 +650,10 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 			if($sociable_options["icon_option"] == "option6" || !empty($sociable_options["custom_icons"])){
+
+
+
+
 
 
 
@@ -570,7 +661,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 			}else{
+
+
+
+
 
 
 
@@ -578,7 +677,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 					$link.= $href;
+
+
+
+
 
 
 
@@ -586,15 +693,14 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
-			
-
-
-
 				$link .= '<a title="'.$sitename.'" class="'.$sociable_options['icon_option'].'_'.$sociable_options['icon_size'].'" style="'.$style.'" rel="nofollow" ' . $target . ' href="' . $href . '">' . "" . '</a></li>' ;
 
 
-
 				}
+
+
+
+
 
 
 
@@ -602,27 +708,25 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		}
 
-
-
-		
 
 
 
 		$html .=  apply_filters( 'sociable_link' , $link );
 
 
-
-                
-
-
-
 		$i++;
 
-
-
 	}
+
+
+
+
 
 
 
@@ -630,11 +734,12 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
-	
-
-
 
 	//if ($sociable_options['icon_option'] !="option6"){
+
+
+
+
 
 
 
@@ -642,7 +747,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	foreach ($sociable_known_sites as $sitename => $val){
+
+
+
+
 
 
 
@@ -650,7 +763,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 			continue;
+
+
+
+
 
 
 
@@ -658,7 +779,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
         $url = ( isset( $site['script'] ) ) ? $site['script'] :  $site['url'];
+
+
+
+
 
 
 
@@ -666,11 +795,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
-		
-
-
-
 		$url = str_replace('TITLE', $title, $url);
+
+
+
+
 
 
 
@@ -678,7 +807,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$url = str_replace('BLOGNAME', $blogname, $url);
+
+
+
+
 
 
 
@@ -686,7 +823,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$url = str_replace('FEEDLINK', $blogrss, $url);
+
+
+
+
 
 
 
@@ -694,23 +839,14 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
-		
-
-
-
         $url = str_replace('PERMALINK', $permalink, $url);	
 
 
-
-		
-
-
-
-				
-
-
-
 		$link = '<li style="heigth:'.$sociable_options['icon_size'].'px;width:'.$sociable_options['icon_size'].'px">';
+
+
+
+
 
 
 
@@ -718,19 +854,26 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 			$linkitem = ( ! isset( $sociable_options['use_images'] ) ) ? $description : _get_sociable_image( $site, $description );
+
+
+
+
 
 
 
 		}else{
 
 
-
-			
-
-
-
 			if (isset($description) && $description!= "More"){
+
+
+
+
 
 
 
@@ -738,7 +881,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 			}else{
+
+
+
+
 
 
 
@@ -746,13 +897,27 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 			}
+
+
+
+
 
 
 
 		}
 
+
+
         $posX = $site["spriteCoordinates"][$sociable_options['icon_size']]["0"];
+
+
+
+
 
 
 
@@ -760,7 +925,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$backgroundFile = $sociable_options['icon_option']."_".$sociable_options['icon_size'].".png";
+
+
+
+
 
 
 
@@ -768,7 +941,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$href = $url;
+
+
+
+
 
 
 
@@ -776,7 +957,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
         if ($sitename == "Add to favorites" || $sitename=="More"){
+
+
+
+
 
 
 
@@ -784,11 +973,23 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 				$link .= '<a style="cursor:poainter" rel="nofollow"   onMouseOver="more(this,\'post'.$location.'-' . $post->ID . '\')">' . $linkitem . '</a></li>' ;
 
 
 
+
+
+
+
 			}else{
+
+
+
+
 
 
 
@@ -796,7 +997,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 			}
+
+
+
+
 
 
 
@@ -804,7 +1013,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 			if($sociable_options["icon_option"] == "option6" || !empty($sociable_options["custom_icons"])){
+
+
+
+
 
 
 
@@ -812,7 +1029,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 			}else{
+
+
+
+
 
 
 
@@ -820,7 +1045,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		 	}
+
+
+
+
 
 
 
@@ -828,39 +1061,24 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
-		
-
-
-
 		$inner .=  apply_filters( 'sociable_link' , $link );
-
-
-
-                
 
 
 
 		$i++;
 
 
-
-	
-
-
-
 	}
-
-
-
-	
-
 
 
 	$inner .="</ul>";
 
 
-
 	$html .='</ul><div onMouseout="fixOnMouseOut(this,event,\'post'.$location.'-'.$post->ID.'\')" id="sociable-post'.$location.'-'.$post->ID.'" style="display:none;">   
+
+
+
+
 
 
 
@@ -868,7 +1086,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		<div class="popup">
+
+
+
+
 
 
 
@@ -876,7 +1102,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 				'.$inner.'			
+
+
+
+
 
 
 
@@ -884,9 +1118,19 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		  <a style="cursor:pointer" onclick="hide_sociable(\'post'.$location.'-'.$post->ID.'\',true)" class="close">
 
+
+
 		  <img onclick="hide_sociable(\'post'.$location.'-'.$post->ID.'\',true)" title="close" src="'.SOCIABLE_HTTP_PATH . 'images/closelabel.png">
+
+
+
+
 
 
 
@@ -894,7 +1138,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		</div>
+
+
+
+
 
 
 
@@ -902,7 +1154,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
   </div>HereGoCounters</div><!-- End Sociable -->';
+
+
+
+
 
 
 
@@ -910,7 +1170,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	//$html .= "<li class='sociablelast' style='".$margin."'><img src='".SOCIABLE_HTTP_PATH."images/more.jpg'></li></ul><div class='soc_clear'></div></div>";
+
+
+
+
 
 
 
@@ -918,7 +1186,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	//return "";
+
+
+
+
 
 
 
@@ -926,31 +1202,24 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	/*if ($location == "bottom" && (is_single() || is_admin())){ */
-
-
-
-	
-
-
-
-	
-
 
 
 	$counters = "</div><div class='sociable' style='float:none'><ul class='clearfix'>";
 
 
-
-	 
-
-
-
 	foreach ($display as $sitename => $val){
 
 
-
 	//echo $sitename."<br>";
+
+
+
+
 
 
 
@@ -958,11 +1227,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 			continue;
-
-
-
-			
 
 
 
@@ -970,11 +1239,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	$link = '<li id="'.str_replace("+","p",str_replace(" ","_",$sitename)).'">';	
-
-
-
-	
 
 
 
@@ -982,7 +1251,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
         $url = ( isset( $site['script'] ) ) ? $site['script'] :  $site['url'];
+
+
+
+
 
 
 
@@ -990,11 +1267,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
-		
-
-
-
 		$url = str_replace('TITLE', $title, $url);
+
+
+
+
 
 
 
@@ -1002,7 +1279,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$url = str_replace('BLOGNAME', $blogname, $url);
+
+
+
+
 
 
 
@@ -1010,11 +1295,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$url = str_replace('FEEDLINK', $blogrss, $url);
-
-
-
-		
 
 
 
@@ -1022,15 +1307,12 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
         $url = str_replace('PERMALINK', $permalink, $url);	
 
-
-
-		
-
-
-
-	
 
 
 
@@ -1038,11 +1320,23 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	$counters .=  apply_filters( 'sociable_link' , $link );
 
 
 
+
+
+
+
 	}
+
+
+
+
 
 
 
@@ -1050,11 +1344,11 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 	$html = str_replace("HereGoCounters",$counters,$html);
-
-
-
-	
 
 
 
@@ -1062,7 +1356,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
 		$html = str_replace("HereGoCounters",$counters,$html);
+
+
+
+
 
 
 
@@ -1070,21 +1372,19 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
-	
-
-
 
 	return $html;
 
 
-
-    
-
-
-
 }
 
+
+
 /*
+
+
+
+
 
 
 
@@ -1092,7 +1392,15 @@ function sociable_html( $display = array(),$location = "" ){
 
 
 
+
+
+
+
  */
+
+
+
+
 
 
 
@@ -1100,13 +1408,27 @@ function do_sociable(){
 
 
 
+
+
+
+
     echo  sociable_html();
+
+
+
+
 
 
 
 }
 
+
+
 /*
+
+
+
+
 
 
 
@@ -1114,7 +1436,15 @@ function do_sociable(){
 
 
 
+
+
+
+
  */
+
+
+
+
 
 
 
@@ -1122,23 +1452,22 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
     global $sociable_options;
-
-
-
-	
 
 
 
 	if (!isset($sociable_options["active"])){
 
 
-
-		
-
-
-
 		return $content;
+
+
+
+
 
 
 
@@ -1146,11 +1475,12 @@ function auto_sociable( $content ){
 
 
 
-	    
-
-
 
     if( ! isset( $sociable_options['locations'] ) || ! is_array( $sociable_options['locations'] ) || empty( $sociable_options['locations'] ) ){
+
+
+
+
 
 
 
@@ -1158,7 +1488,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
     } else {
+
+
+
+
 
 
 
@@ -1166,11 +1504,11 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
     }
-
-
-
-    
 
 
 
@@ -1186,15 +1524,17 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
     $display = false;
 
-
-
-    
-
-
-
     /*
+
+
+
+
 
 
 
@@ -1202,11 +1542,12 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
      */
 
-
-
-    
 
 
 
@@ -1214,11 +1555,11 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
     foreach( $locations as $location => $val ){
-
-
-
-        
 
 
 
@@ -1226,7 +1567,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
         if( $location == 'is_single' ){
+
+
+
+
 
 
 
@@ -1234,7 +1583,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
             if( is_single() && get_post_type() == 'post' ){
+
+
+
+
 
 
 
@@ -1242,7 +1599,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
                 break;
+
+
+
+
 
 
 
@@ -1250,15 +1615,20 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
                 continue; // So not to trigger is_single later in this loop, but still be allowed to handle others
+
+
+
+
 
 
 
             }
 
-
-
-            
 
 
 
@@ -1266,11 +1636,12 @@ function auto_sociable( $content ){
 
 
 
-            
-
-
 
             //Single Custom Post Type
+
+
+
+
 
 
 
@@ -1278,7 +1649,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
             if( is_single() && get_post_type() == $post_type ){
+
+
+
+
 
 
 
@@ -1286,15 +1665,19 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
                 break;
 
 
 
+
+
+
+
             }
-
-
-
-            
 
 
 
@@ -1302,11 +1685,12 @@ function auto_sociable( $content ){
 
 
 
-            
-
-
 
             //Custom Post Type Archive
+
+
+
+
 
 
 
@@ -1314,7 +1698,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
             if( is_post_type_archive( $post_type ) ){
+
+
+
+
 
 
 
@@ -1322,7 +1714,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
                 break;
+
+
+
+
 
 
 
@@ -1330,19 +1730,14 @@ function auto_sociable( $content ){
 
 
 
-            
-
-
-
         } elseif( strpos( $location , 'is_taxonomy_archive_' ) === 0 ) {
 
 
-
-            
-
-
-
             //Taxonomy Archive
+
+
+
+
 
 
 
@@ -1350,7 +1745,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
             if( is_tax( $taxonomy ) ){
+
+
+
+
 
 
 
@@ -1358,15 +1761,19 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
                 break;
 
 
 
+
+
+
+
             }
-
-
-
-            
 
 
 
@@ -1374,11 +1781,12 @@ function auto_sociable( $content ){
 
 
 
-            
-
-
 
             //Standard conditional tag, these will return BOOL
+
+
+
+
 
 
 
@@ -1386,7 +1794,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
                 $display = true;
+
+
+
+
 
 
 
@@ -1394,11 +1810,13 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
             }
 
 
-
-            
 
 
 
@@ -1406,7 +1824,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
             continue;
+
+
+
+
 
 
 
@@ -1414,23 +1840,15 @@ function auto_sociable( $content ){
 
 
 
-        
-
-
-
-        
-
-
 
     }
 
 
-
-    
-
-
-
     //If We have passed all the checks and are looking in the right place lets do this thang
+
+
+
+
 
 
 
@@ -1438,7 +1856,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
 		if (isset($sociable_options["topandbottom"])){
+
+
+
+
 
 
 
@@ -1446,7 +1872,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
 		}else{
+
+
+
+
 
 
 
@@ -1454,7 +1888,15 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
 		}
+
+
+
+
 
 
 
@@ -1462,21 +1904,25 @@ function auto_sociable( $content ){
 
 
 
-    
-
-
-
-    
-
 
 
     return $content;
 
 
 
+
+
+
+
 }
 
+
+
 /*
+
+
+
+
 
 
 
@@ -1484,25 +1930,40 @@ function auto_sociable( $content ){
 
 
 
+
+
+
+
  */
+
+
+
+
 
 
 
 function sociable_shortcode(){    
 
 
-
     return sociable_html();
-
-
 
 }
 
 
 
+
+
+
+
 function add_googleplus() { 		
 
+
+
 //echo'<script type="text/javascript" src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>';
+
+
+
+
 
 
 
@@ -1510,7 +1971,15 @@ function add_googleplus() {
 
 
 
+
+
+
+
 //add_action('wp_head', 'add_googleplus' ); 
+
+
+
+
 
 
 

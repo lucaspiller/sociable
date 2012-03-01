@@ -1,30 +1,19 @@
 <?php
 
+
 /*
-
-
-
  * Administration Options Class For Sociable 2
-
-
-
  */
+
+
 
 class sociable_Admin_Options{
 
 
 
-    
-
-
-
     /**
 
-
-
      * A Function To Hook To Admin Init.
-
-
 
      */
 
@@ -33,16 +22,7 @@ class sociable_Admin_Options{
     function init(){        
 
 
-
-  		
-
-
-
         register_setting( 'sociable_options_group' , 'sociable_options' );
-
-
-
-        
 
 
 
@@ -50,11 +30,11 @@ class sociable_Admin_Options{
 
 
 
+
+
+
+
        // add_settings_section( 'sociable_locations', __( 'Locations' ),  array( 'sociable_Admin_Options' , 'location_options_callback' )  , 'sociable_options' );
-
-
-
-        
 
 
 
@@ -62,167 +42,80 @@ class sociable_Admin_Options{
 
 
 
-        
-
-
-
-		
-
-
-
 		register_setting( 'skyscraper_options_group' , 'skyscraper_options' );
-
-
-
-		
-
 
 
 	//	add_settings_section( 'sociable_locations', __( 'Locations' ),  array( 'sociable_Admin_Options' , 'location_options_callback' )  , 'skyscraper_options' );
 
-
-
-		
-
-
-
     }
-
-
-
-    
-
 
 
     function skyscraper_init(){        
 
 
-
-  		
-
     	register_setting( 'skyscraper_options_group' , 'skyscraper_options' );
 
+
+
 		add_settings_section( 'sociable_locations', __( 'Locations' ),  array( 'sociable_Admin_Options' , 'location_options_callback' )  , 'skyscraper_options' );
-
-
-
-		
 
 
 
         //Add All The Settings Fields
 
 
-
         //self::add_settings_fields();      
 
-
-
     }
-
-
-
-    
 
 
 
     function Select_Sociable_Page(){
 
 
-
-	 
-
-
-
         global $sociable_options;
 
-
-
 		?>
-
-
-
-		
-
-
-
-		
-
-
-
-		
-
 
 
 			<div class="wrap" style="margin-top:25px">    
 
 
-
-		
-
-
-
 					<div style="width: 80%; margin-left: 25px; color: rgb(147, 147, 147); font-weight: bold; font-size: 15px;">
-
 
 
 					Congrats! You are joining the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,5mm downloads now, here comes the latest version 4.1 <br /><br />
 
 
-
 You can select Sociable Classic and/or Sociable Skyscraper to spread the World, increase your traffic and your reader's ability to share your posts! <br /> <br />
 
-
-
 					</div>
-
-
-
-					    
 
 
 
 			<div class="wrap" style="width:42%;float:left">                
 
 
-
                 <?php //wp_nonce_field('sociable-config'); ?>
-
-
-
-               
-
 
 
                 <TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Preview-Title" style="margin:0 0 0 25px">
 
-
-
-				
-
-
-
-				
-
-
-
 				<TR>
-
 
 
 					<TD class="Border-Left" ></TD><TD  class="BG-Middle" >Skyscraper Sociable</TD><TD class="Border-Right"></TD>
 
-
-
 				</TR>
-
-
 
 				<TR> 
 
 
-
 					<TD colspan="3" >
+
+
+
+
 
 
 
@@ -230,7 +123,15 @@ You can select Sociable Classic and/or Sociable Skyscraper to spread the World, 
 
 
 
+
+
+
+
 							<tr>
+
+
+
+
 
 
 
@@ -238,11 +139,23 @@ You can select Sociable Classic and/or Sociable Skyscraper to spread the World, 
 
 
 
+
+
+
+
 							<img src="<?php echo SOCIABLE_HTTP_PATH ?>images/skyphoto.png" style="margin-left:-5px;margin-top:20px;" />
 
 
 
+
+
+
+
 							</td>
+
+
+
+
 
 
 
@@ -250,7 +163,15 @@ You can select Sociable Classic and/or Sociable Skyscraper to spread the World, 
 
 
 
+
+
+
+
 								<br/><br/>
+
+
+
+
 
 
 
@@ -258,7 +179,15 @@ You can select Sociable Classic and/or Sociable Skyscraper to spread the World, 
 
 
 
+
+
+
+
 								<p style="font-size:12px;color:#939393;font-weight:bold;" >
+
+
+
+
 
 
 
@@ -266,7 +195,15 @@ You can select Sociable Classic and/or Sociable Skyscraper to spread the World, 
 
 
 
+
+
+
+
 <br/ ><br/ >
+
+
+
+
 
 
 
@@ -274,7 +211,15 @@ Sociable Skyscraper allows you to set up different rating systems for posts, pag
 
 
 
+
+
+
+
 <br/ ><br/ >
+
+
+
+
 
 
 
@@ -282,7 +227,15 @@ List of features is so smart and non-stop growing:
 
 
 
+
+
+
+
 <br/ ><br/ >
+
+
+
+
 
 
 
@@ -290,7 +243,15 @@ You can get more "Sociable" with Sociable Skyscraper and easily getting
 
 
 
+
+
+
+
 Rating and Review of: posts, pages, comments, Facebook, G+, LinkedIN,
+
+
+
+
 
 
 
@@ -298,7 +259,15 @@ Twitter as well as multiple ratings for posts and pages. Visitor's counter,
 
 
 
+
+
+
+
 visitor's from Facebook and Twitter... As a plus you get an easy way to get
+
+
+
+
 
 
 
@@ -306,7 +275,15 @@ TOP or HOME from Sociable Skyscraper.
 
 
 
+
+
+
+
 <br/ ><br/ >
+
+
+
+
 
 
 
@@ -314,7 +291,15 @@ Enjoy it now!!!
 
 
 
+
+
+
+
 <br/ ><br/ >
+
+
+
+
 
 
 
@@ -322,7 +307,15 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 								</p>
+
+
+
+
 
 
 
@@ -330,11 +323,23 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 								<a href="?page=skyscraper_options" style="color:#ffffff;text-decoration:none;" ><img src="<?php echo SOCIABLE_HTTP_PATH ?>images/button_newsky.png" ></a>
 
 
 
+
+
+
+
 							
+
+
+
+
 
 
 
@@ -342,7 +347,15 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 							</tr>
+
+
+
+
 
 
 
@@ -350,15 +363,31 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 					</TD>
 
 
 
+
+
+
+
 					
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -366,7 +395,15 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 				</TABLE>
+
+
+
+
 
 
 
@@ -374,11 +411,23 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 				
 
 
 
+
+
+
+
 			</div>
+
+
+
+
 
 
 
@@ -386,11 +435,23 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 			<TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Preview-Title" style="margin:0 0 0 25px">
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -398,7 +459,15 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 				</TR>
+
+
+
+
 
 
 
@@ -406,7 +475,15 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 					<TD colspan="3" >
+
+
+
+
 
 
 
@@ -414,7 +491,15 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 							<br /><br />
+
+
+
+
 
 
 
@@ -422,7 +507,15 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 							
+
+
+
+
 
 
 
@@ -430,11 +523,23 @@ Be Sociable, Share!!!
 
 
 
+
+
+
+
 									We've improved our visual interface, the default icons are now much
 
 
 
+
+
+
+
 <br/ >
+
+
+
+
 
 
 
@@ -442,7 +547,15 @@ more appealing, and a touch bit larger (you do want your readers to
 
 
 
+
+
+
+
 <br/ >
+
+
+
+
 
 
 
@@ -450,7 +563,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								</p>
+
+
+
+
 
 
 
@@ -458,7 +579,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									<div style="height: 176px;"></div>
+
+
+
+
 
 
 
@@ -466,7 +595,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							</div>
+
+
+
+
 
 
 
@@ -474,7 +611,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -482,7 +627,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TABLE>
+
+
+
+
 
 
 
@@ -490,21 +643,43 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			
 
 
 
+
+
+
+
 			</div>
 
 
 
+
+
+
+
 			</div>
+
+
 
     <?php }
 
 
 
+
+
+
+
     
+
+
+
+
 
 
 
@@ -512,7 +687,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 	
+
+
+
+
 
 
 
@@ -520,7 +703,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -528,7 +719,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			if ($value == $i){
+
+
+
+
 
 
 
@@ -536,7 +735,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			}
+
+
+
+
 
 
 
@@ -544,7 +751,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				
+
+
+
+
 
 
 
@@ -552,37 +767,76 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		}
+
+
 
 	}
 
 
 
+
+
+
+
 	
 
+
+
     
+
+
+
+
 
 
 
     function Create_Options_Page_Skycraper(){  
 
 
+
+
+
 	        global $skyscraper_options;
 
+
+
 		?>
+
+
+
 
 
 			<div class="wrap" style="width:48%;float:left">
 
 
+
+
+
 			<DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" >			
+
+
+
 
 
 			<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fblogplay.com%2F&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=80&amp;appId=133479460071366" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:40px;" allowTransparency="true"></iframe>
 
 
 
-	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blogplay.com" data-text="Check the sociable plugin  [sociable]" data-via="sociablesite" data-hashtags="sociable">Tweet</a>
+
+
+
+
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blogplay.com" data-text="Check the sociable plugin  [blogplay.com]" >Tweet</a>
+
+
+
+
+
 
 
 
@@ -591,14 +845,29 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<br />	
+
+
 
 			</div>
 
 
+
+
+
             <form method="post" action="options.php" id="form1" autocomplete="off">
 
+
+
                 <?php wp_nonce_field('sociable-config'); ?>
+
+
+
+
 
 
 
@@ -606,11 +875,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 <TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Preview-Title" style="margin:0 0 0 25px">
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -618,11 +899,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TR>
 
 
 
+
+
+
+
 				</TABLE>
+
+
+
+
 
 
 
@@ -630,7 +923,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" >
+
+
+
+
 
 
 
@@ -638,54 +939,109 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<select id="text_size" name="skyscraper_options[text_size]" style="margin-left:73px">
 
 
 
+
+
+
+
 							<?php 
+
+
+
+
 
 
 
 								for($px=10; $px <= 20; $px++) {
 
+
+
 									$sel = "";
+
+
 
 									if($px== $skyscraper_options["text_size"])$sel = "selected";
 
 
+
+
+
 							?>
+
+
 
 								<option <?php echo $sel?> value="<?php echo $px?>"><?php echo $px?>px</option>
 
 
+
+
+
 							<?php 
+
+
 
 							}?>
 
+
+
 						</select>
 
+
+
 					</DIV>					
+
+
+
 
 
 					<DIV style="margin:0 0 0 24px" class="Post-subTXT" id="Post-subTXT" ><?php  _e("Widget Width","sociable");?>: 
 
 
 
+
+
+
+
 						<select id="text_size" id="widget_width" name="skyscraper_options[widget_width]" style="margin-left:50px">
+
+
+
 
 
 							<?php 
 
+
+
 							for($wi=70; $wi <= 90; ) {
+
+
 
 									$sel = "";
 
 
 
+
+
+
+
 									if($wi== $skyscraper_options["widget_width"])$sel = "selected";
+
 							?>
+
 								<option <?php echo $sel?> value="<?php echo $wi?>"><?php echo $wi?>px</option>
+
 							<?php 
+
+
+
+
 
 
 
@@ -693,69 +1049,139 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							}?>
+
+
+
+
 
 
 
 						</select>
 
+
+
 					</DIV>
+
+
 
 					<DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" ><?php  _e("Background Color","sociable");?>: 
 
 
+
+
+
 						<input value="<?php echo $skyscraper_options['background_color']?>" style="margin-left:22px" id="background_color" name="skyscraper_options[background_color]" type="text"  /> ( #fefefe default color)
 
+
+
 					</DIV>
+
+
+
 
 
 					<DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" ><?php  _e("Labels Color","sociable");?>: 
 
 
+
+
+
 						<input value="<?php echo $skyscraper_options['labels_color']?>" style="margin-left:49px" id="background_color" name="skyscraper_options[labels_color]" type="text"  /> ( #f7f7f7 default color)
+
+
+
 
 
 					</DIV>
 
+
+
 						<BR/>			
+
+
+
 
 
 				<TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Tagline-Title">
 
+
+
 					<TR>
+
+
 
 						<TD class="Border-Left" ></TD><TD  class="BG-Middle" >
 
+
+
 						Social Options
+
+
 
 						</TD>
 
+
+
 						<TD class="Border-Right"></TD>
+
+
 
 					</TR>
 
+
+
 				</TABLE>
+
+
 
 				<BR/>
 
+
+
 				<DIV  style="margin:0 0 0 25px" class="Post-subTXT">
+
+
 
 				<?php  _e("Your Twitter username","sociable");?>:<?php
 
+
+
 					if (!empty($skyscraper_options["twitter_username"])){
+
+
 
 						$twitter_username = $skyscraper_options["twitter_username"];
 
+
+
 					}
+
+
 
 					else{
 
+
+
 						$twitter_username = "@";
 
+
+
 					}
+
 				?>
 
+
+
 				<input type="text" name="skyscraper_options[twitter_username]" value="<?php echo $twitter_username?>"  />	
+
+
+
+
 
 
 
@@ -763,7 +1189,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<?php self:: create_select_options($skyscraper_options["num_tweets"]) ?>
+
+
+
+
 
 
 
@@ -771,7 +1205,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</DIV>
+
+
+
+
 
 
 
@@ -779,7 +1221,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<DIV  style="margin:0 0 0 25px" class="Post-subTXT">
+
+
+
+
 
 
 
@@ -787,11 +1237,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<?php
 
 
 
+
+
+
+
 				
+
+
+
+
 
 
 
@@ -799,11 +1261,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						$rss_feed = $skyscraper_options["rss_feed"];
 
 
 
+
+
+
+
 					}
+
+
+
+
 
 
 
@@ -811,7 +1285,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						$rss_feed = "http://";
+
+
+
+
 
 
 
@@ -819,7 +1301,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				?>
+
+
+
+
 
 
 
@@ -827,7 +1317,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<select name="skyscraper_options[num_rss]" id="num_rss">
+
+
+
+
 
 
 
@@ -835,7 +1333,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</select>
+
+
+
+
 
 
 
@@ -843,7 +1349,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/>
+
+
+
+
 
 
 
@@ -851,11 +1365,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<?php
 
 
 
+
+
+
+
 								$checked = "";
+
+
+
+
 
 
 
@@ -863,7 +1389,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									$checked = "checked";
+
+
+
+
 
 
 
@@ -871,7 +1405,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								
+
+
+
+
 
 
 
@@ -879,7 +1421,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								$unfolded= "";
+
+
+
+
 
 
 
@@ -887,7 +1437,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										if($skyscraper_options["counters"]["folded"] == "1"){
+
+
+
+
 
 
 
@@ -895,7 +1453,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 											$unfolded= "";
+
+
+
+
 
 
 
@@ -903,7 +1469,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 											$unfolded = "checked";
+
+
+
+
 
 
 
@@ -911,7 +1485,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										}
+
+
+
+
 
 
 
@@ -919,7 +1501,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								
+
+
+
+
 
 
 
@@ -927,7 +1517,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							?>
+
+
+
+
 
 
 
@@ -935,7 +1533,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					Counters 
+
+
+
+
 
 
 
@@ -943,7 +1549,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<input name="skyscraper_options[counters][folded]" <?php echo $folded?> value="1" type="radio">Unfolded
+
+
+
+
 
 
 
@@ -951,7 +1565,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/> 
+
+
+
+
 
 
 
@@ -959,11 +1581,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<?php
 
 
 
+
+
+
+
 								$checked = "";
+
+
+
+
 
 
 
@@ -971,7 +1605,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									$checked = "checked";
+
+
+
+
 
 
 
@@ -979,7 +1621,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								
+
+
+
+
 
 
 
@@ -987,7 +1637,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										if($skyscraper_options["share"]["folded"] == "1"){
+
+
+
+
 
 
 
@@ -995,7 +1653,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 											$unfolded= "";
+
+
+
+
 
 
 
@@ -1003,7 +1669,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 											$unfolded = "checked";
+
+
+
+
 
 
 
@@ -1011,7 +1685,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										}
+
+
+
+
 
 
 
@@ -1019,11 +1701,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								
 
 
 
+
+
+
+
 								
+
+
+
+
 
 
 
@@ -1031,7 +1725,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -1039,7 +1741,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<input style="margin-left:19px" <?php echo $unfolded?> value="0" name="skyscraper_options[share][folded]" type="radio">Folded 
+
+
+
+
 
 
 
@@ -1047,7 +1757,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</DIV>
+
+
+
+
 
 
 
@@ -1055,11 +1773,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				
 
 
 
+
+
+
+
 				</DIV>
+
+
+
+
 
 
 
@@ -1067,11 +1797,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		
 
 
 
+
+
+
+
 				<BR/>
+
+
+
+
 
 
 
@@ -1079,7 +1821,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<ul class="items_li">
+
+
+
+
 
 
 
@@ -1087,7 +1837,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<?php
+
+
+
+
 
 
 
@@ -1095,7 +1853,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								if (isset($skyscraper_options['follow_us_check']) && $skyscraper_options['follow_us_check'] == "on"){
+
+
+
+
 
 
 
@@ -1103,11 +1869,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								}
 
 
 
+
+
+
+
 							?>
+
+
+
+
 
 
 
@@ -1115,7 +1893,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<ul class="sub_item_li">
+
+
+
+
 
 
 
@@ -1123,11 +1909,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									<?php
 
 
 
+
+
+
+
 										$checked = "";
+
+
+
+
 
 
 
@@ -1135,7 +1933,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 											$checked = "checked";
+
+
+
+
 
 
 
@@ -1143,7 +1949,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									?>
+
+
+
+
 
 
 
@@ -1151,7 +1965,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									<?php
+
+
+
+
 
 
 
@@ -1159,7 +1981,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										if(!empty($skyscraper_options["follow_us"]["twitter"]["account"])){
+
+
+
+
 
 
 
@@ -1167,11 +1997,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										}
 
 
 
+
+
+
+
 									?>
+
+
+
+
 
 
 
@@ -1179,7 +2021,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<img style="padding-bottom:5px" src="<?php echo SOCIABLE_HTTP_PATH ?>images/toolbar/t.png"/>
+
+
+
+
 
 
 
@@ -1187,7 +2037,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								</li>
+
+
+
+
 
 
 
@@ -1195,11 +2053,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									<?php
 
 
 
+
+
+
+
 										$checked = "";
+
+
+
+
 
 
 
@@ -1207,7 +2077,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 											$checked = "checked";
+
+
+
+
 
 
 
@@ -1215,7 +2093,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									?>
+
+
+
+
 
 
 
@@ -1223,11 +2109,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<input type="hidden" value="rss.png" name="skyscraper_options[follow_us][feed][logo]" />
 
 
 
+
+
+
+
 									<?php
+
+
+
+
 
 
 
@@ -1235,11 +2133,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										if(!empty($skyscraper_options["follow_us"]["feed"]["account"])){
 
 
 
+
+
+
+
 												
+
+
+
+
 
 
 
@@ -1247,11 +2157,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										}
 
 
 
+
+
+
+
 									?>
+
+
+
+
 
 
 
@@ -1259,7 +2181,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<input size="40" value="<?php echo $rss?>" name="skyscraper_options[follow_us][feed][account]" type="text" />
+
+
+
+
 
 
 
@@ -1267,7 +2197,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								<li>
+
+
+
+
 
 
 
@@ -1275,7 +2213,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										$checked = "";
+
+
+
+
 
 
 
@@ -1283,7 +2229,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 											$checked = "checked";
+
+
+
+
 
 
 
@@ -1291,7 +2245,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									?>
+
+
+
+
 
 
 
@@ -1299,7 +2261,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								<input type="hidden" value="f.png" name="skyscraper_options[follow_us][fb][logo]" />
+
+
+
+
 
 
 
@@ -1307,7 +2277,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									<?php
+
+
+
+
 
 
 
@@ -1315,11 +2293,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										if(!empty($skyscraper_options["follow_us"]["fb"]["account"])){
 
 
 
+
+
+
+
 												
+
+
+
+
 
 
 
@@ -1327,11 +2317,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										}
 
 
 
+
+
+
+
 									?>
+
+
+
+
 
 
 
@@ -1339,7 +2341,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<input size="40" value="<?php echo $fb?>" name="skyscraper_options[follow_us][fb][account]" type="text" />
+
+
+
+
 
 
 
@@ -1347,7 +2357,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								
+
+
+
+
 
 
 
@@ -1355,7 +2373,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									<?php
+
+
+
+
 
 
 
@@ -1363,7 +2389,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										if ( isset($skyscraper_options['follow_us']['li']["active"]) && $skyscraper_options['follow_us']['li']["active"] == "on"){
+
+
+
+
 
 
 
@@ -1371,11 +2405,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										}
 
 
 
+
+
+
+
 									?>
+
+
+
+
 
 
 
@@ -1383,7 +2429,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<input type="hidden" value="i.png" name="skyscraper_options[follow_us][li][logo]" />
+
+
+
+
 
 
 
@@ -1391,7 +2445,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 									<?php
+
+
+
+
 
 
 
@@ -1399,11 +2461,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										if(!empty($skyscraper_options["follow_us"]["li"]["account"])){
 
 
 
+
+
+
+
 												
+
+
+
+
 
 
 
@@ -1411,7 +2485,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 										}
+
+
+
+
 
 
 
@@ -1419,7 +2501,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<img style="padding-bottom:5px" src="<?php echo SOCIABLE_HTTP_PATH ?>images/toolbar/i.png"/>
+
+
+
+
 
 
 
@@ -1427,7 +2517,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								</li>								
+
+
+
+
 
 
 
@@ -1435,7 +2533,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</li>						
+
+
+
+
 
 
 
@@ -1443,251 +2549,503 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</DIV>
+
+
+
+
 
 
 
 				<br />				
 
 
+
+
+
 <div class="Content-Box" id="Active-Content" style="display: block;">
+
+
 
 				<br>
 
+
+
 				<div align="center" style="width:100%;">
+
+
 
 					<table align="center" cellspacing="0" cellpadding="10" border="0" class="GeneralOptions-List">
 
+
+
 						<tbody><tr valign="top">
+
 							<td align="right" class="Title">Active Sociable Banner</td>
+
 							<td align="left" style="width:5px;">			
+
 				<?php
+
 					
+
 					$sel = "";
+
 					
+
 					if (isset($skyscraper_options["sociable_banner"])){
+
 							
+
 							if (!empty($skyscraper_options["sociable_banner"])){
+
 								$sel = "checked";
+
 							}
+
 							
+
 					}
+
 				
+
 				?>
+
 				
+
 		<input type="checkbox" name="skyscraper_options[sociable_banner]" id="sociable_banner" <?php echo $sel?>></td>
 
+
+
 							<td align="left" class="Content">
+
+
 
 							<span class="TXT">Active Sociable "Reminder to Share" Banner / Check if you want to remind your readers Share your content.</span>
 
+
+
 							<br>
 
+
+
 							</td>
 
+
+
 						</tr>
+
 						
+
 						<tr valign="top">
+
 						
+
 							<td align="right" class="Title">Banner's label (35 char Max.)</td>
+
 							
+
 							<td align="left" style="width:5px;">
+
 							<?php 
+
 								$sel = 'Please spread the word: Be Sociable, Share!';
+
 								if (isset($skyscraper_options["sociable_banner_text"])){
+
 									if (!empty($skyscraper_options["sociable_banner_text"])){
+
 										$sel = $skyscraper_options["sociable_banner_text"];
+
 									}
+
 								}
+
 							?>										
+
 							</td>
+
 							<td align="left" class="Content">
+
 							
+
 							<span class="TXT"> <input style="width:245px !important" type="text" name="skyscraper_options[sociable_banner_text]"  value="<?php echo $sel?>"></span>
 
+
+
 							<br>
+
+
 
 							</td>
 
+
+
 						</tr>
+
 			
+
 							<tr valign="top">
+
 						
+
 							<td align="right" class="Title">Banners Timer (sec.)</td>
+
 							
+
 							<td align="left" style="width:5px;">
+
 														
+
 							</td>
+
 							<td align="left" class="Content">							
+
 							<span class="TXT">
+
 							
+
 							<select name="skyscraper_options[sociable_banner_timer]" id="banner_timer" >
+
 								<?php  
+
 									for($timer=10; $timer <= 120; $timer++){ 
+
 										
+
 										$sel = "";
+
 										
+
 										if (!empty($skyscraper_options["sociable_banner_timer"])){
+
 										
+
 											if ($skyscraper_options["sociable_banner_timer"] == $timer){
+
 												
+
 												$sel = "selected";
+
 											}
+
 										}		
+
 								?>
+
 								<option value="<?php echo $timer?>" <?php echo $sel ?> ><?php echo $timer?></option>
+
 								<?php 
+
 								
+
 										$timer = $timer + 4;
+
 									} ?>
+
 							</select>
+
 							
+
 							</span>
+
+
 
 							<br>
 
+
+
 							</td>
 
+
+
 						</tr>
+
 						 
+
 						<tr valign="top">
+
 						
+
 							<td align="right" class="Title">Font Color <a title="default color #6A6A6A" class="default_values">(#6A6A6A)</a></td>
+
 							
+
 							<td align="left" style="width:5px;">
+
 														
+
 							</td>
+
 							<td align="left" class="Content">							
+
 							
+
 							<span class="TXT">
+
 							
+
 							<?php 
+
 								$sel = '#6A6A6A';
+
 								
+
 								if (isset($skyscraper_options["sociable_banner_colorFont"])){
+
 									
+
 									if (!empty($skyscraper_options["sociable_banner_colorFont"])){
+
 										
+
 										$sel = $skyscraper_options["sociable_banner_colorFont"];
+
 									}
+
 								}
+
 							?>
+
 							
+
 							<input type="text" value="<?php echo $sel?>" name="skyscraper_options[sociable_banner_colorFont]" style="width:81px !important">						
+
 							</span>
+
+
 
 							<br>
 
+
+
 							</td>
 
+
+
 						</tr>
+
 						<!-- Font Size -->
+
 						<tr valign="top">
+
 					
+
 						<td align="right" class="Title">Font Size <a title="default size 9px" class="default_values">(9px)</a></td>
+
 						
+
 						<td align="left" style="width:5px;">
+
 													
+
 						</td>
+
 						<td align="left" class="Content">							
+
 						<span class="TXT">
+
 					
+
 						<select name="skyscraper_options[sociable_banner_fontSize]" id="banner_fontSize" >
+
 								<?php  
+
 									for($fontSize=8; $fontSize <= 16; $fontSize++){ 
+
 										
+
 										$sel = "";
+
 										
+
 										if (!empty($skyscraper_options["sociable_banner_fontSize"])){
+
 										
+
 											if ($skyscraper_options["sociable_banner_fontSize"] == $fontSize){
+
 												
+
 												$sel = "selected";
+
 											} 
+
 										}		
+
 								?>
+
 								<option value="<?php echo $fontSize?>px" <?php echo $sel ?> ><?php echo $fontSize?>px</option>
+
 								<?php 									
+
 									} ?>
+
 							</select>
+
 					
+
 						
+
 						</span>
+
 						<br>
+
 						</td>
+
 						</tr>
+
 						
+
 						<!-- color label  -->
+
 						<tr valign="top">
+
 						
+
 							<td align="right" class="Title">Label Color <a title="default color #F7F7F7" class="default_values">(#F7F7F7)</a></td>
+
 							
+
 							<td align="left" style="width:5px;">
+
 														
+
 							</td>
+
 							<td align="left" class="Content">							
+
 							
+
 							<span class="TXT">
+
 							
+
 							<?php 
+
 								$sel = '#F7F7F7';
+
 								
+
 								if (isset($skyscraper_options["sociable_banner_colorLabel"])){
+
 									
+
 									if (!empty($skyscraper_options["sociable_banner_colorLabel"])){
+
 										
+
 										$sel = $skyscraper_options["sociable_banner_colorLabel"];
+
 									}
+
 								}
+
 							?>
+
 							
+
 							<input type="text" value="<?php echo $sel?>" name="skyscraper_options[sociable_banner_colorLabel]" style="width:81px !important">						
+
 							</span>
+
+
 
 							<br>
 
+
+
 							</td>
 
+
+
 						</tr>
+
 						<!-- color font  -->
+
 							<tr valign="top">
+
 						 
+
 							<td align="right" class="Title">Background Color <a title="default color #F7F7F7" class="default_values">(#F7F7F7)</a></td>
+
 							
+
 							<td align="left" style="width:5px;">
+
 														
+
 							</td>
+
 							<td align="left" class="Content">							
+
 							<span class="TXT">
+
 							<?php 
+
 								$sel = '#F7F7F7';
+
 								
+
 								if (isset($skyscraper_options["sociable_banner_colorBack"])){
+
 									
+
 									if (!empty($skyscraper_options["sociable_banner_colorBack"])){
+
 										
+
 										$sel = $skyscraper_options["sociable_banner_colorBack"];
+
 									}
+
 								}
+
 							?>
+
 							<input type="text" value="<?php echo $sel?>" name="skyscraper_options[sociable_banner_colorBack]" style="width:81px !important">	
+
 							
+
 							</span>
+
+
 
 							<br>
 
+
+
 							</td>
 
+
+
 						</tr>
+
 						
+
 					</tbody></table>						
+
+
+
 
 
 					<br><br>
 
+
+
 				</div>
 
+
+
 			</div>
+
+
+
+
 
 
 
@@ -1695,11 +3053,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<TABLE class="Title-Box" style="cursor:pointer;" cellspacing="0" cellpadding="0" onclick="hideOrShow('GeneralOptions');">
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -1707,7 +3077,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TR>
+
+
+
+
 
 
 
@@ -1715,11 +3093,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<BR/>
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -1727,7 +3117,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				
+
+
+
+
 
 
 
@@ -1735,7 +3133,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<DIV align="center" style="width:100%;">
+
+
+
+
 
 
 
@@ -1743,11 +3149,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -1755,11 +3173,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["widget_position"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[widget_position]" id="widget_position" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -1767,7 +3197,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<BR/>
+
+
+
+
 
 
 
@@ -1775,11 +3213,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							</TD>
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -1787,7 +3237,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<BR/><BR/>
+
+
+
+
 
 
 
@@ -1795,7 +3253,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			</DIV>
+
+
+
+
 
 
 
@@ -1803,7 +3269,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -1811,11 +3285,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TR>
 
 
 
+
+
+
+
 			</TABLE>
+
+
+
+
 
 
 
@@ -1823,7 +3309,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -1831,11 +3325,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<DIV  class="Locations-TXT" id="Locations-TXT" ><?php  _e("Please select the locations that you wish to allow the Sociable plugin to  insert itself.","sociable");?></DIV>
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -1843,7 +3349,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<DIV align="center" style="width:100%;">
+
+
+
+
 
 
 
@@ -1851,7 +3365,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -1859,11 +3381,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_front_page"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_front_page]" id="HomePage" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -1871,7 +3405,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -1879,7 +3421,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -1887,7 +3437,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -1895,11 +3453,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_home"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_home]" id="BlogPage" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -1907,7 +3477,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -1915,7 +3493,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -1923,7 +3509,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -1931,11 +3525,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_single"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_single]" id="Posts" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -1943,7 +3549,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -1951,7 +3565,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -1959,7 +3581,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -1967,11 +3597,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_page"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_page]" id="Pages" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -1979,7 +3621,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -1987,7 +3637,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -1995,7 +3653,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -2003,11 +3669,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_category"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_category]" id="CategoryArchives" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -2015,7 +3693,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -2023,7 +3709,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -2031,9 +3725,19 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
 
+
+
 							<TD align="right" class="Title" ><?php  _e("Date archives","sociable");?></TD>
+
+
+
+
 
 
 
@@ -2041,7 +3745,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -2049,7 +3761,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -2057,7 +3777,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -2065,7 +3793,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -2073,11 +3809,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_tag"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_tag]" id="TagArchives" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -2085,7 +3833,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -2093,7 +3849,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -2101,7 +3865,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -2109,11 +3881,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_author"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_author]" id="AuthorArchives" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -2121,7 +3905,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -2129,7 +3921,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -2137,7 +3937,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -2145,11 +3953,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($skyscraper_options["locations"]["is_search"])) echo "checked='checked'"?> type="checkbox" name="skyscraper_options[locations][is_search]" id="SearchResults" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -2157,7 +3977,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -2165,11 +3993,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
 
 
 
+
+
+
+
 						
+
+
+
+
 
 
 
@@ -2177,7 +4017,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="right" class="Title" ><?php  _e("RSS feeds","sociable");?></TD>
+
+
+
+
 
 
 
@@ -2185,7 +4033,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -2193,7 +4049,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -2201,11 +4065,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -2213,7 +4089,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<BR/><BR/>
+
+
+
+
 
 
 
@@ -2221,11 +4105,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			</DIV>
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -2233,7 +4129,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -2241,7 +4145,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TR>
+
+
+
+
 
 
 
@@ -2249,7 +4161,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -2257,7 +4177,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				
+
+
+
+
 
 
 
@@ -2265,7 +4193,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<div align="center" style="width:100%;">
+
+
+
+
 
 
 
@@ -2273,7 +4209,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						
+
+
+
+
 
 
 
@@ -2281,7 +4225,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<td align="right" class="Title">Active Skyscraper</td>
+
+
+
+
 
 
 
@@ -2289,7 +4241,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<input <?php if(isset($skyscraper_options["active"])) echo "checked='checked'"?> type="checkbox" id="active" name="skyscraper_options[active]" ></td>
+
+
+
+
 
 
 
@@ -2297,7 +4257,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<span class="TXT">Check if you want Sociable Skyscraper enable </span>
+
+
+
+
 
 
 
@@ -2305,7 +4273,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 														
+
+
+
+
 
 
 
@@ -2313,7 +4289,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</tr>
+
+
+
+
 
 
 
@@ -2321,7 +4305,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<br><br>
+
+
+
+
 
 
 
@@ -2329,7 +4321,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			</div>
+
+
+
+
 
 
 
@@ -2337,7 +4337,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<?php settings_fields( 'skyscraper_options_group' ); ?>
+
+
+
+
 
 
 
@@ -2345,11 +4353,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<div class="Content-Box">
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -2357,7 +4377,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 <?php wp_nonce_field('sociable-reset'); ?>
+
+
+
+
 
 
 
@@ -2365,7 +4393,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 <?php //submit_button( __( 'Reset Sociable' ) , 'primary', 'sociable_reset', false ); ?>
+
+
+
+
 
 
 
@@ -2373,7 +4409,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -2381,7 +4425,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<div style="cursor:pointer;line-height:15px;" onclick="document.getElementById('form1').submit();" class="SaveChanges"><br>
+
+
+
+
 
 
 
@@ -2389,7 +4441,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</div>
+
+
+
+
 
 
 
@@ -2397,7 +4457,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<span style="margin:40px;margin-left:35px;">Reset Skyscraper</span>
+
+
+
+
 
 
 
@@ -2405,7 +4473,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			</div>
+
+
+
+
 
 
 
@@ -2413,11 +4489,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		
 
 
 
+
+
+
+
 			</div>
+
+
+
+
 
 
 
@@ -2425,17 +4513,35 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<script type="text/javascript">
 
+
+
 			var base_url_sociable = "<?php echo SOCIABLE_HTTP_PATH?>";
+
+
 
 			</script>
 
 
 
+
+
+
+
 			</div>
 
+
+
     <?php 
+
+
+
+
 
 
 
@@ -2443,7 +4549,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     
+
+
+
+
 
 
 
@@ -2451,11 +4565,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
      * Add The Menu Pages To The Administration Options
 
 
 
+
+
+
+
      */
+
+
+
+
 
 
 
@@ -2463,11 +4589,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     function add_menu_pages(){
 
 
 
+
+
+
+
     
+
+
+
+
 
 
 
@@ -2475,7 +4613,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2483,7 +4629,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
        //	$page[] = add_options_page( __( 'Sociable Options' ), __( 'Sociable Plugin' ), 'manage_options', 'sociable_select' , array( 'sociable_Admin_Options' , 'Select_Sociable_Page' ) );
+
+
+
+
 
 
 
@@ -2491,7 +4645,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		//$page[]= add_plugins_page( 'sociable_options', 'sociable_options', 'read', 'Create_Options_Page'  );
+
+
+
+
 
 
 
@@ -2499,7 +4661,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 	$page[] =	add_options_page( "","", 'manage_options', 'sociable_options' , array( 'sociable_Admin_Options' , 'Create_Options_Page' ) );
+
+
+
+
 
 
 
@@ -2507,31 +4677,63 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		// Add a new submenu under Settings:
+
+
+
+
 
 
 
          //	$page[] =  add_options_page(__( 'Sociable Options' ),__( 'Sociable Plugin' ), 'manage_options', 'sociable_select', 'Select_Sociable_Page');
 
+
+
 	    // Add a new top-level menu (ill-advised):
+
+
+
+
 
 
 
     add_menu_page(__( 'Sociable Options' ), __( 'Select Sociable Plugin' ), 'manage_options', '/options-general.php?page=sociable_select' );
 
+
+
     // Add a submenu to the custom top-level menu:
+
+
+
+
 
 
 
     add_submenu_page('options-general.php?page=sociable_select',  __( 'Sociable Options' ), __( 'Sociable Options' ), 'manage_options', 'sociable_options' , array( 'sociable_Admin_Options' , 'Create_Options_Page' ) );
 
+
+
     // Add a second submenu to the custom top-level menu:
+
+
+
+
 
 
 
     add_submenu_page('options-general.php?page=sociable_select',  __( 'Skyscraper Options' ), __( 'Skyscraper Options' ), 'manage_options', 'skyscraper_options' , array( 'sociable_Admin_Options' , 'Create_Options_Page_Skycraper' ) );
 
+
+
 		
+
+
+
+
 
 
 
@@ -2539,7 +4741,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         add_action( 'admin_print_styles-' . $page[0] , array( 'sociable_Admin_Options' , 'enqueue_styles' ) );
+
+
+
+
 
 
 
@@ -2547,7 +4757,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2555,9 +4773,19 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         add_action( 'admin_print_scripts-' . $page[1] , array( 'sociable_Admin_Options' , 'enqueue_scripts' ) ); 
 
+
+
         add_action( 'admin_print_styles-' . $page[2] , array( 'sociable_Admin_Options' , 'enqueue_styles' ) );
+
+
+
+
 
 
 
@@ -2565,7 +4793,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 	
+
+
+
+
 
 
 
@@ -2573,11 +4809,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             check_admin_referer( 'sociable-reset' );
 
 
 
+
+
+
+
             
+
+
+
+
 
 
 
@@ -2585,7 +4833,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             wp_redirect( $_SERVER['HTTP_REFERER' ] ); 
+
+
+
+
 
 
 
@@ -2593,7 +4849,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2601,11 +4865,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             check_admin_referer( 'sociable-reset' );
 
 
 
+
+
+
+
             
+
+
+
+
 
 
 
@@ -2613,7 +4889,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             wp_redirect( $_SERVER['HTTP_REFERER' ] ); 
+
+
+
+
 
 
 
@@ -2621,15 +4905,31 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
         /*
+
+
+
+
 
 
 
@@ -2637,7 +4937,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
          */
+
+
+
+
 
 
 
@@ -2645,11 +4953,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             self::add_meta_box( $type );
 
 
 
+
+
+
+
         }
+
+
+
+
 
 
 
@@ -2657,7 +4977,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         self::add_meta_box( 'post' );
+
+
+
+
 
 
 
@@ -2665,7 +4993,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2673,11 +5009,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     
 
 
 
+
+
+
+
     /*
+
+
+
+
 
 
 
@@ -2685,7 +5033,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
      */
+
+
+
+
 
 
 
@@ -2693,7 +5049,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 	 	wp_enqueue_style( 'style-admin-css', SOCIABLE_HTTP_PATH . 'css/style-admin.css' );
+
+
+
+
 
 
 
@@ -2701,7 +5065,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         wp_enqueue_style( 'sociablecss' , SOCIABLE_HTTP_PATH . 'css/sociable.css' );
+
+
+
+
 
 
 
@@ -2709,11 +5081,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     
 
 
 
+
+
+
+
     /*
+
+
+
+
 
 
 
@@ -2721,7 +5105,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
      */
+
+
+
+
 
 
 
@@ -2729,7 +5121,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         wp_enqueue_script('jquery'); 
+
+
+
+
 
 
 
@@ -2737,7 +5137,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         wp_enqueue_script('jquery-ui-sortable',false,array('jquery','jquery-ui-core'));
+
+
+
+
 
 
 
@@ -2745,7 +5153,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		wp_enqueue_script( 'admin-fn-js', SOCIABLE_HTTP_PATH . 'js/admin-fn.js' , array( 'jquery','jquery-ui-core' , 'jquery-ui-sortable' ) );
+
+
+
+
 
 
 
@@ -2753,23 +5169,47 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     }
 
 
 
-    
 
-
-
-    
 
 
 
     
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+    
+
+
+
+
 
 
 
     /*
+
+
+
+
 
 
 
@@ -2777,9 +5217,19 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
      */
 
+
+
     function do_site_selection_list($plugin = 'sociable'){
+
+
+
+
 
 
 
@@ -2787,11 +5237,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		if ($plugin == 'sociable'){
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -2799,7 +5261,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			$option_plugin = $sociable_options;
+
+
+
+
 
 
 
@@ -2807,7 +5277,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		}
+
+
+
+
 
 
 
@@ -2815,7 +5293,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -2823,7 +5309,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			$option_plugin = $skyscraper_options;
+
+
+
+
 
 
 
@@ -2831,7 +5325,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		}
+
+
+
+
 
 
 
@@ -2839,13 +5341,27 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
         $sociable_known_sites = get_option( 'sociable_known_sites' );
 
+
+
         /*
+
+
+
+
 
 
 
@@ -2853,7 +5369,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
          */
+
+
+
+
 
 
 
@@ -2861,7 +5385,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2869,11 +5401,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         $active = Array(); 
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2881,11 +5425,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 	$disabled = $sociable_known_sites;
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2893,7 +5449,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 	foreach( $active_sites as $sitename => $value ) {
+
+
+
+
 
 
 
@@ -2901,7 +5465,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		unset( $disabled[$sitename] );
+
+
+
+
 
 
 
@@ -2909,7 +5481,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2917,7 +5497,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2925,7 +5513,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2933,7 +5529,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2941,7 +5545,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 $imagepath = trailingslashit( SOCIABLE_HTTP_PATH ) . 'images/';
+
+
+
+
 
 
 
@@ -2949,7 +5561,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 $imagepath .= trailingslashit( $imagepath );
+
+
+
+
 
 
 
@@ -2957,7 +5577,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -2965,7 +5593,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         $io = 0;
+
+
+
+
 
 
 
@@ -2973,7 +5609,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				
+
+
+
+
 
 
 
@@ -2981,7 +5625,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             //Set Checked And Active If Relevant
+
+
+
+
 
 
 
@@ -2989,7 +5641,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 $checked = 'checked="checked"';
+
+
+
+
 
 
 
@@ -2997,7 +5657,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             } else {
+
+
+
+
 
 
 
@@ -3005,7 +5673,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 $active = 'inactive';
+
+
+
+
 
 
 
@@ -3013,7 +5689,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             if ( $sitename != "More"){
+
+
+
+
 
 
 
@@ -3021,7 +5705,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					//$image = "<img src='".SOCIABLE_HTTP_PATH."images/".$site["favicon"]."'>";
+
+
+
+
 
 
 
@@ -3029,7 +5721,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				}else{
+
+
+
+
 
 
 
@@ -3037,7 +5737,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				}
+
+
+
+
 
 
 
@@ -3045,7 +5753,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			$image = "<img src='".SOCIABLE_HTTP_PATH."images/more.png'>";
+
+
+
+
 
 
 
@@ -3053,7 +5769,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             
+
+
+
+
 
 
 
@@ -3061,7 +5785,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 //                    if (strpos($site['favicon'], 'http') === 0) {
+
+
+
+
 
 
 
@@ -3069,7 +5801,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 //                    } else {
+
+
+
+
 
 
 
@@ -3077,7 +5817,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 //                    }
+
+
+
+
 
 
 
@@ -3085,7 +5833,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 //            } else {
+
+
+
+
 
 
 
@@ -3093,7 +5849,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 //                    $services_sprite_url = $imagepath . "services-sprite.png";
+
+
+
+
 
 
 
@@ -3101,7 +5865,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 //                    $img =  '<img src="' . $imgsrc . '" width="16" height="16" style="background: transparent url(' . $services_sprite_url . ') no-repeat; background-position:-' . $spriteCoords[0] . 'px -' . $spriteCoords[1] . 'px" />';
+
+
+
+
 
 
 
@@ -3109,7 +5881,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             
+
+
+
+
 
 
 
@@ -3117,7 +5897,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             
+
+
+
+
 
 
 
@@ -3125,7 +5913,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             
+
+
+
+
 
 
 
@@ -3133,7 +5929,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             if (!isset($site["counter"])){
+
+
+
+
 
 
 
@@ -3141,7 +5945,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			}
+
+
+
+
 
 
 
@@ -3149,7 +5961,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             $out .= '</li>';
+
+
+
+
 
 
 
@@ -3157,7 +5977,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         }
+
+
+
+
 
 
 
@@ -3165,7 +5993,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -3173,7 +6009,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -3181,7 +6025,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
   
+
+
+
+
 
 
 
@@ -3189,11 +6041,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
      * Create The HTML For The Options Page
 
 
 
+
+
+
+
      */
+
+
+
+
 
 
 
@@ -3205,36 +6069,33 @@ share your posts, don't you? :) Get it now!
 
 
 
-	
-
-
-
 		?>
 
-
-
-					
-
-
-
 			<div class="wrap">
-
-
-
-        	
-
-
 
         <DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" >			
 
 
 
+
+ 
+
+
 			<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fblogplay.com%2F&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=80&amp;appId=133479460071366" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:40px;" allowTransparency="true"></iframe><br />
 
-	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blogplay.com" data-text="Check the sociable plugin  [sociable]" data-via="sociablesite" data-hashtags="sociable">Tweet</a>
+
+
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blogplay.com" data-text="Check the sociable plugin  [blogplay.com]" >Tweet</a>
+
+
+
 
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
+
+
+
+
 
 
 
@@ -3242,15 +6103,31 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			</div>
 
+
+
             <h2 style="clear:both;"><?php _e( 'Sociable Options' ); ?></h2>
+
+
 
             <form method="post" action="options.php" id="form1" autocomplete="off">
 
 
 
+
+
+
+
                 
+
+
+
+
 
 
 
@@ -3258,7 +6135,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 <INPUT type="hidden" class="version-INPUT" id="version" name="sociable_options[version]" value="<?php echo$sociable_options["version"];?>" /> 
+
+
+
+
 
 
 
@@ -3266,7 +6151,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -3274,7 +6167,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TR>
+
+
+
+
 
 
 
@@ -3282,11 +6183,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 <BR/>
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -3294,7 +6207,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<DIV style="margin:0 0 0 25px" align="left" class="Live-Preview" id="Live-Preview" ><?php _e("Live preview of how Sociable will appear on your blog.","sociable")?></DIV>
+
+
+
+
 
 
 
@@ -3302,11 +6223,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/>
 
 
 
+
+
+
+
 				
+
+
+
+
 
 
 
@@ -3314,7 +6247,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		
+
+
+
+
 
 
 
@@ -3322,11 +6263,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				
 
 
 
+
+
+
+
 				<BR/>
+
+
+
+
 
 
 
@@ -3334,7 +6287,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			</DIV>
+
+
+
+
 
 
 
@@ -3342,7 +6303,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -3350,7 +6319,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TR>
+
+
+
+
 
 
 
@@ -3358,11 +6335,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<BR/>
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -3370,7 +6359,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<DIV  class="Tagline-TXT" id="Tagline-TXT" ><?php  _e('Previously we used "Share and Enjoy", remember the good old days?',"sociable");?></DIV>
+
+
+
+
 
 
 
@@ -3378,7 +6375,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/>
+
+
+
+
 
 
 
@@ -3386,11 +6391,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<INPUT type="text" class="Tagline-INPUT" id="tagline" name="sociable_options[tagline]" value="<?php echo$sociable_options["tagline"];?>" /> 
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -3398,7 +6415,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<INPUT type="checkbox" <?php if (!empty($sociable_options["help_grow"])) echo "checked = 'checked'";?> name="sociable_options[help_grow]" id="LinkToSociable" />
+
+
+
+
 
 
 
@@ -3406,7 +6431,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<SPAN style="font-size:14px;"><?php  _e("(Help us grow, please leave the link so others discover Sociable from your blog)","sociable");?></SPAN>
+
+
+
+
 
 
 
@@ -3414,11 +6447,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</DIV>
 
 
 
+
+
+
+
 			</DIV>
+
+
+
+
 
 
 
@@ -3426,7 +6471,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                              
+
+
+
+
 
 
 
@@ -3434,7 +6487,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -3442,7 +6503,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TR>
+
+
+
+
 
 
 
@@ -3450,11 +6519,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<BR/>
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -3462,7 +6543,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<DIV  class="IconsToInclude-TXT" id="IconsToInclude-TXT" >
+
+
+
+
 
 
 
@@ -3470,7 +6559,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</DIV>
+
+
+
+
 
 
 
@@ -3478,7 +6575,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/>
+
+
+
+
 
 
 
@@ -3486,7 +6591,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 <?php self::do_site_selection_list(); ?>
+
+
+
+
 
 
 
@@ -3494,7 +6607,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		
+
+
+
+
 
 
 
@@ -3502,7 +6623,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -3510,7 +6639,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -3518,7 +6655,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TR>
+
+
+
+
 
 
 
@@ -3526,11 +6671,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<BR/>
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -3538,7 +6695,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<?php
+
+
+
+
 
 
 
@@ -3546,7 +6711,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					$checked32 = "";
+
+
+
+
 
 
 
@@ -3554,7 +6727,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					$checked64 = "";
+
+
+
+
 
 
 
@@ -3562,7 +6743,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					if ($sociable_options["icon_size"] == 32) $checked32 = "checked='checked'";
+
+
+
+
 
 
 
@@ -3570,7 +6759,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					if ($sociable_options["icon_size"] == 64) $checked64 = "checked='checked'";
+
+
+
+
 
 
 
@@ -3578,7 +6775,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				?>
+
+
+
+
 
 
 
@@ -3586,7 +6791,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -3594,7 +6807,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -3602,7 +6823,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -3610,11 +6839,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				
 
 
 
+
+
+
+
 				
+
+
+
+
 
 
 
@@ -3622,7 +6863,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -3630,7 +6879,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -3638,7 +6895,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TR>
+
+
+
+
 
 
 
@@ -3646,11 +6911,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<BR/>
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -3658,7 +6935,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				
+
+
+
+
 
 
 
@@ -3666,7 +6951,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					$checked1 = "";
+
+
+
+
 
 
 
@@ -3674,7 +6967,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					$checked3 = "";
+
+
+
+
 
 
 
@@ -3682,7 +6983,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					$checked5 = "";
+
+
+
+
 
 
 
@@ -3690,7 +6999,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					if ($sociable_options["icon_option"] == "option1") $checked1 = "checked='checked'";
+
+
+
+
 
 
 
@@ -3698,7 +7015,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					if ($sociable_options["icon_option"] == "option3") $checked3 = "checked='checked'";
+
+
+
+
 
 
 
@@ -3706,7 +7031,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					if ($sociable_options["icon_option"] == "option5") $checked5 = "checked='checked'";
+
+
+
+
 
 
 
@@ -3714,7 +7047,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -3722,7 +7063,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -3730,7 +7079,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								$imagepath = trailingslashit( SOCIABLE_HTTP_PATH ) . 'images/';
+
+
+
+
 
 
 
@@ -3738,7 +7095,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 								$imagepath .= trailingslashit( $imagepath );
+
+
+
+
 
 
 
@@ -3746,7 +7111,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							//echo $imagepath;
+
+
+
+
 
 
 
@@ -3754,7 +7127,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				
+
+
+
+
 
 
 
@@ -3762,7 +7143,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/><BR/>
+
+
+
+
 
 
 
@@ -3770,7 +7159,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/><BR/>
+
+
+
+
 
 
 
@@ -3778,7 +7175,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/><BR/>
+
+
+
+
 
 
 
@@ -3786,7 +7191,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/><BR/>
+
+
+
+
 
 
 
@@ -3794,7 +7207,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/><BR/>				
+
+
+
+
 
 
 
@@ -3802,7 +7223,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/><BR/>				
+
+
+
+
 
 
 
@@ -3810,7 +7239,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				
+
+
+
+
 
 
 
@@ -3818,7 +7255,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -3826,7 +7271,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TR>
+
+
+
+
 
 
 
@@ -3834,11 +7287,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<BR/>
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -3846,7 +7311,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<DIV  class="Locations-TXT" id="Locations-TXT" ><?php  _e("Please select the locations that you wish to allow the Sociable plugin to  insert itself.","sociable");?></DIV>
+
+
+
+
 
 
 
@@ -3854,11 +7327,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<BR/>
 
 
 
+
+
+
+
 				<DIV align="center" style="width:100%;">
+
+
+
+
 
 
 
@@ -3866,7 +7351,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -3874,11 +7367,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_front_page"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_front_page]" id="HomePage" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -3886,7 +7391,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -3894,7 +7407,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -3902,7 +7423,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -3910,11 +7439,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_home"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_home]" id="BlogPage" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -3922,7 +7463,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -3930,7 +7479,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -3938,7 +7495,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -3946,11 +7511,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_single"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_single]" id="Posts" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -3958,7 +7535,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -3966,7 +7551,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -3974,7 +7567,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -3982,11 +7583,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_page"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_page]" id="Pages" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -3994,7 +7607,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -4002,7 +7623,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -4010,7 +7639,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4018,11 +7655,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_category"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_category]" id="CategoryArchives" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4030,7 +7679,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -4038,7 +7695,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -4046,7 +7711,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4054,11 +7727,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT  <?php if(!empty($sociable_options["locations"]["is_date"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_date]" id="DateArchives" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4066,7 +7751,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -4074,7 +7767,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -4082,7 +7783,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4090,11 +7799,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_tag"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_tag]" id="TagArchives" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4102,7 +7823,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -4110,7 +7839,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -4118,7 +7855,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4126,11 +7871,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_author"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_author]" id="AuthorArchives" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4138,7 +7895,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -4146,7 +7911,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -4154,7 +7927,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4162,11 +7943,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_search"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_search]" id="SearchResults" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4174,7 +7967,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -4182,7 +7983,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -4190,7 +7999,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4198,11 +8015,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["locations"]["is_rss"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[locations][is_rss]" id="RssFeeds" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4210,7 +8039,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -4218,15 +8055,31 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
 
 
 
+
+
+
+
 						
 
 
 
+
+
+
+
 						
+
+
+
+
 
 
 
@@ -4234,11 +8087,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<BR/><BR/>
 
 
 
+
+
+
+
 				</DIV>
+
+
+
+
 
 
 
@@ -4246,7 +8111,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -4254,7 +8127,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<TR>
+
+
+
+
 
 
 
@@ -4262,11 +8143,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</TR>
 
 
 
+
+
+
+
 			</TABLE>
+
+
+
+
 
 
 
@@ -4274,7 +8167,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			
+
+
+
+
 
 
 
@@ -4282,7 +8183,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				
+
+
+
+
 
 
 
@@ -4290,7 +8199,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<DIV align="center" style="width:100%;">
+
+
+
+
 
 
 
@@ -4298,7 +8215,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4306,11 +8231,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["automatic_mode"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[automatic_mode]" id="AutoMode" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4318,7 +8255,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															<BR/>
+
+
+
+
 
 
 
@@ -4326,7 +8271,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 																	<?php  _e("If this is unchecked, you will have to use the shortcode[sociable/] or template","sociable");?> tag  ?php if( function_exists( do_sociable() ) ){ do_sociable(); } 
+
+
+
+
 
 
 
@@ -4334,7 +8287,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 															
+
+
+
+
 
 
 
@@ -4342,7 +8303,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -4350,15 +8319,31 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4366,11 +8351,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["use_stylesheet"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[use_stylesheet]" id="UseStyleSheets" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4378,7 +8375,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							</TD>
+
+
+
+
 
 
 
@@ -4386,7 +8391,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4394,11 +8407,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["custom_icons"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[custom_icons]" id="UseStyleSheets" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4406,7 +8431,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							</TD>
+
+
+
+
 
 
 
@@ -4414,7 +8447,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4422,11 +8463,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["use_images"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[use_images]" id="UseImages" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4434,7 +8487,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							</TD>
+
+
+
+
 
 
 
@@ -4442,15 +8503,31 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						
 
 
 
+
+
+
+
 						
+
+
+
+
 
 
 
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4458,11 +8535,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["use_alphamask"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[use_alphamask]" id="AlphaMask" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4470,7 +8559,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							</TD>
+
+
+
+
 
 
 
@@ -4478,7 +8575,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<TR valign="top" >
+
+
+
+
 
 
 
@@ -4486,11 +8591,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" style="width:5px;" ><INPUT <?php if(!empty($sociable_options["topandbottom"])) echo "checked='checked'"?> type="checkbox" name="sociable_options[topandbottom]" id="TopAndBottom" /></TD>
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4498,11 +8615,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							</TD>
 
 
 
+
+
+
+
 						</TR>
+
+
+
+
 
 
 
@@ -4510,7 +8639,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="right" class="Title" ><?php  _e("Open in new window","sociable");?></TD>
+
+
+
+
 
 
 
@@ -4518,7 +8655,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<TD align="left" class="Content">
+
+
+
+
 
 
 
@@ -4526,7 +8671,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							</TD>
+
+
+
+
 
 
 
@@ -4534,15 +8687,31 @@ share your posts, don't you? :) Get it now!
 
 
 
-						
 
-
-
-						
 
 
 
 						
+
+
+
+
+
+
+
+						
+
+
+
+
+
+
+
+						
+
+
+
+
 
 
 
@@ -4550,7 +8719,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					
+
+
+
+
 
 
 
@@ -4558,7 +8735,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</DIV>
+
+
+
+
 
 
 
@@ -4566,7 +8751,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<TABLE class="Title-Box" style="cursor:pointer;"  cellspacing="0" cellpadding="0" onclick="hideOrShow('Active');" >
+
+
+
+
 
 
 
@@ -4574,7 +8767,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="Active-Title" ><span id="Active-Tab">+ </span><?php  _e("Active Sociable Classic","sociable");?></TD><TD class="Border-Right"></TD>
+
+
+
+
 
 
 
@@ -4582,7 +8783,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			</TABLE>
+
+
+
+
 
 
 
@@ -4590,7 +8799,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<div style="display: block;" id="Active-Content" class="Content-Box">
+
+
+
+
 
 
 
@@ -4598,7 +8815,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<br>
+
+
+
+
 
 
 
@@ -4606,7 +8831,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<table align="center" cellspacing="0" cellpadding="10" border="0" class="GeneralOptions-List">
+
+
+
+
 
 
 
@@ -4614,7 +8847,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 						<tbody><tr valign="top">
+
+
+
+
 
 
 
@@ -4622,7 +8863,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<td align="left" style="width:5px;">
+
+
+
+
 
 
 
@@ -4630,7 +8879,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<td align="left" class="Content">
+
+
+
+
 
 
 
@@ -4638,7 +8895,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							<br>
+
+
+
+
 
 
 
@@ -4646,7 +8911,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 							</td>
+
+
+
+
 
 
 
@@ -4654,7 +8927,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					</tbody></table>						
+
+
+
+
 
 
 
@@ -4662,7 +8943,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				</div>
+
+
+
+
 
 
 
@@ -4670,7 +8959,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 				<?php //<HR style="height:10px;background:#18305d;"/>?>
+
+
+
+
 
 
 
@@ -4678,7 +8975,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		</FORM>
+
+
+
+
 
 
 
@@ -4686,7 +8991,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			<DIV id="ActionsBar">
+
+
+
+
 
 
 
@@ -4696,9 +9009,11 @@ share your posts, don't you? :) Get it now!
 
 					<span style="margin:30px;"><?php  _e("Save Changes","sociable");?></span>
 
-
-
 				</DIV>
+
+
+
+
 
 
 
@@ -4706,11 +9021,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<span style="margin:40px;margin-left:35px;"><?php  _e("Reset Sociable","sociable");?></span>
 
 
 
+
+
+
+
 				</DIV>
+
+
+
+
 
 
 
@@ -4718,7 +9045,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<span style="margin:25px;margin-left:20px;"><?php  _e("Completly Uninstall Sociable","sociable");?></span>
+
+
+
+
 
 
 
@@ -4726,7 +9061,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 			</DIV>
+
+
+
+
 
 
 
@@ -4734,33 +9077,21 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 		<br>
 
 
 
+
+
+
+
 		<br>
-
-
-
-	
-
-
-
-			
-
-
-
-                
 
                 <?php  //do_settings_sections( 'sociable_options' ); ?>
-
-               
-
-          
-
-
-
-            
 
 
 
@@ -4768,7 +9099,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 <?php wp_nonce_field('sociable-reset'); ?>
+
+
+
+
 
 
 
@@ -4776,7 +9115,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
                 <?php //submit_button( __( 'Reset Sociable' ) , 'primary', 'sociable_reset', false ); ?>
+
+
+
+
 
 
 
@@ -4784,19 +9131,39 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             
+
+
+
+
 
 
 
           
 
+
+
 		</div>
+
+
 
     <?php }
 
 
 
+
+
+
+
     
+
+
+
+
 
 
 
@@ -4804,7 +9171,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         add_meta_box( 'sociable_off' , __( 'Disable sociable' ), array( 'sociable_Admin_Options' , 'create_meta_box' ) , $page, 'side', 'default' );
+
+
+
+
 
 
 
@@ -4812,7 +9187,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     
+
+
+
+
 
 
 
@@ -4820,7 +9203,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 	global $post;
+
+
+
+
 
 
 
@@ -4828,7 +9219,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         $checked = '';
+
+
+
+
 
 
 
@@ -4836,7 +9235,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             $checked = 'checked="checked"';
+
+
+
+
 
 
 
@@ -4844,7 +9251,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         wp_nonce_field( 'update_sociable_off' , 'sociable_nonce' );
+
+
+
+
 
 
 
@@ -4852,7 +9267,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 	
+
+
+
+
 
 
 
@@ -4860,7 +9283,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     
+
+
+
+
 
 
 
@@ -4868,7 +9299,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -4876,9 +9315,19 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             return $post_id;
 
+
+
         // verify this came from the our screen and with proper authorization,
+
+
+
+
 
 
 
@@ -4886,13 +9335,27 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
         $nonce = ( isset( $_POST['sociable_nonce'] ) ) ? $_POST['sociable_nonce'] : false ;
 
+
+
         if ( ! $nonce ||  ! wp_verify_nonce( $nonce, 'update_sociable_off' ) )
+
+
+
+
 
 
 
@@ -4900,7 +9363,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         // Check permissions
+
+
+
+
 
 
 
@@ -4908,7 +9379,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         if ( !current_user_can( 'edit_page', $post_id ) )
+
+
+
+
 
 
 
@@ -4916,7 +9395,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         } else {
+
+
+
+
 
 
 
@@ -4924,7 +9411,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             return;
+
+
+
+
 
 
 
@@ -4932,7 +9427,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -4940,7 +9443,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         if( isset( $_POST['sociableoff'] ) ){
+
+
+
+
 
 
 
@@ -4948,7 +9459,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         } else {
+
+
+
+
 
 
 
@@ -4956,11 +9475,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         }
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -4968,7 +9499,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     }
+
+
+
+
 
 
 
@@ -4976,7 +9515,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     /**
+
+
+
+
 
 
 
@@ -4984,7 +9531,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
      */
+
+
+
+
 
 
 
@@ -4992,7 +9547,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -5000,7 +9563,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     }
+
+
+
+
 
 
 
@@ -5008,7 +9579,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     /**
+
+
+
+
 
 
 
@@ -5016,7 +9595,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
      */
+
+
+
+
 
 
 
@@ -5024,7 +9611,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         echo '<p>' . __( 'Please Select The Locations That You Wish To Allow The Sociable 2 Plugin To Insert The Links.' ) . '</p>';
+
+
+
+
 
 
 
@@ -5032,7 +9627,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     
+
+
+
+
 
 
 
@@ -5040,7 +9643,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
      * Adds A Function For The add_settings_field(); function
+
+
+
+
 
 
 
@@ -5048,7 +9659,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
      * should be passed:
+
+
+
+
 
 
 
@@ -5056,7 +9675,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
      *      'id' => 'field_id_and_name',
+
+
+
+
 
 
 
@@ -5064,7 +9691,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
      * );
+
+
+
+
 
 
 
@@ -5072,7 +9707,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     function Checkbox( $data ){
+
+
+
+
 
 
 
@@ -5080,7 +9723,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -5088,7 +9739,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         if( isset( $data['locations'] ) ){
+
+
+
+
 
 
 
@@ -5096,7 +9755,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             $checked = ( isset( $sociable_options['locations'][$data['id']] ) ) ? 'checked="checked"' : '' ;
+
+
+
+
 
 
 
@@ -5104,7 +9771,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             $name = 'sociable_options[' . $data['id'] . ']';
+
+
+
+
 
 
 
@@ -5112,23 +9787,47 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         }
 
 
 
+
+
+
+
         
 
 
 
+
+
+
+
         
+
+
 
 	echo '<input ' . $checked . ' id="' . $data['id'] . '" name="' . $name . '" type="checkbox" /> <span class="description">' . $data['description'] . '</span>';
+
+
 
     }
 
 
 
+
+
+
+
     
+
+
+
+
 
 
 
@@ -5136,11 +9835,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         global $sociable_options;
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -5148,11 +9859,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
 
         echo '<input id="' . $data['id'] . '" name="sociable_options[' . $data['id'] . ']" size="40" type="text" value="' . esc_attr( $value ) . '" /> <br /><span class="description">' . $data['description'] . '</span>';
 
+
+
         
+
+
+
+
 
 
 
@@ -5160,7 +9883,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     
+
+
+
+
 
 
 
@@ -5168,11 +9899,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         global $sociable_options;
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -5180,11 +9923,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
 
         echo '<textarea id="' . $data['id'] . '" name="sociable_options[' . $data['id'] . ']" >' . $value . '</textarea> <br /><span class="description">' . $data['description'] . '</span>';
 
+
+
         
+
+
+
+
 
 
 
@@ -5192,7 +9947,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     
+
+
+
+
 
 
 
@@ -5200,11 +9963,23 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         global $sociable_options;
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -5212,7 +9987,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         
+
+
+
+
 
 
 
@@ -5220,7 +10003,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         foreach( $data['options'] as $value => $option ){
+
+
+
+
 
 
 
@@ -5228,7 +10019,15 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
             echo '<input type="radio" name="sociable_options[' . $data['id'] . ']" value="' . $value . '" ' . $selected . ' /> <span>' . $option . '</span><br />';
+
+
+
+
 
 
 
@@ -5236,23 +10035,47 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
     }
 
 
 
+
+
+
+
     
 
 
 
+
+
+
+
     
+
+
+
+
 
 
 
 }
 
+
+
 function add_ie7() { 		
 
+
+
 echo'<!--[if lt IE 7]>
+
+
+
+
 
 
 
@@ -5260,11 +10083,23 @@ echo'<!--[if lt IE 7]>
 
 
 
+
+
+
+
   type="text/javascript"></script>
 
 
 
+
+
+
+
 <![endif]-->
+
+
+
+
 
 
 
@@ -5272,7 +10107,15 @@ echo'<!--[if lt IE 7]>
 
 
 
+
+
+
+
   <script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE8.js" 
+
+
+
+
 
 
 
@@ -5280,7 +10123,15 @@ echo'<!--[if lt IE 7]>
 
 
 
+
+
+
+
 <![endif]-->
+
+
+
+
 
 
 
@@ -5288,17 +10139,35 @@ echo'<!--[if lt IE 7]>
 
 
 
+
+
+
+
 <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+
+
+
+
 
 
 
 <![endif]-->';
 
+
+
 } 
 
 
 
+
+
+
+
 //add_action('admin_head', 'add_ie7' ); 
+
+
+
+
 
 
 

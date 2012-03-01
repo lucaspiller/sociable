@@ -10,7 +10,7 @@ Requires at least: 2.6
 
 Tested up to: 3.3.1
 
-Stable tag: 4.2.2
+Stable tag: 4.2.3
 
 
 
@@ -25,9 +25,11 @@ Sociable continues being the leader in the sharing space of WordPress plugins. S
 == Description ==
 
 
-Sociable continues being the fastest growing leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1.5 million downloads now, here comes the latest version: 4.2.2 After introducing Sociable Skyscraper, the ultimate advanced and feature-packed plugin for setting up a rating system on your WordPress blog, we've developed Sociable Slider. It is sort of banner that reminds your readers to spread the word. You can select and customize several features, such as text, color, and length in order to ensure your readers and their friends a great Sociable Experience. 
-Sociable Skyscraper allows you to set up pages and comments with a great degree of customization. 
+As you know, Sociable continues being the fastest growing leader in the sharing space of WordPress plugins. We really appreciate your feedback, so, here you are lastest version including Pinterest icon, font changes you suggested and other terrific features you get totally Free. 
 
+After introducing Sociable Skyscraper, the ultimate advanced and feature-packed plugin for setting up a rating system on your WordPress blog, we've developed Sociable Slider. It is sort of banner that reminds your readers to spread the word. You can select and customize several features, such as text, color, and length in order to ensure your readers and their friends a great Sociable Experience. Sociable Skyscraper allows you to set up pages and comments with a great degree of customization.
+
+Sociable Plug-in is totally free and continues leading digital arena with over 1.5 million downloads now. We´re working hard making you happy and your feedback and suggestions allow us to keep growing, so, let´s enjoy co-creation, collaboration and sharing. Be Sociable. Share!
 
 = About Sociable Skyscraper =
 
