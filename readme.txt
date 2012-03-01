@@ -29,7 +29,7 @@ As you know, Sociable continues being the fastest growing leader in the sharing 
 
 After introducing Sociable Skyscraper, the ultimate advanced and feature-packed plugin for setting up a rating system on your WordPress blog, we've developed Sociable Slider. It is sort of banner that reminds your readers to spread the word. You can select and customize several features, such as text, color, and length in order to ensure your readers and their friends a great Sociable Experience. Sociable Skyscraper allows you to set up pages and comments with a great degree of customization.
 
-Sociable Plug-in is totally free and continues leading digital arena with over 1.5 million downloads now. We´re working hard making you happy and your feedback and suggestions allow us to keep growing, so, let´s enjoy co-creation, collaboration and sharing. Be Sociable. Share!
+Sociable Plug-in is totally free and continues leading digital arena with over 1.5 million downloads now. We're working hard making you happy and your feedback and suggestions allow us to keep growing, so, let's enjoy co-creation, collaboration and sharing. Be Sociable. Share!
 
 = About Sociable Skyscraper =
 
@@ -94,7 +94,7 @@ Sociable finds its home outside of the WordPress environment on Blogplay.com-
 
 
 
-*** Sociable 4.2.2 *** 
+*** Sociable 4.2.3 *** 
 
 
 
@@ -296,6 +296,12 @@ Please send us an email to  sociableblogplay [ at ] gmail.com
 
 
 == Changelog ==
+
+= 4.2.3 =
+
+
+* Pinterest
+* Tags
 
 
 = 4.2.2 =
