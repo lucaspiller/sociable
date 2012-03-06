@@ -1,12 +1,27 @@
 <?php
+
+
+
 /*
+
+
+
  * The Output And Shortcode Functions For sociable
+
+
+
  */
 
 
 
 /*
+
+
+
  * Returns The Skyscraper Output For The Global $post Object Do Not 
+
+
+
  */
 
 
@@ -54,6 +69,14 @@ function skyscraper_html( $where = "" ){
 
 
 	if (!is_admin() || 1==1){
+
+
+
+				
+
+
+
+		
 
 
 
@@ -164,60 +187,122 @@ function skyscraper_html( $where = "" ){
 		}		
 
 
+
+		
+
+
+
 		$url_site= $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
+
+
+
+				
+
 
 
 		$script = "	
 
+		   
+
+			
+
+		
+
+				
+
 	 			if (!document.getElementById('fb-root')){
+
+
 
 					var div = document.createElement('div');
 
+
+
 					div.id = 'fb-root';
 
+
+
 					document.body.appendChild(div);
+
+
 
 				}
 
 
+
 				(function(d, s, id) {
+
+
 
 				  var js, fjs = d.getElementsByTagName(s)[0];
 
+
+
 				  if (d.getElementById(id)) return;
+
+
 
 				  js = d.createElement(s); js.id = id;
 
+
+
 				  js.src = \"http://connect.facebook.net/en_US/all.js#xfbml=1\";
+
+
 
 				  fjs.parentNode.insertBefore(js, fjs);
 
 
 
 				}(document, 'script', 'facebook-jssdk'));
+
+
+
+
+
+
+
 			
 
 			".$addWhere."
- 
+
+
+
 			jQuery(document).ready(function(){						
 
 
+
 						oPlugin.toolbarStart('skyscraper', ".$widget_position.",230,".$widget_width.",'".$background_color."','".$labels_color."',false,'#6A6A6A',".$text_size.",'#587cc8');
-									 	
+
+										 	
 
 						".get_share_node()."
 
+
+
 						".get_counters_node()."			
+
+
 
 						".get_social_banner_node()."		
 
+
+
 						".get_latest_node()."															
+
+
 
 						".get_mentions_node()."										
 
+
+
 						".get_follow_us_node()."										
 
+					
+
 						".get_rss_node()."
+
+  
 
 						oPlugin.CreateGoToTop('New_Id_12','Top','<img src=\"".SOCIABLE_HTTP_PATH."images/toolbar/gototop.png\" style=\"width:30px;\" />');						
 
@@ -225,13 +310,22 @@ function skyscraper_html( $where = "" ){
 
 						oPlugin.CreateGoToHome('New_Id_13','Go Home','<img src=\"".SOCIABLE_HTTP_PATH."images/toolbar/gotohome.png\" style=\"width:30px;\" />');												
 
-	    }); 	
-					jQuery('.title').css('font-size', '".$text_size."px');		
- 
+
+
+	    });
+
+			
+
 		";
 
+
+
 		echo $script;
+
 	}
+
+
+
 }
 
 
@@ -302,7 +396,7 @@ function get_social_banner_node(){
 
 								counter += '	<li>';					
 
-								counter += '<iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+' <blogplay.com> &amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 55px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe>';						
+								counter += '<iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"http://platform.twitter.com/widgets/tweet_button.1326407570.html#_=1328815234500&amp;_version=2&amp;count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=+url+&amp;&amp;size=m&amp;text='+title+'  <sociable> blogplay.com&amp;url='+url+'&amp;via=sociablesite\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 55px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe>';						
 
 								counter += '	</li>';
 
@@ -411,7 +505,17 @@ function get_rss_node(){
 	global $skyscraper_options;
 
 
+	if (!empty($skyscraper_options["accept_read_rss"])){
 
+		if ($skyscraper_options["accept_read_rss"] != 1){
+	
+			return $latest_posts;
+		}
+	}
+	else{
+
+		return $latest_posts;
+	}
 	
 
 
@@ -656,7 +760,17 @@ function get_latest_node(){
 
 
 
+	if (!empty($skyscraper_options["accept_read_twitter"])){
+
+		if ($skyscraper_options["accept_read_twitter"] != 1){
 	
+			return $latest_node;
+		}
+	}
+	else{
+
+		return $latest_node;
+	}
 
 
 
@@ -733,23 +847,28 @@ function get_latest_node(){
 
 
 function get_mentions_node(){
-
-
+ 
 
 	$mentions_node = "";
 
-
-
-	
-
-
-
 	global $skyscraper_options;
 
+	//echo "<pre>";
+//	print_r ($skyscraper_options);
+//	echo "</pre>";
 
-
-	
-
+	if (!empty($skyscraper_options["accept_read_twitter"])){
+	//	echo "entra 1";
+		if ($skyscraper_options["accept_read_twitter"] != 1){
+		//	echo "entra 2";
+			return $mentions_node;
+		}
+	}
+	else{
+		//echo "entra 3";
+		return $mentions_node;
+		die();
+	}
 
 
 	if ( isset($skyscraper_options["twitter_username"])){
@@ -839,9 +958,6 @@ function get_counters_node(){
 	$counters_node = "";
 
 
-
-
-
 	if ((!empty($skyscraper_options["counters"]["check"]))){
 
 
@@ -869,9 +985,10 @@ function get_counters_node(){
 
 
 							counter +=' <li style=\"margin-left:0px\"><iframe width=\"100%\" scrolling=\"no\" frameborder=\"0\" title=\"+1\" vspace=\"0\" tabindex=\"-1\" style=\"position: static; left: 0pt; top: 0pt; width: 60px; margin: 0px; border-style: none; visibility: visible; height: 60px;\" src=\"https://plusone.google.com/_/+1/fastbutton?url='+url+'&amp;size=tall&amp;count=true&amp;hl=en-US&amp;jsh=m%3B%2F_%2Fapps-static%2F_%2Fjs%2Fgapi%2F__features__%2Frt%3Dj%2Fver%3Dt1NEBxIt2Qs.es_419.%2Fsv%3D1%2Fam%3D!Xq7AzNfn9_-I0e5PyA%2Fd%3D1%2F#id=I1_1328906079806&amp;parent='+url+'&amp;rpctoken=615138222&amp;_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart\" name=\"I1_1328906079806\" marginwidth=\"0\" marginheight=\"0\" id=\"I1_1328906079806\" hspace=\"0\" allowtransparency=\"true\"></iframe></li>';	
- 
 
-							counter +=  '<li style=\"margin-left:-2px\"><iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+' (blogplay.com)&amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 55px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe></li>';
+										
+
+							counter +=  '<li style=\"margin-left:-2px\"><iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"http://platform.twitter.com/widgets/tweet_button.1326407570.html#_=1328815234500&amp;_version=2&amp;count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=+url+&amp;size=m&amp;text='+title+'  (sociable) blogplay.com&amp;url='+url+'&amp;via=sociablesite\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 55px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe></li>';
 
 
 
@@ -903,9 +1020,25 @@ function get_share_node(){
 
 
 
+	
+
+
+
 	global $skyscraper_options;
 
+
+
+	
+
+
+
 	$share_node = "";
+
+
+
+		
+
+
 
 	if (!empty($skyscraper_options["share"]["check"])){
 
@@ -920,8 +1053,16 @@ function get_share_node(){
 
 
 	}
+
+
+
 	
+
+
+
 	return $share_node;
+
+
 
 }
 
@@ -946,20 +1087,42 @@ function get_follow_us_node(){
 	if (isset($skyscraper_options["follow_us"])){
 
 
+
+	
+
+
+
 		$follow_info = empty_accounts();
+
+
+
+		 	
+
+
 
 		if ( $follow_info["active"] > 0 && ($follow_info["empty"] <  $follow_info["active"])){
 
+
+
 			$follow_buttons = sc_follow_links();
+
+
 
 			$follow_us_node = "oPlugin.CreateNode('New_Id_6','Follow', '',  '".$follow_buttons["follow_buttons"]."','Plano',40,140)";	
 
 		
+
 		}
+
+
+
 	}
 
 
+
 	return $follow_us_node;
+
+
 
 }
 
@@ -1117,6 +1280,10 @@ function share_links(){
 
 
 
+	
+
+
+
 	$url = addslashes(get_bloginfo('wpurl'));
 
 
@@ -1165,12 +1332,11 @@ function share_links(){
 
 
 
-            				'url' => 'http://twitter.com/intent/tweet?text='.urlencode($title).' - '.urlencode($url).' '.urlencode("{blogplay.com}").' ',
+            				'url' => 'http://twitter.com/intent/tweet?text='.urlencode($title).' - '.urlencode($url).' '.urlencode("{sociable}").' blogplay.com&via=sociablesite',
 
 
 
-							 'title' => "Share on Twitter",
-							 'blank' => '_blank'				),
+							 'title' => "Share on Twitter"),
 
 
 
@@ -1186,8 +1352,7 @@ function share_links(){
 
 
 
-							 'title' => "Share on Facebook",
-							 'blank' => '_blank'				),
+							 'title' => "Share on Facebook"),
 
 
 
@@ -1203,8 +1368,7 @@ function share_links(){
 
 
 
-							 'title' => "Share on Gmail",
-							 'blank' => '_blank'				),
+							 'title' => "Share on Gmail"),
 
 
 
@@ -1220,8 +1384,7 @@ function share_links(){
 
 
 
-							 'title' => "Share on inbound.org",
-							 'blank' => '_blank'				),
+							 'title' => "Share on inbound.org"),
 
 
 
@@ -1237,8 +1400,7 @@ function share_links(){
 
 
 
-							'title' => "Share on StumpleUpon",
-							 'blank' => '_blank'				),
+							'title' => "Share on StumpleUpon"),
 
 
 
@@ -1254,8 +1416,7 @@ function share_links(){
 
 
 
-							 "title" => "Share on delicious",
-							 'blank' => '_blank'				),
+							 "title" => "Share on delicious"),
 
 
 
@@ -1271,8 +1432,7 @@ function share_links(){
 
 
 
-							"title" => "Share on Google Reader",
-							 'blank' => '_blank'				),
+							"title" => "Share on Google Reader"),
 
 
 
@@ -1288,49 +1448,54 @@ function share_links(){
 
 
 
-							"title" => "Share on LinkedIn",
-							 'blank' => '_blank'				),
+							"title" => "Share on LinkedIn")
+
+
 
 	
-		"pinterest" => array('favicon' => 'pinterest.png',
 
 
-
-							'url' => 'http://pinterest.com/pin/create/button/?url='.$permalink.'',
-
-
-
-							"title" => "Share on Pinterest",
-							 'blank' => '_blank'						),
-							
-		"favorites" => array('favicon' => 'fv.png',
-			 			     'url' => 'javascript:AddToFavorites();',
-							 'title' => "Add to favorites - doesn\"t work in Chrome",
-							 'blank' => '_self'	)
-							 					
 
 	);
 
 
 
-	 
+	
 
 
 
 	$share_buttons = "";
 
 
-	foreach($share_links as $link){
+
  
+
+
+
+	foreach($share_links as $link){
+
+
+
 		
-		$share_buttons .=  "<a target=\'".$link["blank"]."\'  rel=\'nofollow\' href=\'".addslashes($link["url"])."\' title=\'".addslashes($link["title"])."\'><img  src=\'".SOCIABLE_HTTP_PATH."images/toolbar/".addslashes($link["favicon"])."\' /></a>";
+
+
+
+		$share_buttons .=  "<a target=\'_blank\' rel=\'nofollow\' href=\'".addslashes($link["url"])."\' title=\'".addslashes($link["title"])."\'><img  src=\'".SOCIABLE_HTTP_PATH."images/toolbar/".addslashes($link["favicon"])."\' /></a>";
 
 
 
 	}
 
 
+
+		
+
+
+
 	return $share_buttons;
+
+
+
 }
 
 
@@ -1426,6 +1591,16 @@ function auto_skyscraper($content, $admin = false){
 
 
     }
+
+
+
+	echo "<pre>";
+
+	print_r ($skyscraper_options["locations"]);
+
+	echo "</pre>";
+
+	
 
 	 
 

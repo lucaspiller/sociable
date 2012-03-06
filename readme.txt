@@ -10,7 +10,7 @@ Requires at least: 2.6
 
 Tested up to: 3.3.1
 
-Stable tag: 4.2.3
+Stable tag: 4.2.4
 
 
 
@@ -94,7 +94,7 @@ Sociable finds its home outside of the WordPress environment on Blogplay.com-
 
 
 
-*** Sociable 4.2.3 *** 
+*** Sociable 4.2.4 *** 
 
 
 
@@ -296,6 +296,10 @@ Please send us an email to  sociableblogplay [ at ] gmail.com
 
 
 == Changelog ==
+
+= 4.2.4 =
+
+* Privacy options
 
 = 4.2.3 =
 

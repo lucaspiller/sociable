@@ -1,8 +1,23 @@
 <?php
 
 
+
 /*
+
+
+
+
+
+
+
  * Administration Options Class For Sociable 2
+
+
+
+
+
+
+
  */
 
 
@@ -11,18 +26,71 @@ class sociable_Admin_Options{
 
 
 
+
+
+
+
+    
+
+
+
+
+
+
+
     /**
+
+
+
+
+
+
 
      * A Function To Hook To Admin Init.
 
+
+
+
+
+
+
      */
+
+
+
+
 
 
 
     function init(){        
 
 
+
+
+
+
+
+  		
+
+
+
+
+
+
+
         register_setting( 'sociable_options_group' , 'sociable_options' );
+
+
+
+
+
+
+
+        
+
+
+
+
 
 
 
@@ -38,19 +106,100 @@ class sociable_Admin_Options{
 
 
 
+
+
+
+
+        
+
+
+
+
+
+
+
        // add_settings_section( 'sociable_options', __( 'General Options' ),  array( 'sociable_Admin_Options' , 'general_options_callback' )  , 'sociable_options' );
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+		
+
+
+
+
 
 
 
 		register_setting( 'skyscraper_options_group' , 'skyscraper_options' );
 
 
+
+
+
+
+
+		
+
+
+
+
+
+
+
 	//	add_settings_section( 'sociable_locations', __( 'Locations' ),  array( 'sociable_Admin_Options' , 'location_options_callback' )  , 'skyscraper_options' );
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
 
     }
 
 
+
+
+
+
+
+    
+
+
+
+
+
+
+
     function skyscraper_init(){        
+
+
+
+
+
+
+
+  		
+
 
 
     	register_setting( 'skyscraper_options_group' , 'skyscraper_options' );
@@ -61,54 +210,240 @@ class sociable_Admin_Options{
 
 
 
+
+
+
+
+		
+
+
+
+
+
+
+
         //Add All The Settings Fields
+
+
+
+
+
 
 
         //self::add_settings_fields();      
 
+
+
+
+
+
+
     }
+
+
+
+
+
+
+
+    
+
+
+
+
 
 
 
     function Select_Sociable_Page(){
 
 
+
+
+
+
+
+	 
+
+
+
+
+
+
+
         global $sociable_options;
 
+
+
+
+
+
+
 		?>
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+		
+
+
+
+
+
 
 
 			<div class="wrap" style="margin-top:25px">    
 
 
+
+
+
+
+
+		
+
+
+
+
+
+
+
 					<div style="width: 80%; margin-left: 25px; color: rgb(147, 147, 147); font-weight: bold; font-size: 15px;">
+
+
+
+
+
 
 
 					Congrats! You are joining the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,5mm downloads now, here comes the latest version 4.1 <br /><br />
 
 
+
+
+
+
+
 You can select Sociable Classic and/or Sociable Skyscraper to spread the World, increase your traffic and your reader's ability to share your posts! <br /> <br />
 
+
+
+
+
+
+
 					</div>
+
+
+
+
+
+
+
+					    
+
+
+
+
 
 
 
 			<div class="wrap" style="width:42%;float:left">                
 
 
+
+
+
+
+
                 <?php //wp_nonce_field('sociable-config'); ?>
+
+
+
+
+
+
+
+               
+
+
+
+
+
 
 
                 <TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Preview-Title" style="margin:0 0 0 25px">
 
+
+
+
+
+
+
+				
+
+
+
+
+
+
+
+				
+
+
+
+
+
+
+
 				<TR>
+
+
+
+
+
 
 
 					<TD class="Border-Left" ></TD><TD  class="BG-Middle" >Skyscraper Sociable</TD><TD class="Border-Right"></TD>
 
+
+
+
+
+
+
 				</TR>
 
+
+
+
+
+
+
 				<TR> 
+
+
+
+
+
 
 
 					<TD colspan="3" >
@@ -783,26 +1118,10 @@ share your posts, don't you? :) Get it now!
 
 
 
-	
-
-
-
-    
-
-
-
-
-
-
-
     function Create_Options_Page_Skycraper(){  
 
-
-
-
-
+			
 	        global $skyscraper_options;
-
 
 
 		?>
@@ -831,7 +1150,7 @@ share your posts, don't you? :) Get it now!
 
 
 
-	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blogplay.com" data-text="Check the sociable plugin  [blogplay.com]" >Tweet</a>
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blogplay.com" data-text="Check the sociable plugin  [sociable]" data-via="sociablesite" data-hashtags="sociable">Tweet</a>
 
 
 
@@ -1210,16 +1529,31 @@ share your posts, don't you? :) Get it now!
 
 
 				</DIV>
-
-
-
-
-
-
+ 
+<DIV style="border: 1px solid rgb(223, 223, 223); margin-left: 22px; font-size: 10px; font-style: italic; width: 327px; padding: 0px 11px;">
+				<p>This feature will read your latest tweets and mentions posted by other users and show them on skyscraper sociable.
+				<p>Sociable will save and use your twitter username only to read tweets. </p>
+				
+				<p>Your visitors can read the information that you are sharing.</p>
+				<p>If you agree check here:
+				
+				<?php
+					
+					$sel = "";
+					if (isset($skyscraper_options["accept_read_twitter"])){
+				
+						if ($skyscraper_options["accept_read_twitter"] == 1){
+							
+							$sel = "checked";
+						}
+					}
+				?>
+				<input type="checkbox" <?php echo $sel?> name="skyscraper_options[accept_read_twitter]" value="1"/> 
+				</p>
+				</DIV>
 
 				<BR/>
-
-
+				<BR/>
 
 
 
@@ -1348,7 +1682,26 @@ share your posts, don't you? :) Get it now!
 				</DIV>
 
 
-
+				<DIV style="border: 1px solid rgb(223, 223, 223); margin-left: 22px; font-size: 10px; font-style: italic; width: 327px; padding: 0px 11px;">
+				<p>This feature will read your rss posts and show them on skyscraper sociable. </p>				
+				<p>Sociable will save and use the rss url only to read posts.</p>			
+				<p>Your visitors can read the information that you are sharing.</p> 				
+				<p>If you agree check here:
+				
+				<?php
+					
+					$sel = "";
+					if (isset($skyscraper_options["accept_read_rss"])){
+				
+						if ($skyscraper_options["accept_read_rss"] == 1){
+							
+							$sel = "checked";
+						}
+					}
+				?>
+				
+				<input type="checkbox" <?php echo $sel?> name="skyscraper_options[accept_read_rss]" value="1"/> </p> 
+				</DIV>
 
 
 
@@ -1563,8 +1916,12 @@ share your posts, don't you? :) Get it now!
 
 				</DIV> 
 
-
-
+	<BR/> 
+	<DIV style="border: 1px solid rgb(223, 223, 223); margin-left: 22px; font-size: 10px; font-style: italic; width: 327px; padding: 0px 11px;">
+				<p>This feature load Facebook Counter, Twitter Counter and Google Plus Counter.</p>
+				<p>Will load scripts from each site and show information of yours visitors.</p>
+				</p>
+				</DIV>	
 
 
 
@@ -6065,27 +6422,71 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
         global $sociable_options;
+
+
+
+
+
+
+
+	
+
+
+
+
 
 
 
 		?>
 
+
+
+
+
+
+
+					
+
+
+
+
+
+
+
 			<div class="wrap">
+
+
+
+
+
+
+
+        	
+
+
+
+
+
+
 
         <DIV style="margin:0 0 0 25px" class="Post-subTXT" id="Post-subTXT" >			
 
 
 
 
- 
+
 
 
 			<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fblogplay.com%2F&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=true&amp;action=recommend&amp;colorscheme=light&amp;font&amp;height=80&amp;appId=133479460071366" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:40px;" allowTransparency="true"></iframe><br />
 
 
 
-	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blogplay.com" data-text="Check the sociable plugin  [blogplay.com]" >Tweet</a>
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://blogplay.com" data-text="Check the sociable plugin  [sociable]" data-via="sociablesite" data-hashtags="sociable">Tweet</a>
 
 
 
@@ -9007,7 +9408,17 @@ share your posts, don't you? :) Get it now!
 
 
 
+
+
+
+
 					<span style="margin:30px;"><?php  _e("Save Changes","sociable");?></span>
+
+
+
+
+
+
 
 				</DIV>
 
@@ -9091,7 +9502,53 @@ share your posts, don't you? :) Get it now!
 
 		<br>
 
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+			
+
+
+
+
+
+
+
+                
+
+
+
                 <?php  //do_settings_sections( 'sociable_options' ); ?>
+
+
+
+               
+
+
+
+          
+
+
+
+
+
+
+
+            
+
+
+
+
 
 
 
