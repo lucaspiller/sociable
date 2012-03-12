@@ -338,7 +338,7 @@ function sociable_reset(){
 
             'favicon' => 'twitter.png',
 
-            'url' => 'http://twitter.com/intent/tweet?text=TITLE%20-%20PERMALINK%20(via%20@sociablesite)%20/sociable/%20blogplay.com',
+            'url' => 'http://twitter.com/intent/tweet?text=TITLE%20-%20PERMALINK%20(via%20@sociablesite)%20/blogplay/%20blogplay.com',
 
             'spriteCoordinates' => Array( 
 
@@ -359,7 +359,7 @@ function sociable_reset(){
 
             'favicon' => 'twitter.png',
 
-            'url' => '<a href="https://twitter.com/share" data-text="TITLECOUNT - PERMALINKCOUNT (via #sociablesite) *sociable* blogplay.com" data-url="PERMALINKCOUNT" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>',
+            'url' => '<a href="https://twitter.com/share" data-text="TITLECOUNT - PERMALINKCOUNT  *blogplay* blogplay.com" data-url="PERMALINKCOUNT" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>',
 
             'spriteCoordinates' => Array( 
 
@@ -1006,7 +1006,7 @@ global $sociable_options;
     if ( isset( $site['class'] ) ) {
         $imageclass .= 'sociable_' . $site['class'];
     }
-
+ 
     if( $imagestyle != '' ){
         $imagestyle = 'style="' . $imagestyle . '"';
     }
