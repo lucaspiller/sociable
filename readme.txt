@@ -10,7 +10,7 @@ Requires at least: 2.6
 
 Tested up to: 3.3.1
 
-Stable tag: 4.2.5
+Stable tag: 4.2.6
 
 Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,5mm downloads.
 
@@ -48,7 +48,7 @@ Also use the forum for ideas, feedback, suggestions. We'll try to check the foru
 What happened to the old icons? You can still use them in the new version, but they're not the default style anymore.
 Sociable finds its home outside of the WordPress environment on Blogplay.com- 
 
-*** Sociable 4.2.5 *** 
+*** Sociable 4.2.6 *** 
 = Recent Updates = 
 
 * Add Private Options
@@ -127,6 +127,10 @@ You can still use them. It's just they're not the default anymore.
 
 Please send us an email to  sociableblogplay [ at ] gmail.com
 == Changelog ==
+
+= 4.2.6 =
+
+* Save issue
 
 = 4.2.5 =
 

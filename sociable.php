@@ -1,5 +1,4 @@
 <?php
-
 /*
 
 Plugin Name: Sociable
@@ -8,7 +7,7 @@ Plugin URI: http://blogplay.com/plugin
 
 Description: Automatically add links on your posts, pages and RSS feed to your favorite social bookmarking sites. 
 
-Version: 4.2.5
+Version: 4.2.6
 
 Author: Blogplay
 
@@ -25,13 +24,10 @@ This program is free software; you can redistribute it and/or modify it under th
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
 */
 
 /*
-
  * Define Some Paths
-
 */
 
 define( 'SOCIABLE_HTTP_PATH' , WP_PLUGIN_URL . '/' . str_replace(basename( __FILE__) , "" , plugin_basename(__FILE__) ) );
@@ -116,7 +112,7 @@ function sociable_init(){
  
 	if (!isset($skyscraper_options['accept_read_twitter'])){
 
-		skyscraper_reset();
+		//skyscraper_reset();
 	}
 	
 	
@@ -338,7 +334,7 @@ function sociable_reset(){
 
             'favicon' => 'twitter.png',
 
-            'url' => 'http://twitter.com/intent/tweet?text=TITLE%20-%20PERMALINK%20(via%20@sociablesite)%20/blogplay/%20blogplay.com',
+            'url' => 'http://twitter.com/intent/tweet?text=TITLE%20-%20PERMALINK%20(via%20@sociablesite)%20/blogplay.com/%20blogplay.com',
 
             'spriteCoordinates' => Array( 
 
@@ -359,7 +355,7 @@ function sociable_reset(){
 
             'favicon' => 'twitter.png',
 
-            'url' => '<a href="https://twitter.com/share" data-text="TITLECOUNT - PERMALINKCOUNT  *blogplay* blogplay.com" data-url="PERMALINKCOUNT" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>',
+            'url' => '<a href="https://twitter.com/share" data-text="TITLECOUNT - PERMALINKCOUNT  *blogplay.com* blogplay.com" data-url="PERMALINKCOUNT" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>',
 
             'spriteCoordinates' => Array( 
 
