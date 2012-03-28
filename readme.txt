@@ -12,7 +12,7 @@ Tested up to: 3.3.1
 
 Stable tag: 4.2.6
 
-Sociable continues being the leader in the sharing space of WordPress plugins. Started more than 2 years ago, and with over 1,5mm downloads.
+Congrats for joining the leader in the sharing space of WordPress plugins. "Sociable" is totally FREE, has over 1,5 million downloads and is experiencing an exponential growth and amazing new features. Your feedback is much apreciated. Enjoy! 
 
 == Description ==
 
