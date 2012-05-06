@@ -218,10 +218,13 @@ function sociable_init(){
 
 
 
-	if (!isset($sociable_options['icon_size']) || $sociable_options['icon_size'] == "" || !isset($sociable_options['version'])) sociable_reset();
+	if (!isset($sociable_options['icon_size']) || $sociable_options['icon_size'] == "" || !isset($sociable_options['version']) || !isset($sociable_options['blogplay_tags'])){
+
+		sociable_reset();	
+	} 
 
  
-
+ 
 	if (!isset($skyscraper_options['accept_read_twitter'])){
 
 
@@ -405,6 +408,8 @@ function sociable_reset(){
     $wpdb->query("DELETE FROM $wpdb->postmeta WHERE meta_key = '_sociableoff'");
 
     $sociable_options = array(
+    
+    	'blogplay_tags' => 1, 
 
 		'version' =>'4.2.7',
 
