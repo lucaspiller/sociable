@@ -4113,123 +4113,97 @@ share your posts, don't you? :) Get it now!
 
 
 			<TABLE class="Title-Box" style="cursor:pointer;"  cellspacing="0" cellpadding="0" onclick="hideOrShow('Active');" >
-
-
-
 				<TR>
-
-
 
 					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="Active-Title" ><span id="Active-Tab">+ </span><?php  _e("Active Skyscraper","sociable");?></TD><TD class="Border-Right"></TD>
 
-
-
 				</TR>
-
-
-
-
-
-
-
 			</TABLE>
-
-
-
-			
-
 
 
 			<div style="display: block;" id="Active-Content" class="Content-Box">
 
-
-
-				
-
-
-
-				<br>
-
-
+				<br />
 
 				<div align="center" style="width:100%;">
 
-
-
-					<table align="center" cellspacing="0" cellpadding="10" border="0" class="GeneralOptions-List">
-
-
-
-						
-
-
+                <table align="center" cellspacing="0" cellpadding="10" border="0" class="GeneralOptions-List">
 
 						<tbody><tr valign="top">
 
-
-
 							<td align="right" class="Title">Active Skyscraper</td>
-
-
 
 							<td align="left" style="width:5px;">
 
-
-
-
-
-
-
 							<input <?php if(isset($skyscraper_options["active"])) echo "checked='checked'"?> type="checkbox" id="active" name="skyscraper_options[active]" ></td>
-
-
 
 							<td align="left" class="Content">
 
-
-
 							<span class="TXT">Check if you want Sociable Skyscraper enable </span>
 
-
-
-							<br>
-
-
-
-														
-
-
+							<br />
 
 							</td>
 
-
-
 						</tr>
-
-
-
 					</tbody></table>						
 
-
-
-					<br><br>
-
-
-
-
-
+					<br/><br/>
 
 
 				</div>
-
-
 
 			</div>
 
 
 
 			<br/><br/>
+<TABLE class="Title-Box" style="cursor:pointer;"  cellspacing="0" cellpadding="0">
+				<TR>
 
+					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="Active-Title" ><span id="Active-Tab">+ </span><?php  _e("Send my config","sociable");?></TD><TD class="Border-Right"></TD>
+
+				</TR>
+			</TABLE>
+
+
+			<div style="display: block;" id="Active-Content" class="Content-Box">
+
+				<br />
+
+				<div align="center" style="width:100%;">
+
+                <table align="center" cellspacing="0" cellpadding="10" border="0" class="GeneralOptions-List">
+
+						<tbody><tr valign="top">
+
+							<td align="right" class="Title">Send my config</td>
+
+							<td align="left" style="width:5px;">
+
+							<input <?php if(!empty($skyscraper_options["pixel"])) echo "checked='checked'"?> type="checkbox" id="active" name="skyscraper_options[pixel]" ></td>
+
+							<td align="left" class="Content">
+
+							<span class="TXT">Check if you want help Sociable grow. <br /><br /> This information be used only to improve Sociable. <br /><br />You accept send us your blog configuration and blog name  </span>
+
+							<br />
+
+							</td>
+
+						</tr>
+					</tbody></table>						
+
+					<br/><br/>
+
+
+				</div>
+
+			</div>
+
+
+
+			<br/><br/>
 
 
 			<?php settings_fields( 'skyscraper_options_group' ); ?>
