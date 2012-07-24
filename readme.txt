@@ -153,6 +153,10 @@ Please send us an email to  sociableblogplay [ at ] gmail.com
 
 == Changelog ==
 
+= 4.3.2 =
+
+* shorcode line added
+
 = 4.3.1 =
 
 * Help us grow information
