@@ -335,7 +335,7 @@ if ($attachments) {
 				if ($sitename == "More"){
 					$link .= '<a style="cursor:pointer" rel="nofollow" onMouseOut="fixOnMouseOut(document.getElementById(\'sociable-post'.$location.'-'.$post->ID.'\'), event, \'post'.$location.'-'.$post->ID.'\')" onMouseOver="more(this,\'post'.$location.'-' . $post->ID . '\')">' . $linkitem . '</a></li>' ;
 				}else{				
-					$link .= '<a onClick="ipinit();" style="cursor:pointer" rel="nofollow" title="Vuible.com | Share positive messages (images and videos only)">' . $linkitem . '</a></li>' ;
+					$link .= "<a onClick=\"javascript:var ipinsite='Good%20Vibes.%20Vuible.com',ipinsiteurl='http://vuible.com/';(function(){if(window.ipinit!==undefined){ipinit();}else{document.body.appendChild(document.createElement('script')).src='http://vuible.com/wp-content/themes/ipinpro/js/ipinit.js';}})();\" style=\"cursor:pointer\" rel=\"nofollow\" title=\"Vuible.com | Share positive messages (images and videos only)\">" . $linkitem . "</a></li>";					
 				}
 			}else{
 
@@ -450,7 +450,7 @@ if ($attachments) {
 				if ($sitename=="More"){
 				$link .= '<a style="cursor:poainter" rel="nofollow"   onMouseOver="more(this,\'post'.$location.'-' . $post->ID . '\')">' . $linkitem . '</a></li>' ;
 				}else{				
-					$link .= '<a onClick="ipinit();" style="cursor:pointer" rel="nofollow" title="Vuible.com | Share positive messages (images and videos only)">' . $linkitem . '</a></li>' ;
+				$link .= "<a onClick=\"javascript:var%20ipinsite='Good%20Vibes.%20Vuible.com',ipinsiteurl='http://vuible.com/';(function(){if(window.ipinit!==undefined){ipinit();}else{document.body.appendChild(document.createElement('script')).src='http://vuible.com/wp-content/themes/ipinpro/js/ipinit.js';}})();\" style=\"cursor:pointer\" rel=\"nofollow\" title=\"Vuible.com | Share positive messages (images and videos only)\">" . $linkitem . "</a></li>";					
 				}
 			}else{
 
