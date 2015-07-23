@@ -852,59 +852,7 @@ share your posts, don't you? :) Get it now!
 				</div>
 
 			</div>
-			<br/><br/>
 
-<TABLE class="Title-Box" style="cursor:pointer;"  cellspacing="0" cellpadding="0">
-
-				<TR>
-
-					<TD class="Border-Left" ></TD><TD  class="BG-Middle" id="Active-Title" ><span id="Active-Tab">+ </span><?php  _e("Send my config","sociable");?></TD><TD class="Border-Right"></TD>
-
-				</TR>
-
-			</TABLE>
-			<div style="display: block;" id="Active-Content" class="Content-Box">
-
-				<br />
-
-				<div align="center" style="width:100%;">
-
-                <table align="center" cellspacing="0" cellpadding="10" border="0" class="GeneralOptions-List">
-
-						<tbody><tr valign="top">
-
-							<td align="right" class="Title">Send my config</td>
-
-							<td align="left" style="width:5px;">
-                             <?php
-                                
-                                $checked = "";
-                                if (!empty($skyscraper_options["pixel"])){
-                                    
-                                    $checked = "checked='checked'";
-                                }
-                             
-                             ?>                               
-							 <input <?php echo $checked ?> type="checkbox" id="active" name="skyscraper_options[pixel]" />
-                            
-                            </td>
-
-							<td align="left" class="Content">
-
-							<span class="TXT">Check if you want help Sociable grow. <br /><br /> This information be used only to improve Sociable. <br /><br />You accept send us your blog configuration and blog name  </span>
-
-							<br />
-
-							</td>
-
-						</tr>
-
-					</tbody></table>						
-
-					<br/><br/>
-				</div>
-
-			</div>
 			<br/><br/>
 			<?php settings_fields( 'skyscraper_options_group' ); ?>
 			</form>
@@ -1532,48 +1480,6 @@ share your posts, don't you? :) Get it now!
 							<input <?php if(isset($sociable_options["active"])) echo "checked='checked'"?> type="checkbox" id="active" name="sociable_options[active]" /></td>
 							<td align="left" class="Content">
 								<span class="TXT">Check if you want Sociable Classic enable </span>
-							<br />
-														
-							</td>
-						</tr>
-					</tbody></table>						
-					<br /><br />
-				</div>
-			</div>
-            	<table class="Title-Box" style="cursor:pointer;"  cellspacing="0" cellpadding="0">
-				<tr>
-					<td class="Border-Left" ></td>
-                    <td class="BG-Middle" id="Active-Title" ><?php  _e(" Send my config","sociable");?></td><td class="Border-Right"></td>
-				</tr>
-			</table>
-			
-			<div style="display: block;" id="Active-Content" class="Content-Box">
-				<br />
-				<div align="center" style="width:100%;">
-					<table align="center" cellspacing="0" cellpadding="10" border="0" class="GeneralOptions-List">
-						
-						<tbody><tr valign="top">
-							<td align="right" class="Title">Send my config</td>
-							<td align="left" style="width:5px;">
-                            
-                             <?php
-                                
-                                $checked = "";
-                                if (!empty($sociable_options["pixel"])){
-                                    
-                                    $checked = "checked='checked'";
-                                }
-                             
-                             ?>      
-							<input <?php echo $checked ?> type="checkbox" id="active" name="sociable_options[pixel]" /></td>
-							<td align="left" class="Content">
-								<span class="TXT">
-                                Check if you want help Sociable grow.
-                                 </br>           
-                                This information be used only to improve Sociable.
-                                </br>
-                                You accept send us your blog configuration and blog name 
-                                </span>
 							<br />
 														
 							</td>
