@@ -474,28 +474,6 @@ share your posts, don't you? :) Get it now!
 							</td>
 						</tr>
 						<tr valign="top">
-							<td align="right" class="Title">Blogplay Tags</td>
-
-							<td align="left" style="width:5px;">			
-
-				<?php
-					$sel = "";
-					if (isset($skyscraper_options["blogplay_tags"])){
-							if (!empty($skyscraper_options["blogplay_tags"])){
-
-								$sel = "checked";
-
-							}
-					}
-				?>
-
-		<input type="checkbox" name="skyscraper_options[blogplay_tags]" id="blogplay_tags" <?php echo $sel?>></td>
-							<td align="left" class="Content">
-							<span class="TXT">Accept include the blogplay.com tag into my shares and counters.</span>
-							<br>
-							</td>
-						</tr>
-						<tr valign="top">
 							<td align="right" class="Title">Banner's label (35 char Max.)</td>
 							
 							<td align="left" style="width:5px;">
@@ -1137,12 +1115,6 @@ share your posts, don't you? :) Get it now!
 				<BR/>
 				<DIV style="width:100%;height:60px;">
 					<INPUT type="text" class="Tagline-INPUT" id="tagline" name="sociable_options[tagline]" value="<?php echo$sociable_options["tagline"];?>" /> 
-					
-					<DIV class="ToSociable" >
-							<INPUT type="checkbox" <?php if (!empty($sociable_options["help_grow"])) echo "checked = 'checked'";?> name="sociable_options[help_grow]" id="LinkToSociable" />
-							<?php  _e("Link to Sociable","sociable");?><BR/>
-							<SPAN style="font-size:14px;"><?php  _e("(Help us grow, please leave the link so others discover Sociable from your blog)","sociable");?></SPAN>
-					</DIV>
 				</DIV>
 			</DIV>
                

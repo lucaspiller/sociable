@@ -196,7 +196,6 @@ toolbarStart: function(sID_Parent,sMove,sHeight,sWidth,sBgColor,sLabelBgColor,sS
 				
 		var Base =
 		'<div align="center" class="wpPlugin-MainFrame" id="wpPlugin-BOX"  style="width:'+(oPlugin.PluginWidth+2)+'px;position:absolute;margin-top:40px;display:block;height:'+oPlugin.PluginHeight+'px;" >'+		
-		'<a href="http://blogplay.com" target="_blank" ><div id="wpSocciable" class="wpSocciable'+oPlugin.SlideBig+'" ></div></a>'+
 		'<div id="wpSocciableClose" class="wpSocciableClose"   onclick="oPlugin.hideShowToolbar();"></div>'+
 		'<table id="wpPlugin-MainFrame"  class="shape" cellspacing="0" cellpadding="0"  width="100%">'+
 		'<tr>'+
@@ -235,7 +234,8 @@ toolbarStart: function(sID_Parent,sMove,sHeight,sWidth,sBgColor,sLabelBgColor,sS
 				
 				}*/
 			
-		document.getElementById('wpPlugin-BOX').style.top = '20px';		document.getElementById('wpSocciable').style.backgroundImage="url("+jQuery("#skyscraper_dir").val()+"images/toolbar/slide-sociable.png)";						document.getElementById('wpSocciableClose').style.backgroundImage="url("+jQuery("#skyscraper_dir").val()+"images/toolbar/slide-close.png)";
+		document.getElementById('wpPlugin-BOX').style.top = '20px';
+		document.getElementById('wpSocciableClose').style.backgroundImage="url("+jQuery("#skyscraper_dir").val()+"images/toolbar/slide-close.png)";
 		
 },
  CreateGoToTop:function(sId,sTitle,sContent){

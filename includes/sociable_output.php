@@ -97,33 +97,7 @@ $image = "";
 	$tagline = isset( $sociable_options['tagline'] ) ? $sociable_options['tagline'] : '' ;
 
 	if ($tagline != '') {
-
-		$html .= '<div class="sociable_tagline">';
-
-
-
-				if (isset( $sociable_options['help_grow'] )) {
-				
-					if (!empty($sociable_options['help_grow'])){
-						$addSize = "";
-	
-						if ($sociable_options['icon_size'] ==16) $addSize = "font-size:11px;";
-						
-						$html .= "<a class='sociable_tagline' target='_blank' href='http://blogplay.com'  style='".$addSize."color:#333333;text-decoration:none'>".$tagline."</a>";
-					}
-					else{
-						$html .= $tagline;
-					}
-				}else{
-
-                $html .= $tagline;
-
-
-
-				}
-
-		$html .= "</div>";
-
+		$html .= '<div class="sociable_tagline">' . $tagline . '</div>';
 	}
 
 	/**

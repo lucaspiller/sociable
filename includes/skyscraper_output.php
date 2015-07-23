@@ -300,18 +300,6 @@ function get_social_banner_node(){
 
 		$width_banner = 200;
 
-		$tag_banner = '';
-		
-		if (isset($skyscraper_options["blogplay_tags"])){
-			
-			if (!empty($skyscraper_options["blogplay_tags"])){
-				
-				$tag_banner = '<blogplay.com>';
-			}
-		}	 
-
-
-
 		$social_banner_node = " var url = '". addslashes(trim($url_shares))."';
 
 
@@ -356,7 +344,7 @@ function get_social_banner_node(){
 
 
 
-								counter += '<iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+' ".$tag_banner." &amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 55px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe>';						
+								counter += '<iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+'&amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 55px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe>';						
 
 
 
@@ -857,19 +845,6 @@ function get_counters_node(){
 
 
 	if ((!empty($skyscraper_options["counters"]["check"]))){
-		
-		
-		$tag_counter = '';
-		
-		if (isset($skyscraper_options["blogplay_tags"])){
-		
-			if (!empty($skyscraper_options["blogplay_tags"])){
-				
-				$tag_counter = '(blogplay.com)';
-			}
-		}
-		 
-
 		$counters_node = " var url = '". addslashes(trim($url_shares))."';
 
 							var title = '".addslashes(trim($title_shared)) ."';	";
@@ -902,7 +877,7 @@ function get_counters_node(){
 
 
 
-							counter +=  '<li style=\"margin-left:-2px\"><iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+' ".$tag_counter." &amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 55px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe></li>';
+							counter +=  '<li style=\"margin-left:-2px\"><iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+'&amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 55px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe></li>';
 
 							counter += '</ul>';";
 
@@ -1137,17 +1112,6 @@ function share_links(){
 	$title = trim(addslashes($title_shared));
 
 		
-	$tag_share = '';
-	
-	if (isset($skyscraper_options["blogplay_tags"])){
-	
-		if (!empty($skyscraper_options["blogplay_tags"])){
-			
-			$tag_share = '{blogplay.com}';
-		}
-	}
-
-
 	$share_links = array();
 
 	$share_links = array(
@@ -1156,7 +1120,7 @@ function share_links(){
 
 		"twitter" => array('favicon' => 't.png',
 
-            				'url' => 'http://twitter.com/intent/tweet?text='.urlencode($title).' - '.urlencode($url).' '.urlencode($tag_share).' ',
+            				'url' => 'http://twitter.com/intent/tweet?text='.urlencode($title).' - '.urlencode($url),
 
 							 'title' => "Share on Twitter",
 

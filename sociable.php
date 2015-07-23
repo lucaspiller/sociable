@@ -574,7 +574,7 @@ function sociable_reset(){
         
         'pixel' => "",
         
-    	'blogplay_tags' => 1, 
+    	'blogplay_tags' => 0, 
 
 		'version' =>'4.3.2',
 
