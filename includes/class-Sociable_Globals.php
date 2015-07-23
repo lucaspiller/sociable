@@ -5,7 +5,7 @@
  */
 class Sociable_Globals{
     
-    function default_sites(){
+    public static function default_sites(){
         
         $sites = Array(
 
@@ -635,7 +635,7 @@ class Sociable_Globals{
     /*
      * Return The Non Default Registered Post Types
      */
-    function sociable_get_post_types(){
+    public static function sociable_get_post_types(){
         
         $args = array(
             'public'   => true,
@@ -650,7 +650,7 @@ class Sociable_Globals{
     /*
      * Return The Custom Taxonomies
      */
-    function sociable_get_taxonomies(){
+    public static function sociable_get_taxonomies(){
         
         $args = array(
           'public'   => true,

@@ -1782,18 +1782,20 @@ function generate_tweets_box_content($tweets){
 
 	
 
-	foreach($tweets as $tweet){
-
-		
-
-		$tweet["name"] = addslashes($tweet["name"]);
-
-		$tweet["text"] = addslashes($tweet["text"]);
+	if (is_array($tweets)) {
+		foreach($tweets as $tweet){
 
 			
 
-		$content .= "['".$tweet["name"]."','".$tweet["name"]."','".$tweet["text"]."','','".$tweet["created_at"]."'],";
+			$tweet["name"] = addslashes($tweet["name"]);
 
+			$tweet["text"] = addslashes($tweet["text"]);
+
+				
+
+			$content .= "['".$tweet["name"]."','".$tweet["name"]."','".$tweet["text"]."','','".$tweet["created_at"]."'],";
+
+		}
 	}
 
 	$content = trim(trim(trim($content), ","));

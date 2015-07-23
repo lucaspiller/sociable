@@ -6,7 +6,7 @@ class sociable_Admin_Options{
     /**
      * A Function To Hook To Admin Init.
      */
-    function init(){        
+    public static function init(){        
         register_setting( 'sociable_options_group' , 'sociable_options' );
         //Add The Settings Sections
        // add_settings_section( 'sociable_locations', __( 'Locations' ),  array( 'sociable_Admin_Options' , 'location_options_callback' )  , 'sociable_options' );
@@ -14,13 +14,13 @@ class sociable_Admin_Options{
 		register_setting( 'skyscraper_options_group' , 'skyscraper_options' );
 	//	add_settings_section( 'sociable_locations', __( 'Locations' ),  array( 'sociable_Admin_Options' , 'location_options_callback' )  , 'skyscraper_options' );
     }
-    function skyscraper_init(){        
+    public static function skyscraper_init(){        
     	register_setting( 'skyscraper_options_group' , 'skyscraper_options' );
 		add_settings_section( 'sociable_locations', __( 'Locations' ),  array( 'sociable_Admin_Options' , 'location_options_callback' )  , 'skyscraper_options' );
         //Add All The Settings Fields
         //self::add_settings_fields();      
     }
-    function Select_Sociable_Page(){
+    public static function Select_Sociable_Page(){
         global $sociable_options;
 		?>
 
@@ -121,7 +121,7 @@ share your posts, don't you? :) Get it now!
 			</div>
     <?php }
     
-    function create_select_options($value){
+    public static function create_select_options($value){
 	
 		for($i=3; $i<=9; ){
 			
@@ -136,7 +136,7 @@ share your posts, don't you? :) Get it now!
 	}
 	
     
-    function Create_Options_Page_Skycraper(){  
+    public static function Create_Options_Page_Skycraper(){  
 	        global $skyscraper_options;
             global $sociable_options;
 		?>
@@ -939,7 +939,7 @@ share your posts, don't you? :) Get it now!
      * Add The Menu Pages To The Administration Options
      */
      
-    function add_menu_pages(){
+    public static function add_menu_pages(){
     
         global $sociable_post_types;
         
@@ -998,7 +998,7 @@ share your posts, don't you? :) Get it now!
     /*
      * Function to Enqueue The Styles For The Options Page
      */
-    function enqueue_styles(){
+    public static function enqueue_styles(){
 	 	wp_enqueue_style( 'style-admin-css', SOCIABLE_HTTP_PATH . 'css/style-admin.css' );
         wp_enqueue_style( 'sociable-admin-css', SOCIABLE_HTTP_PATH . 'css/sociable-admin.css' );
         wp_enqueue_style( 'sociablecss' , SOCIABLE_HTTP_PATH . 'css/sociable.css' );
@@ -1007,7 +1007,7 @@ share your posts, don't you? :) Get it now!
     /*
      * Function To Enqueue The Scripts For The Options Page
      */
-    function enqueue_scripts(){
+    public static function enqueue_scripts(){
         wp_enqueue_script('jquery'); 
         wp_enqueue_script('jquery-ui-core',false,array('jquery')); 
         wp_enqueue_script('jquery-ui-sortable',false,array('jquery','jquery-ui-core'));
@@ -1021,7 +1021,7 @@ share your posts, don't you? :) Get it now!
     /*
      * Function To Add The Settings Fields.
      */
-    function do_site_selection_list($plugin = 'sociable'){
+    public static function do_site_selection_list($plugin = 'sociable'){
 		        
 		if ($plugin == 'sociable'){
 			
@@ -1126,7 +1126,7 @@ share your posts, don't you? :) Get it now!
     /*
      * Create The HTML For The Options Page
      */
-    function Create_Options_Page(){ 
+    public static function Create_Options_Page(){ 
         global $sociable_options;
         global $skyscraper_options;
 		?>
@@ -1613,11 +1613,11 @@ share your posts, don't you? :) Get it now!
 		</div>
     <?php }
     
-    function add_meta_box( $page ){
+    public static function add_meta_box( $page ){
         add_meta_box( 'sociable_off' , __( 'Disable sociable' ), array( 'sociable_Admin_Options' , 'create_meta_box' ) , $page, 'side', 'default' );
     }
     
-    function create_meta_box(){
+    public static function create_meta_box(){
 	global $post;
 	$sociableoff = false;
         $checked = '';
@@ -1629,7 +1629,7 @@ share your posts, don't you? :) Get it now!
 	
     }
     
-    function save_post( $post_id ){
+    public static function save_post( $post_id ){
         
         if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
             return $post_id;
@@ -1661,7 +1661,7 @@ share your posts, don't you? :) Get it now!
     /**
      * This Function Runs Before The Options Are Printed Out.
      */
-    function general_options_callback(){
+    public static function general_options_callback(){
         
         return true;
     }
@@ -1669,7 +1669,7 @@ share your posts, don't you? :) Get it now!
     /**
      * This Function Runs Before The Location Options Are Echoed Out.
      */
-    function location_options_callback(){
+    public static function location_options_callback(){
         echo '<p>' . __( 'Please Select The Locations That You Wish To Allow The Sociable 2 Plugin To Insert The Links.' ) . '</p>';
     }
     
@@ -1682,7 +1682,7 @@ share your posts, don't you? :) Get it now!
      *      'description' => 'field Description Should Go Here, This is Not The Title, Rather The Description'
      * );
      */
-    function Checkbox( $data ){
+    public static function Checkbox( $data ){
         global $sociable_options;
         
         //Save The Locations As a seperate array option
@@ -1698,7 +1698,7 @@ share your posts, don't you? :) Get it now!
 	echo '<input ' . $checked . ' id="' . $data['id'] . '" name="' . $name . '" type="checkbox" /> <span class="description">' . $data['description'] . '</span>';
     }
     
-    function TextInput( $data ){
+    public static function TextInput( $data ){
         global $sociable_options;
         
         $value = ( isset( $sociable_options[$data['id']] ) ) ? $sociable_options[$data['id']] : '';
@@ -1707,7 +1707,7 @@ share your posts, don't you? :) Get it now!
         
     }
     
-    function TextArea( $data ){
+    public static function TextArea( $data ){
         global $sociable_options;
         
         $value = ( isset( $sociable_options[$data['id']] ) ) ? $sociable_options[$data['id']] : '';
@@ -1716,7 +1716,7 @@ share your posts, don't you? :) Get it now!
         
     }
     
-    function radio( $data ){
+    public static function radio( $data ){
         global $sociable_options;
         
         $cur_val = ( isset( $sociable_options[$data['id']] ) ) ? $sociable_options[$data['id']] : 0 ;

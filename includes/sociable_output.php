@@ -136,12 +136,6 @@ $args = array(
 ); 
 
 $image = "";
-if ($attachments) {
-	foreach ($attachments as $attachment) {
-		//echo apply_filters('the_title', $attachment->post_title);
-		$image =  wp_get_attachment_url($attachment->ID, true);
-	}
-}
 
 	$html = '<!-- Start Sociable --><div class="sociable">';
 
@@ -351,7 +345,7 @@ if ($attachments) {
 
 			}else{
 
-				if (count(split("Counter",$sitename))>1){
+				if (count(explode("Counter",$sitename))>1){
 
 					$link.= $href;
 
