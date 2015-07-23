@@ -3,8 +3,8 @@ Author: sociable
 Contributors: sociable
 Tags: sociable, social bookmarking, social bookmarks, social icons,  bookmarking, share, sharing, be sociable share, share and enjoy, digg, delicious, twitter, facebook, blinklist, stumbleupon, gmail, posterous, tumblr
 Requires at least: 2.6
-Tested up to: 3.3.1
-Stable tag: 4.3.4.1
+Tested up to: 4.3
+Stable tag: 4.4.0
 
 Congrats for joining the leader in the sharing space of WordPress plugins. "Sociable" is totally FREE, has over 1,7 million downloads and now you can enjoy Fueto and make your searches more Sociable.
 
@@ -55,43 +55,13 @@ Also use the forum for ideas, feedback, suggestions. We'll try to check the foru
 
 What happened to the old icons? You can still use them in the new version, but they're not the default style anymore.
 
-Sociable finds its home outside of the WordPress environment on Blogplay.com- 
+*** Sociable 4.4.0 *** 
 
+= Recent Updates =
 
-
-*** Sociable 4.3.4.1 *** 
-
-= Recent Updates = 
-
-* Change links permissions
-* Add Private Options
-* Add Pinterest share icon
-* Add inbound.org share icon
-* Changed the old motto "share and enjoy" for "Be Sociable, Share" much more attractive. Of course you can customize it to whatever you want.
-* Complete re-write to increase efficiency and speed of the plugin
-* New Sociable Skyscraper version, the ultimate advanced packed plugin for setting up rating system on your WordPress blog. Sociable Skyscraper allows you to set up pages and comments with great degree of customization.
-
-= Recently Added Sites =
-
-
-
-* Pinterest
-* Inbound.org
-* Posterous
-* Sphinn
-* Tumblr
-* G+
-* LinkedIN
-* Inbound
-
-
-
-= Recently Deleted Sites =
-
-* Mixx.com, recently acquired, doesn't support share functions anymore
-* Netvibes stopped sharing
-* Slashdot: New bookmark creation is no longer supported 
-* And we deleted a bunch of others that were really not used that much
+* Updates to work with Wordpress 4.3+
+* Fixed broken styling on a few social widgets
+* Removed dead social networks
 
 = Special Thanks =
 
@@ -145,15 +115,14 @@ Sociable plugin wouldn't be what it is today if it weren't for these people that
 
 You can still use them. It's just they're not the default anymore.
 
-= I want to reach you, but not for a technical question =
-
-
-
-Please send us an email to  sociableblogplay [ at ] gmail.com
-
 == Changelog ==
 
+= 4.4 =
 
+* Updates to work with Wordpress 4.3+
+* Fixed broken styling on a few social widgets
+* Removed dead social networks
+* Removed blogplay tracking widget
 
 = 4.3.4.1 =
 
