@@ -847,7 +847,7 @@ share your posts, don't you? :) Get it now!
 					<span style="margin:30px;">Save Changes</span>
 				</div>
 				<div style="cursor:pointer;line-height:15px;font-size:12px;" onclick="document.getElementById('sociable_reset_form').submit();" name="sociable_reset" id="sociable_reset" class="ResetSociable"><br>
-					<span style="margin:40px;margin-left:35px;">Reset Skyscraper</span>
+					<span style="margin:20px;margin-left:35px;">Reset Skyscraper</span>
 				</div>
 			</div>
 		</div>		
@@ -1474,9 +1474,6 @@ share your posts, don't you? :) Get it now!
 				</DIV>
 				<DIV class="ResetSociable" id="sociable_reset" name="sociable_reset" onClick="document.getElementById('sociable_reset_form').submit();" style="cursor:pointer;line-height:15px;font-size:12px;"><br/>
 					<span style="margin:40px;margin-left:35px;"><?php  _e("Reset Sociable","sociable");?></span>
-				</DIV>
-				<DIV class="UninstallSociable" onClick="document.getElementById('sociable_remove_form').submit();"  style="cursor:pointer;line-height:15px;font-size:12px;"><br/>
-					<span style="margin:25px;margin-left:20px;"><?php  _e("Completly Uninstall Sociable","sociable");?></span>
 				</DIV>
 			</DIV>
 		</DIV>
