@@ -1008,8 +1008,10 @@ share your posts, don't you? :) Get it now!
             }
             if ( $sitename != "More"){
 				if (isset($site["counter"])){
-					//$image = "<img src='".SOCIABLE_HTTP_PATH."images/".$site["favicon"]."'>";
-					$image = $site["url"];
+					$url = $site["url"];
+					$permalinkCOUNT	= get_permalink(1);
+					$url = str_replace('PERMALINKCOUNT', $permalinkCOUNT, $url);
+					$image = $url;
 				}else{
 					$image = _get_sociable_image( $site, '' );
 				}

@@ -563,13 +563,6 @@ class Sociable_Globals{
                 'spriteCoordinates' => Array(163,73),
             ),
 
-            'Add to favorites' => Array(
-                'favicon' => 'addtofavorites.png',
-                'url' => 'javascript:AddToFavorites();',
-                'spriteCoordinates' => Array(181,73),
-                'supportsIframe' => false,
-            ),             
-
 //            'Blogplay' => Array(
 //                'favicon' => 'blogplay.png',
 //                'url' => 'http://blogplay.com',

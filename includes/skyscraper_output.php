@@ -1152,31 +1152,6 @@ function share_links(){
 
 							 'blank' => '_blank'				),
 
-							
-
-		"inbound" => array('favicon' => 'inbound.png',
-
-			 			     'url' => 'http://inbound.org/?url='.$permalink.'&title='.$title.'',
-
-							 'title' => "Share on inbound.org",
-
-
-
-							 'blank' => '_blank'				),
-
-							
-
-		"stumble" => array('favicon' => 's.png',
-
-			 			   'url' => 'http://www.stumbleupon.com/submit?url='.$permalink.'&title='.$title.'',
-
-							'title' => "Share on StumpleUpon",
-
-
-
-							 'blank' => '_blank'				),
-
-							
 
 		"delicious" => array('favicon' => 'o.png',
 
@@ -1188,19 +1163,6 @@ function share_links(){
 
 							 'blank' => '_blank'				),
 
-							
-
-		"reader" => array('favicon' => 'n.png',
-
-							'url' => 'http://www.google.com/reader/link?url='.$permalink.'&amp;title='.$title.'&amp;srcURL='.$permalink.'&amp;srcTitle='.$blogname.'',
-
-							"title" => "Share on Google Reader",
-
-
-
-							 'blank' => '_blank'				),
-
-		
 
 		"linkedin" => array('favicon' => 'i.png',
 
@@ -1227,31 +1189,6 @@ function share_links(){
 
 
 							 'blank' => '_blank'						),
-
-
-
-							
-
-
-
-		"favorites" => array('favicon' => 'fv.png',
-
-
-
-			 			     'url' => 'javascript:AddToFavorites();',
-
-
-
-							 'title' => "Add to favorites - doesn\"t work in Chrome",
-
-
-
-							 'blank' => '_self'	)
-
-
-
-							 					
-
 
 
 	);

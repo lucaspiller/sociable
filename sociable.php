@@ -53,15 +53,11 @@ include 'includes/sociable_output.php';
  * Global Variables
  */
 
-
-
-//$sociable_known_sites = Sociable_Globals::default_sites();
-
-
 $sociable_options = get_option( 'sociable_options' );
 $skyscraper_options = get_option( 'skyscraper_options' );
 $skyscraper_latest = get_option( 'skyscraper_latest' );
 $skyscraper_mentions = get_option( 'skyscraper_mentions' );
+$sociable_known_sites = get_option('sociable_known_sites');
 
 //$sociable_post_types = array(); //Set This blank here, won't work before init
 
@@ -198,35 +194,7 @@ function sociable_init(){
 
 	} 
 
-
-
- 
-
- 
-
-	if (!isset($skyscraper_options['accept_read_twitter'])){
-
-
-
-
-
-
-
-		//skyscraper_reset();
-
-
-
-	}
-
-
-
-	
-
-
-
-	
-
-
+	update_known_sites();
 
     load_plugin_textdomain( 'sociable', false, dirname( plugin_basename( __FILE__ ) )."/languages" );
 
@@ -658,7 +626,7 @@ function sociable_reset(){
 
 
 
-									'Add to favorites'=>'on',
+									'Add to favorites'=>'off',
 
 
 
@@ -681,8 +649,6 @@ function sociable_reset(){
 
 
 
-
-									'Google Reader' =>'on',
 
 
 
@@ -957,84 +923,6 @@ function sociable_reset(){
 
 
 						        ), 
-
-
-
-        'Myspace'     => array(
-
-
-
-
-
-
-
-            'favicon' => 'myspace.png',
-
-
-
-
-
-
-
-            'url' => 'http://www.myspace.com/Modules/PostTo/Pages/?u=PERMALINK&amp;t=TITLE',
-
-
-
-
-
-
-
-            'spriteCoordinates' => Array( 
-
-
-
-
-
-
-
-                '16' => array("0px","-16px"),
-
-
-
-
-
-
-
-                '32' => array("0px","-32px"),
-
-
-
-
-
-
-
-                '48' => array("0px","-48px"),
-
-
-
-
-
-
-
-                '64' => array("0px","-64px")
-
-
-
-
-
-
-
-            )
-
-
-
-
-
-
-
-        ),
-
-
 
         'Twitter'     => array(
 
@@ -1498,92 +1386,6 @@ function sociable_reset(){
 
         ),
 
-
-
-
-
-
-
-		'Digg Counter'        => array(
-
-
-
-
-
-
-
-			'counter' =>1,
-
-
-
-
-
-
-
-            'favicon' => 'digg.png',
-
-
-
-
-
-
-
-            'url' => "<script type='text/javascript'>(function() {var s = document.createElement('SCRIPT'), s1 = document.getElementsByTagName('SCRIPT')[0];s.type = 'text/javascript';s.async = true;s.src = 'http://widgets.digg.com/buttons.js';s1.parentNode.insertBefore(s, s1);})();</script><a href='http://digg.com/submit?url=PERMALINK&amp;title=TITLE'  class='DiggThisButton DiggCompact'></a>",
-
-
-
-            'spriteCoordinates' => Array( 
-
-
-
-
-
-
-
-                '16' => array("-32px","0px"),
-
-
-
-
-
-
-
-                '32' => array("-64px","0px"),
-
-
-
-
-
-
-
-                '48' => array("-96px","0px"),
-
-
-
-
-
-
-
-                '64' => array("-128px","0px")
-
-
-
-
-
-
-
-            )
-
-
-
-
-
-
-
-        ),
-
-
-
         'Reddit'      => array(
 
 
@@ -1848,21 +1650,6 @@ function sociable_reset(){
                 '64' => array("-448px","-64px")
             )
 ),
-'vuible Counter'  => array(
-			'counter' =>1,
-            'favicon' => 'vuible.png',
-            'url' => '<script src="http://www.stumbleupon.com/hostedbadge.php?s=2&r=PERMALINKCOUNT"></script>',
-            'spriteCoordinates' => Array( 
-                '16' => array("-112px","-16px"),
-                '32' => array("-224px","-32px"),
-                '48' => array("-336px","-48px"),
-                '64' => array("-448px","-64px")
-            )
-),
-
-
-
-
 
 		 'Google Bookmarks' => Array (
 
@@ -2258,364 +2045,6 @@ function sociable_reset(){
 
             ),
 
-
-
-
-
-
-
-			   'MSNReporter' => Array(
-
-
-
-
-
-
-
-                    'favicon' => 'msn.png',
-
-
-
-
-
-
-
-                    'url' => 'http://reporter.es.msn.com/?fn=contribute&amp;Title=TITLE&amp;URL=PERMALINK&amp;cat_id=6&amp;tag_id=31&amp;Remark=EXCERPT',
-
-
-
-
-
-
-
-                    'description' => 'MSN Reporter',
-
-
-
-
-
-
-
-                    'spriteCoordinates' => Array( 
-
-
-
-
-
-
-
-                '16' => array("-176px","0px"),
-
-
-
-
-
-
-
-                '32' => array("-352px","0px"),
-
-
-
-
-
-
-
-                '48' => array("-528px","0px"),
-
-
-
-
-
-
-
-                '64' => array("-704px","0px")
-
-
-
-
-
-
-
-            )
-
-
-
-
-
-
-
-            ),
-
-
-
-
-
-
-
-			
-
-
-
-
-
-
-
-			 'BlinkList' => Array(
-
-
-
-
-
-
-
-                    'favicon' => 'blinklist.png',
-
-
-
-
-
-
-
-                    'url' => 'http://www.blinklist.com/index.php?Action=Blink/addblink.php&amp;Url=PERMALINK&amp;Title=TITLE',
-
-
-
-
-
-
-
-                    'spriteCoordinates' => Array( 
-
-
-
-
-
-
-
-                '16' => array("0px","0px"),
-
-
-
-
-
-
-
-                '32' => array("0px","0px"),
-
-
-
-
-
-
-
-                '48' => array("0px","0px"),
-
-
-
-
-
-
-
-                '64' => array("0px","0px")
-
-
-
-
-
-
-
-            ),
-
-
-
-
-
-
-
-                    'supportsIframe' => false,
-
-
-
-
-
-
-
-            ),
-
-
-
-
-
-
-
-			'Sphinn' => Array(
-
-
-
-
-
-
-
-                    'favicon' => 'sphinn.png',
-
-
-
-
-
-
-
-                    'url' => 'http://sphinn.com/index.php?c=post&amp;m=submit&amp;link=PERMALINK',
-
-
-
-
-
-
-
-                    'spriteCoordinates' => Array( 
-
-
-
-
-
-
-
-                '16' => array("-96px","-16px"),
-
-
-
-
-
-
-
-                '32' => array("-192px","-32px"),
-
-
-
-
-
-
-
-                '48' => array("-288px","-48px"),
-
-
-
-
-
-
-
-                '64' => array("-384px","-64px")
-
-
-
-
-
-
-
-            )
-
-
-
-
-
-
-
-            ),
-
-
-
-
-
-
-
-			
-
-
-
-
-
-
-
-			'Posterous' => Array(
-
-
-
-
-
-
-
-                    'favicon' => 'posterous.png',
-
-
-
-
-
-
-
-                    'url' => 'http://posterous.com/share?linkto=PERMALINK&amp;title=TITLE&amp;selection=EXCERPT',
-
-
-
-
-
-
-
-                    'spriteCoordinates' => Array( 
-
-
-
-
-
-
-
-                '16' => array("-32px","-16px"),
-
-
-
-
-
-
-
-                '32' => array("-64px","-32px"),
-
-
-
-
-
-
-
-                '48' => array("-96px","-48px"),
-
-
-
-
-
-
-
-                '64' => array("-128px","-64px")
-
-
-
-
-
-
-
-            )
-
-
-
-
-
-
-
-            ),
-
-
-
-
-
-
-
 			'Tumblr' => Array(
 
 
@@ -2800,165 +2229,6 @@ function sociable_reset(){
 
 
 
-			'Google Reader' => array (
-
-
-
-
-
-
-
-					'favicon' => 'googlebuzz.png',
-
-
-
-
-
-
-
-						'url' => 'http://www.google.com/reader/link?url=PERMALINK&amp;title=TITLE&amp;srcURL=PERMALINK&amp;srcTitle=BLOGNAME',
-
-
-
-
-
-
-
-				'spriteCoordinates' => Array( 
-
-
-
-
-
-
-
-                '16' => array("-112px","0px"),
-
-
-
-
-
-
-
-                '32' => array("-224px","0px"),
-
-
-
-
-
-
-
-                '48' => array("-336px","0px"),
-
-
-
-
-
-
-
-                '64' =>  array("-448px","0px")
-
-
-
-
-
-
-
-            )
-
-
-
-
-
-
-
-			),
-
-
-
-
-
-
-
-			 'Add to favorites' => array(
-
-
-
-
-
-
-
-			 'favicon' => 'favorites.png',
-
-
-
-
-
-
-
-			 'url' => 'javascript:AddToFavorites();',
-
-
-
-
-
-
-
-			 'spriteCoordinates' => Array( 
-
-
-
-
-
-
-
-                '16' => array("-64px","0px"),
-
-
-
-
-
-
-
-                '32' => array("-128px","0px"),
-
-
-
-
-
-
-
-                '48' => array("-192px","0px"),
-
-
-
-
-
-
-
-                '64' => array("-256px","0px")
-
-
-
-
-
-
-
-            )
-
-
-
-
-
-
-
-		 ),
-
-
-
-
-
-
 
 			 'More' => array(
 
@@ -3051,22 +2321,44 @@ function sociable_reset(){
 
 
     update_option( 'sociable_known_sites' , $sociable_known_sites );
-
-
-
     update_option( 'sociable_options'     , $sociable_options );
-
-
-
     update_option( 'sociable_helpus'      ,	1); 
-
 }
 
+// check for any old sites that have been removed
+function update_known_sites() {
+	global $sociable_known_sites;
+	global $sociable_options;
 
+	$needs_update = false;
 
+	$removed_sites = Array(
+		"Add to favorites",
+		"Google Reader",
+		"Digg Counter",
+		"vuible Counter",
+		"BlinkList",
+		"MSNReporter",
+		"Myspace",
+		"Sphinn",
+		"Posterous"
+	);
 
+	foreach($removed_sites as $site) {
+		if (isset($sociable_options['active_sites'][$site]) || isset($sociable_known_sites[$site])) {
+			unset($sociable_options['active_sites'][$site]);
+			unset($sociable_known_sites[$site]);
+			$needs_update = true;
+		}
+	}
 
-
+	if ($needs_update) {
+		delete_option( 'sociable_options' );
+		add_option( 'sociable_options', $sociable_options);
+		delete_option( 'sociable_known_sites' );
+		add_option( 'sociable_known_sites', $sociable_known_sites);
+	}
+}
 
 function skyscraper_reset(){
 
