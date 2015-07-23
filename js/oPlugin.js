@@ -203,7 +203,7 @@ toolbarStart: function(sID_Parent,sMove,sHeight,sWidth,sBgColor,sLabelBgColor,sS
 		'</tr>'+
 		'<tr valign="top"  >'+
 			'<td class="left" />'+
-			'<td align="left" class="frame" style="background-color:'+oPlugin.BgColor+';width:'+(oPlugin.PluginWidth-7+7)+'px;" >'+
+			'<td align="left" class="frame" style="background-color:'+oPlugin.BgColor+';width:'+(oPlugin.PluginWidth-7+7)+'px;padding:0px;" >'+
 				'<ul class="toolbar" style="color:'+oPlugin.Color+';font-size:'+oPlugin.FontSize+'px;width:'+(oPlugin.PluginWidth-7+7)+'px;" id="toolbar" >'+
 				'</ul>'+
 			'</td>'+
@@ -389,7 +389,7 @@ toolbarStart: function(sID_Parent,sMove,sHeight,sWidth,sBgColor,sLabelBgColor,sS
 							'</tr>'+
 							'<tr valign="top">'+
 								'<td class="left"  style="font-size:10px;" >&nbsp;</td>'+
-								'<td align="left"  style="background-color:'+oPlugin.BgColor+';width:'+(dialogWidth+50)+'px;" class="frame"  >';
+								'<td align="left"  style="background-color:'+oPlugin.BgColor+';width:'+(dialogWidth+50)+'px;padding:0px;" class="frame"  >';
 		oLi_BoxShape += '';
 		oLi_BoxShape += '<span style="color:'+oPlugin.Color+';position:absolute;margin-left:';
 		

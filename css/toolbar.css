@@ -396,8 +396,8 @@ ul.toolbar li div img{
 .boxCounters_ul{
     list-style: none outside none;
     margin: 10px 0 0;
-    text-align: justify;
-    width: 50px;
+    text-align: center;
+    width: 56px;
     padding:0;
 }
 

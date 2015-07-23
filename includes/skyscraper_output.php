@@ -344,7 +344,7 @@ function get_social_banner_node(){
 
 
 
-								counter += '<iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+'&amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 55px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe>';						
+								counter += '<iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+'&amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 56px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe>';						
 
 
 
@@ -877,7 +877,7 @@ function get_counters_node(){
 
 
 
-							counter +=  '<li style=\"margin-left:-2px\"><iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=false&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+'&amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 55px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe></li>';
+							counter +=  '<li style=\"margin-left:-2px\"><iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=true&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+'&amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 56px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe></li>';
 
 							counter += '</ul>';";
 

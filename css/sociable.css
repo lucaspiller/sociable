@@ -43,6 +43,18 @@ div.sociable li#Twitter_Counter iframe{
 width:100px !important;
 }
 
+div.sociable li#Facebook_Counter iframe{
+width:100px !important;
+}
+
+div.sociable li#LinkedIn_Counter {
+  margin-top: -2px;
+}
+
+div.sociable li#StumbleUpon_Counter iframe {
+  margin-top: -15px !important;
+}
+
 #Digg_Counter{
 width:80px !important;
 
