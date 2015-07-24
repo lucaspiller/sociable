@@ -106,22 +106,9 @@ function sociable_init() {
 
 	wp_enqueue_script( 'sociable' , SOCIABLE_HTTP_PATH . 'js/sociable.js' );
 
-	wp_enqueue_script( 'vuible' , SOCIABLE_HTTP_PATH . 'js/vuible.js' );
-
-	wp_enqueue_script( 'addtofavourites' , SOCIABLE_HTTP_PATH . 'js/addtofavorites.js' );
-
 	if ( ! is_admin() ) {
-
-		// Load Up The Front Of Site CSS And JS
-		if ( array_key_exists( 'Add to favorites' , $active_sites ) ) {
-
-			// wp_enqueue_script( 'addtofavourites' , SOCIABLE_HTTP_PATH . 'js/addtofavorites.js' );
-		}
-
 		if ( isset( $sociable_options['use_stylesheet'] ) ) {
-
 			wp_enqueue_style( 'sociablecss' , SOCIABLE_HTTP_PATH . 'css/sociable.css' );
-
 		}
 	}
 
@@ -207,7 +194,6 @@ function sociable_reset() {
 			'Facebook'            => 'on',
 			'email'               => 'on',
 			'vuible'              => 'on',
-			'Add to favorites'    => 'off',
 			'StumbleUpon'         => 'on',
 			'Delicious'           => 'on',
 			'LinkedIn'            => 'on',
@@ -217,7 +203,6 @@ function sociable_reset() {
 			'Google +'            => 'on',
 			'LinkedIn Counter'    => 'on',
 			'StumbleUpon Counter' => 'on',
-			'vuible Counter'      => 'on',
 		),
 		'icon_size'    => '32',
 		'icon_option'  => 'option1',
