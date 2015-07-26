@@ -1,7 +1,7 @@
 === Sociable ===
 Contributors: lucaspiller
 Tags: sociable, social bookmarking, social bookmarks, social icons,  bookmarking, share, sharing, be sociable share, share and enjoy, digg, delicious, twitter, facebook, blinklist, stumbleupon, gmail, posterous, tumblr
-Requires at least: 3.0
+Requires at least: 3.6
 Tested up to: 4.3
 Stable tag: 4.4.0
 License: GPL-2.0+
