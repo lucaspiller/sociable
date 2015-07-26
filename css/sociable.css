@@ -1,39 +1,39 @@
-li div#___plusone_0 {
+#sociable-classic li div#___plusone_0 {
   float:right !important;
   width:60px !important;
 }
-li#Google_p div {
+#sociable-classic li#Google_p div {
   float:right !important;
   width:60px !important;
 }
 
-div.sociable li#Twitter_Counter iframe{
+#sociable-classic div.sociable li#Twitter_Counter iframe{
   width:100px !important;
 }
 
-div.sociable li#Facebook_Counter iframe{
+#sociable-classic div.sociable li#Facebook_Counter iframe{
   width:100px !important;
 }
 
-div.sociable li#LinkedIn_Counter {
+#sociable-classic div.sociable li#LinkedIn_Counter {
   margin-top: -2px;
 }
 
-div.sociable li#StumbleUpon_Counter iframe {
+#sociable-classic div.sociable li#StumbleUpon_Counter iframe {
   margin-top: -15px !important;
 }
 
-#Digg_Counter {
+#sociable-classic #Digg_Counter {
   width:80px !important;
 }
 
-#Facebook_Counter iframe{
+#sociable-classic #Facebook_Counter iframe{
   width:76px !important;
 }
 
-span.sociable_tagline { position: relative; }
-span.sociable_tagline span { display: none; width: 14em; }
-span.sociable_tagline:hover span {
+#sociable-classic span.sociable_tagline { position: relative; }
+#sociable-classic span.sociable_tagline span { display: none; width: 14em; }
+#sociable-classic span.sociable_tagline:hover span {
   position: absolute;
   display: block;
   top: -5em;
@@ -42,15 +42,15 @@ span.sociable_tagline:hover span {
   color: black;
   line-height: 1.25em;
 }
-.sociable span {
+#sociable-classic .sociable span {
   display: block;
 }
-.sociable ul {
+#sociable-classic .sociable ul {
   display: block;
   margin: 0 !important;
   padding: 0 !important;
 }
-.sociable ul li {
+#sociable-classic .sociable ul li {
   background: none;
   display: inline !important;
   list-style-type: none;
@@ -58,8 +58,8 @@ span.sociable_tagline:hover span {
   padding: 3px;
   float:left;
 }
-.sociable ul li:before { content: ""; }
-.sociable img {
+#sociable-classic .sociable ul li:before { content: ""; }
+#sociable-classic .sociable img {
   float: none;
 
   border: 0;
@@ -67,121 +67,120 @@ span.sociable_tagline:hover span {
   padding: 0;
 }
 
-.sociable-hovers {
+#sociable-classic .sociable-hovers {
   opacity: .4;
   -moz-opacity: .4;
   filter: alpha(opacity=40);
 }
-.sociable-hovers:hover {
+#sociable-classic .sociable-hovers:hover {
   opacity: 1;
   -moz-opacity: 1;
   filter: alpha(opacity=100);
 }
 
-.soc_clear{
+#sociable-classic .soc_clear{
   clear:both;
 }
 
 
-.option1_32{
+#sociable-classic .option1_32{
   background:url("../images/sprites/option1_32.png") no-repeat scroll;
   display: block;float: left;height: 32px;width: 32px;
 }
-.option1_16{
+#sociable-classic .option1_16{
   background:url("../images/sprites/option1_16.png") no-repeat scroll;
   display: block;float: left;height: 16px;width: 16px;
 }
-.option1_64{
+#sociable-classic .option1_64{
   background:url("../images/sprites/option1_64.png") no-repeat scroll;
   display: block;float: left;height: 64px;width: 64px;
 }
-.option1_48{
+#sociable-classic .option1_48{
   background:url("../images/sprites/option1_48.png") no-repeat scroll;
   display: block;float: left;height: 48px;width: 48px;
 }
 
 
-.option2_32{
+#sociable-classic .option2_32{
   background:url("../images/sprites/option2_32.png") no-repeat scroll;
   display: block;float: left;height: 32px;width: 32px;
 }
-.option2_16{
+#sociable-classic .option2_16{
   background:url("../images/sprites/option2_16.png") no-repeat scroll;
   display: block;float: left;height: 16px;width: 16px;
 }
-.option2_64{
+#sociable-classic .option2_64{
   background:url("../images/sprites/option2_64.png") no-repeat scroll;
   display: block;float: left;height: 64px;width: 64px;
 }
-.option2_48{
+#sociable-classic .option2_48{
   background:url("/wp-content/plugins/sociable/images/sprites/option2_48.png") no-repeat scroll;
   display: block;float: left;height: 48px;width: 48px;
 }
 
 
-.option3_32{
+#sociable-classic .option3_32{
   background:url("../images/sprites/option3_32.png") no-repeat scroll;
   display: block;float: left;height: 32px;width: 32px;
 }
-.option3_16{
+#sociable-classic .option3_16{
   background:url("../images/sprites/option3_16.png") no-repeat scroll;
   display: block;float: left;height: 16px;width: 16px;
 }
-.option3_64{
+#sociable-classic .option3_64{
   background:url("../images/sprites/option3_64.png") no-repeat scroll;
   display: block;float: left;height: 64px;width: 64px;
 }
-.option3_48{
+#sociable-classic .option3_48{
   background:url("../images/sprites/option3_48.png") no-repeat scroll;
   display: block;float: left;height: 48px;width: 48px;
 }
 
 
-.option4_32{
+#sociable-classic .option4_32{
   background:url("../images/sprites/option4_32.png") no-repeat scroll;
   display: block;float: left;height: 32px;width: 32px;
 }
-.option4_16{
+#sociable-classic .option4_16{
   background:url("../images/sprites/option4_16.png") no-repeat scroll;
   display: block;float: left;height: 16px;width: 16px;
 }
-.option4_64{
+#sociable-classic .option4_64{
   background:url("../images/sprites/option4_64.png") no-repeat scroll;
   display: block;float: left;height: 64px;width: 64px;
 }
-.option4_48{
+#sociable-classic .option4_48{
   background:url("../images/sprites/option4_48.png") no-repeat scroll;
   display: block;float: left;height: 48px;width: 48px;
 }
 
 
-.option5_32{
+#sociable-classic .option5_32{
   background:url("../images/sprites/option5_32.png") no-repeat scroll;
   display: block;float: left;height: 32px;width: 32px;
 }
-.option5_16{
+#sociable-classic .option5_16{
   background:url("../images/sprites/option5_16.png") no-repeat scroll;
   display: block;float: left;height: 16px;width: 16px;
 }
-.option5_64{
+#sociable-classic .option5_64{
   background:url("../images/sprites/option5_64.png") no-repeat scroll;
   display: block;float: left;height: 64px;width: 64px;
 } 
 
-.option5_48{
+#sociable-classic .option5_48{
   background:url("../images/sprites/option5_48.png") no-repeat scroll;
   display: block;float: left;height: 48px;width: 48px;
-} 
+}
 
-
-#sociable {
+#sociable-classic #sociable-popup {
   left: 0;
   position: absolute;
   text-align: left;
   top: 0;
   z-index: 100;
 }
-#sociable .popup {
+#sociable-classic #sociable-popup .popup {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -webkit-box-shadow: #999999 0px 0px 24px;
@@ -191,7 +190,7 @@ span.sociable_tagline:hover span {
   position: relative;
   background: none repeat scroll 0 0 #FFFFFF;
 }
-#sociable .content {
+#sociable-classic #sociable-popup .content {
   background: none repeat scroll 0 0 #FFFFFF;
   border-radius: 4px 4px 4px 4px;
   box-shadow: 0 0 7px #000000;
@@ -199,36 +198,36 @@ span.sociable_tagline:hover span {
   padding: 10px;
   width: 370px;
 }
-#sociable .close {
+#sociable-classic #sociable-popup .close {
   background: none repeat scroll 0 0 #FFFFFF;
   padding: 2px;
   position: absolute;
   right: 5px;
   top: 5px;
 }
-#sociable .close img {
+#sociable-classic #sociable-popup .close img {
   opacity: 0.3;
 }
 
-#sociable img {
+#sociable-classic #sociable-popup img {
   border: 0 none;
   margin: 0;
 }
-#sociable .close{
+#sociable-classic #sociable-popup .close{
   background: none repeat scroll 0 0 #FFFFFF;
   padding: 2px;
   position: absolute;
   right: 5px;
   top: 5px;
 }
-.share_buttons{
+#sociable-classic .share_buttons{
   list-style:none;
 }
-.share_buttons li{
+#sociable-classic .share_buttons li{
   float:left;
 }
 
-.clearfix:after {
+#sociable-classic .clearfix:after {
   visibility: hidden;
   display: block;
   font-size: 0;

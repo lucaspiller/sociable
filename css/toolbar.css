@@ -1,4 +1,4 @@
-.wpSocciableSmall-top{
+#skyscraper .wpSocciableSmall-top{
   background-image:url('../images/toolbar/slide-sociable-top.png');
   width:62px;
   height:17px;
@@ -7,7 +7,7 @@
   background-color:transparent;
   cursor:pointer;
 }
-.wpSocciableSmall-top-c{
+#skyscraper .wpSocciableSmall-top-c{
   background-image:url('../images/toolbar/slide-sociable-top-c.png');
   width:70px;
   background-color:transparent;
@@ -16,7 +16,7 @@
   border-bottom:0px;
   cursor:pointer;
 }
-.wpSocciableSmall{
+#skyscraper .wpSocciableSmall{
   width:19px;
   height:66px;
   background-color:transparent;
@@ -25,7 +25,7 @@
   margin-top:120px;
   cursor:pointer;
 }
-.wpSocciableSmall-c{
+#skyscraper .wpSocciableSmall-c{
   width:19px;
   background-color:transparent;
   height:66px;
@@ -34,7 +34,7 @@
   margin-top:120px;
   cursor:pointer;
 }
-.wpSocciableClose{
+#skyscraper .wpSocciableClose{
   width:19px;
   height:17px;
   background-color:transparent;
@@ -43,7 +43,7 @@
   margin-top:90px;
   cursor:pointer;
 }
-.wpSocciableClose-c{
+#skyscraper .wpSocciableClose-c{
   background-image:url('../images/toolbar/slide-close-c.png');
   width:19px;
   background-color:transparent;
@@ -53,7 +53,7 @@
   margin-top:90px;
   cursor:pointer;
 }
-.wpSocciableBig{
+#skyscraper .wpSocciableBig{
   background-image:url('../images/toolbar/slide-sociableBig.png');
   width:30px;
   background-color:transparent;
@@ -63,7 +63,7 @@
   margin-top:120px;
   cursor:pointer;
 }
-.wpSocciableBig-c{
+#skyscraper .wpSocciableBig-c{
   background-image:url('../images/toolbar/slide-sociableBig-c.png');
   width:30px;
   height:104px;
@@ -73,13 +73,13 @@
   margin-top:120px;
   cursor:pointer;
 }
-a{
+#skyscraper a{
   text-decoration:none;
 }
-a:hover{
+#skyscraper a:hover{
   text-decoration:underline;
 }
-ul.toolbar{
+#skyscraper ul.toolbar{
   margin:0px;
   padding:0px;
   list-style:none;
@@ -87,48 +87,45 @@ ul.toolbar{
   letter-spacing:-1.3px;
   font-weight:bold;
 }
-ul.toolbar li{
+#skyscraper ul.toolbar li{
   margin:0px;
   padding:0px;
 }
-.wpPlugin-MainFrame{
-}
-ul.toolbar li.item div{
+#skyscraper ul.toolbar li.item div{
   margin:0px;
   padding:0px;
 }
-ul.toolbar li.item div.title{
+#skyscraper ul.toolbar li.item div.title{
   padding-top:2px;
   padding-bottom:2px;
   padding-left:2px;
   cursor:pointer;
   margin-bottom:2px;
 }
-ul.toolbar li.item div.boxTitle{	}
-ul.toolbar li.item div.boxTitleContent{
+#skyscraper ul.toolbar li.item div.boxTitleContent{
   padding-top:5px;
   padding-bottom:5px;
   padding-right:5px;
 }
-ul.toolbar li.item div.content{
+#skyscraper ul.toolbar li.item div.content{
   margin-bottom:5px;
 }
-ul.toolbar li.item div.title img{
+#skyscraper ul.toolbar li.item div.title img{
   float:right;
 }
-ul.toolbar li div img{
+#skyscraper ul.toolbar li div img{
   margin:1px;
   border:0;
   padding:0px;
 }
-.boxDialog{
+#skyscraper .boxDialog{
   letter-spacing:0px;
   background:transparent;
   margin:0px;
   padding:0px;
   position:absolute;
 }
-.boxBanner_ul{
+#skyscraper .boxBanner_ul{
   float: left;
   list-style: none outside none;
   margin-right: 12px;
@@ -136,23 +133,23 @@ ul.toolbar li div img{
   width: auto;
   padding:0;
 }
-.boxCounters_ul{
+#skyscraper .boxCounters_ul{
   list-style: none outside none;
   margin: 10px 0 0;
   text-align: center;
   width: 56px;
   padding:0;
 }
-.boxCounters_ul li{
+#skyscraper .boxCounters_ul li{
   display: table;
   height: auto;
   margin-bottom: 8px !important;
 }
-.boxBanner_ul li{
+#skyscraper .boxBanner_ul li{
   float: left;
   margin-right: 5px !important;
 }
-.boxBanner_ul_margin{
+#skyscraper .boxBanner_ul_margin{
   border-right: 1px solid #6A6A6A;
   float: left;
   height: 60px;

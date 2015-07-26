@@ -78,7 +78,7 @@ function sociable_html( $display = array(),$location = '' ) {
 
 	$image = '';
 
-	$html = '<!-- Start Sociable --><div class="sociable">';
+	$html = '<!-- Start Sociable --><div id="sociable-classic"><div class="sociable">';
 
 	// If a tagline is set, display it above the links list
 	$tagline = isset( $sociable_options['tagline'] ) ? $sociable_options['tagline'] : '' ;
@@ -364,7 +364,7 @@ function sociable_html( $display = array(),$location = '' ) {
 
 	$html .= '</ul><div onMouseout="fixOnMouseOut(this,event,\'post'.$location.'-'.$post->ID.'\')" id="sociable-post'.$location.'-'.$post->ID.'" style="display:none;">
 
-    <div style="top: auto; left: auto; display: block;" id="sociable">
+    <div style="top: auto; left: auto; display: block;" id="sociable-popup">
 
 		<div class="popup">
 
@@ -384,7 +384,7 @@ function sociable_html( $display = array(),$location = '' ) {
 
 	</div>
 
-  </div>HereGoCounters</div><!-- End Sociable -->';
+  </div>HereGoCounters</div></div><!-- End Sociable -->';
 
 	// $margin =
 	// $html .= "<li class='sociablelast' style='".$margin."'><img src='".SOCIABLE_HTTP_PATH."images/more.jpg'></li></ul><div class='soc_clear'></div></div>";

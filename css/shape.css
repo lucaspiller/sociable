@@ -1,51 +1,51 @@
-table.shape tr td.frame{
+#skyscraper table.shape tr td.frame{
   border:solid 1px #CFCFCF;
   background:#ffffff;
 }
-table.shape tr td.left{
+#skyscraper table.shape tr td.left{
   display:none;
   background-repeat:repeat-y;
   width:3px;
 }
-table.shape tr td.right{
+#skyscraper table.shape tr td.right{
   display:none;
   background-repeat:repeat-y;
   width:3px;
 }
-table.shape tr td.top{
+#skyscraper table.shape tr td.top{
   display:none;
   background-repeat:repeat-x;
   height:3px;
 }
-table.shape tr td.bottom{
+#skyscraper table.shape tr td.bottom{
   display:none;
   background-repeat:repeat-x;
   height:3px;
 }
-table.shape tr td.bottom{
+#skyscraper table.shape tr td.bottom{
   display:none;
   background-repeat:repeat-x;
   height:3px;
 }
-table.shape tr td.top-left{
+#skyscraper table.shape tr td.top-left{
   display:none;
   background-repeat:no-repeat;
   height:3px;
   width:3px;
 }
-table.shape tr td.top-right{
+#skyscraper table.shape tr td.top-right{
   display:none;
   background-repeat:no-repeat;
   height:3px;
   width:3px;
 }
-table.shape tr td.bottom-left{
+#skyscraper table.shape tr td.bottom-left{
   display:none;
   background-repeat:no-repeat;
   height:3px;
   width:3px;
 }
-table.shape tr td.bottom-right{
+#skyscraper table.shape tr td.bottom-right{
   display:none;
   background-repeat:no-repeat;
   height:3px;

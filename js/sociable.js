@@ -6,7 +6,7 @@ function more(obj, id){
 	
 	box = document.getElementById("sociable-"+id+"");
 	button = obj;
-	sociable = document.getElementById("sociable");
+	sociable = document.getElementById("sociable-popup");
 	//console.log(sociable.style.offsetTop);
 	sociable.style.postion = "absloute";
 	sociable.style.top = button.offsetTop;
