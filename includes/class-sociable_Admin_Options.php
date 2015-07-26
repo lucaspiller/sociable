@@ -28,7 +28,7 @@ class sociable_Admin_Options{
 
 <div class="wrap" style="margin-top:25px">
 	<div style="width: 80%; margin-left: 25px; color: rgb(147, 147, 147); font-weight: bold; font-size: 15px;">
-		Congrats for joining the leader in the sharing space of WordPress plugins. "Sociable" is totally FREE, has over 1,7 million downloads and now you can enjoy Fueto and make your searches more Sociable.<br /> <br />
+		Congrats for joining the leader in the sharing space of WordPress plugins. "Sociable" is totally FREE and has over 2.2 million downloads, and now you can make your blog more Sociable!<br /> <br />
 	</div>
 	<div class="wrap" style="width:42%;float:left">
 		<?php // wp_nonce_field('sociable-config'); ?>
@@ -63,7 +63,7 @@ class sociable_Admin_Options{
 									<br/ ><br/ >
 									Be Sociable, Share!!!
 								</p>
-								<a href="?page=skyscraper_options" style="color:#ffffff;text-decoration:none;" ><img src="<?php echo SOCIABLE_HTTP_PATH ?>images/button_newsky.png" ></a>
+								<a href="?page=sociable_skyscraper_options" style="color:#ffffff;text-decoration:none;" ><img src="<?php echo SOCIABLE_HTTP_PATH ?>images/button_newsky.png" ></a>
 							</td>
 						</tr>
 					</table>
@@ -92,7 +92,7 @@ class sociable_Admin_Options{
 						</p>
 						<img src="<?php echo SOCIABLE_HTTP_PATH ?>images/socciable_old.png" ><br/>
 						<div style="height: 176px;"></div>
-						<a href="?page=sociable_options" style="color:#ffffff;text-decoration:none;" ><img src="<?php echo SOCIABLE_HTTP_PATH ?>images/button_sociabb.png" ></a>
+						<a href="?page=sociable_classic_options" style="color:#ffffff;text-decoration:none;" ><img src="<?php echo SOCIABLE_HTTP_PATH ?>images/button_sociabb.png" ></a>
 					</div>
 				</TD>
 			</TR>
@@ -116,7 +116,7 @@ class sociable_Admin_Options{
 		}
 	}
 
-	public static function Create_Options_Page_Skycraper() {
+	public static function Create_Options_Page_Skyscraper() {
 		global $skyscraper_options;
 		global $sociable_options;
 ?>
@@ -403,7 +403,7 @@ class sociable_Admin_Options{
 					<div align="center" style="width:100%;">
 						<table align="center" cellspacing="0" cellpadding="10" border="0" class="GeneralOptions-List">
 							<tbody><tr valign="top">
-									<td align="right" class="Title">Active Sociable Banner</td>
+									<td align="right" class="Title">Activate Sociable Banner</td>
 									<td align="left" style="width:5px;">
 				<?php
 
@@ -418,7 +418,7 @@ class sociable_Admin_Options{
 
 				<input type="checkbox" name="skyscraper_options[sociable_banner]" id="sociable_banner" <?php echo $sel?>></td>
 									<td align="left" class="Content">
-										<span class="TXT">Active Sociable "Reminder to Share" Banner / Check if you want to remind your readers Share your content.</span>
+										<span class="TXT">Activate Sociable "Reminder to Share" Banner / Check if you want to remind your readers Share your content.</span>
 										<br>
 									</td>
 								</tr>
@@ -763,7 +763,7 @@ class sociable_Admin_Options{
 
 									<td align="left" class="Content">
 
-										<span class="TXT">Check if you want Sociable Skyscraper enable </span>
+										<span class="TXT">Check if you want to enable Sociable Skyscraper</span>
 
 										<br />
 
@@ -815,25 +815,14 @@ class sociable_Admin_Options{
 	public static function add_menu_pages() {
 		global $sociable_select_page, $sociable_classic_page, $sociable_skyscraper_page;
 
-		$sociable_select_page     = add_options_page( '','', 'manage_options', 'sociable_select' , array( 'sociable_Admin_Options', 'Select_Sociable_Page' ) );
-		$sociable_classic_page    = add_options_page( '','', 'manage_options', 'sociable_options' , array( 'sociable_Admin_Options', 'Create_Options_Page' ) );
-		$sociable_skyscraper_page = add_options_page( '','', 'manage_options', 'skyscraper_options' , array( 'sociable_Admin_Options', 'Create_Options_Page_Skycraper' ) );
+		// Add a new top level menu, and add everything under that.
+		add_menu_page( 'Sociable', 'Sociable', 'manage_options', 'sociable_select', array( 'sociable_Admin_Options', 'Select_Sociable_Page' ) );
+		add_submenu_page( 'sociable_select', 'Overview', 'Overview', 'manage_options', 'sociable_select', array( 'sociable_Admin_Options', 'Select_Sociable_Page' ) );
+		add_submenu_page( 'sociable_select', 'Classic Options', 'Classic Options', 'manage_options', 'sociable_classic_options', array( 'sociable_Admin_Options', 'Create_Options_Page' ) );
+		add_submenu_page( 'sociable_select', 'Skyscraper Options', 'Skyscraper Options', 'manage_options', 'sociable_skyscraper_options', array( 'sociable_Admin_Options', 'Create_Options_Page_Skyscraper' ) );
 
-		// Add a new submenu under Settings:
-	  // Add a new top-level menu (ill-advised):
-		add_menu_page( __( 'Sociable Options' ), __( 'Select Sociable Plugin' ), 'manage_options', '/options-general.php?page=sociable_select' );
-		// Add a submenu to the custom top-level menu:
-		add_submenu_page( 'options-general.php?page=sociable_select',  __( 'Sociable Options' ), __( 'Sociable Options' ), 'manage_options', 'sociable_options' , array( 'sociable_Admin_Options', 'Create_Options_Page' ) );
-		// Add a second submenu to the custom top-level menu:
-		add_submenu_page( 'options-general.php?page=sociable_select',  __( 'Skyscraper Options' ), __( 'Skyscraper Options' ), 'manage_options', 'skyscraper_options' , array( 'sociable_Admin_Options', 'Create_Options_Page_Skycraper' ) );
-
-		// Add CSS And Javascript Specific To This Options Pages
-		add_action( 'admin_print_styles-' .  $sociable_select_page, array( 'sociable_Admin_Options', 'enqueue_styles' ) );
-		add_action( 'admin_print_scripts-' . $sociable_select_page, array( 'sociable_Admin_Options', 'enqueue_scripts' ) );
-		add_action( 'admin_print_styles-' .  $sociable_classic_page, array( 'sociable_Admin_Options', 'enqueue_styles' ) );
-		add_action( 'admin_print_scripts-' . $sociable_classic_page, array( 'sociable_Admin_Options', 'enqueue_scripts' ) );
-		add_action( 'admin_print_styles-' .  $sociable_skyscraper_page, array( 'sociable_Admin_Options', 'enqueue_styles' ) );
-		add_action( 'admin_print_scripts-' . $sociable_skyscraper_page, array( 'sociable_Admin_Options', 'enqueue_scripts' ) );
+		// Add CSS And Javascript.
+		add_action( 'admin_enqueue_scripts', array( 'sociable_Admin_Options', 'enqueue_scripts' ) );
 
 		if ( isset( $_POST['sociable_reset'] ) ) {
 			check_admin_referer( 'sociable-reset' );
@@ -866,24 +855,23 @@ class sociable_Admin_Options{
 	}
 
 	/*
-     * Function to Enqueue The Styles For The Options Page
-     */
-	public static function enqueue_styles() {
-		wp_enqueue_style( 'style-admin-css', SOCIABLE_HTTP_PATH . 'css/style-admin.css' );
-		wp_enqueue_style( 'sociable-admin-css', SOCIABLE_HTTP_PATH . 'css/sociable-admin.css' );
-		wp_enqueue_style( 'sociablecss' , SOCIABLE_HTTP_PATH . 'css/sociable.css' );
-	}
+   * Function To Enqueue The Scripts For The Options Page
+   */
+	public static function enqueue_scripts($hook) {
+		if ( 'sociable_page_sociable_select' == $hook ||
+					'sociable_page_sociable_classic_options' == $hook ||
+					'sociable_page_sociable_skyscraper_options' == $hook
+		) {
+			wp_enqueue_style( 'style-admin-css', SOCIABLE_HTTP_PATH . 'css/style-admin.css' );
+			wp_enqueue_style( 'sociable-admin-css', SOCIABLE_HTTP_PATH . 'css/sociable-admin.css' );
+			wp_enqueue_style( 'sociablecss' , SOCIABLE_HTTP_PATH . 'css/sociable.css' );
 
-	/*
-     * Function To Enqueue The Scripts For The Options Page
-     */
-	public static function enqueue_scripts() {
-		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'jquery-ui-core',false,array( 'jquery' ) );
-		wp_enqueue_script( 'jquery-ui-sortable',false,array( 'jquery', 'jquery-ui-core' ) );
-		wp_enqueue_script( 'sociable-admin-js', SOCIABLE_HTTP_PATH . 'js/sociable-admin.js' , array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
-		wp_enqueue_script( 'admin-fn-js', SOCIABLE_HTTP_PATH . 'js/admin-fn.js' , array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
-
+			wp_enqueue_script( 'jquery' );
+			wp_enqueue_script( 'jquery-ui-core', false, array( 'jquery' ) );
+			wp_enqueue_script( 'jquery-ui-sortable', false, array( 'jquery', 'jquery-ui-core' ) );
+			wp_enqueue_script( 'sociable-admin-js', SOCIABLE_HTTP_PATH . 'js/sociable-admin.js' , array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
+			wp_enqueue_script( 'admin-fn-js', SOCIABLE_HTTP_PATH . 'js/admin-fn.js' , array( 'jquery', 'jquery-ui-core', 'jquery-ui-sortable' ) );
+		}
 	}
 
 	/*
@@ -1006,8 +994,6 @@ class sociable_Admin_Options{
 
 				<?php wp_nonce_field( 'sociable-config' ); ?>
 				<INPUT type="hidden" class="version-INPUT" id="version" name="sociable_options[version]" value="<?php echo$sociable_options['version'];?>" />
-
-				<INPUT type="hidden" id="blogplay_tags" name="sociable_options[blogplay_tags]" value="1" />
 
 				<TABLE class="Title-Box" cellspacing="0" cellpadding="0" id="Preview-Title" style="margin:0 0 0 25px">
 					<TR>
@@ -1356,7 +1342,7 @@ class sociable_Admin_Options{
             <table class="Title-Box" style="cursor:pointer;"  cellspacing="0" cellpadding="0" onclick="hideOrShow('Active');" >
                 <tr>
                     <td class="Border-Left" ></td>
-                    <td class="BG-Middle" id="Active-Title" ><span id="Active-Tab">+ </span><?php  _e( 'Active Sociable Classic','sociable' );?></td><td class="Border-Right"></td>
+                    <td class="BG-Middle" id="Active-Title" ><span id="Active-Tab">+ </span><?php  _e( 'Activate Sociable Classic','sociable' );?></td><td class="Border-Right"></td>
                 </tr>
             </table>
 
@@ -1366,11 +1352,11 @@ class sociable_Admin_Options{
                     <table align="center" cellspacing="0" cellpadding="10" border="0" class="GeneralOptions-List">
 
                         <tbody><tr valign="top">
-                            <td align="right" class="Title">Active Sociable Classic</td>
+                            <td align="right" class="Title">Activate Sociable Classic</td>
                             <td align="left" style="width:5px;">
 							<input <?php if ( isset( $sociable_options['active'] ) ) { echo "checked='checked'"; }?> type="checkbox" id="active" name="sociable_options[active]" /></td>
                             <td align="left" class="Content">
-                                <span class="TXT">Check if you want Sociable Classic enable </span>
+                                <span class="TXT">Check if you want to enable Sociable Classic</span>
                             <br />
 
                             </td>
