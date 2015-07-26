@@ -1,14 +1,44 @@
 <?php
-
-/*
+/**
  * The Output And Shortcode Functions For sociable
-
+ *
+ * @package Sociable
  */
 
-/*
- * Returns The Skyscraper Output For The Global $post Object Do Not
-
+/**
+ * AJAX callback to render the sociable skyscraper.
+ *
+ * @since 4.4.0
  */
+function load_skyscraper_ajax_callback() {
+	global $skyscraper_options, $url_shares, $title_shared;
+
+	$run_skyscraper = false;
+
+	$referrer = wp_get_referer();
+
+	// These are used to generate the share URLs.
+	$url_shares   = $referrer;
+	$title_shared = $_POST['title'];
+
+	if ( strpos( $referrer, 'wp-admin' ) ) {
+		if ( strpos( $referrer, 'page=skyscraper_options' ) ) {
+			// Always run on the skyscraper admin page.
+			$run_skyscraper = true;
+		}
+	} else {
+		if ( isset( $skyscraper_options['active'] ) ) {
+			// Run if enabled.
+			$run_skyscraper = true;
+		}
+	}
+
+	if ( $run_skyscraper ) {
+		auto_skyscraper( '', $run_skyscraper );
+	}
+
+	wp_die();
+}
 
 function diff_date($date1, $date2) {
 
@@ -28,9 +58,6 @@ function skyscraper_html( $where = '' ) {
 
 	if ( ! is_admin() || 1 == 1 ) {
 
-		// echo "<script type='text/javascript'>";
-		// echo "var skyscraper_dir = '".SOCIABLE_HTTP_PATH."' ;";
-		// echo "</script>";
 		echo " var skyscraper_dir =  document.createElement('input');
 
                 skyscraper_dir.id = 'skyscraper_dir';
@@ -129,11 +156,9 @@ function skyscraper_html( $where = '' ) {
 
         });
 
-					jQuery('.title').css('font-size', '".$text_size."px');
-
-
-
-		";
+        jQuery('.title').css('font-size', '".$text_size."px');
+        gapi.plus.go();
+";
 
 		echo $script;
 
@@ -177,7 +202,7 @@ function get_social_banner_node() {
 
                                 counter += '    <li>';
 
-                                counter += '    <iframe width=\"100%\" scrolling=\"no\" frameborder=\"0\" title=\"+1\" vspace=\"0\" tabindex=\"-1\" style=\"position: static; left: 0pt; top: 0pt; width: 60px; margin: 0px; border-style: none; visibility: visible; height: 60px;\" src=\"https://plusone.google.com/_/+1/fastbutton?url='+url+'&amp;size=tall&amp;count=true&amp;hl=en-US&amp;jsh=m%3B%2F_%2Fapps-static%2F_%2Fjs%2Fgapi%2F__features__%2Frt%3Dj%2Fver%3Dt1NEBxIt2Qs.es_419.%2Fsv%3D1%2Fam%3D!Xq7AzNfn9_-I0e5PyA%2Fd%3D1%2F#id=I1_1328906079806&amp;parent='+url+'&amp;rpctoken=615138222&amp;_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart\" name=\"I1_1328906079806\" marginwidth=\"0\" marginheight=\"0\" id=\"I1_1328906079806\" hspace=\"0\" allowtransparency=\"true\"></iframe>';
+                                counter += '<div class=\"g-plus\" data-action=\"share\" data-annotation=\"vertical-bubble\" data-height=\"65\" data-width=\"56\"></div>';
 
                                 counter += '    </li>';
 
@@ -465,15 +490,13 @@ function get_counters_node() {
 
 
 
-                            counter += '<li style=\"margin-left:2px\"><fb:like send=\"false\" layout=\"box_count\" show_faces=\"false\" font=\"\"></fb:like></li>';
+                            counter += '<li style=\"margin-left:4px\"><fb:like send=\"false\" layout=\"box_count\" show_faces=\"false\" font=\"\"></fb:like></li>';
 
-                            counter +=' <li style=\"margin-left:0px\"><iframe width=\"100%\" scrolling=\"no\" frameborder=\"0\" title=\"+1\" vspace=\"0\" tabindex=\"-1\" style=\"position: static; left: 0pt; top: 0pt; width: 60px; margin: 0px; border-style: none; visibility: visible; height: 60px;\" src=\"https://plusone.google.com/_/+1/fastbutton?url='+url+'&amp;size=tall&amp;count=true&amp;hl=en-US&amp;jsh=m%3B%2F_%2Fapps-static%2F_%2Fjs%2Fgapi%2F__features__%2Frt%3Dj%2Fver%3Dt1NEBxIt2Qs.es_419.%2Fsv%3D1%2Fam%3D!Xq7AzNfn9_-I0e5PyA%2Fd%3D1%2F#id=I1_1328906079806&amp;parent='+url+'&amp;rpctoken=615138222&amp;_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart\" name=\"I1_1328906079806\" marginwidth=\"0\" marginheight=\"0\" id=\"I1_1328906079806\" hspace=\"0\" allowtransparency=\"true\"></iframe></li>';
+                            counter += '<li style=\"margin-left:0px;\"><div class=\"g-plus\" data-action=\"share\" data-annotation=\"vertical-bubble\" data-height=\"65\" data-width=\"56\"></div></li>';
 
+                            counter +=  '<li style=\"margin-left:0px\"><iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=true&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+'&amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 56px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe></li>';
 
-
-                            counter +=  '<li style=\"margin-left:-2px\"><iframe scrolling=\"no\" frameborder=\"0\" allowtransparency=\"true\" src=\"https://platform.twitter.com/widgets/tweet_button.html?_version=2&amp;count=vertical&amp;enableNewSizing=true&amp;id=twitter-widget-6&amp;lang=en&amp;original_referer='+url+'&amp;size=m&amp;text='+title+'&amp;url='+url+'\" class=\"twitter-share-button twitter-count-vertical\" style=\"width: 56px; height: 62px;\" title=\"Twitter Tweet Button\"></iframe></li>';
-
-							counter += '</ul>';";
+                            counter += '</ul>';";
 
 	}
 
@@ -1013,27 +1036,6 @@ function generate_tweets_box_content($tweets) {
 	$content = trim( trim( trim( $content ), ',' ) );
 
 	return $content;
-
-}
-
-if ( ! empty( $_GET['sky'] ) ) {
-
-	add_action( 'wp_ajax_my_action', 'my_action_callback' );
-
-	function my_action_callback() {
-
-		global $wpdb;
-		global $skyscraper_options; // this is how you get access to the database
-
-		$whatever = intval( $_POST['whatever'] );
-
-		$whatever += 10;
-
-		echo $whatever;
-
-		die(); // this is required to return a proper result
-
-	}
 
 }
 

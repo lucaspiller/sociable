@@ -100,7 +100,7 @@ function sociable_skyscraper_init() {
 
 	$run_skyscraper = false;
 
-	$request_uri = $_SERVER['REQUEST_URI'];
+	$request_uri = wp_unslash( $_SERVER['REQUEST_URI'] );
 
 	if ( is_admin() ) {
 		if ( strpos( $request_uri, 'page=skyscraper_options' ) ) {
@@ -120,9 +120,13 @@ function sociable_skyscraper_init() {
 		wp_enqueue_style( 'skyscraper_style_shape',   SOCIABLE_HTTP_PATH . 'css/shape.css' );
 		wp_enqueue_style( 'skyscraper_style_toolbar', SOCIABLE_HTTP_PATH . 'css/toolbar.css' );
 
-		$async_options = array( 'base_url' => SOCIABLE_HTTP_PATH );
+		$async_options = array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) );
 		wp_localize_script( 'async_call', 'sociable_async_options', $async_options );
 	}
+
+	// Callbacks to load skyscraper via AJAX.
+	add_action( 'wp_ajax_load_skyscraper',        'load_skyscraper_ajax_callback' );
+	add_action( 'wp_ajax_nopriv_load_skyscraper', 'load_skyscraper_ajax_callback' );
 }
 
 /**
