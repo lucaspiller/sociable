@@ -139,7 +139,7 @@ class Sociable_Config {
 			'LinkedIn Counter' => array(
 				'counter' => 1,
 				'favicon' => 'linkedin.png',
-				'url'     => '<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script><script type="IN/Share" data-url="PERMALINKCOUNT" data-counter="right"></script>',
+				'url'     => '<script src="//platform.linkedin.com/in.js" type="text/javascript"></script><script type="IN/Share" data-url="PERMALINKCOUNT" data-counter="right"></script>',
 				'spriteCoordinates' => array(
 					'16' => array( '-144px','0px' ),
 					'32' => array( '-288px','0px' ),
@@ -190,7 +190,7 @@ class Sociable_Config {
 			'StumbleUpon Counter' => array(
 				'counter' => 1,
 				'favicon' => 'stumbleupon.png',
-				'url'     => '<script src="http://www.stumbleupon.com/hostedbadge.php?s=2&r=PERMALINKCOUNT"></script>',
+				'url'     => '<script src="//www.stumbleupon.com/hostedbadge.php?s=2&r=PERMALINKCOUNT"></script>',
 				'spriteCoordinates' => array(
 					'16' => array( '-112px','-16px' ),
 					'32' => array( '-224px','-32px' ),

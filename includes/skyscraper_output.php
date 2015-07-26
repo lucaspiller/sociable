@@ -91,7 +91,7 @@ function skyscraper_html( $where = '' ) {
 
                   js = d.createElement(s); js.id = id;
 
-                  js.src = \"http://connect.facebook.net/en_US/all.js#xfbml=1\";
+                  js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1\";
 
                   fjs.parentNode.insertBefore(js, fjs);
 

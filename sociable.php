@@ -84,7 +84,6 @@ function sociable_classic_init() {
 
 	// Enqueue scripts and stylesheets.
 	wp_enqueue_script( 'sociable' , SOCIABLE_HTTP_PATH . 'js/sociable.js', array( 'jquery' ), true );
-	wp_enqueue_script( 'google-plusone', '//apis.google.com/js/plusone.js', array(), false, true );
 
 	if ( isset( $sociable_options['use_stylesheet'] ) ) {
 		wp_enqueue_style( 'sociablecss' , SOCIABLE_HTTP_PATH . 'css/sociable.css' );
