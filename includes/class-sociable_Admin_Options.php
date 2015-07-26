@@ -952,7 +952,7 @@ class sociable_Admin_Options{
 					$url = str_replace( 'PERMALINKCOUNT', $permalinkCOUNT, $url );
 					$image = $url;
 				} else {
-					$image = _get_sociable_image( $site, '' );
+					$image = Sociable_Globals::get_sociable_image( $site, '' );
 				}
 			} else {
 				$image = "<img src='".SOCIABLE_HTTP_PATH."images/more.png'>";

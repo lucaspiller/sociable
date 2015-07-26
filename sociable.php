@@ -138,11 +138,11 @@ function sociable_activate() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-sociable-config.php';
 
 	if ( ! get_option( 'sociable_options' ) ) {
-		SociableConfig::sociable_reset();
+		Sociable_Config::sociable_reset();
 	}
 
 	if ( ! get_option( 'skyscraper_options' ) ) {
-		SociableConfig::skyscraper_reset();
+		Sociable_Config::skyscraper_reset();
 	}
 }
 
