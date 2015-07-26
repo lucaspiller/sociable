@@ -1,16 +1,16 @@
 === Sociable ===
-Author: sociable
-Contributors: sociable
+Contributors: lucaspiller
 Tags: sociable, social bookmarking, social bookmarks, social icons,  bookmarking, share, sharing, be sociable share, share and enjoy, digg, delicious, twitter, facebook, blinklist, stumbleupon, gmail, posterous, tumblr
-Requires at least: 2.6
+Requires at least: 3.0
 Tested up to: 4.3
 Stable tag: 4.4.0
+License: GPL-2.0+
 
-Congrats for joining the leader in the sharing space of WordPress plugins. "Sociable" is totally FREE, has over 1,7 million downloads and now you can enjoy Fueto and make your searches more Sociable.
+Congrats for joining the leader in the sharing space of WordPress plugins. "Sociable" is totally FREE and has over 2.2 million downloads!
 
 == Description ==
 
-As you know, Sociable continues being the fastest growing leader in the sharing space of WordPress plugins. We really appreciate your feedback, so, here you are lastest version including Pinterest icon, font changes you suggested and other terrific features you get totally Free. 
+As you know, Sociable continues being the fastest growing leader in the sharing space of WordPress plugins. We really appreciate your feedback, so, here you are lastest version including Pinterest icon, font changes you suggested and other terrific features you get totally Free.
 
 
 
@@ -18,19 +18,17 @@ After introducing Sociable Skyscraper, the ultimate advanced and feature-packed 
 
 
 
-Sociable Plug-in is totally free and continues leading digital arena with over 1.5 million downloads now. We're working hard making you happy and your feedback and suggestions allow us to keep growing, so, let's enjoy co-creation, collaboration and sharing. Be Sociable. Share!
+Sociable Plug-in is totally free and continues leading digital arena with over 2.2 million downloads now. We're working hard making you happy and your feedback and suggestions allow us to keep growing, so, let's enjoy co-creation, collaboration and sharing. Be Sociable. Share!
 
 = About Sociable Skyscraper =
 
 Sociable Skyscraper is the ultimate advanced and feature-packed plugin for setting up a rating system on your WordPress blog. This plugin allows you to set up different rating systems for posts, pages and comments with a great degree of customization.
 
-Sociable Skyscraper's list of features is smart, extensive and ever-growing: 
+Sociable Skyscraper's list of features is smart, extensive and ever-growing:
 
 You can get even more Sociable with Sociable Skyscraper and: Rating and Review of: posts, pages, comments, Facebook, G+, LinkedIN, and Twitter. Multiple ratings for posts and pages. Latest tweets, latest posts, follows, and mentions. Visitor counter, visitors from Facebook and Twitter. As an added bonus, you also get an easy way to get to the TOP of the page or back HOME from Sociable Skyscraper.
 
-And now the over 1.5 million WordPress Blogs with the Sociable Plugin can also use the Inbound.org icon. Inbound.org is a for-fun partnership of Rand from Moz and Dharmesh from HubSpot which offers community-curated marketing news. We like their idea so much and we hope you enjoy discovering and sharing great stuff from the inbound marketing fields of blogging, SEO, Social media, content marketing, conversion rate optimization, web analytics and more.
-
-We're constantly interacting with you via our Forum and/or emails, which means we're enhancing our free tool faster and more accurately thanks to your feedback. Please tell us your comments so we can make it better together.  
+We're constantly interacting with you via our forum and/or emails, which means we're enhancing our free tool faster and more accurately thanks to your feedback. Please tell us your comments so we can make it better together.
 
 = About Sociable Classic =
 
@@ -47,15 +45,11 @@ Be Sociable, Share!
 
 [vimeo http://vimeo.com/31023684]
 
-
-
-Have technical support issues? Please leave them in the forum: http://wordpress.org/tags/sociable?forum_id=10 
+If you find any technical issues, please discuss them in the [support forums](https://wordpress.org/support/plugin/sociable).
 
 Also use the forum for ideas, feedback, suggestions. We'll try to check the forum every day.
 
 What happened to the old icons? You can still use them in the new version, but they're not the default style anymore.
-
-*** Sociable 4.4.0 *** 
 
 = Recent Updates =
 
@@ -107,28 +101,26 @@ Sociable plugin wouldn't be what it is today if it weren't for these people that
 
 == Frequently Asked Questions ==
 
-
-
 = What happened to the old icons? =
-
-
 
 You can still use them. It's just they're not the default anymore.
 
+= Where can I get support? =
+
+If you find any bugs or have any ideas, please discuss it in the [support forums](https://wordpress.org/support/plugin/sociable).
+
 == Changelog ==
 
-= 4.4 =
+= 4.4.0 =
 
-* Updates to work with Wordpress 4.3+
+* Updates to work with Wordpress 4.3+ (which meant lots of code got rewritten!)
 * Fixed broken styling on a few social widgets
 * Removed dead social networks
-* Removed blogplay tracking widget
+* Removed blogplay tracking widget which may have caused sites to be slow
 
 = 4.3.4.1 =
 
 * Fixed a problem with one site taking over all the links
-
-
 
 = 4.3.4 =
 
@@ -195,7 +187,7 @@ You can still use them. It's just they're not the default anymore.
 
 = 4.2.2 =
 
-* Social Banner and settings 
+* Social Banner and settings
 
 * Inbound icon
 
@@ -321,7 +313,7 @@ You can still use them. It's just they're not the default anymore.
 
 * Updated it for up to Wordpress version 3.2.1
 
-= 3.5.2 = 
+= 3.5.2 =
 
 
 
@@ -329,7 +321,7 @@ You can still use them. It's just they're not the default anymore.
 
 
 
-* Removed ID properties from sociable anchor tags (share links) 
+* Removed ID properties from sociable anchor tags (share links)
 
 
 
@@ -399,7 +391,7 @@ You can still use them. It's just they're not the default anymore.
 
 
 
-* Fixed the bug mentioned [here](http://wordpress.org/support/topic/288487) and [here](http://wordpress.org/support/topic/290753) that made it impossible to disable Sociable on a per post/page basis. 
+* Fixed the bug mentioned [here](http://wordpress.org/support/topic/288487) and [here](http://wordpress.org/support/topic/290753) that made it impossible to disable Sociable on a per post/page basis.
 
 
 
@@ -519,7 +511,7 @@ You can still use them. It's just they're not the default anymore.
 
 * Improved styling and visual feedback when selecting a site.
 
-= 3.2.2 = 
+= 3.2.2 =
 
 
 
@@ -565,7 +557,7 @@ This is a MAJOR update to Sociable. Major Thanks to Jean-Paul of [iPhoneclub](ht
 
 
 
-	* MSN Reporter.nl 
+	* MSN Reporter.nl
 
 
 
@@ -739,7 +731,7 @@ This is a MAJOR update to Sociable. Major Thanks to Jean-Paul of [iPhoneclub](ht
 
 * Removed pre 2.6 compatibility fixes.
 
-= 3.0.6 = 
+= 3.0.6 =
 
 
 
@@ -749,7 +741,7 @@ This is a MAJOR update to Sociable. Major Thanks to Jean-Paul of [iPhoneclub](ht
 
 * Added Bitacoras.
 
-= 3.0.5 = 
+= 3.0.5 =
 
 
 
@@ -787,19 +779,19 @@ This is a MAJOR update to Sociable. Major Thanks to Jean-Paul of [iPhoneclub](ht
 
 
 
-* Fixed IE bug in admin. 
+* Fixed IE bug in admin.
 
 
 
-* Cleaned up Admin Area and changed support messages. 
+* Cleaned up Admin Area and changed support messages.
 
 
 
-* Removed directory checking for all images (speeds up incredibly). 
+* Removed directory checking for all images (speeds up incredibly).
 
 
 
-* Made display: inline !important to prevent vertical icon display. 
+* Made display: inline !important to prevent vertical icon display.
 
 
 
@@ -867,7 +859,7 @@ This is a MAJOR update to Sociable. Major Thanks to Jean-Paul of [iPhoneclub](ht
 
 * Added Symbaloo and Tumblr.
 
-= 2.9.5 = 
+= 2.9.5 =
 
 
 
@@ -933,7 +925,7 @@ This is a MAJOR update to Sociable. Major Thanks to Jean-Paul of [iPhoneclub](ht
 
 * Fixed bug where jQuery UI would be loaded twice.
 
-= 2.9 = 
+= 2.9 =
 
 
 
@@ -945,7 +937,7 @@ This is a MAJOR update to Sociable. Major Thanks to Jean-Paul of [iPhoneclub](ht
 
 * General bugfixes.
 
-= 2.8.3 = 
+= 2.8.3 =
 
 
 
@@ -959,11 +951,11 @@ This is a MAJOR update to Sociable. Major Thanks to Jean-Paul of [iPhoneclub](ht
 
 * Made opening in a new window optional.
 
-= 2.8.2 = 
+= 2.8.2 =
 
 
 
-* Now adds icons to feeds with excerpts too. 
+* Now adds icons to feeds with excerpts too.
 
 
 
@@ -1053,42 +1045,30 @@ Special thanks to [Robert Harm](http://www.die-truppe.com/) for coming up with l
 
 == Installation ==
 
-Download, Upgrading, Installation:
+= From your WordPress dashboard (Automatic Installation) =
 
-Upgrade
+1. Visit your Wordpress dashboard.
+2. Visit 'Plugins' then click 'Add New'.
+3. Search for 'Sociable'.
+4. Activate Sociable from your Plugins page.
 
-1. First deactivate Sociable
+= From WordPress.org (Manual Installation) =
 
+1. Download Sociable.
+2. Upload the 'sociable' directory to your '/wp-content/plugins/' directory, using your favorite method (ftp, sftp, scp, etc...).
+3. Activate Sociable from your Plugins page.
 
+= Once Activated =
 
-1. Remove the `sociable` directory
+1. Visit your Wordpress dashboard.
+2. Click the 'Sociable' menu (at the bottom).
 
-**Install**
+= Upgrading from a previous version =
 
-1. Unzip the `sociable.zip` file. 
+1. Visit your Wordpress dashboard.
+2. Click 'Plugins'.
+3. Click 'Update Now' in the 'Sociable' section.
 
+Alternatively follow the instructions above to install the plugin manually, deleting any old 'sociable' directory.
 
-
-1. Upload the the `sociable` folder (not just the files in it!) to your `wp-contents/plugins` folder. If you're using FTP, use 'binary' mode.
-
-**Activate**
-
-1. In your WordPress administration, go to the Plugins page
-
-
-
-1. Activate the Sociable plugin and a subpage for Sociable will appear
-
-
-
-   in your Options menu.
-
-If you find any bugs or have any ideas, please mail me.
-
-**Advanced Users**
-
-For advanced use of the plugin, see the [Sociable](http://www.blogplay.com/sociable-for-wordpress) page on [Blogplay](http://www.blogplay.com/plugin)
-
-
-
-    
+If you find any bugs or have any ideas, please discuss it in the [support forums](https://wordpress.org/support/plugin/sociable).

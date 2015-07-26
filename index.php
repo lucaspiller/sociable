@@ -1,4 +1,4 @@
 <?php
-/** Sociable - Blogplay.com */
+/** Sociable Wordpress Plugin */
 
 ?>
