@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
     title: jQuery('title').html()
   };
 
-  jQuery.post(base_url_sociable+'includes/async_request.php', data, function(response) {
+  jQuery.post(sociable_async_options.base_url + 'includes/async_request.php', data, function(response) {
     eval(response);
   });
 });

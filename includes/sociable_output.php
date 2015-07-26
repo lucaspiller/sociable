@@ -28,7 +28,7 @@ function sociable_html( $display = array(),$location = '' ) {
 	$active_sites = $sociable_options['active_sites'];
 
 	// Get The Image Path
-	// $imagepath = _get_sociable_image_path();
+	// $imagepath = Sociable_Globals::get_sociable_image_path();
 	// if no sites are specified, display all active
 	// have to check $active_sites has content because WP
 	// won't save an empty array as an option
@@ -191,13 +191,13 @@ function sociable_html( $display = array(),$location = '' ) {
 
 		if ( ! empty( $sociable_options['custom_icons'] ) ) {
 
-			$linkitem = ( ! isset( $sociable_options['use_images'] ) ) ? $description : _get_sociable_image( $site, $description );
+			$linkitem = ( ! isset( $sociable_options['use_images'] ) ) ? $description : Sociable_Globals::get_sociable_image( $site, $description );
 
 		} else {
 
 			if ( $description != 'More' ) {
 
-				$linkitem = ( ! isset( $sociable_options['use_images'] ) ) ? $description : _get_sociable_image( $site, $description );
+				$linkitem = ( ! isset( $sociable_options['use_images'] ) ) ? $description : Sociable_Globals::get_sociable_image( $site, $description );
 
 			} else {
 
@@ -296,13 +296,13 @@ function sociable_html( $display = array(),$location = '' ) {
 
 		if ( ! empty( $sociable_options['custom_icons'] ) ) {
 
-			$linkitem = ( ! isset( $sociable_options['use_images'] ) ) ? $description : _get_sociable_image( $site, $description );
+			$linkitem = ( ! isset( $sociable_options['use_images'] ) ) ? $description : Sociable_Globals::get_sociable_image( $site, $description );
 
 		} else {
 
 			if ( isset( $description ) && $description != 'More' ) {
 
-				$linkitem = ( ! isset( $sociable_options['use_images'] ) ) ? $description : _get_sociable_image( $site, $description );
+				$linkitem = ( ! isset( $sociable_options['use_images'] ) ) ? $description : Sociable_Globals::get_sociable_image( $site, $description );
 
 			} else {
 

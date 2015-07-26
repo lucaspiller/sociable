@@ -813,13 +813,12 @@ class sociable_Admin_Options{
 	 */
 
 	public static function add_menu_pages() {
+		global $sociable_select_page, $sociable_classic_page, $sociable_skyscraper_page;
 
-		global $sociable_post_types;
+		$sociable_select_page     = add_options_page( '','', 'manage_options', 'sociable_select' , array( 'sociable_Admin_Options', 'Select_Sociable_Page' ) );
+		$sociable_classic_page    = add_options_page( '','', 'manage_options', 'sociable_options' , array( 'sociable_Admin_Options', 'Create_Options_Page' ) );
+		$sociable_skyscraper_page = add_options_page( '','', 'manage_options', 'skyscraper_options' , array( 'sociable_Admin_Options', 'Create_Options_Page_Skycraper' ) );
 
-		$url = $_SERVER['QUERY_STRING'];
-		$page[] = add_options_page( '','', 'manage_options', 'sociable_select' , array( 'sociable_Admin_Options', 'Select_Sociable_Page' ) );
-		$page[] = add_options_page( '','', 'manage_options', 'sociable_options' , array( 'sociable_Admin_Options', 'Create_Options_Page' ) );
-		$page[] = add_options_page( '','', 'manage_options', 'skyscraper_options' , array( 'sociable_Admin_Options', 'Create_Options_Page_Skycraper' ) );
 		// Add a new submenu under Settings:
 	  // Add a new top-level menu (ill-advised):
 		add_menu_page( __( 'Sociable Options' ), __( 'Select Sociable Plugin' ), 'manage_options', '/options-general.php?page=sociable_select' );
@@ -829,13 +828,12 @@ class sociable_Admin_Options{
 		add_submenu_page( 'options-general.php?page=sociable_select',  __( 'Skyscraper Options' ), __( 'Skyscraper Options' ), 'manage_options', 'skyscraper_options' , array( 'sociable_Admin_Options', 'Create_Options_Page_Skycraper' ) );
 
 		// Add CSS And Javascript Specific To This Options Pages
-		add_action( 'admin_print_styles-' . $page[0] , array( 'sociable_Admin_Options', 'enqueue_styles' ) );
-		add_action( 'admin_print_scripts-' . $page[0] , array( 'sociable_Admin_Options', 'enqueue_scripts' ) );
-
-		add_action( 'admin_print_styles-' . $page[1] , array( 'sociable_Admin_Options', 'enqueue_styles' ) );
-		add_action( 'admin_print_scripts-' . $page[1] , array( 'sociable_Admin_Options', 'enqueue_scripts' ) );
-		add_action( 'admin_print_styles-' . $page[2] , array( 'sociable_Admin_Options', 'enqueue_styles' ) );
-		add_action( 'admin_print_scripts-' . $page[2] , array( 'sociable_Admin_Options', 'enqueue_scripts' ) );
+		add_action( 'admin_print_styles-' .  $sociable_select_page, array( 'sociable_Admin_Options', 'enqueue_styles' ) );
+		add_action( 'admin_print_scripts-' . $sociable_select_page, array( 'sociable_Admin_Options', 'enqueue_scripts' ) );
+		add_action( 'admin_print_styles-' .  $sociable_classic_page, array( 'sociable_Admin_Options', 'enqueue_styles' ) );
+		add_action( 'admin_print_scripts-' . $sociable_classic_page, array( 'sociable_Admin_Options', 'enqueue_scripts' ) );
+		add_action( 'admin_print_styles-' .  $sociable_skyscraper_page, array( 'sociable_Admin_Options', 'enqueue_styles' ) );
+		add_action( 'admin_print_scripts-' . $sociable_skyscraper_page, array( 'sociable_Admin_Options', 'enqueue_scripts' ) );
 
 		if ( isset( $_POST['sociable_reset'] ) ) {
 			check_admin_referer( 'sociable-reset' );
@@ -852,8 +850,12 @@ class sociable_Admin_Options{
 		}
 
 		/*
-         * We can create The Meta Boxes Here
-         */
+		 * We can create The Meta Boxes Here
+		 */
+
+	  // Get The Post Types.
+	  $sociable_post_types = Sociable_Globals::sociable_get_post_types();
+
 		foreach ( $sociable_post_types as $type => $data ) {
 			self::add_meta_box( $type );
 		}
@@ -867,7 +869,7 @@ class sociable_Admin_Options{
      * Function to Enqueue The Styles For The Options Page
      */
 	public static function enqueue_styles() {
-	 	wp_enqueue_style( 'style-admin-css', SOCIABLE_HTTP_PATH . 'css/style-admin.css' );
+		wp_enqueue_style( 'style-admin-css', SOCIABLE_HTTP_PATH . 'css/style-admin.css' );
 		wp_enqueue_style( 'sociable-admin-css', SOCIABLE_HTTP_PATH . 'css/sociable-admin.css' );
 		wp_enqueue_style( 'sociablecss' , SOCIABLE_HTTP_PATH . 'css/sociable.css' );
 	}
